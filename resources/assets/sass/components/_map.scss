@@ -1,0 +1,13 @@
+.google-map {
+    margin-top: 40px;
+    height: 500px;
+}
+
+.google-map__map {
+    height: 100%;
+}
+
+.google-map__panel {
+    max-height: 500px;
+    overflow-y: scroll;
+}

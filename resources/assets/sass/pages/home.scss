@@ -1,0 +1,21 @@
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+}
+
+.jumbotron {
+    @include gradient-vertical(#46a0d4, #0b4970);
+}
+
+.logo {
+    img {
+        max-width: 100%;
+    }
+}
+
+.carousel {
+    height: 500px;
+}

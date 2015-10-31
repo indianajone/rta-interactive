@@ -1,0 +1,17 @@
+<div class="google-map__infowindow">
+    <div v-show="hasPhoto" class="google-map__infowindow__media">
+        <img v-bind:src="photo" alt="{{ title }}">
+    </div>
+    <div class="google-map__infowindow__body">
+        <strong>{{ place.name }}</strong>
+        <p>{{ place.description }}</p>
+        <button
+            v-show="place.canAdd"
+            @click="addToWaypoint(place)"
+            type="button"
+            class="btn btn-success"
+        > 
+        Add +
+        </button>
+    </div>
+</div>

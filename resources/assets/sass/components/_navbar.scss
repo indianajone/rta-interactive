@@ -1,0 +1,98 @@
+.navbar > .container {
+    border: none;
+    border-left: 50px solid transparent;
+    border-top: 50px solid #1775ab;
+    border-right: 50px solid transparent;
+    height: 0;
+}
+
+.navbar__main {
+    
+
+    .navbar-nav {
+        &:after {
+            content: '';
+            height: 4px;
+            background-color: $blue-darker;
+            position: relative;
+        }
+        
+        > li {
+
+            a {
+                background-color: $blue;
+                color: white;
+                margin-left: 40px;
+
+                &:hover {
+                    color: $blue-lighter;
+                    background-color: $blue-darker;
+                }
+                &:before,
+                &:after {
+                    content: '';
+                    width: 0;
+                    height: 0;
+                    top: 0;
+                    position: absolute;
+                }
+                &:before {
+                    border-bottom: 50px solid transparent;
+                    border-right: 40px solid $blue;
+                    left: -40px;
+                }
+                &:hover::before {
+                    border-right: 40px solid $blue-darker;
+                }
+                &:after {
+                    border-top: 50px solid transparent;
+                    border-left: 40px solid $blue;
+                    right: -40px;
+                }
+                &:hover::after {
+                    border-left: 40px solid $blue-darker;
+                }
+            }
+
+            &:last-child {
+                > a {
+                    &:after {
+                        border-top: none;
+                        border-bottom: 50px solid transparent;
+                    }
+                }
+            }
+        }
+    }
+    
+    @media (min-width: 768px) {
+        .navbar__main__shadow {
+            background: $blue-darker;
+            width: 85%;
+            height: 10px;
+            display: block;
+            position: absolute;
+            bottom: -5px;
+            left: 10.5%;
+
+            &:before,
+            &:after {
+                content: '';
+                width: 0;
+                height: 0;
+                top: 0;
+                position: absolute;
+            }
+            &:before {
+                border-bottom: 10px solid transparent;
+                border-right: 10px solid $blue-darker;
+                left: -10px;
+            }
+            &:after {
+                border-left: 10px solid $blue-darker;
+                border-bottom: 10px solid transparent;
+                right: -10px;
+            }
+        }
+    }
+}
