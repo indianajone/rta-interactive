@@ -6,7 +6,11 @@
         v-bind:route="route"
         v-bind:things="selectedThings"
     ></google-map>
-    <form @submit.prevent="navigateMe" accept-charset="utf-8">
+    <form 
+        @submit.prevent="navigateMe" 
+        @keyup.enter="navigateMe"
+        accept-charset="utf-8"
+    >
         <fieldset class="top">
             <mode :mode.sync="route.travelMode"></mode>
             <origin :origin.sync="route.origin"></origin>
