@@ -1,78 +1,36 @@
- <div class="Interactive-map">
-    <form @submit.prevent="navigateMe" accept-charset="utf-8">
-        <div class="form-group">
-            <label for="origin">Origin</label>
-            <input 
-                v-el:origin
-                v-model="route.origin"
-                @focus="clearInput" 
-                @blur="autoOrigin"
-                type="text"
-                class="form-control"
-                name="origin"
-                placeholder="Your origin">
-        </div>
-        <div v-for="location in route.waypoints"
-             class="form-group">
-            <div class="input-group">
-                <input type="text" class="form-control" value="{{ location.name }}" readonly>
-                    <div class="input-group-btn">
-                        <button class="btn btn-danger" @click="removeWaypoint(location)">X</button>
-                    </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="destination">Destination</label>
-            <select 
-                v-model="route.destination"
-                type="text" 
-                class="form-control" 
-                required
-            >
-                <option 
-                    v-for="location in destinations" 
-                    v-bind:value="location.value"
-                >
-                    {{ location.text }}
-                </option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="radio-inline">
-                <input 
-                    v-model="route.travelMode"
-                    type="radio"
-                    name="travelMode" 
-                    value="DRIVING" 
-                > driving
-            </label>
-            <label class="radio-inline">
-                <input 
-                    v-model="route.travelMode"
-                    type="radio"
-                    name="travelMode" 
-                    value="TRANSIT" 
-                > public transport
-            </label>
-        </div>
-        <div v-if="route.travelMode == 'DRIVING'" class="form-group">
-            <label 
-                v-for="thing in things"
-                class="checkbox-inline"
-            >
-                 <input 
-                    v-model="thing.selected"
-                    type="checkbox"
-                > {{ thing.name }}    
-            </label>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Show me">
-        </div>
-    </form>
+ <div 
+    class="interactive-map"
+    v-bind:style="{ width: width + 'px', height: height + 'px'}">
     <google-map 
-        v-ref:google 
+        v-ref:google
         v-bind:route="route"
         v-bind:things="selectedThings"
     ></google-map>
+    <form @submit.prevent="navigateMe" accept-charset="utf-8">
+        <fieldset class="top">
+            <mode :mode.sync="route.travelMode"></mode>
+            <origin :origin.sync="route.origin"></origin>
+            <waypoint :waypoints.sync="route.waypoints"></waypoint>
+            <destinations :selected.sync="route.destination"></destinations>
+        </fieldset>
+        <fieldset class="bottom">
+            <div 
+                v-if="route.travelMode == 'DRIVING'" 
+                class="waypoints"
+            >
+                <legend>ตัวเลือก</legend>
+                <div 
+                    class="col-sm-6"
+                    v-for="thing in things"
+                >
+                    <label class="checkbox-inline">
+                         <input 
+                            v-model="thing.selected"
+                            type="checkbox"
+                        > {{ thing.name }}    
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+    </form>
 </div>

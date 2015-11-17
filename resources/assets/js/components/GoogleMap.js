@@ -29,10 +29,11 @@ module.exports = {
     ready: function () {
         var options = {
             center: this.location,
+            scrollwheel: false,
             zoom: 12
         };
         
-        this.map = new google.maps.Map(this.$els.map, options);
+        this.map = new google.maps.Map(this.$el, options);
     },
 
     methods: {
@@ -43,6 +44,7 @@ module.exports = {
             this.clearMarkers();
             this.services.direction.route(request, function (result, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
+                    console.log(result);
                     self.services.renderer.setDirections(result);
                     self.drawBoxes(result.routes);
                 }
@@ -84,15 +86,23 @@ module.exports = {
             this.infoWindow = new google.maps.InfoWindow();
             this.services.direction = new google.maps.DirectionsService();
             this.services.place = new google.maps.places.PlacesService(this.map);
-            this.services.renderer = new google.maps.DirectionsRenderer({ map: this.map });
+            this.services.renderer = new google.maps.DirectionsRenderer({ 
+                map: this.map,
+                draggable: true,
+                // panel: this.$els.panel
+            });
             
             this.createMarker({
                 geometry: {
                     location: this.location
                 }
             });
+            
             this.map.setCenter(this.location);
-            this.services.renderer.setPanel(this.$els.panel);
+            
+            google.maps.event.addDomListener(window, 'resize', function() {
+                this.map.setCenter(this.location);
+            }.bind(this));
         },
 
         createMarker: function (place) {

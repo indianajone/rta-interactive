@@ -1,17 +1,13 @@
 var Vue = require('vue');
 
 Vue.use(require('vue-resource'));
-Vue.config.debug = true;
+// Vue.config.debug = true;
 
 new Vue({
     el: '#app',
 
     components: {
-        homeView: require('./views/home')
-    },
-
-    data: {
-        currentView: 'home-view'
-    }
-    
+        interactiveMap: require('./components/InteractiveMap'),
+        search: require('./components/Search')
+    }    
 });

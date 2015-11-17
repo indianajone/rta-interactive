@@ -1,98 +1,64 @@
-.navbar > .container {
-    border: none;
-    border-left: 50px solid transparent;
-    border-top: 50px solid #1775ab;
-    border-right: 50px solid transparent;
-    height: 0;
+@import "./_flag";
+
+.navbar {
+    margin-bottom: 0;
 }
 
-.navbar__main {
-    
-
-    .navbar-nav {
-        &:after {
-            content: '';
-            height: 4px;
-            background-color: $blue-darker;
-            position: relative;
-        }
-        
-        > li {
-
-            a {
-                background-color: $blue;
+.navbar-top {
+    @extend .container-fluid;
+    background-color: $green;
+    min-height: $header-height;
+    .navbar-brand {
+        color: white;
+    }
+    .navbar-right {
+        @extend .hidden-xs;
+        .navbar-nav {
+            &__link {
                 color: white;
-                margin-left: 40px;
-
+                font-size: 12px;
+                line-height: 27px;
+                padding: 15px 10px;
                 &:hover {
-                    color: $blue-lighter;
-                    background-color: $blue-darker;
-                }
-                &:before,
-                &:after {
-                    content: '';
-                    width: 0;
-                    height: 0;
-                    top: 0;
-                    position: absolute;
-                }
-                &:before {
-                    border-bottom: 50px solid transparent;
-                    border-right: 40px solid $blue;
-                    left: -40px;
-                }
-                &:hover::before {
-                    border-right: 40px solid $blue-darker;
-                }
-                &:after {
-                    border-top: 50px solid transparent;
-                    border-left: 40px solid $blue;
-                    right: -40px;
-                }
-                &:hover::after {
-                    border-left: 40px solid $blue-darker;
-                }
-            }
-
-            &:last-child {
-                > a {
-                    &:after {
-                        border-top: none;
-                        border-bottom: 50px solid transparent;
-                    }
+                    color: $green-lighter;
                 }
             }
         }
     }
-    
-    @media (min-width: 768px) {
-        .navbar__main__shadow {
-            background: $blue-darker;
-            width: 85%;
-            height: 10px;
-            display: block;
-            position: absolute;
-            bottom: -5px;
-            left: 10.5%;
+}
 
-            &:before,
-            &:after {
-                content: '';
-                width: 0;
-                height: 0;
-                top: 0;
-                position: absolute;
-            }
-            &:before {
-                border-bottom: 10px solid transparent;
-                border-right: 10px solid $blue-darker;
-                left: -10px;
-            }
-            &:after {
-                border-left: 10px solid $blue-darker;
-                border-bottom: 10px solid transparent;
-                right: -10px;
-            }
+.navbar-bottom {
+    background-color: $green-lighter;
+    background-color: rgba($green-lighter, 0.8);
+    position: absolute;
+    width: 100%;
+    top: $header-height;
+}
+
+.navbar-main {
+    @extend .nav;
+    @extend .navbar-nav;
+    & &__link {
+        color: white;
+        font-size: 13px;
+        border-bottom: transparent solid 4px;
+        &:hover, 
+        &--active, 
+        &--active:hover {
+            color: white;
+            background-color: transparent;
+            border-bottom: $green solid 4px;
         }
+    }
+}
+
+.navbar-brand {
+    img {
+        display: inline-block;
+        max-height: 30px;
+    }
+    span {
+        @extend .hidden-xs;
+        font-family: $font-family-heading;
     }
 }

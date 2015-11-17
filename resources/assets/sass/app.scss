@@ -1,10 +1,20 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "node_modules/font-awesome/scss/font-awesome";
 
+@import "components/fonts";
 @import "components/variables";
 @import "components/theme";
 
+@import "components/banner";
+@import "components/card";
+@import "components/ceo";
+@import "components/heading";
 @import "components/map";
 @import "components/navbar";
+@import "components/search";
+@import "components/social";
+@import "components/footer";
+@import "components/utilities";
 
 @import "pages/home";
+@import "pages/about";
