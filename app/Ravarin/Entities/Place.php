@@ -19,6 +19,8 @@ class Place extends Model
 
     public function getThumbnailAttribute() 
     {
-        return $this->photos()->first();
+        $thumbnail = $this->photos()->first();
+
+        return $thumbnail ? $thumbnail->thumbnail_path : 'images/default.jpg';
     }
 }

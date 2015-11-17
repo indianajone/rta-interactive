@@ -1,7 +1,7 @@
 <div class="card">
    <div class="card__image">
        <a href="#">
-            <img src="{{ $place->thumbnail->thumbnail_path }}" alt="{{ $place->name }}">
+            <img src="{{ $place->thumbnail }}" alt="{{ $place->name }}">
        </a>
    </div>
    <div class="card__details">
