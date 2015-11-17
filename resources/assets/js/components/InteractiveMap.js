@@ -1,18 +1,20 @@
-var Vue = require('vue');
-
 module.exports = {
 
     template: require('./interactive-map.template.html'),
 
     components: {
-        googleMap: require('./GoogleMap')
+        origin: require('./Origin'),
+        destinations: require('./Destination'),
+        mode: require('./Mode'),
+        googleMap: require('./GoogleMap'),
+        waypoint: require('./Waypoint')
     },
 
     data: function () {
         return {
-            browserSupport: false,
-            currentLocation: {},
-            destinations: [{ text: 'Please select your destination', value: '' }],
+            width: window.innerWidth,
+            height: window.innerHeight,
+            currentLocation: null,
             route: { origin: '', destination: '', travelMode: 'DRIVING', waypoints: [] },
             things: [
                 { name: 'Gas station', value: 'gas_station', selected: true }, 
@@ -29,12 +31,8 @@ module.exports = {
     },
 
     computed: {
-        selectedOrigin: function () {
-            return (this.route.origin === 'Your current position' || 
-                    this.route.origin === '') ? this.currentLocation : this.route.origin;
-        },
-        selectedDestination: function () {
-            return (this.route.destination === 'Your current position') ? this.currentLocation : this.route.destination;
+        browserSupport: function () {
+            return navigator.geolocation ? true : false;
         },
         selectedThings: function () {
             if (this.route.travelMode !== 'DRIVING') {
@@ -60,34 +58,16 @@ module.exports = {
  
     methods: {
         init: function () {
-            if (this.isBrowserSupport()) {
+            if (this.browserSupport) {
                 this.getCurrentLocation();
+                window.addEventListener('resize', this.onResize);
             } else {
                 alert('Your browser does not support location service.');
             }
-            
-            this.fetchPlaces();
-
-            new google.maps.places.Autocomplete(this.$els.origin);
         },
-        isBrowserSupport: function () {
-            if (navigator.geolocation) { // Try W3C Geolocation (Preferred)
-                this.browserSupport = true;        
-            } else { // Browser doesn't support Geolocation
-                this.browserSupport = false;
-            }
-
-            return this.browserSupport;
-        },
-        fetchPlaces: function () {
-            this.$http.get('/api/places', function (data) {
-                for (var i=0; i<data.length; i++) {
-                    this.destinations.push({
-                        text: data[i].name,
-                        value: data[i].latitude + ',' + data[i].longitude
-                    });
-                }
-            });
+        onResize: function () {
+            this.width = window.innerWidth;
+            this.height = window.innerHeight;
         },
         getCurrentLocation: function () {
             var self = this;
@@ -104,7 +84,7 @@ module.exports = {
                 }, function (results, status) {
                     if (status === google.maps.GeocoderStatus.OK) {
                         if (results[0]) {
-                            self.route.origin = 'Your current position';
+                            self.route.origin = self.currentLocation;
                             self.$refs.google.init(self.currentLocation);
                         }
                     }
@@ -114,20 +94,10 @@ module.exports = {
                 alert('Can not get your current location.');
             });
         },
-        clearInput: function (e) {
-            if (this.route.origin == 'Your current position') {
-                this.route.origin = '';
-            }
-        },
-        autoOrigin: function (e) {
-            if (this.route.origin == '' && this.browserSupport) {
-                this.route.origin = 'Your current position';
-            }
-        },
         navigateMe: function () {  
             var request = {
-                origin: this.selectedOrigin,
-                destination: this.selectedDestination,
+                origin: this.route.origin,
+                destination: this.route.destination,
                 travelMode: google.maps.DirectionsTravelMode[this.route.travelMode],
                 optimizeWaypoints: true,
                 waypoints: this.selectedWaypoint,

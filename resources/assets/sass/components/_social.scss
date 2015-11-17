@@ -1,0 +1,19 @@
+.navbar-social {
+    @extend .nav;
+    @extend .navbar-nav;
+    > li {
+        a.navbar-social__button {
+            color: $green;
+            padding: 10px 5px;
+            &:hover {
+                background-color: transparent;
+                .fa-stack-1x {
+                    color: white;
+                }
+            }
+            .fa-circle {
+                color: $green-lighter;
+            }
+        }
+    }
+}

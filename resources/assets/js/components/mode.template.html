@@ -1,0 +1,14 @@
+<div class="mode">
+    <label 
+            v-for="type in types"
+            class="mode__checkbox"
+    >
+        <input 
+            v-model="mode"
+            @change="onChange(type)"
+            type="radio"
+            value="{{ type.value }}" 
+        >
+        <i :class="['fa', 'fa-lg', 'fa-' + type.icon]"></i>
+    </label>
+</div>

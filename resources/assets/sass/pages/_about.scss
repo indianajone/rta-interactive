@@ -1,0 +1,12 @@
+.about {
+    &__logo {
+        @extend .col-md-3;
+        img {
+            @extend .img-responsive;
+            margin: 0 auto;
+        }
+    }
+    &__body {
+        @extend .col-md-9;
+    }
+}

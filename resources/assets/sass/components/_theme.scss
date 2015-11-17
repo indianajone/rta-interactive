@@ -1,7 +1,24 @@
-html, body {
-  height:100%;
+html, body, #app {
+    min-height: 100%;
 }
 
 body {
-    background-color: $body-bg;
+    background: $bg-color url("../images/bg-bottom.png") no-repeat;
+    background-position: bottom center;
+    background-size: contain;
+}
+
+#app.container-fluid {
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Quarkbold' sans-serif;
+}
+
+a {
+    color: $green;
+    &:hover {
+        color: $green-lighter;
+    }
 }
