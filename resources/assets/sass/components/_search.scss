@@ -1,0 +1,38 @@
+.search {
+    @extend .navbar-form;
+    input[type=text] {
+        background-color: rgba($green, .5);
+        border-radius: 20px;
+        font-size: 12px;
+        min-width: 200px;
+        border: none;
+        color: #fff;
+    }
+    &__button {
+        @extend .btn;
+        @extend .btn-link;
+        color: $green;
+        &:active, 
+        &:focus,
+        &:hover {
+            color: #fff;
+            outline: none;
+        }
+    }
+    ::-webkit-input-placeholder {
+        color: rgba(#fff, .4);
+        text-align: center;
+    }
+    :-moz-placeholder {
+        color: rgba(#fff, .4);
+        text-align: center;
+    }
+    ::-moz-placeholder {
+        color: rgba(#fff, .4);
+        text-align: center;
+    }
+    :-ms-input-placeholder  {
+       color: rgba(#fff, .4);
+       text-align: center;
+    }
+}

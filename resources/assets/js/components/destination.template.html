@@ -1,0 +1,15 @@
+  <div class="form-group">
+    <select 
+        v-model="selected"
+        type="text" 
+        class="form-control" 
+        required
+    >
+        <option 
+            v-for="location in destinations" 
+            v-bind:value="location.value"
+        >
+            {{ location.text }}
+        </option>
+    </select>
+</div>

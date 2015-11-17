@@ -10,7 +10,6 @@
     @include('components/ceo')
     <h2 class="heading--fancy">สถานที่ท่องเที่ยวยอดนิยม</h2>
     <div class="cards">
-
         @forelse($places->chunk(3) as $set)
             <div class="row">
                 @foreach($set as $place)
@@ -22,6 +21,5 @@
                 <h3 class="notfound__body">ไม่พบข้อมูล</h3>
             </div>
         @endforelse
-
     </div>
 @stop

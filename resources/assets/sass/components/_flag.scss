@@ -1,0 +1,23 @@
+.navbar-flag {
+    @extend .nav;
+    @extend .navbar-nav;
+    & &__button {
+        padding: 0 3px;
+        &__tha, &__eng {
+            @extend .text-hide;
+            background: url($sprite-path) no-repeat;
+            padding: 0;
+            margin-top: 20px;
+            width: 23px;
+            height: 14px;
+        }
+
+        &__tha {
+            background-position:  0 -64px;
+        }
+
+        &__eng {
+            background-position:  0 -78px;
+        }
+    }
+}
