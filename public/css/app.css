@@ -1525,16 +1525,17 @@ pre {
   .container-fluid:after, .navbar-top:after {
     clear: both; }
 
-.row {
+.row, .place__photos {
   margin-left: -15px;
   margin-right: -15px; }
-  .row:before, .row:after {
+  .row:before, .place__photos:before, .row:after, .place__photos:after {
     content: " ";
     display: table; }
-  .row:after {
+  .row:after, .place__photos:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .about__logo, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .card, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .card, .col-md-6, .copyright__left, .copyright__right, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .about__body, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .about__logo, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .card, .place__vdo,
+.place__photos .place__image, .place__mini-map, .place__panorama, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .card, .col-md-6, .copyright__left, .copyright__right, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .about__body, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -1803,7 +1804,8 @@ pre {
     margin-left: 100%; } }
 
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .col-md-3, .about__logo, .col-md-4, .card, .col-md-5, .col-md-6, .copyright__left, .copyright__right, .col-md-7, .col-md-8, .col-md-9, .about__body, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .col-md-3, .about__logo, .col-md-4, .card, .place__vdo,
+  .place__photos .place__image, .place__mini-map, .place__panorama, .col-md-5, .col-md-6, .copyright__left, .copyright__right, .col-md-7, .col-md-8, .col-md-9, .about__body, .col-md-10, .col-md-11, .col-md-12 {
     float: left; }
   .col-md-1 {
     width: 8.3333333333%; }
@@ -1811,7 +1813,8 @@ pre {
     width: 16.6666666667%; }
   .col-md-3, .about__logo {
     width: 25%; }
-  .col-md-4, .card {
+  .col-md-4, .card, .place__vdo,
+  .place__photos .place__image, .place__mini-map, .place__panorama {
     width: 33.3333333333%; }
   .col-md-5 {
     width: 41.6666666667%; }
@@ -8008,6 +8011,30 @@ a {
 .navbar-brand span {
   font-family: "Quarkbold", sans-serif; }
 
+.place {
+  position: relative; }
+  .place__buttons {
+    position: absolute;
+    top: -40px;
+    right: 0; }
+    .place__buttons a {
+      background-color: #e3e5e5;
+      display: block;
+      text-align: center;
+      padding: 10px;
+      float: left;
+      width: 25%;
+      border-right: 3px solid #eee; }
+      .place__buttons a:last-child {
+        border-right: 3px solid transparent; }
+  .place__body {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 15px 30px; }
+  .place__image img {
+    display: block;
+    max-width: 100%;
+    height: auto; }
+
 .search input[type=text] {
   background-color: rgba(9, 77, 68, 0.5);
   border-radius: 20px;
@@ -8050,6 +8077,7 @@ a {
 
 .footer {
   background-color: #094d44;
+  margin-top: 40px;
   padding-top: 40px; }
   .footer__top address {
     color: #fff; }

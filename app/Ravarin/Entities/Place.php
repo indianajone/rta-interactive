@@ -2,6 +2,7 @@
 
 namespace Ravarin\Entities;
 
+use Illuminate\Support\Str;
 use App\Ravarin\Entities\Photo;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,6 +12,11 @@ class Place extends Model
         'name', 'excerpt', 'description', 'street', 'subdistrict',
         'district', 'province', 'postcode', 'latitude', 'longitude'
     ];
+
+    public static function findBySlug($slug)
+    {
+        return (new static)->where('name', str_replace('-', ' ', $slug))->firstOrFail();
+    }
 
     public function photos() 
     {

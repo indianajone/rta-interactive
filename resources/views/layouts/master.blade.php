@@ -15,7 +15,7 @@
                 <div class="container">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#">
-                            <img src="images/logo.png" alt="สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก">
+                            <img src="/images/logo.png" alt="สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก">
                             <span>สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก</span>
                         </a>
                     </div>
@@ -78,7 +78,7 @@
             </div>
         </footer>
     </div>
-    <script src="js/app.js"></script>
+    <script src="/js/app.js"></script>
     @yield ('script.footer')
 </body>
 </html>

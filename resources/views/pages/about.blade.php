@@ -2,7 +2,7 @@
 
 @section('banner')
     <div class="banner">
-        <img src="uploaded/2015/11/09/bangpu.jpg" alt="bangpu">
+        <img src="/uploaded/2015/11/09/bangpu.jpg" alt="bangpu">
     </div>
 @stop
 
@@ -11,7 +11,7 @@
     <h2 class="heading--fancy">เกี่ยวกับเรา</h2>
     <div class="about">
         <div class="about__logo">
-            <img src="images/logo-306x401.png" alt="สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก">
+            <img src="/images/logo-306x401.png" alt="สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก">
         </div>
         <div class="about__body">
             <p>

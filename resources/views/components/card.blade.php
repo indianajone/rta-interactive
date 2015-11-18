@@ -1,12 +1,12 @@
 <div class="card">
    <div class="card__image">
-       <a href="#">
+       <a href="{{ route('place_path', str_replace(' ', '-', $place->name)) }}">
             <img src="{{ $place->thumbnail }}" alt="{{ $place->name }}">
        </a>
    </div>
    <div class="card__details">
         <h3 class="card__title">
-            <a href="#">{{ $place->name }}</a>
+            <a href="{{ route('place_path', str_replace(' ', '-', $place->name)) }}">{{ $place->name }}</a>
         </h3>
         <p class="card__excerpt">{{ $place->excerpt }}</p>
    </div>

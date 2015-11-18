@@ -8,6 +8,7 @@
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/map', ['as' => 'map_path', 'uses' => 'PagesController@map']);
 Route::get('/aboutus', ['as' => 'about_path', 'uses' => 'PagesController@about']);
+Route::get('/places/{slug}', ['as' => 'place_path', 'uses' => 'PlacesController@show']);
 
 /*
 |--------------------------------------------------------------------------
