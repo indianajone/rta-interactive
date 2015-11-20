@@ -36,8 +36,10 @@
                         <a  href="#"
                             @click.prevent="showModal = true"
                         >
-                            <img src="{{ $place->video->thumbnail }}" alt="{{ $place->video->title }}
-                            ">
+                            <img src="{{ $place->video->thumbnail }}" alt="{{ $place->video->title }}">
+                            <div class="place__overlay">
+                                <i class="fa fa-play-circle-o"></i>
+                            </div>
                         </a>
                         <modal :show.sync="showModal">
                             <div class="modal-video" slot="body">
