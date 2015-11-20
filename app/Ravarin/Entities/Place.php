@@ -23,6 +23,11 @@ class Place extends Model
         return $this->hasMany(Photo::class);
     }
 
+    public function video() 
+    {
+        return $this->hasOne(Video::class);
+    }
+
     public function getThumbnailAttribute() 
     {
         $thumbnail = $this->photos()->first();

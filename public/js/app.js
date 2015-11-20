@@ -11071,13 +11071,18 @@ Vue.use(require('vue-resource'));
 new Vue({
     el: '#app',
 
+    data: {
+        showModal: false
+    },
+
     components: {
         interactiveMap: require('./components/InteractiveMap'),
+        modal: require('./components/Modal'),
         search: require('./components/Search')
     }
 });
 
-},{"./components/InteractiveMap":81,"./components/Search":84,"vue":75,"vue-resource":3}],78:[function(require,module,exports){
+},{"./components/InteractiveMap":81,"./components/Modal":82,"./components/Search":85,"vue":75,"vue-resource":3}],78:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -11110,7 +11115,7 @@ module.exports = {
     }
 };
 
-},{"./destination.template.html":86}],79:[function(require,module,exports){
+},{"./destination.template.html":87}],79:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -11294,7 +11299,7 @@ module.exports = {
 
 };
 
-},{"./InfoWindow":80,"./google-map.template.html":87}],80:[function(require,module,exports){
+},{"./InfoWindow":80,"./google-map.template.html":88}],80:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -11333,7 +11338,7 @@ module.exports = {
     }
 };
 
-},{"./info-window.template.html":88}],81:[function(require,module,exports){
+},{"./info-window.template.html":89}],81:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -11449,7 +11454,21 @@ module.exports = {
     }
 };
 
-},{"./Destination":78,"./GoogleMap":79,"./Mode":82,"./Origin":83,"./Waypoint":85,"./interactive-map.template.html":89}],82:[function(require,module,exports){
+},{"./Destination":78,"./GoogleMap":79,"./Mode":83,"./Origin":84,"./Waypoint":86,"./interactive-map.template.html":90}],82:[function(require,module,exports){
+'use strict';
+
+module.exports = {
+    template: require('./modal.template.html'),
+    props: {
+        show: {
+            type: Boolean,
+            required: true,
+            twoWay: true
+        }
+    }
+};
+
+},{"./modal.template.html":91}],83:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -11480,7 +11499,7 @@ module.exports = {
     }
 };
 
-},{"./mode.template.html":90}],83:[function(require,module,exports){
+},{"./mode.template.html":92}],84:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -11537,7 +11556,7 @@ module.exports = {
 
 };
 
-},{"./origin.template.html":91}],84:[function(require,module,exports){
+},{"./origin.template.html":93}],85:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -11546,7 +11565,7 @@ module.exports = {
 
 };
 
-},{"./search.template.html":92}],85:[function(require,module,exports){
+},{"./search.template.html":94}],86:[function(require,module,exports){
 'use strict';
 
 var Sortable = require('../vendor/Sortable.min.js');
@@ -11590,23 +11609,25 @@ module.exports = {
 
 };
 
-},{"../vendor/Sortable.min.js":94,"./waypoint.template.html":93}],86:[function(require,module,exports){
+},{"../vendor/Sortable.min.js":96,"./waypoint.template.html":95}],87:[function(require,module,exports){
 module.exports = '  <div class="form-group">\n    <select \n        v-model="selected"\n        type="text" \n        class="form-control" \n        required\n    >\n        <option \n            v-for="location in destinations" \n            v-bind:value="location.value"\n        >\n            {{ location.text }}\n        </option>\n    </select>\n</div>';
-},{}],87:[function(require,module,exports){
-module.exports = '<div class="google-map"></div>';
 },{}],88:[function(require,module,exports){
-module.exports = '<div class="google-map__infowindow">\n    <div v-show="hasPhoto" class="google-map__infowindow__media">\n        <img v-bind:src="photo" alt="{{ title }}">\n    </div>\n    <div class="google-map__infowindow__body">\n        <strong>{{ place.name }}</strong>\n        <p>{{ place.description }}</p>\n        <button\n            v-show="place.canAdd"\n            @click="addToWaypoint(place)"\n            type="button"\n            class="btn btn-success"\n        > \n        Add +\n        </button>\n    </div>\n</div>';
+module.exports = '<div class="google-map"></div>';
 },{}],89:[function(require,module,exports){
-module.exports = ' <div \n    class="interactive-map"\n    v-bind:style="{ width: width + \'px\', height: height + \'px\'}">\n    <google-map \n        v-ref:google\n        v-bind:route="route"\n        v-bind:things="selectedThings"\n    ></google-map>\n    <form \n        @submit.prevent="navigateMe" \n        @keyup.enter="navigateMe"\n        accept-charset="utf-8"\n    >\n        <fieldset class="top">\n            <mode :mode.sync="route.travelMode"></mode>\n            <origin :origin.sync="route.origin"></origin>\n            <waypoint :waypoints.sync="route.waypoints"></waypoint>\n            <destinations :selected.sync="route.destination"></destinations>\n        </fieldset>\n        <fieldset class="bottom">\n            <div \n                v-if="route.travelMode == \'DRIVING\'" \n                class="waypoints"\n            >\n                <legend>ตัวเลือก</legend>\n                <div \n                    class="col-sm-6"\n                    v-for="thing in things"\n                >\n                    <label class="checkbox-inline">\n                         <input \n                            v-model="thing.selected"\n                            type="checkbox"\n                        > {{ thing.name }}    \n                    </label>\n                </div>\n            </div>\n        </fieldset>\n    </form>\n</div>';
+module.exports = '<div class="google-map__infowindow">\n    <div v-show="hasPhoto" class="google-map__infowindow__media">\n        <img v-bind:src="photo" alt="{{ title }}">\n    </div>\n    <div class="google-map__infowindow__body">\n        <strong>{{ place.name }}</strong>\n        <p>{{ place.description }}</p>\n        <button\n            v-show="place.canAdd"\n            @click="addToWaypoint(place)"\n            type="button"\n            class="btn btn-success"\n        > \n        Add +\n        </button>\n    </div>\n</div>';
 },{}],90:[function(require,module,exports){
-module.exports = '<div class="mode">\n    <label \n            v-for="type in types"\n            class="mode__checkbox"\n    >\n        <input \n            v-model="mode"\n            @change="onChange(type)"\n            type="radio"\n            value="{{ type.value }}" \n        >\n        <i :class="[\'fa\', \'fa-lg\', \'fa-\' + type.icon]"></i>\n    </label>\n</div>';
+module.exports = ' <div \n    class="interactive-map"\n    v-bind:style="{ width: width + \'px\', height: height + \'px\'}">\n    <google-map \n        v-ref:google\n        v-bind:route="route"\n        v-bind:things="selectedThings"\n    ></google-map>\n    <form \n        @submit.prevent="navigateMe" \n        @keyup.enter="navigateMe"\n        accept-charset="utf-8"\n    >\n        <fieldset class="top">\n            <mode :mode.sync="route.travelMode"></mode>\n            <origin :origin.sync="route.origin"></origin>\n            <waypoint :waypoints.sync="route.waypoints"></waypoint>\n            <destinations :selected.sync="route.destination"></destinations>\n        </fieldset>\n        <fieldset class="bottom">\n            <div \n                v-if="route.travelMode == \'DRIVING\'" \n                class="waypoints"\n            >\n                <legend>ตัวเลือก</legend>\n                <div \n                    class="col-sm-6"\n                    v-for="thing in things"\n                >\n                    <label class="checkbox-inline">\n                         <input \n                            v-model="thing.selected"\n                            type="checkbox"\n                        > {{ thing.name }}    \n                    </label>\n                </div>\n            </div>\n        </fieldset>\n    </form>\n</div>';
 },{}],91:[function(require,module,exports){
-module.exports = '<div class="form-group">\n    <input \n        v-el:origin\n        v-model="value"\n        @blur="onBlur"\n        @focus="onFocus"\n        type="text"\n        class="form-control"\n        placeholder="Your origin"\n        required >\n</div>';
+module.exports = '<div class="modal-mask" v-if="show" transition="modal">\n    <div class="modal-wrapper">\n        <div class="modal-container">\n            <div class="modal-body">\n                <button \n                    @click="show = false"\n                    type="button" \n                    class="close" \n                    aria-label="Close"\n                >\n                    <span aria-hidden="true">&times;</span>\n                </button>\n                <slot name="body">\n                </slot>\n            </div>\n        </div>\n    </div>\n  </div>';
 },{}],92:[function(require,module,exports){
-module.exports = '<form class="search navbar-right" role="search">\n    <div class="form-group">\n        <input type="text" class="form-control" placeholder="SmartSearch">\n    </div>\n    <button type="submit" class="search__button">\n        <i class="fa fa-search"></i>\n    </button>\n</form>';
+module.exports = '<div class="mode">\n    <label \n            v-for="type in types"\n            class="mode__checkbox"\n    >\n        <input \n            v-model="mode"\n            @change="onChange(type)"\n            type="radio"\n            value="{{ type.value }}" \n        >\n        <i :class="[\'fa\', \'fa-lg\', \'fa-\' + type.icon]"></i>\n    </label>\n</div>';
 },{}],93:[function(require,module,exports){
-module.exports = '<div class="form-group">\n    <div class="input-group item" v-for="waypoint in waypoints">\n        <input type="text" class="form-control" value="{{ waypoint.name }}" readonly >\n        <div class="input-group-btn">\n            <button class="btn btn-danger" @click="remove(waypoint)">X</button>\n        </div>\n    </div>\n</div>\n';
+module.exports = '<div class="form-group">\n    <input \n        v-el:origin\n        v-model="value"\n        @blur="onBlur"\n        @focus="onFocus"\n        type="text"\n        class="form-control"\n        placeholder="Your origin"\n        required >\n</div>';
 },{}],94:[function(require,module,exports){
+module.exports = '<form class="search navbar-right" role="search">\n    <div class="form-group">\n        <input type="text" class="form-control" placeholder="SmartSearch">\n    </div>\n    <button type="submit" class="search__button">\n        <i class="fa fa-search"></i>\n    </button>\n</form>';
+},{}],95:[function(require,module,exports){
+module.exports = '<div class="form-group">\n    <div class="input-group item" v-for="waypoint in waypoints">\n        <input type="text" class="form-control" value="{{ waypoint.name }}" readonly >\n        <div class="input-group-btn">\n            <button class="btn btn-danger" @click="remove(waypoint)">X</button>\n        </div>\n    </div>\n</div>\n';
+},{}],96:[function(require,module,exports){
 /*! Sortable 1.4.2 - MIT | git://github.com/rubaxa/Sortable.git */
 "use strict";
 

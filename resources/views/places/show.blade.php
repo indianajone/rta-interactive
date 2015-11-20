@@ -29,14 +29,24 @@
             </div>
         @endif
         <div class="row">
-            {{-- @if($place->video) --}}
+            @if($place->video)
                 <div class="place__vdo">
                     <h3 class="heading--fancy">วีดีโอ</h3>
                     <div class="place__image">
-                        <img src="/images/default.jpg" alt="{{ $place->name }}">
+                        <a  href="#"
+                            @click.prevent="showModal = true"
+                        >
+                            <img src="{{ $place->video->thumbnail }}" alt="{{ $place->video->title }}
+                            ">
+                        </a>
+                        <modal :show.sync="showModal">
+                            <div class="modal-video" slot="body">
+                                {!! $place->video->src !!}
+                            </div>
+                        </modal>
                     </div>
                 </div>
-            {{-- @endif --}}
+            @endif
             <div class="place__mini-map">
                 <h3 class="heading--fancy">แผนที่</h3>
                 <div class="place__image">

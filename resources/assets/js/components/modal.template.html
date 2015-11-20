@@ -1,0 +1,18 @@
+<div class="modal-mask" v-if="show" transition="modal">
+    <div class="modal-wrapper">
+        <div class="modal-container">
+            <div class="modal-body">
+                <button 
+                    @click="show = false"
+                    type="button" 
+                    class="close" 
+                    aria-label="Close"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <slot name="body">
+                </slot>
+            </div>
+        </div>
+    </div>
+  </div>
