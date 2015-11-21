@@ -1,0 +1,46 @@
+.sidebar {
+    @extend .col-sm-3;
+    @extend .col-md-2;
+    
+    display: none;
+    
+    @media (min-width: 768px) {
+        position: fixed;
+        top: 50px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        background-color: $gray-darker;
+    }
+
+    &__nav {
+        @extend .nav;
+        margin-right: -21px; /* 20px padding + 1px border */
+        margin-bottom: 20px;
+        margin-left: -20px;
+
+        > li {
+            > a {
+                color: #fff;
+                padding-right: 20px;
+                padding-left: 20px;
+                
+                &:hover {
+                    background-color: $green-lighter;
+                }
+            }
+        }
+
+        > .active {
+            > a, 
+            > a:hover,
+            > a:focus {
+                background-color: $green-lighter;
+            }
+        }
+    }
+}

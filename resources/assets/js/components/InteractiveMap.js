@@ -104,7 +104,9 @@ module.exports = {
                 region: 'thailand'
             }
 
-            this.$refs.google.getDirection(request);
+            if (this.route.origin && this.route.destination) {
+                this.$refs.google.getDirection(request);
+            }
         },
         addToWaypoint: function (place) {
             this.route.waypoints.push({ 

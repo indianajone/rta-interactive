@@ -13,7 +13,7 @@ module.exports = {
                 'icon': 'bus',
                 'value': 'TRANSIT'
             }, {
-                'icon': 'user',
+                'icon': 'male',
                 'value': 'WALKING'
             }]
         }

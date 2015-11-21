@@ -15,7 +15,7 @@ require('./laravel-elixir-karma');
 
 elixir(function(mix) {
     mix.sass('app.scss')
+       .sass('cms.scss')
        .browserify('app.js')
        .copy('node_modules/font-awesome/fonts', 'public/fonts');
-       // .karma();
 });

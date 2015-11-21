@@ -8,9 +8,7 @@
     @extend .container-fluid;
     background-color: $green;
     min-height: $header-height;
-    .navbar-brand {
-        color: white;
-    }
+
     .navbar-right {
         @extend .hidden-xs;
         .navbar-nav {
@@ -53,12 +51,18 @@
 }
 
 .navbar-brand {
+    color: white;
+    @media (max-width: 400px) {
+        font-size: 100%;
+        display: block;
+        margin: 0 auto;
+        float: none;
+    }
     img {
         display: inline-block;
         max-height: 30px;
     }
     span {
-        @extend .hidden-xs;
         font-family: $font-family-heading;
     }
 }

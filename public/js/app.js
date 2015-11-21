@@ -11439,7 +11439,9 @@ module.exports = {
                 region: 'thailand'
             };
 
-            this.$refs.google.getDirection(request);
+            if (this.route.origin && this.route.destination) {
+                this.$refs.google.getDirection(request);
+            }
         },
         addToWaypoint: function addToWaypoint(place) {
             this.route.waypoints.push({
@@ -11486,7 +11488,7 @@ module.exports = {
                 'icon': 'bus',
                 'value': 'TRANSIT'
             }, {
-                'icon': 'user',
+                'icon': 'male',
                 'value': 'WALKING'
             }]
         };
@@ -11588,7 +11590,6 @@ module.exports = {
             Sortable.create(this.$el, {
                 draggable: '.item',
                 onUpdate: function onUpdate(e) {
-                    console.log(e);
                     self.waypoints.splice(e.newIndex, 0, self.waypoints.splice(e.oldIndex, 1)[0]);
                 }
             });
@@ -11616,7 +11617,7 @@ module.exports = '<div class="google-map"></div>';
 },{}],89:[function(require,module,exports){
 module.exports = '<div class="google-map__infowindow">\n    <div v-show="hasPhoto" class="google-map__infowindow__media">\n        <img v-bind:src="photo" alt="{{ title }}">\n    </div>\n    <div class="google-map__infowindow__body">\n        <strong>{{ place.name }}</strong>\n        <p>{{ place.description }}</p>\n        <button\n            v-show="place.canAdd"\n            @click="addToWaypoint(place)"\n            type="button"\n            class="btn btn-success"\n        > \n        Add +\n        </button>\n    </div>\n</div>';
 },{}],90:[function(require,module,exports){
-module.exports = ' <div \n    class="interactive-map"\n    v-bind:style="{ width: width + \'px\', height: height + \'px\'}">\n    <google-map \n        v-ref:google\n        v-bind:route="route"\n        v-bind:things="selectedThings"\n    ></google-map>\n    <form \n        @submit.prevent="navigateMe" \n        @keyup.enter="navigateMe"\n        accept-charset="utf-8"\n    >\n        <fieldset class="top">\n            <mode :mode.sync="route.travelMode"></mode>\n            <origin :origin.sync="route.origin"></origin>\n            <waypoint :waypoints.sync="route.waypoints"></waypoint>\n            <destinations :selected.sync="route.destination"></destinations>\n        </fieldset>\n        <fieldset class="bottom">\n            <div \n                v-if="route.travelMode == \'DRIVING\'" \n                class="waypoints"\n            >\n                <legend>ตัวเลือก</legend>\n                <div \n                    class="col-sm-6"\n                    v-for="thing in things"\n                >\n                    <label class="checkbox-inline">\n                         <input \n                            v-model="thing.selected"\n                            type="checkbox"\n                        > {{ thing.name }}    \n                    </label>\n                </div>\n            </div>\n        </fieldset>\n    </form>\n</div>';
+module.exports = ' <div \n    class="interactive-map"\n    v-bind:style="{ width: width + \'px\', height: height + \'px\'}">\n    <google-map \n        v-ref:google\n        v-bind:route="route"\n        v-bind:things="selectedThings"\n    ></google-map>\n    <form \n        @submit.prevent="navigateMe" \n        @keyup.enter="navigateMe"\n        accept-charset="utf-8"\n    >\n        <fieldset class="top">\n            <mode :mode.sync="route.travelMode"></mode>\n            <origin :origin.sync="route.origin"></origin>\n            <waypoint :waypoints.sync="route.waypoints"></waypoint>\n            <destinations \n                @change="navigateMe"\n                :selected.sync="route.destination"\n            >\n            </destinations>\n        </fieldset>\n        <fieldset class="bottom" v-if="route.travelMode == \'DRIVING\'">\n            <div class="waypoints">\n                <legend>ตัวเลือก</legend>\n                <div \n                    class="col-xs-6"\n                    v-for="thing in things"\n                >\n                    <label class="checkbox-inline">\n                         <input \n                            v-model="thing.selected"\n                            type="checkbox"\n                        > {{ thing.name }}    \n                    </label>\n                </div>\n            </div>\n        </fieldset>\n    </form>\n</div>';
 },{}],91:[function(require,module,exports){
 module.exports = '<div class="modal-mask" v-if="show" transition="modal">\n    <div class="modal-wrapper">\n        <div class="modal-container">\n            <div class="modal-body">\n                <button \n                    @click="show = false"\n                    type="button" \n                    class="close" \n                    aria-label="Close"\n                >\n                    <span aria-hidden="true">&times;</span>\n                </button>\n                <slot name="body">\n                </slot>\n            </div>\n        </div>\n    </div>\n  </div>';
 },{}],92:[function(require,module,exports){

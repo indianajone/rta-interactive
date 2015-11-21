@@ -15,16 +15,17 @@
             <mode :mode.sync="route.travelMode"></mode>
             <origin :origin.sync="route.origin"></origin>
             <waypoint :waypoints.sync="route.waypoints"></waypoint>
-            <destinations :selected.sync="route.destination"></destinations>
-        </fieldset>
-        <fieldset class="bottom">
-            <div 
-                v-if="route.travelMode == 'DRIVING'" 
-                class="waypoints"
+            <destinations 
+                @change="navigateMe"
+                :selected.sync="route.destination"
             >
+            </destinations>
+        </fieldset>
+        <fieldset class="bottom" v-if="route.travelMode == 'DRIVING'">
+            <div class="waypoints">
                 <legend>ตัวเลือก</legend>
                 <div 
-                    class="col-sm-6"
+                    class="col-xs-6"
                     v-for="thing in things"
                 >
                     <label class="checkbox-inline">

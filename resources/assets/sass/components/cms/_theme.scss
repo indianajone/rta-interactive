@@ -1,0 +1,25 @@
+body {
+    background-color: #ecf0f5;
+    font-family: 'Droid Sans', 'Helvetica', sans-serif;
+    padding-top: 50px;
+}
+
+a {
+    color: $green;
+    &:hover {
+        color: $green-lighter;
+    }
+}
+
+.main {
+    @extend .col-sm-9;
+    @extend .col-sm-offset-3;
+    @extend .col-md-10;
+    @extend .col-md-offset-2;
+
+    padding: 20px;
+    @media (min-width: 768px) {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+}

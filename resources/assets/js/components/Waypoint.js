@@ -18,7 +18,6 @@ module.exports = {
             Sortable.create(this.$el, {
                 draggable: '.item',
                 onUpdate: function(e) {
-                    console.log(e);
                     self.waypoints.splice(e.newIndex, 0, self.waypoints.splice(e.oldIndex, 1)[0]);
                 }
             });

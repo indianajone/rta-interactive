@@ -3,12 +3,12 @@
     form {
         color: #fff;
         position: absolute;
-        top: 20%;
+        top: 111px;
         width: 450px;
         left: 0;
         @media only screen and (max-width: 400px) {
             width: 100%;
-            top: 0;
+            top: 57px;
         }
     }
     .top, .bottom {
@@ -42,7 +42,15 @@
 }
 
 .waypoints {
-   
+    legend {
+        color: #fff;
+        font-size: 100%;
+        display: block;
+        width: 100%;
+        padding: 0 15px;
+        line-height: inherit;
+        border: none;
+    }
 }
 
 .google-map {
