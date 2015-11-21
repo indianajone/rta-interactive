@@ -9,12 +9,12 @@
     @yield ('script.header')
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="{{ page_class() }}">
         <nav class="navbar navbar-static-top">
             <div class="navbar-top">
                 <div class="container">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="/">
                             <img src="/images/logo.png" alt="สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก">
                             <span>สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก</span>
                         </a>
@@ -34,17 +34,17 @@
             <div class="navbar-bottom collapse navbar-collapse">
                 <div class="container">
                     <ul class="navbar-main">
-                        <li><a class="navbar-main__link--active" href="{{ route('home') }}">หน้าหลัก</a></li>
+                        <li>{!! link_to_route('home', 'หน้าหลัก') !!}</li>
                         <li><a class="navbar-main__link" href="#">รายชื่อสถานที่ท่องเที่ยว</a></li>
-                        <li><a class="navbar-main__link" href="{{ route('map_path') }}">แผนที่</a></li>
+                        <li>{!! link_to_route('map_path', 'แผนที่') !!}</li>
                         <li><a class="navbar-main__link" href="#">แนะนำ</a></li>
-                        <li><a class="navbar-main__link" href="{{ route('about_path') }}">เกี่ยวกับเรา</a></li>
+                        <li>{!! link_to_route('about_path', 'เกี่ยวกับเรา') !!}</li>
                     </ul>
                     <search></search>
                 </div>
             </div>
         </nav>
-        <div class="{{ Route::currentRouteNamed('map_path') != 'map' ? 'container' : 'container-fluid' }}">
+        <div class="{{ !Route::is('map_path') ? 'container' : 'container-fluid' }}">
             @yield ('content')
         </div>
         <footer class="footer">

@@ -7850,7 +7850,7 @@ body {
   background-position: bottom center;
   background-size: contain; }
 
-#app.container-fluid, #app.navbar-top {
+#app .container-fluid, #app .navbar-top {
   padding: 0; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -7868,10 +7868,11 @@ a {
 .card {
   background-color: #fff;
   width: 29%;
+  float: left;
   padding: 0;
   margin: 0 15px 30px;
   overflow: hidden; }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 767px) {
     .card {
       width: inherit; } }
   .card__details {
@@ -7926,7 +7927,7 @@ a {
   top: 111px;
   width: 450px;
   left: 0; }
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 768px) {
     .interactive-map form {
       width: 100%;
       top: 57px; } }
@@ -8061,7 +8062,8 @@ a {
     border-bottom: #094d44 solid 4px; }
 
 .navbar-brand {
-  color: white; }
+  color: white;
+  text-align: center; }
   @media (max-width: 400px) {
     .navbar-brand {
       font-size: 100%;
@@ -8176,6 +8178,9 @@ a {
   line-height: 40px; }
   .copyright__right {
     text-align: right; }
+
+.map .footer {
+  margin-top: 0; }
 
 .about__logo img {
   margin: 0 auto; }

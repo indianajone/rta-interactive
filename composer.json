@@ -21,7 +21,10 @@
         "psr-4": {
             "App\\": "app/",
             "Ravarin\\": "app/Ravarin"
-        }
+        },
+        "files": [
+            "app/Ravarin/helper.php"
+        ]
     },
     "autoload-dev": {
         "classmap": [

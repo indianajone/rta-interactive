@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="sidebar">
                     <ul class="sidebar__nav">
-                        <li class="{{ Route::is('cms.dashboard_path') ? 'active' : '' }}">
+                        <li {{ Route::is('cms.dashboard_path') ? 'active' : '' }}>
                             <a href="{{ route('cms.dashboard_path') }}">
                                 <i class="fa fa-home"></i>
                                 <span>หน้าหลัก</span>

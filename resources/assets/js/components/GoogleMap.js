@@ -44,7 +44,6 @@ module.exports = {
             this.clearMarkers();
             this.services.direction.route(request, function (result, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
-                    console.log(result);
                     self.services.renderer.setDirections(result);
                     self.drawBoxes(result.routes);
                 }

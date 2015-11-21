@@ -14,7 +14,20 @@ class PagesController extends Controller
     }
 
     public function map() 
-    {
-        return view('pages.map');
+    { 
+        $config = trans('map.waypoints.things');
+        $options = [];
+
+        foreach ($config as $value => $name) {
+            $options[] = [
+                'name' => $name,
+                'value' => $value,
+                'selected' => false
+            ];
+        }
+
+        $options = json_encode($options);
+        
+        return view('pages.map', compact('options'));
     }
 }

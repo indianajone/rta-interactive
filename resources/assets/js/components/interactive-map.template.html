@@ -1,13 +1,12 @@
- <div 
-    class="interactive-map"
-    v-bind:style="{ width: width + 'px', height: height + 'px'}">
-    <google-map 
+<div id="map" class="interactive-map"
+    v-bind:style="{ width: width + 'px', height: height + 'px'}"
+>
+    <google-map
         v-ref:google
         v-bind:route="route"
         v-bind:things="selectedThings"
     ></google-map>
     <form 
-        @submit.prevent="navigateMe" 
         @keyup.enter="navigateMe"
         accept-charset="utf-8"
     >
@@ -22,8 +21,11 @@
             </destinations>
         </fieldset>
         <fieldset class="bottom" v-if="route.travelMode == 'DRIVING'">
+            <div class="avoid">
+                <slot name="avoid.title"></slot>
+            </div>
             <div class="waypoints">
-                <legend>ตัวเลือก</legend>
+                <slot name="waypoints.title"></slot>
                 <div 
                     class="col-xs-6"
                     v-for="thing in things"

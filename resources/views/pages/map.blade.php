@@ -8,5 +8,11 @@
 @stop
 
 @section('content')
-    <interactive-map></interactive-map>
+    <interactive-map 
+        :things="{{ $options }}"
+    >
+        <legend slot="waypoints.title">
+            {{ trans('map.waypoints.title') }}
+        </legend>
+    </interactive-map>
 @stop

@@ -11065,24 +11065,26 @@ module.exports = Watcher
 
 var Vue = require('vue');
 
+Vue.config.debug = true;
 Vue.use(require('vue-resource'));
-// Vue.config.debug = true;
+
+Vue.component('interactive-map', require('./components/InteractiveMap'));
+Vue.component('google-map', require('./components/GoogleMap'));
+Vue.component('origin', require('./components/Origin'));
+Vue.component('destinations', require('./components/Destination'));
+Vue.component('mode', require('./components/Mode'));
+Vue.component('waypoint', require('./components/Waypoint'));
+Vue.component('modal', require('./components/Modal'));
+Vue.component('search', require('./components/Search'));
 
 new Vue({
     el: '#app',
-
     data: {
         showModal: false
-    },
-
-    components: {
-        interactiveMap: require('./components/InteractiveMap'),
-        modal: require('./components/Modal'),
-        search: require('./components/Search')
     }
 });
 
-},{"./components/InteractiveMap":81,"./components/Modal":82,"./components/Search":85,"vue":75,"vue-resource":3}],78:[function(require,module,exports){
+},{"./components/Destination":78,"./components/GoogleMap":79,"./components/InteractiveMap":81,"./components/Modal":82,"./components/Mode":83,"./components/Origin":84,"./components/Search":85,"./components/Waypoint":86,"vue":75,"vue-resource":3}],78:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -11164,7 +11166,6 @@ module.exports = {
             this.clearMarkers();
             this.services.direction.route(request, function (result, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
-                    console.log(result);
                     self.services.renderer.setDirections(result);
                     self.drawBoxes(result.routes);
                 }
@@ -11345,12 +11346,10 @@ module.exports = {
 
     template: require('./interactive-map.template.html'),
 
-    components: {
-        origin: require('./Origin'),
-        destinations: require('./Destination'),
-        mode: require('./Mode'),
-        googleMap: require('./GoogleMap'),
-        waypoint: require('./Waypoint')
+    props: {
+        'things': {
+            type: Array
+        }
     },
 
     data: function data() {
@@ -11358,8 +11357,7 @@ module.exports = {
             width: window.innerWidth,
             height: window.innerHeight,
             currentLocation: null,
-            route: { origin: '', destination: '', travelMode: 'DRIVING', waypoints: [] },
-            things: [{ name: 'Gas station', value: 'gas_station', selected: true }, { name: 'Hospital', value: 'hospital', selected: false }, { name: 'Police Station', value: 'police', selected: false }, { name: 'Food', value: 'food', selected: false }, { name: 'Hotel', value: 'lodging', selected: false }]
+            route: { origin: '', destination: '', travelMode: 'DRIVING', waypoints: [] }
         };
     },
 
@@ -11456,7 +11454,7 @@ module.exports = {
     }
 };
 
-},{"./Destination":78,"./GoogleMap":79,"./Mode":83,"./Origin":84,"./Waypoint":86,"./interactive-map.template.html":90}],82:[function(require,module,exports){
+},{"./interactive-map.template.html":90}],82:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -11617,7 +11615,7 @@ module.exports = '<div class="google-map"></div>';
 },{}],89:[function(require,module,exports){
 module.exports = '<div class="google-map__infowindow">\n    <div v-show="hasPhoto" class="google-map__infowindow__media">\n        <img v-bind:src="photo" alt="{{ title }}">\n    </div>\n    <div class="google-map__infowindow__body">\n        <strong>{{ place.name }}</strong>\n        <p>{{ place.description }}</p>\n        <button\n            v-show="place.canAdd"\n            @click="addToWaypoint(place)"\n            type="button"\n            class="btn btn-success"\n        > \n        Add +\n        </button>\n    </div>\n</div>';
 },{}],90:[function(require,module,exports){
-module.exports = ' <div \n    class="interactive-map"\n    v-bind:style="{ width: width + \'px\', height: height + \'px\'}">\n    <google-map \n        v-ref:google\n        v-bind:route="route"\n        v-bind:things="selectedThings"\n    ></google-map>\n    <form \n        @submit.prevent="navigateMe" \n        @keyup.enter="navigateMe"\n        accept-charset="utf-8"\n    >\n        <fieldset class="top">\n            <mode :mode.sync="route.travelMode"></mode>\n            <origin :origin.sync="route.origin"></origin>\n            <waypoint :waypoints.sync="route.waypoints"></waypoint>\n            <destinations \n                @change="navigateMe"\n                :selected.sync="route.destination"\n            >\n            </destinations>\n        </fieldset>\n        <fieldset class="bottom" v-if="route.travelMode == \'DRIVING\'">\n            <div class="waypoints">\n                <legend>ตัวเลือก</legend>\n                <div \n                    class="col-xs-6"\n                    v-for="thing in things"\n                >\n                    <label class="checkbox-inline">\n                         <input \n                            v-model="thing.selected"\n                            type="checkbox"\n                        > {{ thing.name }}    \n                    </label>\n                </div>\n            </div>\n        </fieldset>\n    </form>\n</div>';
+module.exports = '<div id="map" class="interactive-map"\n    v-bind:style="{ width: width + \'px\', height: height + \'px\'}"\n>\n    <google-map\n        v-ref:google\n        v-bind:route="route"\n        v-bind:things="selectedThings"\n    ></google-map>\n    <form \n        @keyup.enter="navigateMe"\n        accept-charset="utf-8"\n    >\n        <fieldset class="top">\n            <mode :mode.sync="route.travelMode"></mode>\n            <origin :origin.sync="route.origin"></origin>\n            <waypoint :waypoints.sync="route.waypoints"></waypoint>\n            <destinations \n                @change="navigateMe"\n                :selected.sync="route.destination"\n            >\n            </destinations>\n        </fieldset>\n        <fieldset class="bottom" v-if="route.travelMode == \'DRIVING\'">\n            <div class="avoid">\n                <slot name="avoid.title"></slot>\n            </div>\n            <div class="waypoints">\n                <slot name="waypoints.title"></slot>\n                <div \n                    class="col-xs-6"\n                    v-for="thing in things"\n                >\n                    <label class="checkbox-inline">\n                         <input \n                            v-model="thing.selected"\n                            type="checkbox"\n                        > {{ thing.name }}    \n                    </label>\n                </div>\n            </div>\n        </fieldset>\n    </form>\n</div>';
 },{}],91:[function(require,module,exports){
 module.exports = '<div class="modal-mask" v-if="show" transition="modal">\n    <div class="modal-wrapper">\n        <div class="modal-container">\n            <div class="modal-body">\n                <button \n                    @click="show = false"\n                    type="button" \n                    class="close" \n                    aria-label="Close"\n                >\n                    <span aria-hidden="true">&times;</span>\n                </button>\n                <slot name="body">\n                </slot>\n            </div>\n        </div>\n    </div>\n  </div>';
 },{}],92:[function(require,module,exports){

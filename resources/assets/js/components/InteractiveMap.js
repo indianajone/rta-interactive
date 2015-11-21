@@ -2,12 +2,10 @@ module.exports = {
 
     template: require('./interactive-map.template.html'),
 
-    components: {
-        origin: require('./Origin'),
-        destinations: require('./Destination'),
-        mode: require('./Mode'),
-        googleMap: require('./GoogleMap'),
-        waypoint: require('./Waypoint')
+    props: {
+        'things': {
+            type: Array
+        }
     },
 
     data: function () {
@@ -15,14 +13,7 @@ module.exports = {
             width: window.innerWidth,
             height: window.innerHeight,
             currentLocation: null,
-            route: { origin: '', destination: '', travelMode: 'DRIVING', waypoints: [] },
-            things: [
-                { name: 'Gas station', value: 'gas_station', selected: true }, 
-                { name: 'Hospital', value: 'hospital', selected: false },
-                { name: 'Police Station', value: 'police', selected: false },
-                { name: 'Food', value: 'food', selected: false },
-                { name: 'Hotel', value: 'lodging', selected: false }
-            ]
+            route: { origin: '', destination: '', travelMode: 'DRIVING', waypoints: [] }
         }
     },
 
