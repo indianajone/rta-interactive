@@ -23,7 +23,7 @@
                 <h3 class="heading--fancy">คลังภาพ</h3>
                 @foreach($place->photos as $photo)
                     <div class="place__image">
-                        <img src="{{ $photo->thumbnail_path }}" alt="{{ $photo->name }}">
+                        <img src="{{ asset($photo->thumbnail_path) }}" alt="{{ $place->name }}">
                     </div>
                 @endforeach
             </div>
@@ -41,7 +41,7 @@
                                 <i class="fa fa-play-circle-o"></i>
                             </div>
                         </a>
-                        <modal :show.sync="showModal">
+                        <modal v-if="showModal" :open.sync="showModal">
                             <div class="modal-video" slot="body">
                                 {!! $place->video->src !!}
                             </div>
@@ -49,18 +49,33 @@
                     </div>
                 </div>
             @endif
-            <div class="place__mini-map">
-                <h3 class="heading--fancy">แผนที่</h3>
-                <div class="place__image">
-                    <img src="/images/default.jpg" alt="{{ $place->name }}">
+            @if($place->ar)
+                <div class="place__mini-map">
+                    <h3 class="heading--fancy">แผนที่</h3>
+                    <div class="place__image">
+                        <img src="/images/default.jpg" alt="{{ $place->name }}">
+                    </div>
                 </div>
-            </div>
-            <div class="place__panorama">
-                <h3 class="heading--fancy">พาโนราม่า</h3>
-                <div class="place__image">
-                    <img src="/images/default.jpg" alt="{{ $place->name }}">
+            @endif
+            @if($place->panorama)
+                <div class="place__panorama">
+                    <h3 class="heading--fancy">พาโนราม่า</h3>
+                    <div class="place__image">
+                        <a href="#" @click.prevent="showModal = true">
+                            <img src="{{ asset($place->panorama->thumbnail_path) }}" alt="{{ $place->name }}-panorama">
+                        </a>
+                    </div>
+                    <modal v-if="showModal" :open.sync="showModal">
+                        <div class="modal-panorama" slot="body">
+                            <panorama src="{{ asset($place->panorama->path) }}"></panorama>
+                        </div>
+                    </modal>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 @stop
+
+{{-- @section('script.footer')
+    <script src="../js/vendor.js" type="text/javascript" charset="utf-8"></script>
+@stop --}}

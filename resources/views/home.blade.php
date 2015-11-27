@@ -20,6 +20,6 @@
             <div class="notfound">
                 <h3 class="notfound__body">ไม่พบข้อมูล</h3>
             </div>
-        @endforelse
+        @endforelse 
     </div>
 @stop

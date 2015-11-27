@@ -1,10 +1,10 @@
 module.exports = {
     template: require('./modal.template.html'),
     props: {
-        show: {
+        open: {
             type: Boolean,
             required: true,
-            twoWay: true    
+            twoWay: true  
         }
     }
 }

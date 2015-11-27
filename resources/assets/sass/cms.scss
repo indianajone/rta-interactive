@@ -2,8 +2,10 @@
 @import "node_modules/font-awesome/scss/font-awesome";
 
 @import "components/variables";
+@import "components/cms/dropzone";
 @import "components/cms/heading";
 @import "components/cms/navbar";
 @import "components/cms/pagination";
 @import "components/cms/theme";
+@import "components/cms/select2";
 @import "components/cms/sidebar";

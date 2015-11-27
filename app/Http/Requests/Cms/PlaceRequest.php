@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Http\Requests\Cms;
+
+use App\Http\Requests\Request;
+
+class PlaceRequest extends Request
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return \Auth::check();
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'name' => 'required',
+            'description' => 'required',
+            'street' => 'required',
+            'subdistrict' => 'required',
+            'district' => 'required',
+            'province' => 'required',
+            'postcode' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required'
+        ];
+    }
+}

@@ -1,7 +1,7 @@
 <div class="card">
    <div class="card__image">
        <a href="{{ route('place_path', str_replace(' ', '-', $place->name)) }}">
-            <img src="{{ $place->thumbnail }}" alt="{{ $place->name }}">
+            <img src="{{ asset($place->thumbnail) }}" alt="{{ $place->name }}">
        </a>
    </div>
    <div class="card__details">

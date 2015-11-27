@@ -4,6 +4,14 @@
     border: none;
     background-color: $green;
 
+    & &-toggle,
+    & &-toggle:hover,
+    & &-toggle:focus, {
+        color: #fff;
+        border: none;
+        background-color: transparent;
+    }
+
     &__brand,
     &__brand:hover {
         color: #fff;

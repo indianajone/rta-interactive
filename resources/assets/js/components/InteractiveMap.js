@@ -2,6 +2,14 @@ module.exports = {
 
     template: require('./interactive-map.template.html'),
 
+    components: {
+        googleMap: require('./GoogleMap'),
+        origin: require('./Origin'),
+        destinations: require('./Destination'),
+        mode: require('./Mode'),
+        waypoint: require('./Waypoint')
+    },
+
     props: {
         'things': {
             type: Array

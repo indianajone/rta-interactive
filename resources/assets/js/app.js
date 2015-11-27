@@ -2,19 +2,26 @@ var Vue = require('vue');
 
 Vue.config.debug = true;
 Vue.use(require('vue-resource'));
+Vue.use(require('vue-chunk'));
 
-Vue.component('interactive-map', require('./components/InteractiveMap'));
-Vue.component('google-map', require('./components/GoogleMap'));
-Vue.component('origin', require('./components/Origin'));
-Vue.component('destinations', require('./components/Destination'));
-Vue.component('mode', require('./components/Mode'));
-Vue.component('waypoint', require('./components/Waypoint'));
-Vue.component('modal', require('./components/Modal'));
-Vue.component('search', require('./components/Search'));
+if (window.$ === undefined || window.jQuery === undefined) {
+    window.$ = window.jQuery = require('jquery');
+}
+
+require('bootstrap-sass/assets/javascripts/bootstrap');
 
 new Vue({
     el: '#app',
+    
     data: {
         showModal: false
-    }    
+    },
+
+    components: {
+        placeFilter: require('./pages/PlaceFilter'),
+        interactiveMap: require('./components/InteractiveMap'),
+        modal: require('./components/Modal'),
+        search: require('./components/Search'),
+        panorama: require('./components/Panorama')
+    }
 });

@@ -1,0 +1,15 @@
+.select2 {
+    &-container--default {
+        .select2-selection--multiple {
+            .select2-selection__choice {
+                color: #fff;
+                font-size: 90%;
+                background-color: $green-lighter;
+                border: 1px solid $green;
+            }
+            .select2-selection__choice__remove {
+                color: #fff;
+            }
+        }
+    }
+}

@@ -34,11 +34,11 @@
             <div class="navbar-bottom collapse navbar-collapse">
                 <div class="container">
                     <ul class="navbar-main">
-                        <li>{!! link_to_route('home', 'หน้าหลัก') !!}</li>
-                        <li><a class="navbar-main__link" href="#">รายชื่อสถานที่ท่องเที่ยว</a></li>
-                        <li>{!! link_to_route('map_path', 'แผนที่') !!}</li>
+                        <li>{!! nav_route('home', 'หน้าหลัก') !!}</li>
+                        <li>{!! nav_route('places_path', 'รายชื่อสถานที่ท่องเที่ยว') !!}</li>
+                        <li>{!! nav_route('map_path', 'แผนที่') !!}</li>
                         <li><a class="navbar-main__link" href="#">แนะนำ</a></li>
-                        <li>{!! link_to_route('about_path', 'เกี่ยวกับเรา') !!}</li>
+                        <li>{!! nav_route('about_path', 'เกี่ยวกับเรา') !!}</li>
                     </ul>
                     <search></search>
                 </div>

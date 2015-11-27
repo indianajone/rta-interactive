@@ -11,6 +11,10 @@ a {
     }
 }
 
+hr {
+    border-top: 1px solid #ddd;
+}
+
 .main {
     @extend .col-sm-9;
     @extend .col-sm-offset-3;

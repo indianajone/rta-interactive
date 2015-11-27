@@ -1,0 +1,27 @@
+.heading {
+    @extend .row;
+
+    &__title, 
+    &__tools {
+        @extend .col-sm-6;
+    }
+
+    &__title {
+        
+    }
+
+    &__button {
+
+        &--success {
+            @extend .btn;
+            @extend .btn-xs;
+            @extend .btn-success;
+        }
+    }
+
+    &__tools {
+        @extend .row;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+}

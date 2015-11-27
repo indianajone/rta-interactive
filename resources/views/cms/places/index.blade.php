@@ -2,7 +2,12 @@
 
 @section('content')
     <div class="heading">
-        <h1 class="heading__title">สถานที่</h1>
+        <h1 class="heading__title">
+            สถานที่
+            <a class="heading__button--success" href="{{ route('cms.places.create') }}">    <i class="fa fa-plus"></i>    
+                เพิ่ม
+            </a>
+        </h1>
         <div class="heading__tools">
             <div class="col-md-6 col-md-offset-6">
                 <div class="input-group">
@@ -26,8 +31,10 @@
             @forelse($places as $place)
                 <tr>
                     <td>{{ $place->id }}</td>
-                    <td>{{ $place->name }}</td>
-                    <td>{{ $place->street . '...' }}</td>
+                    <td>
+                        <a href="{{ route('cms.places.edit', $place->id) }}">{{ $place->name }}</a>
+                    </td>
+                    <td>{{ $place->street }}</td>
                 </tr>
             @empty
                 <tr>
