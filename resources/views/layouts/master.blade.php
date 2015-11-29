@@ -14,6 +14,14 @@
             <div class="navbar-top">
                 <div class="container">
                     <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-main" aria-expanded="false" aria-controls="navbar-main">
+                            <span class="sr-only">Toggle navigation</span>
+                            <i class="fa fa-navicon"></i>
+                        </button>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".search" aria-expanded="false" aria-controls="search">
+                            <span class="sr-only">Toggle navigation</span>
+                            <i class="fa fa-search"></i>
+                        </button>
                         <a class="navbar-brand" href="/">
                             <img src="/images/logo.png" alt="สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก">
                             <span>สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก</span>
@@ -31,9 +39,9 @@
                 </div>
             </div>
             @yield ('banner')
-            <div class="navbar-bottom collapse navbar-collapse">
+            <div class="navbar-bottom">
                 <div class="container">
-                    <ul class="navbar-main">
+                    <ul class="navbar-main collapse navbar-collapse">
                         <li>{!! nav_route('home', 'หน้าหลัก') !!}</li>
                         <li>{!! nav_route('places_path', 'รายชื่อสถานที่ท่องเที่ยว') !!}</li>
                         <li>{!! nav_route('map_path', 'แผนที่') !!}</li>

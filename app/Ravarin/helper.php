@@ -12,6 +12,13 @@ if (!function_exists('nav_route')) {
     }
 }
 
+if (!function_exists('place_path')) {
+    function place_path($place) 
+    {
+        return route('place_path', str_replace(' ', '-', $place->name));
+    }
+}
+
 if (!function_exists('page_class')) {
     function page_class() 
     {

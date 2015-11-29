@@ -9,39 +9,25 @@ module.exports = {
     },
 
     filters: {
-        inCategory: function (array) {
+        inCategory: function (places) {
 
             if (this.filteredBy.length == 0) {
-                return array;
+                return places;
             }
-
-            var matches = [];
             var self = this;
-
-            array.forEach(function (obj) {
-                if (self.isMatch(obj.categories[0])) {
-                    matches.push(obj);
-                }
+            var result = _.filter(places, function (place) {
+                return _.intersection(
+                            _.toArray(place.categories), 
+                            self.filteredBy.map(Number)
+                        ).length > 0;
             });
 
-            return matches;
+            return result;
         }
     },
 
     methods: {
 
-        isMatch: function (needle) {
-            
-            for (var i in this.filteredBy) {
-                if (this.filteredBy[i] == needle) return true;
-            }
-
-            return false;
-        },
-
-        submit: function () {
-
-        }
     }
 
 }

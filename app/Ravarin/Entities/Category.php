@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'parent_id'];
+    protected $casts = [
+        'id' => 'integer'
+    ];
 
     public static function getRootsLevelWithChildren() 
     {
@@ -17,7 +20,19 @@ class Category extends Model
                 ->get(['id', 'name', 'parent_id']);
     }
 
-    public function listForSelectBox() 
+    public function totalPlaces() 
+    {
+        return $this->children->sum(function ($category) {
+            return $category->places->count();
+        });
+    }
+
+    public function listGroups() 
+    {
+        return $this->root()->get()->lists('name', 'id');
+    }
+
+    public function listGroupWithChildren() 
     {
         $groups = $this->getRootsLevelWithChildren();
 

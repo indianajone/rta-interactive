@@ -45,8 +45,14 @@
                             </li>
                             <li class="{{ Route::is('cms.places.*') ? 'active' : '' }}">
                                 <a href="{{ route('cms.places.index') }}">
-                                    <i class="fa fa-map"></i>
+                                    <i class="fa fa-compass"></i>
                                     <span>สถานที่</span>
+                                </a>
+                            </li>
+                            <li class="{{ Route::is('cms.categories.*') ? 'active' : '' }}">
+                                <a href="{{ route('cms.categories.index') }}">
+                                    <i class="fa fa-list"></i>
+                                    <span>หมวดหมู่สถานที่</span>
                                 </a>
                             </li>
                         </ul>

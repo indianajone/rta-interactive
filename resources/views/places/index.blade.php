@@ -4,10 +4,7 @@
 
     <place-filter :places="{{ $places }}" inline-template>
         <div class="place-filter" >
-            <form
-                @submit.prevent="submit"
-                class="filter"
-            >
+            <form @submit.prevent class="filter">
                 <div class="filter__heading">
                     <h3 class="filter__heading__title">
                         <i class="fa fa-sliders"></i>
@@ -40,10 +37,7 @@
 
             <div class="cards">
                 <div v-for="chuck in places | inCategory | chunk 3" class="row">
-                    <div
-                        v-for="place in chuck"
-                        class="card"
-                    >
+                    <div v-for="place in chuck" class="card">
                         <div class="card__image">
                             <a href="@{{ place.url }}">
                                 <img :src="place.thumbnail" alt="@{{ place.name }}">

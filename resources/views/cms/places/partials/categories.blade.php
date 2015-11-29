@@ -5,7 +5,7 @@
         {!! Form::label('longitude', 'กลุ่มสถานที่') !!}
         {!! Form::select(
                 'categories[]',
-                $categories->listForSelectBox(), 
+                $categories->listGroupWithChildren(), 
                 isset($place) ? $place->categories->lists('id')->all() : old('categories'),
                 ['class' => 'form-control select2', 'data-placeholder' => 'กรุณาเลือกกลุ่มสถานที่', 'multiple']
         ) !!}

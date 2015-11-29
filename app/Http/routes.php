@@ -27,6 +27,10 @@ Route::group(['prefix' => 'cms'], function () {
     Route::resource('/places', 'Cms\PlacesController',  [
         'except' => ['show']
     ]);
+
+    Route::resource('/categories', 'Cms\CategoriesController',  [
+        'except' => ['show']
+    ]);
 });
 
 /*

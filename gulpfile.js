@@ -16,7 +16,6 @@ elixir(function(mix) {
     mix.sass('app.scss')
         .sass('cms.scss')
         .styles([
-            'select2.min.css',
             'sweetalert.min.css'
         ], 'public/css/vendor.css')
         .copy('node_modules/font-awesome/fonts', 'public/fonts')
@@ -30,7 +29,7 @@ elixir(function(mix) {
             'vendor/bootstrap.min.js',
             'vendor/dropzone.js',
             'vendor/sweetalert-dev.js',
-            'vendor/select2.min.js',
+            'vendor/select2.js',
             'vendor/jquery.panorama-viewer.js'
         ], 'public/js/vendor.js');
 
