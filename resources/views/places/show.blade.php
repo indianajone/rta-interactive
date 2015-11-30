@@ -35,7 +35,7 @@
                         <a  href="#"
                             @click.prevent="showModal = true"
                         >
-                            <img src="{{ $place->video->thumbnail }}" alt="{{ $place->video->title }}">
+                            <img src="{{ asset($place->video->thumbnail) }}" alt="{{ $place->video->title }}">
                             <div class="place__overlay">
                                 <i class="fa fa-play-circle-o"></i>
                             </div>
