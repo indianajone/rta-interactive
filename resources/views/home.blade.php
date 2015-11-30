@@ -1,7 +1,16 @@
 @extends('layouts.master')
 
 @section('banner')
-    <slideshow type="banner"></slideshow>
+    <slideshow 
+        type="banner" 
+        :src="{{ $places->first()->photos->map(function($photo) {
+            return [
+                'title' => $photo->place->name,
+                'src' => $photo->path
+            ];
+        }) }}"
+    >
+    </slideshow>
 @stop
 
 @section('content')

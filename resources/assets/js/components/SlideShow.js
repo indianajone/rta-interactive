@@ -17,10 +17,7 @@ module.exports = {
                 imagesLoaded: true,
                 setGallerySize: false
             },
-            slides: [
-                { title: 'bangpu', src: '/uploaded/2015/11/09/bangpu.jpg' },
-                { title: 'bangpu2', src: '/uploaded/2015/11/15/bangpu.jpg' }
-            ]
+            slides: []
         };
     },
 
