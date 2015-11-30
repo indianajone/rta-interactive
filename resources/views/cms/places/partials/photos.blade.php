@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('photo', 'รูปภาพ') !!}
-                <div id="dz-placephotos" class="dropzone"></div>
+                <div id="dz-photos" class="dropzone"></div>
             </div>
         </div>
     </div>

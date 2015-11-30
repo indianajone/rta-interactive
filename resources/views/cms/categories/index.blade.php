@@ -37,7 +37,7 @@
                     <td class="text-center">{{ $group->totalPlaces() }}</td>
                 </tr>
                 @foreach($group->children as $category)
-                    <tr class="group-{{ $group->id }} collapse {{ $group->id == 1 ? 'in' : '' }}">
+                    <tr class="group-{{ $group->id }} collapse">
                         <td> 
                             <a href="{{ route('cms.categories.edit', $category->id) }}">
                                 ---- {{ $category->name }}

@@ -27,18 +27,18 @@
         <div class="row">
             <div class="col-md-8">
                 {!! Form::label('panorama', 'รูปพาโนราม่า') !!}
-                @if($place->panorama)
-                    <div class="row">
+                
+                <div class="row">
+                    @if($place->panorama)
                         <div class="col-md-4">
                             <img class="img-responsive" src="{{ asset($place->panorama->thumbnail_path) }}" alt="">
                         </div>
-                        <div class="col-md-8">
-                            <div id="dz-placepanorama" class="dropzone"></div>
-                        </div>
+                    @endif
+                    <div class="{{ $place->panorama ? 'col-md-8' : 'col-md-12' }}">
+                        <div id="dz-panorama" class="dropzone"></div>
                     </div>
-                @else
-                    <div id="dz-placepanorama" class="dropzone"></div>
-                @endif
+                </div>
+            
             </div>
         </div>
         <hr>
@@ -58,18 +58,20 @@
         $(function(){
             $('.select2').select2();
             
-            defaultOptions = {
+            var defaultOptions = {
                 acceptedFiles: 'image/*',
                 forceFallback: false,
                 sending: function (file, xhr, formData) {
                     formData.append('_token', $('input[name=_token]').val());
                 }
             }
-            Dropzone.options.dzPlacephotos = $.extend(defaultOptions, {
+
+            Dropzone.options.dzPhotos = $.extend({}, defaultOptions, {
                 paramName: 'photo',
                 url: '/api/places/{{ $place->id }}/photos'
             });
-            Dropzone.options.dzPlacepanorama = $.extend(defaultOptions, {
+
+            Dropzone.options.dzPanorama = $.extend({}, defaultOptions, {
                 paramName: 'panorama',
                 uploadMultiple: false,
                 url: '/api/places/{{ $place->id }}/panorama'
