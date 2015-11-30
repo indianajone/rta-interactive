@@ -26,6 +26,7 @@ new Vue({
         interactiveMap: require('./components/InteractiveMap'),
         modal: require('./components/Modal'),
         search: require('./components/Search'),
+        slideshow: require('./components/SlideShow'),
         panorama: require('./components/Panorama')
     }
 });

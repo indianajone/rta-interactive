@@ -16,7 +16,8 @@ elixir(function(mix) {
     mix.sass('app.scss')
         .sass('cms.scss')
         .styles([
-            'sweetalert.min.css'
+            'flickity.css',
+            'sweetalert.css'
         ], 'public/css/vendor.css')
         .copy('node_modules/font-awesome/fonts', 'public/fonts')
         .browserify('app.js')

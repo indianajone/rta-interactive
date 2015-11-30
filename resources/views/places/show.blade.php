@@ -1,9 +1,7 @@
 @extends('layouts/master')
 
 @section('banner')
-    <div class="banner">
-        <img src="/uploaded/2015/11/09/bangpu.jpg" alt="bangpu">
-    </div>
+    <slideshow type="banner" :src={{ $place->banners() }}></slideshow>
 @stop
 
 @section('content')
@@ -21,11 +19,12 @@
         @if($place->photos->count() >= 1 )
             <div class="place__photos">
                 <h3 class="heading--fancy">คลังภาพ</h3>
-                @foreach($place->photos as $photo)
-                    <div class="place__image">
-                        <img src="{{ asset($photo->thumbnail_path) }}" alt="{{ $place->name }}">
-                    </div>
-                @endforeach
+                <slideshow 
+                    type="slideshow" 
+                    :src={{ $place->slideshow() }}
+                    :options="{ contain: true }"
+                ></slideshow>
+                
             </div>
         @endif
         <div class="row">

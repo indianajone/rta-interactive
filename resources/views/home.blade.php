@@ -1,9 +1,7 @@
 @extends('layouts.master')
 
 @section('banner')
-    <div class="banner">
-        <img src="uploaded/2015/11/09/bangpu.jpg" alt="bangpu">
-    </div>
+    <slideshow></slideshow>
 @stop
 
 @section('content')

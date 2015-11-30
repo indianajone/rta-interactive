@@ -25,6 +25,26 @@ class Place extends Model
         return (new static)->where('name', str_replace('-', ' ', $slug))->firstOrFail();
     }
 
+    public function banners() 
+    {
+        return $this->photos->map(function ($item) {
+            return [
+                'title' => $this->name,
+                'src' => asset($item->path)
+            ];
+        });
+    }
+
+    public function slideshow() 
+    {
+        return $this->photos->map(function ($item) {
+            return [
+                'title' => $this->name,
+                'src' => asset($item->thumbnail_path)
+            ];
+        });
+    }
+
     /**
      * Define relationship between categories and place
      *
