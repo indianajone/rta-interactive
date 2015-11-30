@@ -3,7 +3,6 @@
 @section('banner')
     <slideshow 
         type="banner" 
-        :src="[{ title: 'เกี่ยวกับเรา', src: '{{ asset('uploaded/2015/11/30/about.jpg') }}'}]"
         :options="{ prevNextButtons: false }"
     >
     </slideshow>
