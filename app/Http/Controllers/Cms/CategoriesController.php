@@ -38,21 +38,12 @@ class CategoriesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        Category::create($request->all());
+    {  
+        $category = Category::create($request->all());
+
+        flash()->success('Success!', "$category->name has been created.");
 
         return redirect()->route('cms.categories.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -77,7 +68,13 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        $category->update($request->all());
+
+        flash()->success('Updated!', "$category->name has been updated.");
+
+        return redirect()->route('cms.categories.edit', $category->id);
     }
 
     /**

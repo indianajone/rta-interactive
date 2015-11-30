@@ -8,14 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     protected $fillable = ['name', 'parent_id'];
-    protected $casts = [
-        'id' => 'integer'
-    ];
 
     public static function getRootsLevelWithChildren() 
     {
         return (new static)->root()
-                ->has('children')
                 ->with('children')
                 ->get(['id', 'name', 'parent_id']);
     }
@@ -52,6 +48,11 @@ class Category extends Model
     public function scopeRoot($query) 
     {
         return $query->whereNull('parent_id');
+    }
+
+    public function setParentIdAttribute($value) 
+    {
+        $this->attributes['parent_id'] = empty($value) ? null : $value;
     }
 
     /**

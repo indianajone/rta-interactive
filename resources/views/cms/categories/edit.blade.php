@@ -9,7 +9,7 @@
     {!! Form::model($category, [
         'method' => 'PUT',
         'accept-charset' => 'utf-8',
-        'route' => 'cms.categories.update'
+        'route' => ['cms.categories.update', $category->id]
     ]) !!}
         <div class="row">
             @include('cms.categories.partial.form')
