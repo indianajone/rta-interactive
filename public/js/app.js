@@ -28097,21 +28097,7 @@ module.exports = Vue;
 },{"_process":25}],37:[function(require,module,exports){
 'use strict';
 
-var Vue = require('vue');
-
-Vue.config.debug = true;
-Vue.use(require('vue-resource'));
-Vue.use(require('vue-chunk'));
-
-if (window._ === undefined) {
-    window._ = require('underscore');
-}
-
-if (window.$ === undefined || window.jQuery === undefined) {
-    window.$ = window.jQuery = require('jquery');
-}
-
-require('bootstrap-sass/assets/javascripts/bootstrap');
+require('./core/bootstrap');
 
 new Vue({
     el: '#app',
@@ -28130,7 +28116,7 @@ new Vue({
     }
 });
 
-},{"./components/InteractiveMap":41,"./components/Modal":42,"./components/Panorama":45,"./components/Search":46,"./components/SlideShow":47,"./pages/PlaceFilter":58,"bootstrap-sass/assets/javascripts/bootstrap":1,"jquery":24,"underscore":26,"vue":36,"vue-chunk":27,"vue-resource":29}],38:[function(require,module,exports){
+},{"./components/InteractiveMap":41,"./components/Modal":42,"./components/Panorama":45,"./components/Search":46,"./components/SlideShow":47,"./core/bootstrap":58,"./pages/PlaceFilter":59}],38:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -28629,7 +28615,7 @@ module.exports = {
     }
 };
 
-},{"../vendor/jquery.panorama-viewer.js":60}],46:[function(require,module,exports){
+},{"../vendor/jquery.panorama-viewer.js":61}],46:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -28660,10 +28646,7 @@ module.exports = {
     },
 
     created: function created() {
-        if (this.src) {
-            this.clear();
-            this.slides = this.src;
-        }
+        this.slides = Rta.photos || this.src || [];
     },
 
     ready: function ready() {
@@ -28720,7 +28703,7 @@ module.exports = {
 
 };
 
-},{"../vendor/Sortable.min.js":59,"./waypoint.template.html":57}],49:[function(require,module,exports){
+},{"../vendor/Sortable.min.js":60,"./waypoint.template.html":57}],49:[function(require,module,exports){
 module.exports = '  <div class="form-group">\n    <select \n        v-model="selected"\n        type="text" \n        class="form-control" \n        required\n    >\n        <option \n            v-for="location in destinations" \n            v-bind:value="location.value"\n        >\n            {{ location.text }}\n        </option>\n    </select>\n</div>';
 },{}],50:[function(require,module,exports){
 module.exports = '<div class="google-map"></div>';
@@ -28739,6 +28722,40 @@ module.exports = '<form class="search navbar-right collapse navbar-collapse" rol
 },{}],57:[function(require,module,exports){
 module.exports = '<div class="form-group">\n    <div class="input-group item" v-for="waypoint in waypoints">\n        <input type="text" class="form-control" value="{{ waypoint.name }}" readonly >\n        <div class="input-group-btn">\n            <button class="btn btn-danger" @click="remove(waypoint)">X</button>\n        </div>\n    </div>\n</div>\n';
 },{}],58:[function(require,module,exports){
+/*
+ * Load Vue & Vue's components.
+ */
+'use strict';
+
+if (window.Vue === undefined) {
+    window.Vue = require('vue');
+}
+
+Vue.config.debug = true;
+Vue.use(require('vue-resource'));
+Vue.use(require('vue-chunk'));
+
+/*
+ * Load Underscore, used for map / reduce on arrays.
+ */
+if (window._ === undefined) {
+    window._ = require('underscore');
+}
+
+/*
+ * Load jQuery and Bootstrap jQuery, used for front-end interaction.
+ */
+if (window.$ === undefined || window.jQuery === undefined) {
+    window.$ = window.jQuery = require('jquery');
+}
+
+if (window.Rta === undefined) {
+    window.Rta = {};
+}
+
+require('bootstrap-sass/assets/javascripts/bootstrap');
+
+},{"bootstrap-sass/assets/javascripts/bootstrap":1,"jquery":24,"underscore":26,"vue":36,"vue-chunk":27,"vue-resource":29}],59:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -28770,7 +28787,7 @@ module.exports = {
 
 };
 
-},{}],59:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 /*! Sortable 1.4.2 - MIT | git://github.com/rubaxa/Sortable.git */
 "use strict";
 
@@ -29020,7 +29037,7 @@ module.exports = {
   }, a.version = "1.4.2", a;
 });
 
-},{}],60:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 /* ===========================================================
  * jquery-panorama_viewer.js v1
  * ===========================================================

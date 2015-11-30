@@ -22,13 +22,10 @@ module.exports = {
     },
 
     created: function () {
-        if (this.src) {
-            this.clear();
-            this.slides = this.src;
-        }
+        this.slides = Rta.photos || this.src || [];
     },
 
-    ready: function () {    
+    ready: function () {  
         var flickity = new Flickity(this.$el, _.extend(this.default, this.options));
     },
 

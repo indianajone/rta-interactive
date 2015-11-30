@@ -87,6 +87,7 @@
             </div>
         </footer>
     </div>
+    @include ('components.vars')
     <script src="/js/app.js"></script>
     @yield ('script.footer')
 </body>

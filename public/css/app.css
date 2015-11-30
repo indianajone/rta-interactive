@@ -11550,6 +11550,10 @@ a:hover {
   }
 }
 
+.card__excerpt {
+  min-height: 65px;
+}
+
 .card__details {
   background-color: #fff;
   padding: 0 15px;
