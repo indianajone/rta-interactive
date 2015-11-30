@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('banner')
-    <slideshow></slideshow>
+    <slideshow type="banner"></slideshow>
 @stop
 
 @section('content')
