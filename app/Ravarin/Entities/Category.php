@@ -18,9 +18,10 @@ class Category extends Model
 
     public function totalPlaces() 
     {
-        return $this->children->sum(function ($category) {
-            return $category->places->count();
-        });
+        return $this->children()->with('places')->get()
+                    ->lists('places')
+                    ->collapse()->unique('id')
+                    ->count();
     }
 
     public function listGroups() 

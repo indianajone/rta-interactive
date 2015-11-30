@@ -19,13 +19,13 @@
         </thead>
         <tbody>
             @forelse($categories as $group)
-                <tr class="active">
+                <tr>
                     <td>
                         <a 
                             href=".group-{{ $group->id }}"
                             role="button"
                             data-toggle="collapse" 
-                            aria-expanded="false" 
+                            aria-expanded="true" 
                             aria-controls="group-{{ $group->id }}"
                         >
                             <i class="fa fa-plus"></i> 
@@ -37,7 +37,7 @@
                     <td class="text-center">{{ $group->totalPlaces() }}</td>
                 </tr>
                 @foreach($group->children as $category)
-                    <tr class="group-{{ $group->id }} collapse">
+                    <tr class="group-{{ $group->id }} collapse {{ $group->id == 1 ? 'in' : '' }}">
                         <td> 
                             <a href="{{ route('cms.categories.edit', $category->id) }}">
                                 ---- {{ $category->name }}
