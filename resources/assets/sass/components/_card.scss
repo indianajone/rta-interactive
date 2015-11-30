@@ -1,44 +1,35 @@
 .cards {
-
+    .row {
+        margin-bottom: 30px; 
+    }
 }
 
 .card {
     @extend .col-md-4;
-    @extend .col-sm-6;
-    background-color: #fff;
-    width: 29%;
-    float: left;
-    padding: 0;
-    margin: 0 15px 30px;
-    overflow: hidden;
-
-    @media only screen and (max-width: 767px) {
-        width: inherit;
-    }
-
     &__image {
         img {
             @extend .img-responsive;
         }
     }
-
     &__excerpt {
         min-height: 65px;
     }
-
     &__details {
         background-color: #fff;
-        padding: 0 15px;
+        padding: 20px 15px 15px;
+    }
+
+    &__title {
+        margin: 0;
     }
 
     &__buttons {
+        background-color: #fff;
         border-top: 1px solid $gray-lighter;
         a {
-            display: block;
-            text-align: center;
-            padding: 10px;
-            float: left;
-            width: 25%;
+            @extend .btn;
+            width: 24%;
+            padding: 15px 25px;
             &:not(:first-child) {
                 border-left: 1px solid $gray-lighter;
             }
