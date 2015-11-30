@@ -1,9 +1,12 @@
 @extends('layouts.master')
 
 @section('banner')
-    <div class="banner">
-        <img src="/uploaded/2015/11/09/bangpu.jpg" alt="bangpu">
-    </div>
+    <slideshow 
+        type="banner" 
+        :src="[{ title: 'เกี่ยวกับเรา', src: '{{ asset('uploaded/2015/11/30/about.jpg') }}'}]"
+        :options="{ prevNextButtons: false }"
+    >
+    </slideshow>
 @stop
 
 @section('content')
