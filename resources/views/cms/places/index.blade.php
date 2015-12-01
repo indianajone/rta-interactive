@@ -30,7 +30,7 @@
             @forelse($places as $place)
                 <tr>
                     <td>
-                        <img class="img-responsive" src="{{ $place->thumbnail }}" alt="">
+                        <img class="img-responsive" src="{{ asset($place->thumbnail) }}" alt="">
                     </td>
                     <td>
                         <a href="{{ route('cms.places.edit', $place->id) }}">{{ $place->name }}</a>
