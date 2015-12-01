@@ -28639,6 +28639,7 @@ module.exports = {
         return {
             'default': {
                 imagesLoaded: true,
+                resize: false,
                 setGallerySize: false
             },
             slides: []

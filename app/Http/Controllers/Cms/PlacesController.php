@@ -99,14 +99,17 @@ class PlacesController extends Controller
         //
     }
 
-    private function createPlace(PlaceRequest $request) 
+    private function getPlaceFields (PlaceRequest $request)
     {
-        $place = Place::create(
-            $request->only(
-                'name', 'excerpt', 'description', 'street', 'subdistrict', 'district',
-                'province', 'postcode', 'latitude', 'longitude'
-            )
+        return $request->only(
+            'name', 'excerpt', 'description', 'street', 'subdistrict', 'district',
+            'province', 'postcode', 'latitude', 'longitude'
         );
+    }
+
+    private function createPlace (PlaceRequest $request) 
+    {
+        $place = Place::create($this->getPlaceFields($request));
 
         $place->categories()->attach($request->get('categories'));
 
@@ -115,12 +118,9 @@ class PlacesController extends Controller
         return $place;
     }
 
-    private function updatePlace(Place $place, PlaceRequest $request)
+    private function updatePlace (Place $place, PlaceRequest $request)
     {
-        $place->update($request->only(
-            'name', 'excerpt', 'description', 'street', 'subdistrict', 'district',
-            'province', 'postcode', 'latitude', 'longitude'
-        ));
+        $place->update($this->getPlaceFields($request));
 
         $place->categories()->sync($request->get('categories'));
 

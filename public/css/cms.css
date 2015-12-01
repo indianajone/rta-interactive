@@ -12321,6 +12321,34 @@ button.close {
   background-color: #094d44;
 }
 
+.panel-heading a {
+  float: left;
+}
+
+.panel-heading a.collapsed:before {
+  content: "";
+}
+
+.panel-heading a:before {
+  font-family: 'FontAwesome';
+  content: "";
+  color: grey;
+}
+
+.table tbody .collapseable {
+  text-decoration: none;
+}
+
+.table tbody .collapseable.collapsed:before {
+  content: "";
+}
+
+.table tbody .collapseable:before {
+  font-family: 'FontAwesome';
+  content: "";
+  color: grey;
+}
+
 body {
   background-color: #ecf0f5;
   font-family: 'Droid Sans', 'Helvetica', sans-serif;

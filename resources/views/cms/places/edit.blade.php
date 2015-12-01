@@ -12,43 +12,22 @@
         'accept-charset' => 'utf-8',
         'route' => ['cms.places.update', $place->id]
     ]) !!}
-        <div class="row">
-            @include('cms.places.partials.info')
-        </div>
-        <hr>
-        <div class="row">
-            @include('cms.places.partials.categories')
-        </div>
-        <hr>
-        <div class="row">
-            @include('cms.places.partials.photos')
-        </div>
-        <hr>
+       
         <div class="row">
             <div class="col-md-8">
-                {!! Form::label('panorama', 'รูปพาโนราม่า') !!}
-                
-                <div class="row">
-                    @if($place->panorama)
-                        <div class="col-md-4">
-                            <img class="img-responsive" src="{{ asset($place->panorama->thumbnail_path) }}" alt="">
-                        </div>
-                    @endif
-                    <div class="{{ $place->panorama ? 'col-md-8' : 'col-md-12' }}">
-                        <div id="dz-panorama" class="dropzone"></div>
-                    </div>
-                </div>
-            
-            </div>
-        </div>
-        <hr>
-        <div class="row"> 
-            <div class="col-md-12">
+                @include('cms.places.partials.info')
+                @include('cms.places.partials.latlng')
+                @include('cms.places.partials.categories')
                 <div class="form-group">
                     <input class="btn btn-success" type="submit" name="submit" value="บันทึก">
                 </div>
             </div>
+            <div class="col-md-4">
+                @include('cms.places.partials.photos')
+                @include('cms.places.partials.panorama')
+            </div>
         </div>
+            
     {!!Form::close() !!}
 
 @stop

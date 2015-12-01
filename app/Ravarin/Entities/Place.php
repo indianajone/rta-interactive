@@ -120,6 +120,22 @@ class Place extends Model
     }
 
     /**
+     * Get full address.
+     *
+     * @return string
+     */
+    public function getAddressAttribute() 
+    {
+        return implode(' ', [ 
+            $this->street, 
+            $this->subdistrict, 
+            $this->district, 
+            $this->province,
+            $this->postcode
+        ]);
+    }
+
+    /**
      * Get thunbnail or return the default one.
      *
      * @param  null|string $value

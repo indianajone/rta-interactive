@@ -13,6 +13,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th width="5%"></th>
                 <th>ชื่อ</th>
                 <th class="text-center">จำนวนสถานที่</th>
             </tr>
@@ -22,30 +23,37 @@
                 <tr>
                     <td>
                         <a 
-                            href=".group-{{ $group->id }}"
+                            class="collapseable collapsed"
+                            href="#group-{{ $group->id }}"
                             role="button"
                             data-toggle="collapse" 
                             aria-expanded="true" 
-                            aria-controls="group-{{ $group->id }}"
+                            aria-controls="#group-{{ $group->id }}"
                         >
-                            <i class="fa fa-plus"></i> 
+                            <span class="sr-only">toggle</span>
                         </a>
+                    </td>
+                    <td>
                         <a href="{{ route('cms.categories.edit', $group->id) }}">
                             {{ $group->name }}
                         </a>
                     </td>
                     <td class="text-center">{{ $group->totalPlaces() }}</td>
                 </tr>
-                @foreach($group->children as $category)
-                    <tr class="group-{{ $group->id }} collapse">
-                        <td> 
-                            <a href="{{ route('cms.categories.edit', $category->id) }}">
-                                ---- {{ $category->name }}
-                            </a>
-                        </td>
-                        <td class="text-center">{{ $category->places->count() }}</td>
-                    </tr>
-                @endforeach
+
+                <tbody id="group-{{ $group->id }}" class="collapse">
+                    @foreach($group->children as $category)
+                        <tr>
+                            <td></td>
+                            <td> 
+                                <a href="{{ route('cms.categories.edit', $category->id) }}">
+                                    ---- {{ $category->name }}
+                                </a>
+                            </td>
+                            <td class="text-center">{{ $category->places->count() }}</td>
+                        </tr>
+                    @endforeach
+                <tbody>
             @empty
                 <tr>
                     <td class="text-center text-muted" colspan="3">ไม่พบข้อมูล</td>

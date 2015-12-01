@@ -1443,6 +1443,7 @@ img {
 }
 
 .img-responsive,
+.slideshow__item img,
 .card__image img,
 .about__logo img {
   display: block;
@@ -11631,6 +11632,12 @@ a:hover {
   padding-bottom: 33.3%;
 }
 
+@media only screen and (max-width: 768px) {
+  .banner {
+    padding-bottom: 50%;
+  }
+}
+
 .banner .flickity-viewport {
   position: absolute;
   width: 100%;
@@ -11669,14 +11676,7 @@ a:hover {
 @media only screen and (max-width: 768px) {
   .slideshow__item {
     width: 100%;
-    margin: 0 auto;
   }
-}
-
-.slideshow__item img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
 }
 
 @media only screen and (max-width: 768px) {
@@ -11710,6 +11710,11 @@ a:hover {
 .cards .row,
 .cards .filter,
 .cards .place__photos {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.card {
   margin-bottom: 30px;
 }
 

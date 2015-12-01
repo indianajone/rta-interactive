@@ -13,10 +13,10 @@
         'route' => 'cms.places.store'
     ]) !!}
         <div class="row">
-            @include('cms.places.partials.info')
-        </div>
-        <div class="row"> 
-            <div class="col-md-12">
+            <div class="col-md-8">
+                @include('cms.places.partials.info')
+                @include('cms.places.partials.latlng')
+                @include('cms.places.partials.categories')
                 <div class="form-group">
                     <input class="btn btn-success" type="submit" name="submit" value="บันทึก">
                 </div>
@@ -24,4 +24,12 @@
         </div>
     {!! Form::close() !!}
 
+@stop
+
+@section('script.footer')
+    <script type="text/javascript" charset="utf-8">
+        $(function(){
+            $('.select2').select2();
+         });
+    </script>
 @stop

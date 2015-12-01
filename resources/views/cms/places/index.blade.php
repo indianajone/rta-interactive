@@ -22,19 +22,20 @@
     <table class="table">
         <thead>
             <tr>
-                <th width="5%">#</th>
-                <th>ชื่อสถานที่</th>
-                <th>ที่อยู่</th>
+                <th width="10%">รูปภาพ</th>
+                <th>สถานที่</th>
             </tr>
         </thead>
         <tbody>
             @forelse($places as $place)
                 <tr>
-                    <td>{{ $place->id }}</td>
+                    <td>
+                        <img class="img-responsive" src="{{ $place->thumbnail }}" alt="">
+                    </td>
                     <td>
                         <a href="{{ route('cms.places.edit', $place->id) }}">{{ $place->name }}</a>
+                        <p>{{ $place->address }}</p>
                     </td>
-                    <td>{{ $place->street }}</td>
                 </tr>
             @empty
                 <tr>

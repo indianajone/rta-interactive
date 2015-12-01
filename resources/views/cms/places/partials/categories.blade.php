@@ -1,13 +1,24 @@
 @inject('categories', 'Ravarin\Entities\Category')
 
-<div class="col-md-8">
-    <div class="form-group">
-        {!! Form::label('longitude', 'กลุ่มสถานที่') !!}
-        {!! Form::select(
-                'categories[]',
-                $categories->listGroupWithChildren(), 
-                isset($place) ? $place->categories->lists('id')->all() : old('categories'),
-                ['class' => 'form-control select2', 'data-placeholder' => 'กรุณาเลือกกลุ่มสถานที่', 'multiple']
-        ) !!}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">หมวด</h3>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            {!! Form::select(
+                    'categories[]',
+                    $categories->listGroupWithChildren(), 
+                    isset($place) ? 
+                        $place->categories->lists('id')->all() : 
+                        old('categories'),
+                    [
+                        'data-placeholder' => 'กรุณาเลือกกลุ่มสถานที่', 
+                        'class' => 'form-control select2',
+                        'style' => 'width: 100%',
+                        'multiple'
+                    ]
+            ) !!}
+        </div>
     </div>
 </div>

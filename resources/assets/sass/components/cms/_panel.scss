@@ -1,0 +1,15 @@
+.panel {
+    &-heading {
+        a {
+            float: left;
+            &.collapsed:before {
+                content: $fa-var-plus;
+            }
+            &:before {
+                font-family: 'FontAwesome';
+                content: $fa-var-minus;
+                color: grey;
+            } 
+        }
+    }
+}

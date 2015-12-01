@@ -12,7 +12,9 @@
         'route' => ['cms.categories.update', $category->id]
     ]) !!}
         <div class="row">
-            @include('cms.categories.partial.form')
+            <div class="col-md-8">
+                @include('cms.categories.partial.form')
+            </div>
         </div>
         
     {!! Form::close() !!}

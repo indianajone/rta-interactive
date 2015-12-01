@@ -1,11 +1,13 @@
 .cards {
     .row {
-        margin-bottom: 30px; 
+        margin-left: 0;
+        margin-right: 0; 
     }
 }
 
 .card {
     @extend .col-md-4;
+    margin-bottom: 30px;
     &__image {
         img {
             @extend .img-responsive;
