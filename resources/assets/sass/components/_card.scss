@@ -30,7 +30,7 @@
         border-top: 1px solid $gray-lighter;
         a {
             @extend .btn;
-            width: 24%;
+            width: 23%;
             padding: 15px 25px;
             &:not(:first-child) {
                 border-left: 1px solid $gray-lighter;
