@@ -29,7 +29,7 @@ class Place extends Model
     {
         return $this->photos->map(function ($item) {
             return [
-                'title' => $this->name,
+                'title' => (string) $this->name,
                 'src' => asset($item->path)
             ];
         });

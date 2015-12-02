@@ -9,7 +9,7 @@ module.exports = {
               '    </div>'+
               '</div>',
 
-    props: ['src', 'options', 'type'],
+    props: [ 'type', 'options' ],
 
     data: function () {
         return {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use JavaScript;
 use App\Http\Requests;
 use Ravarin\Entities\Place;
 use Illuminate\Http\Request;
@@ -46,6 +47,10 @@ class PlacesController extends Controller
     public function show($slug)
     {
         $place = Place::findBySlug($slug);
+
+        $photos = $place->banners();
+
+        Javascript::put(compact('photos'));
 
         return view('places.show', compact('place'));
     }

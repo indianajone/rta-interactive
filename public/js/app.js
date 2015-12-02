@@ -28633,7 +28633,7 @@ module.exports = {
 
     template: '<div :class=[type]>' + '    <div v-for="slide in slides" :class="[type + \'__item\']">' + '        <img :src="slide.src" alt="{{ slide.title }}">' + '        <span v-if="type == \'banner\'">{{ slide.title }}</span>' + '    </div>' + '</div>',
 
-    props: ['src', 'options', 'type'],
+    props: ['type', 'options'],
 
     data: function data() {
         return {

@@ -1,7 +1,7 @@
 @extends('layouts/master')
 
 @section('banner')
-    <slideshow type="banner" :src={{ $place->banners() }}></slideshow>
+    <slideshow type="banner"></slideshow>
 @stop
 
 @section('content')
@@ -21,7 +21,6 @@
                 <h3 class="heading--fancy">คลังภาพ</h3>
                 <slideshow 
                     type="slideshow" 
-                    :src={{ $place->slideshow() }}
                     :options="{ contain: true }"
                 ></slideshow>
                 
@@ -74,7 +73,3 @@
         </div>
     </div>
 @stop
-
-{{-- @section('script.footer')
-    <script src="../js/vendor.js" type="text/javascript" charset="utf-8"></script>
-@stop --}}
