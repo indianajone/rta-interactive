@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index() 
     {
-        $places = Place::all();
+        $places = Place::latest()->limit(9)->get();
 
         $this->generateSlideShow($places);
         
