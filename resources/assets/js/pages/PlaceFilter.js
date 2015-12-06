@@ -19,7 +19,7 @@ module.exports = {
                 return _.intersection(
                             _.toArray(place.categories), 
                             self.filteredBy.map(Number)
-                        ).length > 0;
+                        ).length === self.filteredBy.length;
             });
 
             return result;
