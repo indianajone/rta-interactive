@@ -8,7 +8,7 @@
     <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/vendor.css">
     <link rel="stylesheet" href="/css/cms.css">
-    @yield ('script.header')
+    @yield('script.header')
 </head>
     <body>
         <div id="cms">
@@ -59,13 +59,14 @@
                         </ul>
                     </div>
                     <div class="main">
-                        @yield ('content')
+                        @yield('content')
                     </div>
                 </div>
             </div>
         </div>
+        @yield('footer')
         <script src="/js/vendor.js"></script>
-        @yield ('script.footer')
+        @yield('script.footer')
         @include('components.flash')
     </body>
 </html>

@@ -43,8 +43,11 @@ Route::group([ 'prefix' => 'api', 'as' => 'api.' ], function () {
     Route::get('slideshow', [ 'as' => 'slideshow_path', 'uses' => 'Api\SlideshowController@index']);
 
     Route::get('places', [ 'as' => 'place_path', 'uses' => 'Api\PlacesController@index']);
+    
     Route::post('places/{id}/photos', [ 'as' => 'place.photos', 'uses' => 'Api\PhotosController@store']);
+    Route::put('places/{id}/photos/{photo_id}', [ 'as' => 'place.photos', 'uses' => 'Api\PhotosController@update']);
     Route::delete('places/{id}/photos/{photo_id}', [ 'as' => 'place.photos', 'uses' => 'Api\PhotosController@destroy']);
+    
     Route::post('places/{id}/panorama', ['as' => 'panoramas', 'uses' => 'Api\PanoramaController@store']);
     
 });

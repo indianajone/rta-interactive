@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use File;
 use App\Http\Requests;
 use Ravarin\Entities\Place;
 use Illuminate\Http\Request;
+use App\Ravarin\Entities\Photo;
 use Ravarin\Services\AddPlacePhoto;
 use App\Http\Controllers\Controller;
 
@@ -26,15 +28,46 @@ class PhotosController extends Controller
     }
 
     /**
+     * Update the specified resource from storage.
+     *
+     * @param  int  $id
+     * @param  int  $photoId
+     * @return \Illuminate\Http\Response
+     */
+    public function update($id, $photoId)
+    {
+        $place = Place::findOrFail($id);
+
+        $photo = $place->photos()->findOrFail($photoId);
+        
+        Photo::where([
+                'place_id' => $id,
+                'isThumbnail' => true
+            ])
+            ->get()->each(function ($photo) {
+                $photo->isThumbnail = false;
+                $photo->save();
+            });
+
+        $photo->isThumbnail = true;
+        $photo->save();
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     * @param  int  $photoId
      * @return \Illuminate\Http\Response
      */
     public function destroy($id, $photoId)
     {
-        $place = Place::findOrFail($id);
+        $photo = Place::findOrFail($id)->photos()->findOrFail($photoId);
 
-        $place->photos()->findOrFail($photoId)->delete();
+        File::delete([
+            $photo->path, $photo->thumbnail_path
+        ]);
+
+        $photo->delete();
     }
 }

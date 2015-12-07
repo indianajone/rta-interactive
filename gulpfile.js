@@ -17,7 +17,8 @@ elixir(function(mix) {
         .sass('cms.scss')
         .styles([
             'flickity.css',
-            'sweetalert.css'
+            'sweetalert.css',
+            'lity.css'
         ], 'public/css/vendor.css')
         .copy('node_modules/font-awesome/fonts', 'public/fonts')
         .browserify('app.js')
@@ -31,7 +32,8 @@ elixir(function(mix) {
             'vendor/dropzone.js',
             'vendor/sweetalert-dev.js',
             'vendor/select2.js',
-            'vendor/jquery.panorama-viewer.js'
+            'vendor/jquery.panorama-viewer.js',
+            'vendor/lity.js'
         ], 'public/js/vendor.js');
 
 });
