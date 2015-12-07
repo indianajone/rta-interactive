@@ -39,6 +39,6 @@ $factory->define(Ravarin\Entities\Photo::class, function (Faker\Generator $faker
         'name' => $faker->name,
         'place_id' => factory(Ravarin\Entities\Photo::class)->create()->id,
         'thumbnail_path' => $faker->image('/tmp', 800, 600),
-        'path' => $faker->image('/tmp', 800, 600)
+        'path' => $faker->image('/tmp', 1024, 768)
     ];
 });

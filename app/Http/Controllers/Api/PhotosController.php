@@ -42,14 +42,14 @@ class PhotosController extends Controller
         
         Photo::where([
                 'place_id' => $id,
-                'isThumbnail' => true
+                'thumbnail' => true
             ])
             ->get()->each(function ($photo) {
-                $photo->isThumbnail = false;
+                $photo->thumbnail = false;
                 $photo->save();
             });
 
-        $photo->isThumbnail = true;
+        $photo->thumbnail = true;
         $photo->save();
     }
 

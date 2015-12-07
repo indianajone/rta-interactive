@@ -22,6 +22,11 @@ class Photo extends Model
         return 'uploaded/places';
     }
 
+    public function isThumbnail() 
+    {
+        return $this->thumbnail;
+    }
+
     public function setNameAttribute($name) 
     {
         $this->attributes['name'] = $name;

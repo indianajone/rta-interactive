@@ -14,9 +14,9 @@
                         data-toggle="modal" 
                         data-photo-id="{{ $photo->id }}" 
                         data-photo-src="{{ asset($photo->path) }}"
-                        data-photo-thumbnail="{{ $photo->isThumbnail }}"
+                        data-photo-thumbnail="{{ $photo->isThumbnail() }}"
                     >
-                        @if ($photo->isThumbnail)
+                        @if ($photo->isThumbnail())
                             <span class="label label-primary label--absolute">thumbnail</span>
                         @endif
                         <img class="img-responsive" src="{{ asset($photo->thumbnail_path) }}" alt="">

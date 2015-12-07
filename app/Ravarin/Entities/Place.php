@@ -143,7 +143,7 @@ class Place extends Model
      */
     public function getThumbnailAttribute($value) 
     {
-        $thumbnail = $this->photos()->where('isThumbnail', true)->first();
+        $thumbnail = $this->photos()->where('thumbnail', true)->first();
 
         return $thumbnail ? $thumbnail->thumbnail_path : asset('/images/default.jpg');
     }
