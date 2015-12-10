@@ -1,15 +1,16 @@
 @extends('layouts.master')
 
 @section('banner')
-    <slideshow 
-        type="banner" 
-        :options="{ prevNextButtons: false }"
-    >
-    </slideshow>
+    <div class="slick slick--black" v-slick>
+        <div class="item">
+            <img class="img-responsive center-block" src="{{ asset('images/tmp/about.jpg') }}" alt="">
+            <span>เกี่ยวกับเรา</span>
+        </div>
+    </div>
 @stop
 
 @section('content')
-    @include('components/ceo')
+    @include('components.ceo')
     <h2 class="heading--fancy">เกี่ยวกับเรา</h2>
     <div class="about">
         <div class="about__logo">
