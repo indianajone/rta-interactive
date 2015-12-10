@@ -4,7 +4,7 @@
     </div>
     <div class="ceo__body">
         <h3 class="ceo__body__name">
-            พล.ต.ชาติชาย ขันสุวรรณ
+            พล.ท.ชาติชาย ขันสุวรรณ
             <span class="ceo__body__position">ผู้อำนวยการสำนักงานส่งเสริมการท่องเที่ยวกองทัพบก</span>
         </h3>
         <p class="ceo__body__description">
