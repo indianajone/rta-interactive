@@ -25,6 +25,11 @@ class Place extends Model
         return (new static)->where('name', str_replace('-', ' ', $slug))->firstOrFail();
     }
 
+    public function scopeSearch($query, $keyword) 
+    {
+        return $query->where('name', 'LIKE', "%{$keyword}%");
+    }
+
     public function banners() 
     {
         return $this->photos->map(function ($item) {

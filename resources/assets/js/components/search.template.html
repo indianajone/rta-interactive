@@ -1,8 +1,24 @@
-<form class="search navbar-right collapse navbar-collapse" role="search">
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="SmartSearch">
+<div class="search navbar-right collapse navbar-collapse">
+    <input type="text" class="form-control" placeholder="SmartSearch"
+        @blur.stop.prevent="reset"
+        v-model="query"
+        debounce="300"
+    >
+    <i class="fa fa-search"></i>
+    <div class="search__results">
+        <small class="search__item text-center" v-if="query.length && !results.length">no results</small>
+        <a  href="{{ item.rel }}" 
+            class="search__item" 
+            v-for="item in results"
+            @mousedown="go(item.rel)"
+        >
+            <div class="search__left">
+                <img class="search__image" :src="item.thumbnail" alt="{{ item.name }}">
+            </div>
+            <div class="search__right">
+                <h5 class="search__heading">{{{ item.name | highlight }}}</h5>
+                <p class="search__body">{{{ item.excerpt | highlight }}}</p>
+            </div>
+        </a>
     </div>
-    <button type="submit" class="search__button">
-        <i class="fa fa-search"></i>
-    </button>
-</form>
+</div>

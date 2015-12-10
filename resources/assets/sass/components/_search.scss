@@ -1,5 +1,9 @@
 .search {
     @extend .navbar-form;
+    position: relative;
+    box-shadow: none;
+    padding: 0 15px;
+
     input[type=text] {
         background-color: rgba($green, .5);
         border-radius: 20px;
@@ -8,15 +12,91 @@
         border: none;
         color: #fff;
     }
-    &__button {
-        @extend .btn;
-        @extend .btn-link;
-        color: $green;
-        &:active, 
-        &:focus,
-        &:hover {
-            color: #fff;
-            outline: none;
+
+    &.navbar-collapse {
+        box-shadow: none;
+        @media only screen and (max-width: 768px) {
+            i {
+                right: 30px;
+            }
         }
+        &.in {
+            overflow: inherit;
+        }
+    }
+
+    i {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        opacity: .4;
+    }
+
+    &__results {
+        @extend .list-group;
+        position: absolute;
+        min-width: 300px;
+        padding: 0 15px;
+        left: -50px;
+        z-index: 9;
+
+        @media only screen and (max-width: 768px) {
+            left: 0;
+        }
+    }
+
+    &__item {
+        position: relative;
+        display: block;
+        padding: 10px 15px;
+        background-color: $list-group-bg;
+
+        &:first-child {
+            @include border-top-radius($list-group-border-radius);
+        }
+        &:last-child {
+            margin-bottom: 0;
+            @include border-bottom-radius($list-group-border-radius);
+        }
+
+        &:hover,
+        &:focus {
+            background-color: $green-lighter;
+            color: #fff;
+            text-decoration: none;
+
+            .search__body {
+                color: #fff;
+            }
+        }
+    }
+
+    &__left, 
+    &__right {
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    &__left {
+        padding-right: 15px;
+    }
+
+    &__image {
+        display: block;
+        max-width: 65px;
+    }
+
+    &__heading {
+        font-size: 100%;
+        margin-top: 0;
+    }
+
+    &__body {
+        color: $gray;
+        font-size: 70%;
+    }
+
+    &__keyword {
+        background-color: $green-lightest;
     }
 }

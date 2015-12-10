@@ -9,8 +9,19 @@ use App\Http\Controllers\Controller;
 
 class PlacesController extends Controller
 {
-    public function index() 
+    public function index(Request $request) 
     {
-        return Place::all();
+        $places = Place::with('photos')->search($request->get('q', ''))->get();
+
+        $results = $places->map(function ($place) {
+            return [
+                'name' => $place->name,
+                'excerpt' => $place->excerpt,
+                'thumbnail' => asset($place->thumbnail),
+                'rel' => place_path($place)
+            ];
+        });
+
+        return \Response::json($results);
     }
 }

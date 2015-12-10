@@ -26631,7 +26631,50 @@ module.exports = {
 
 module.exports = {
 
-    template: require('./search.template.html')
+    template: require('./search.template.html'),
+
+    data: function data() {
+        return {
+            query: '',
+            results: []
+        };
+    },
+
+    watch: {
+        query: function query() {
+            this.search();
+        }
+    },
+
+    filters: {
+        highlight: function highlight(value) {
+            var str = value;
+            var query = this.query.replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&");
+            var specialChar = 'ุูึํัี๊่๋้็ิื์';
+            var regex = new RegExp('(' + query + ')[' + specialChar + ']?', 'g');
+
+            if (this.query.length) {
+                str = str.replace(regex, '<span class="search__keyword">$&</span>');
+            }
+
+            return str;
+        }
+    },
+
+    methods: {
+        search: function search() {
+            this.$http.get('/api/places?q=' + this.query, (function (data) {
+                this.results = data;
+            }).bind(this));
+        },
+        go: function go(rel) {
+            window.location.href = rel;
+        },
+        reset: function reset() {
+            this.query = '';
+            this.results = [];
+        }
+    }
 
 };
 
@@ -26691,7 +26734,7 @@ module.exports = '<div class="mode">\n    <label \n            v-for="type in ty
 },{}],32:[function(require,module,exports){
 module.exports = '<div class="form-group">\n    <input \n        v-el:origin\n        v-model="value"\n        @blur="onBlur"\n        @focus="onFocus"\n        type="text"\n        class="form-control"\n        placeholder="Your origin"\n        required >\n</div>';
 },{}],33:[function(require,module,exports){
-module.exports = '<form class="search navbar-right collapse navbar-collapse" role="search">\n    <div class="form-group">\n        <input type="text" class="form-control" placeholder="SmartSearch">\n    </div>\n    <button type="submit" class="search__button">\n        <i class="fa fa-search"></i>\n    </button>\n</form>';
+module.exports = '<div class="search navbar-right collapse navbar-collapse">\n    <input type="text" class="form-control" placeholder="SmartSearch"\n        @blur.stop.prevent="reset"\n        v-model="query"\n        debounce="300"\n    >\n    <i class="fa fa-search"></i>\n    <div class="search__results">\n        <small class="search__item text-center" v-if="query.length && !results.length">no results</small>\n        <a  href="{{ item.rel }}" \n            class="search__item" \n            v-for="item in results"\n            @mousedown="go(item.rel)"\n        >\n            <div class="search__left">\n                <img class="search__image" :src="item.thumbnail" alt="{{ item.name }}">\n            </div>\n            <div class="search__right">\n                <h5 class="search__heading">{{{ item.name | highlight }}}</h5>\n                <p class="search__body">{{{ item.excerpt | highlight }}}</p>\n            </div>\n        </a>\n    </div>\n</div>';
 },{}],34:[function(require,module,exports){
 module.exports = '<div class="form-group">\n    <div class="input-group item" v-for="waypoint in waypoints">\n        <input type="text" class="form-control" value="{{ waypoint.name }}" readonly >\n        <div class="input-group-btn">\n            <button class="btn btn-danger" @click="remove(waypoint)">X</button>\n        </div>\n    </div>\n</div>\n';
 },{}],35:[function(require,module,exports){

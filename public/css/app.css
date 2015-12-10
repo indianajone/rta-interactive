@@ -292,11 +292,9 @@ th {
 
   .btn > .caret,
   .card__buttons a > .caret,
-  .search__button > .caret,
   .dropup > .btn > .caret,
   .card__buttons
-  .dropup > a > .caret,
-  .dropup > .search__button > .caret {
+  .dropup > a > .caret {
     border-top-color: #000 !important;
   }
 
@@ -3461,27 +3459,23 @@ input[type="search"] {
   .input-group-sm > input[type="date"].form-control,
   .input-group-sm > input[type="date"].input-group-addon,
   .input-group-sm > .input-group-btn > input[type="date"].btn,
-  .input-group-sm > .input-group-btn > input[type="date"].search__button,
   .input-group-sm input[type="date"],
   input[type="time"].input-sm,
   .input-group-sm > input[type="time"].form-control,
   .input-group-sm > input[type="time"].input-group-addon,
   .input-group-sm > .input-group-btn > input[type="time"].btn,
-  .input-group-sm > .input-group-btn > input[type="time"].search__button,
   .input-group-sm
   input[type="time"],
   input[type="datetime-local"].input-sm,
   .input-group-sm > input[type="datetime-local"].form-control,
   .input-group-sm > input[type="datetime-local"].input-group-addon,
   .input-group-sm > .input-group-btn > input[type="datetime-local"].btn,
-  .input-group-sm > .input-group-btn > input[type="datetime-local"].search__button,
   .input-group-sm
   input[type="datetime-local"],
   input[type="month"].input-sm,
   .input-group-sm > input[type="month"].form-control,
   .input-group-sm > input[type="month"].input-group-addon,
   .input-group-sm > .input-group-btn > input[type="month"].btn,
-  .input-group-sm > .input-group-btn > input[type="month"].search__button,
   .input-group-sm
   input[type="month"] {
     line-height: 30px;
@@ -3491,27 +3485,23 @@ input[type="search"] {
   .input-group-lg > input[type="date"].form-control,
   .input-group-lg > input[type="date"].input-group-addon,
   .input-group-lg > .input-group-btn > input[type="date"].btn,
-  .input-group-lg > .input-group-btn > input[type="date"].search__button,
   .input-group-lg input[type="date"],
   input[type="time"].input-lg,
   .input-group-lg > input[type="time"].form-control,
   .input-group-lg > input[type="time"].input-group-addon,
   .input-group-lg > .input-group-btn > input[type="time"].btn,
-  .input-group-lg > .input-group-btn > input[type="time"].search__button,
   .input-group-lg
   input[type="time"],
   input[type="datetime-local"].input-lg,
   .input-group-lg > input[type="datetime-local"].form-control,
   .input-group-lg > input[type="datetime-local"].input-group-addon,
   .input-group-lg > .input-group-btn > input[type="datetime-local"].btn,
-  .input-group-lg > .input-group-btn > input[type="datetime-local"].search__button,
   .input-group-lg
   input[type="datetime-local"],
   input[type="month"].input-lg,
   .input-group-lg > input[type="month"].form-control,
   .input-group-lg > input[type="month"].input-group-addon,
   .input-group-lg > .input-group-btn > input[type="month"].btn,
-  .input-group-lg > .input-group-btn > input[type="month"].search__button,
   .input-group-lg
   input[type="month"] {
     line-height: 46px;
@@ -3609,14 +3599,12 @@ fieldset[disabled]
 .input-group-lg > .input-group-btn > .form-control-static.btn,
 .card__buttons
   .input-group-lg > .input-group-btn > a.form-control-static,
-.input-group-lg > .input-group-btn > .form-control-static.search__button,
 .form-control-static.input-sm,
 .input-group-sm > .form-control-static.form-control,
 .input-group-sm > .form-control-static.input-group-addon,
 .input-group-sm > .input-group-btn > .form-control-static.btn,
 .card__buttons
-  .input-group-sm > .input-group-btn > a.form-control-static,
-.input-group-sm > .input-group-btn > .form-control-static.search__button {
+  .input-group-sm > .input-group-btn > a.form-control-static {
   padding-left: 0;
   padding-right: 0;
 }
@@ -3626,8 +3614,7 @@ fieldset[disabled]
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn,
 .card__buttons
-.input-group-sm > .input-group-btn > a,
-.input-group-sm > .input-group-btn > .search__button {
+.input-group-sm > .input-group-btn > a {
   height: 30px;
   padding: 5px 10px;
   font-size: 12px;
@@ -3638,8 +3625,7 @@ fieldset[disabled]
 select.input-sm,
 .input-group-sm > select.form-control,
 .input-group-sm > select.input-group-addon,
-.input-group-sm > .input-group-btn > select.btn,
-.input-group-sm > .input-group-btn > select.search__button {
+.input-group-sm > .input-group-btn > select.btn {
   height: 30px;
   line-height: 30px;
 }
@@ -3648,12 +3634,10 @@ textarea.input-sm,
 .input-group-sm > textarea.form-control,
 .input-group-sm > textarea.input-group-addon,
 .input-group-sm > .input-group-btn > textarea.btn,
-.input-group-sm > .input-group-btn > textarea.search__button,
 select[multiple].input-sm,
 .input-group-sm > select[multiple].form-control,
 .input-group-sm > select[multiple].input-group-addon,
-.input-group-sm > .input-group-btn > select[multiple].btn,
-.input-group-sm > .input-group-btn > select[multiple].search__button {
+.input-group-sm > .input-group-btn > select[multiple].btn {
   height: auto;
 }
 
@@ -3688,8 +3672,7 @@ select[multiple].input-sm,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn,
 .card__buttons
-.input-group-lg > .input-group-btn > a,
-.input-group-lg > .input-group-btn > .search__button {
+.input-group-lg > .input-group-btn > a {
   height: 46px;
   padding: 10px 16px;
   font-size: 18px;
@@ -3700,8 +3683,7 @@ select[multiple].input-sm,
 select.input-lg,
 .input-group-lg > select.form-control,
 .input-group-lg > select.input-group-addon,
-.input-group-lg > .input-group-btn > select.btn,
-.input-group-lg > .input-group-btn > select.search__button {
+.input-group-lg > .input-group-btn > select.btn {
   height: 46px;
   line-height: 46px;
 }
@@ -3710,12 +3692,10 @@ textarea.input-lg,
 .input-group-lg > textarea.form-control,
 .input-group-lg > textarea.input-group-addon,
 .input-group-lg > .input-group-btn > textarea.btn,
-.input-group-lg > .input-group-btn > textarea.search__button,
 select[multiple].input-lg,
 .input-group-lg > select[multiple].form-control,
 .input-group-lg > select[multiple].input-group-addon,
-.input-group-lg > .input-group-btn > select[multiple].btn,
-.input-group-lg > .input-group-btn > select[multiple].search__button {
+.input-group-lg > .input-group-btn > select[multiple].btn {
   height: auto;
 }
 
@@ -3772,7 +3752,6 @@ select[multiple].input-lg,
 .input-group-lg > .input-group-btn > .btn + .form-control-feedback,
 .card__buttons
 .input-group-lg > .input-group-btn > a + .form-control-feedback,
-.input-group-lg > .input-group-btn > .search__button + .form-control-feedback,
 .input-group-lg + .form-control-feedback,
 .form-group-lg .form-control + .form-control-feedback {
   width: 46px;
@@ -3786,7 +3765,6 @@ select[multiple].input-lg,
 .input-group-sm > .input-group-btn > .btn + .form-control-feedback,
 .card__buttons
 .input-group-sm > .input-group-btn > a + .form-control-feedback,
-.input-group-sm > .input-group-btn > .search__button + .form-control-feedback,
 .input-group-sm + .form-control-feedback,
 .form-group-sm .form-control + .form-control-feedback {
   width: 30px;
@@ -4025,8 +4003,7 @@ select[multiple].input-lg,
 }
 
 .btn,
-.card__buttons a,
-.search__button {
+.card__buttons a {
   display: inline-block;
   margin-bottom: 0;
   font-weight: normal;
@@ -4050,22 +4027,16 @@ select[multiple].input-lg,
 
 .btn:focus,
 .card__buttons a:focus,
-.search__button:focus,
 .btn.focus,
 .card__buttons a.focus,
-.focus.search__button,
 .btn:active:focus,
 .card__buttons a:active:focus,
-.search__button:active:focus,
 .btn:active.focus,
 .card__buttons a:active.focus,
-.search__button:active.focus,
 .btn.active:focus,
 .card__buttons a.active:focus,
-.active.search__button:focus,
 .btn.active.focus,
-.card__buttons a.active.focus,
-.active.focus.search__button {
+.card__buttons a.active.focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
@@ -4073,23 +4044,18 @@ select[multiple].input-lg,
 
 .btn:hover,
 .card__buttons a:hover,
-.search__button:hover,
 .btn:focus,
 .card__buttons a:focus,
-.search__button:focus,
 .btn.focus,
-.card__buttons a.focus,
-.focus.search__button {
+.card__buttons a.focus {
   color: #333;
   text-decoration: none;
 }
 
 .btn:active,
 .card__buttons a:active,
-.search__button:active,
 .btn.active,
-.card__buttons a.active,
-.active.search__button {
+.card__buttons a.active {
   outline: 0;
   background-image: none;
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
@@ -4097,15 +4063,12 @@ select[multiple].input-lg,
 
 .btn.disabled,
 .card__buttons a.disabled,
-.disabled.search__button,
 .btn[disabled],
 .card__buttons a[disabled],
-[disabled].search__button,
 fieldset[disabled] .btn,
 fieldset[disabled] .card__buttons a,
 .card__buttons
-  fieldset[disabled] a,
-fieldset[disabled] .search__button {
+  fieldset[disabled] a {
   cursor: not-allowed;
   opacity: 0.65;
   filter: alpha(opacity=65);
@@ -4114,12 +4077,10 @@ fieldset[disabled] .search__button {
 
 a.btn.disabled,
 .card__buttons a.disabled,
-a.disabled.search__button,
 fieldset[disabled] a.btn,
 fieldset[disabled] .card__buttons a,
 .card__buttons
-fieldset[disabled] a,
-fieldset[disabled] a.search__button {
+fieldset[disabled] a {
   pointer-events: none;
 }
 
@@ -4513,63 +4474,46 @@ fieldset[disabled] .btn-danger.focus {
   background-color: #fff;
 }
 
-.btn-link,
-.search__button {
+.btn-link {
   color: #337ab7;
   font-weight: normal;
   border-radius: 0;
 }
 
 .btn-link,
-.search__button,
 .btn-link:active,
-.search__button:active,
 .btn-link.active,
-.active.search__button,
 .btn-link[disabled],
-[disabled].search__button,
-fieldset[disabled] .btn-link,
-fieldset[disabled] .search__button {
+fieldset[disabled] .btn-link {
   background-color: transparent;
   box-shadow: none;
 }
 
 .btn-link,
-.search__button,
 .btn-link:hover,
-.search__button:hover,
 .btn-link:focus,
-.search__button:focus,
-.btn-link:active,
-.search__button:active {
+.btn-link:active {
   border-color: transparent;
 }
 
 .btn-link:hover,
-.search__button:hover,
-.btn-link:focus,
-.search__button:focus {
+.btn-link:focus {
   color: #23527c;
   text-decoration: underline;
   background-color: transparent;
 }
 
 .btn-link[disabled]:hover,
-[disabled].search__button:hover,
 .btn-link[disabled]:focus,
-[disabled].search__button:focus,
 fieldset[disabled] .btn-link:hover,
-fieldset[disabled] .search__button:hover,
-fieldset[disabled] .btn-link:focus,
-fieldset[disabled] .search__button:focus {
+fieldset[disabled] .btn-link:focus {
   color: #777777;
   text-decoration: none;
 }
 
 .btn-lg,
 .btn-group-lg > .btn,
-.card__buttons .btn-group-lg > a,
-.btn-group-lg > .search__button {
+.card__buttons .btn-group-lg > a {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.3333333;
@@ -4578,8 +4522,7 @@ fieldset[disabled] .search__button:focus {
 
 .btn-sm,
 .btn-group-sm > .btn,
-.card__buttons .btn-group-sm > a,
-.btn-group-sm > .search__button {
+.card__buttons .btn-group-sm > a {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
@@ -4588,8 +4531,7 @@ fieldset[disabled] .search__button:focus {
 
 .btn-xs,
 .btn-group-xs > .btn,
-.card__buttons .btn-group-xs > a,
-.btn-group-xs > .search__button {
+.card__buttons .btn-group-xs > a {
   padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
@@ -4817,70 +4759,51 @@ tbody.collapse.in {
 
 .btn-group > .btn,
 .card__buttons .btn-group > a,
-.btn-group > .search__button,
 .btn-group-vertical > .btn,
 .card__buttons
-  .btn-group-vertical > a,
-.btn-group-vertical > .search__button {
+  .btn-group-vertical > a {
   position: relative;
   float: left;
 }
 
 .btn-group > .btn:hover,
 .card__buttons .btn-group > a:hover,
-.btn-group > .search__button:hover,
 .btn-group > .btn:focus,
 .card__buttons .btn-group > a:focus,
-.btn-group > .search__button:focus,
 .btn-group > .btn:active,
 .card__buttons .btn-group > a:active,
-.btn-group > .search__button:active,
 .btn-group > .btn.active,
 .card__buttons .btn-group > a.active,
-.btn-group > .active.search__button,
 .btn-group-vertical > .btn:hover,
 .card__buttons
     .btn-group-vertical > a:hover,
-.btn-group-vertical > .search__button:hover,
 .btn-group-vertical > .btn:focus,
 .card__buttons
     .btn-group-vertical > a:focus,
-.btn-group-vertical > .search__button:focus,
 .btn-group-vertical > .btn:active,
 .card__buttons
     .btn-group-vertical > a:active,
-.btn-group-vertical > .search__button:active,
 .btn-group-vertical > .btn.active,
 .card__buttons
-    .btn-group-vertical > a.active,
-.btn-group-vertical > .active.search__button {
+    .btn-group-vertical > a.active {
   z-index: 2;
 }
 
 .btn-group .btn + .btn,
 .btn-group .card__buttons a + .btn,
 .card__buttons .btn-group a + .btn,
-.btn-group .search__button + .btn,
 .btn-group .card__buttons .btn + a,
 .card__buttons .btn-group .btn + a,
 .btn-group .card__buttons a + a,
 .card__buttons .btn-group a + a,
-.btn-group .card__buttons .search__button + a,
-.card__buttons .btn-group .search__button + a,
-.btn-group .btn + .search__button,
-.btn-group .card__buttons a + .search__button,
-.card__buttons .btn-group a + .search__button,
-.btn-group .search__button + .search__button,
 .btn-group .btn + .btn-group,
 .btn-group .card__buttons a + .btn-group,
 .card__buttons
 .btn-group a + .btn-group,
-.btn-group .search__button + .btn-group,
 .btn-group .btn-group + .btn,
 .btn-group .card__buttons .btn-group + a,
 .card__buttons
 .btn-group .btn-group + a,
-.btn-group .btn-group + .search__button,
 .btn-group .btn-group + .btn-group {
   margin-left: -1px;
 }
@@ -4902,7 +4825,6 @@ tbody.collapse.in {
 .btn-toolbar .btn,
 .btn-toolbar .card__buttons a,
 .card__buttons .btn-toolbar a,
-.btn-toolbar .search__button,
 .btn-toolbar .btn-group,
 .btn-toolbar .input-group {
   float: left;
@@ -4910,34 +4832,29 @@ tbody.collapse.in {
 
 .btn-toolbar > .btn,
 .card__buttons .btn-toolbar > a,
-.btn-toolbar > .search__button,
 .btn-toolbar > .btn-group,
 .btn-toolbar > .input-group {
   margin-left: 5px;
 }
 
 .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle),
-.card__buttons .btn-group > a:not(:first-child):not(:last-child):not(.dropdown-toggle),
-.btn-group > .search__button:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+.card__buttons .btn-group > a:not(:first-child):not(:last-child):not(.dropdown-toggle) {
   border-radius: 0;
 }
 
 .btn-group > .btn:first-child,
-.card__buttons .btn-group > a:first-child,
-.btn-group > .search__button:first-child {
+.card__buttons .btn-group > a:first-child {
   margin-left: 0;
 }
 
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle),
-.card__buttons .btn-group > a:first-child:not(:last-child):not(.dropdown-toggle),
-.btn-group > .search__button:first-child:not(:last-child):not(.dropdown-toggle) {
+.card__buttons .btn-group > a:first-child:not(:last-child):not(.dropdown-toggle) {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
 }
 
 .btn-group > .btn:last-child:not(:first-child),
 .card__buttons .btn-group > a:last-child:not(:first-child),
-.btn-group > .search__button:last-child:not(:first-child),
 .btn-group > .dropdown-toggle:not(:first-child) {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
@@ -4948,22 +4865,19 @@ tbody.collapse.in {
 }
 
 .btn-group > .btn-group:not(:first-child):not(:last-child) > .btn,
-.card__buttons .btn-group > .btn-group:not(:first-child):not(:last-child) > a,
-.btn-group > .btn-group:not(:first-child):not(:last-child) > .search__button {
+.card__buttons .btn-group > .btn-group:not(:first-child):not(:last-child) > a {
   border-radius: 0;
 }
 
 .btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child,
 .card__buttons .btn-group > .btn-group:first-child:not(:last-child) > a:last-child,
-.btn-group > .btn-group:first-child:not(:last-child) > .search__button:last-child,
 .btn-group > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
 }
 
 .btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child,
-.card__buttons .btn-group > .btn-group:last-child:not(:first-child) > a:first-child,
-.btn-group > .btn-group:last-child:not(:first-child) > .search__button:first-child {
+.card__buttons .btn-group > .btn-group:last-child:not(:first-child) > a:first-child {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
@@ -4974,16 +4888,14 @@ tbody.collapse.in {
 }
 
 .btn-group > .btn + .dropdown-toggle,
-.card__buttons .btn-group > a + .dropdown-toggle,
-.btn-group > .search__button + .dropdown-toggle {
+.card__buttons .btn-group > a + .dropdown-toggle {
   padding-left: 8px;
   padding-right: 8px;
 }
 
 .btn-group > .btn-lg + .dropdown-toggle,
 .btn-group-lg.btn-group > .btn + .dropdown-toggle,
-.card__buttons .btn-group-lg.btn-group > a + .dropdown-toggle,
-.btn-group-lg.btn-group > .search__button + .dropdown-toggle {
+.card__buttons .btn-group-lg.btn-group > a + .dropdown-toggle {
   padding-left: 12px;
   padding-right: 12px;
 }
@@ -4992,21 +4904,18 @@ tbody.collapse.in {
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 
-.btn-group.open .dropdown-toggle.btn-link,
-.btn-group.open .dropdown-toggle.search__button {
+.btn-group.open .dropdown-toggle.btn-link {
   box-shadow: none;
 }
 
 .btn .caret,
-.card__buttons a .caret,
-.search__button .caret {
+.card__buttons a .caret {
   margin-left: 0;
 }
 
 .btn-lg .caret,
 .btn-group-lg > .btn .caret,
-.card__buttons .btn-group-lg > a .caret,
-.btn-group-lg > .search__button .caret {
+.card__buttons .btn-group-lg > a .caret {
   border-width: 5px 5px 0;
   border-bottom-width: 0;
 }
@@ -5014,19 +4923,16 @@ tbody.collapse.in {
 .dropup .btn-lg .caret,
 .dropup .btn-group-lg > .btn .caret,
 .dropup .card__buttons .btn-group-lg > a .caret,
-.card__buttons .dropup .btn-group-lg > a .caret,
-.dropup .btn-group-lg > .search__button .caret {
+.card__buttons .dropup .btn-group-lg > a .caret {
   border-width: 0 5px 5px;
 }
 
 .btn-group-vertical > .btn,
 .card__buttons .btn-group-vertical > a,
-.btn-group-vertical > .search__button,
 .btn-group-vertical > .btn-group,
 .btn-group-vertical > .btn-group > .btn,
 .card__buttons
-.btn-group-vertical > .btn-group > a,
-.btn-group-vertical > .btn-group > .search__button {
+.btn-group-vertical > .btn-group > a {
   display: block;
   float: none;
   width: 100%;
@@ -5044,42 +4950,32 @@ tbody.collapse.in {
 }
 
 .btn-group-vertical > .btn-group > .btn,
-.card__buttons .btn-group-vertical > .btn-group > a,
-.btn-group-vertical > .btn-group > .search__button {
+.card__buttons .btn-group-vertical > .btn-group > a {
   float: none;
 }
 
 .btn-group-vertical > .btn + .btn,
 .card__buttons .btn-group-vertical > a + .btn,
-.btn-group-vertical > .search__button + .btn,
 .card__buttons .btn-group-vertical > .btn + a,
 .card__buttons .btn-group-vertical > a + a,
-.card__buttons .btn-group-vertical > .search__button + a,
-.btn-group-vertical > .btn + .search__button,
-.card__buttons .btn-group-vertical > a + .search__button,
-.btn-group-vertical > .search__button + .search__button,
 .btn-group-vertical > .btn + .btn-group,
 .card__buttons
 .btn-group-vertical > a + .btn-group,
-.btn-group-vertical > .search__button + .btn-group,
 .btn-group-vertical > .btn-group + .btn,
 .card__buttons
 .btn-group-vertical > .btn-group + a,
-.btn-group-vertical > .btn-group + .search__button,
 .btn-group-vertical > .btn-group + .btn-group {
   margin-top: -1px;
   margin-left: 0;
 }
 
 .btn-group-vertical > .btn:not(:first-child):not(:last-child),
-.card__buttons .btn-group-vertical > a:not(:first-child):not(:last-child),
-.btn-group-vertical > .search__button:not(:first-child):not(:last-child) {
+.card__buttons .btn-group-vertical > a:not(:first-child):not(:last-child) {
   border-radius: 0;
 }
 
 .btn-group-vertical > .btn:first-child:not(:last-child),
-.card__buttons .btn-group-vertical > a:first-child:not(:last-child),
-.btn-group-vertical > .search__button:first-child:not(:last-child) {
+.card__buttons .btn-group-vertical > a:first-child:not(:last-child) {
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
   border-bottom-right-radius: 0;
@@ -5087,8 +4983,7 @@ tbody.collapse.in {
 }
 
 .btn-group-vertical > .btn:last-child:not(:first-child),
-.card__buttons .btn-group-vertical > a:last-child:not(:first-child),
-.btn-group-vertical > .search__button:last-child:not(:first-child) {
+.card__buttons .btn-group-vertical > a:last-child:not(:first-child) {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
   border-bottom-right-radius: 4px;
@@ -5096,22 +4991,19 @@ tbody.collapse.in {
 }
 
 .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn,
-.card__buttons .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > a,
-.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .search__button {
+.card__buttons .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > a {
   border-radius: 0;
 }
 
 .btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child,
 .card__buttons .btn-group-vertical > .btn-group:first-child:not(:last-child) > a:last-child,
-.btn-group-vertical > .btn-group:first-child:not(:last-child) > .search__button:last-child,
 .btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
 .btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child,
-.card__buttons .btn-group-vertical > .btn-group:last-child:not(:first-child) > a:first-child,
-.btn-group-vertical > .btn-group:last-child:not(:first-child) > .search__button:first-child {
+.card__buttons .btn-group-vertical > .btn-group:last-child:not(:first-child) > a:first-child {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
@@ -5125,7 +5017,6 @@ tbody.collapse.in {
 
 .btn-group-justified > .btn,
 .card__buttons .btn-group-justified > a,
-.btn-group-justified > .search__button,
 .btn-group-justified > .btn-group {
   float: none;
   display: table-cell;
@@ -5134,8 +5025,7 @@ tbody.collapse.in {
 
 .btn-group-justified > .btn-group .btn,
 .btn-group-justified > .btn-group .card__buttons a,
-.card__buttons .btn-group-justified > .btn-group a,
-.btn-group-justified > .btn-group .search__button {
+.card__buttons .btn-group-justified > .btn-group a {
   width: 100%;
 }
 
@@ -5145,19 +5035,15 @@ tbody.collapse.in {
 
 [data-toggle="buttons"] > .btn input[type="radio"],
 .card__buttons [data-toggle="buttons"] > a input[type="radio"],
-[data-toggle="buttons"] > .search__button input[type="radio"],
 [data-toggle="buttons"] > .btn input[type="checkbox"],
 .card__buttons
 [data-toggle="buttons"] > a input[type="checkbox"],
-[data-toggle="buttons"] > .search__button input[type="checkbox"],
 [data-toggle="buttons"] > .btn-group > .btn input[type="radio"],
 .card__buttons
 [data-toggle="buttons"] > .btn-group > a input[type="radio"],
-[data-toggle="buttons"] > .btn-group > .search__button input[type="radio"],
 [data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"],
 .card__buttons
-[data-toggle="buttons"] > .btn-group > a input[type="checkbox"],
-[data-toggle="buttons"] > .btn-group > .search__button input[type="checkbox"] {
+[data-toggle="buttons"] > .btn-group > a input[type="checkbox"] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
@@ -5222,8 +5108,7 @@ tbody.collapse.in {
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .input-group-addon.btn,
 .card__buttons
-  .input-group-sm > .input-group-btn > a.input-group-addon,
-.input-group-sm > .input-group-btn > .input-group-addon.search__button {
+  .input-group-sm > .input-group-btn > a.input-group-addon {
   padding: 5px 10px;
   font-size: 12px;
   border-radius: 3px;
@@ -5233,8 +5118,7 @@ tbody.collapse.in {
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .input-group-addon.btn,
 .card__buttons
-  .input-group-lg > .input-group-btn > a.input-group-addon,
-.input-group-lg > .input-group-btn > .input-group-addon.search__button {
+  .input-group-lg > .input-group-btn > a.input-group-addon {
   padding: 10px 16px;
   font-size: 18px;
   border-radius: 6px;
@@ -5250,20 +5134,16 @@ tbody.collapse.in {
 .input-group-btn:first-child > .btn,
 .card__buttons
 .input-group-btn:first-child > a,
-.input-group-btn:first-child > .search__button,
 .input-group-btn:first-child > .btn-group > .btn,
 .card__buttons
 .input-group-btn:first-child > .btn-group > a,
-.input-group-btn:first-child > .btn-group > .search__button,
 .input-group-btn:first-child > .dropdown-toggle,
 .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
 .card__buttons
 .input-group-btn:last-child > a:not(:last-child):not(.dropdown-toggle),
-.input-group-btn:last-child > .search__button:not(:last-child):not(.dropdown-toggle),
 .input-group-btn:last-child > .btn-group:not(:last-child) > .btn,
 .card__buttons
-.input-group-btn:last-child > .btn-group:not(:last-child) > a,
-.input-group-btn:last-child > .btn-group:not(:last-child) > .search__button {
+.input-group-btn:last-child > .btn-group:not(:last-child) > a {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
 }
@@ -5277,20 +5157,16 @@ tbody.collapse.in {
 .input-group-btn:last-child > .btn,
 .card__buttons
 .input-group-btn:last-child > a,
-.input-group-btn:last-child > .search__button,
 .input-group-btn:last-child > .btn-group > .btn,
 .card__buttons
 .input-group-btn:last-child > .btn-group > a,
-.input-group-btn:last-child > .btn-group > .search__button,
 .input-group-btn:last-child > .dropdown-toggle,
 .input-group-btn:first-child > .btn:not(:first-child),
 .card__buttons
 .input-group-btn:first-child > a:not(:first-child),
-.input-group-btn:first-child > .search__button:not(:first-child),
 .input-group-btn:first-child > .btn-group:not(:first-child) > .btn,
 .card__buttons
-.input-group-btn:first-child > .btn-group:not(:first-child) > a,
-.input-group-btn:first-child > .btn-group:not(:first-child) > .search__button {
+.input-group-btn:first-child > .btn-group:not(:first-child) > a {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
@@ -5306,45 +5182,34 @@ tbody.collapse.in {
 }
 
 .input-group-btn > .btn,
-.card__buttons .input-group-btn > a,
-.input-group-btn > .search__button {
+.card__buttons .input-group-btn > a {
   position: relative;
 }
 
 .input-group-btn > .btn + .btn,
 .card__buttons .input-group-btn > a + .btn,
-.input-group-btn > .search__button + .btn,
 .card__buttons .input-group-btn > .btn + a,
-.card__buttons .input-group-btn > a + a,
-.card__buttons .input-group-btn > .search__button + a,
-.input-group-btn > .btn + .search__button,
-.card__buttons .input-group-btn > a + .search__button,
-.input-group-btn > .search__button + .search__button {
+.card__buttons .input-group-btn > a + a {
   margin-left: -1px;
 }
 
 .input-group-btn > .btn:hover,
 .card__buttons .input-group-btn > a:hover,
-.input-group-btn > .search__button:hover,
 .input-group-btn > .btn:focus,
 .card__buttons .input-group-btn > a:focus,
-.input-group-btn > .search__button:focus,
 .input-group-btn > .btn:active,
-.card__buttons .input-group-btn > a:active,
-.input-group-btn > .search__button:active {
+.card__buttons .input-group-btn > a:active {
   z-index: 2;
 }
 
 .input-group-btn:first-child > .btn,
 .card__buttons .input-group-btn:first-child > a,
-.input-group-btn:first-child > .search__button,
 .input-group-btn:first-child > .btn-group {
   margin-right: -1px;
 }
 
 .input-group-btn:last-child > .btn,
 .card__buttons .input-group-btn:last-child > a,
-.input-group-btn:last-child > .search__button,
 .input-group-btn:last-child > .btn-group {
   z-index: 2;
   margin-left: -1px;
@@ -6048,16 +5913,14 @@ tbody.collapse.in {
 
 .navbar-btn.btn-sm,
 .btn-group-sm > .navbar-btn.btn,
-.card__buttons .btn-group-sm > a.navbar-btn,
-.btn-group-sm > .navbar-btn.search__button {
+.card__buttons .btn-group-sm > a.navbar-btn {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .navbar-btn.btn-xs,
 .btn-group-xs > .navbar-btn.btn,
-.card__buttons .btn-group-xs > a.navbar-btn,
-.btn-group-xs > .navbar-btn.search__button {
+.card__buttons .btn-group-xs > a.navbar-btn {
   margin-top: 14px;
   margin-bottom: 14px;
 }
@@ -6256,26 +6119,19 @@ tbody.collapse.in {
   color: #333;
 }
 
-.navbar-default .btn-link,
-.navbar-default .search__button {
+.navbar-default .btn-link {
   color: #777;
 }
 
 .navbar-default .btn-link:hover,
-.navbar-default .search__button:hover,
-.navbar-default .btn-link:focus,
-.navbar-default .search__button:focus {
+.navbar-default .btn-link:focus {
   color: #333;
 }
 
 .navbar-default .btn-link[disabled]:hover,
-.navbar-default [disabled].search__button:hover,
 .navbar-default .btn-link[disabled]:focus,
-.navbar-default [disabled].search__button:focus,
 fieldset[disabled] .navbar-default .btn-link:hover,
-fieldset[disabled] .navbar-default .search__button:hover,
-fieldset[disabled] .navbar-default .btn-link:focus,
-fieldset[disabled] .navbar-default .search__button:focus {
+fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 
@@ -6459,26 +6315,19 @@ fieldset[disabled] .navbar-default .search__button:focus {
   color: #fff;
 }
 
-.navbar-inverse .btn-link,
-.navbar-inverse .search__button {
+.navbar-inverse .btn-link {
   color: #9d9d9d;
 }
 
 .navbar-inverse .btn-link:hover,
-.navbar-inverse .search__button:hover,
-.navbar-inverse .btn-link:focus,
-.navbar-inverse .search__button:focus {
+.navbar-inverse .btn-link:focus {
   color: #fff;
 }
 
 .navbar-inverse .btn-link[disabled]:hover,
-.navbar-inverse [disabled].search__button:hover,
 .navbar-inverse .btn-link[disabled]:focus,
-.navbar-inverse [disabled].search__button:focus,
 fieldset[disabled] .navbar-inverse .btn-link:hover,
-fieldset[disabled] .navbar-inverse .search__button:hover,
-fieldset[disabled] .navbar-inverse .btn-link:focus,
-fieldset[disabled] .navbar-inverse .search__button:focus {
+fieldset[disabled] .navbar-inverse .btn-link:focus {
   color: #444;
 }
 
@@ -6687,8 +6536,7 @@ fieldset[disabled] .navbar-inverse .search__button:focus {
 }
 
 .btn .label,
-.card__buttons a .label,
-.search__button .label {
+.card__buttons a .label {
   position: relative;
   top: -1px;
 }
@@ -6774,8 +6622,7 @@ a.label:focus {
 }
 
 .btn .badge,
-.card__buttons a .badge,
-.search__button .badge {
+.card__buttons a .badge {
   position: relative;
   top: -1px;
 }
@@ -6783,11 +6630,9 @@ a.label:focus {
 .btn-xs .badge,
 .btn-group-xs > .btn .badge,
 .card__buttons .btn-group-xs > a .badge,
-.btn-group-xs > .search__button .badge,
 .btn-group-xs > .btn .badge,
 .card__buttons
-  .btn-group-xs > a .badge,
-.btn-group-xs > .search__button .badge {
+  .btn-group-xs > a .badge {
   top: 0;
   padding: 1px 5px;
 }
@@ -7143,7 +6988,8 @@ a.thumbnail.active {
   list-style: none;
 }
 
-.list-group {
+.list-group,
+.search__results {
   margin-bottom: 20px;
   padding-left: 0;
 }
@@ -7442,40 +7288,51 @@ button.list-group-item-danger.active:focus {
 }
 
 .panel > .list-group,
-.panel > .panel-collapse > .list-group {
+.panel > .search__results,
+.panel > .panel-collapse > .list-group,
+.panel > .panel-collapse > .search__results {
   margin-bottom: 0;
 }
 
 .panel > .list-group .list-group-item,
-.panel > .panel-collapse > .list-group .list-group-item {
+.panel > .search__results .list-group-item,
+.panel > .panel-collapse > .list-group .list-group-item,
+.panel > .panel-collapse > .search__results .list-group-item {
   border-width: 1px 0;
   border-radius: 0;
 }
 
 .panel > .list-group:first-child .list-group-item:first-child,
-.panel > .panel-collapse > .list-group:first-child .list-group-item:first-child {
+.panel > .search__results:first-child .list-group-item:first-child,
+.panel > .panel-collapse > .list-group:first-child .list-group-item:first-child,
+.panel > .panel-collapse > .search__results:first-child .list-group-item:first-child {
   border-top: 0;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
 }
 
 .panel > .list-group:last-child .list-group-item:last-child,
-.panel > .panel-collapse > .list-group:last-child .list-group-item:last-child {
+.panel > .search__results:last-child .list-group-item:last-child,
+.panel > .panel-collapse > .list-group:last-child .list-group-item:last-child,
+.panel > .panel-collapse > .search__results:last-child .list-group-item:last-child {
   border-bottom: 0;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
 
-.panel > .panel-heading + .panel-collapse > .list-group .list-group-item:first-child {
+.panel > .panel-heading + .panel-collapse > .list-group .list-group-item:first-child,
+.panel > .panel-heading + .panel-collapse > .search__results .list-group-item:first-child {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
 
-.panel-heading + .list-group .list-group-item:first-child {
+.panel-heading + .list-group .list-group-item:first-child,
+.panel-heading + .search__results .list-group-item:first-child {
   border-top-width: 0;
 }
 
-.list-group + .panel-footer {
+.list-group + .panel-footer,
+.search__results + .panel-footer {
   border-top-width: 0;
 }
 
@@ -7656,7 +7513,8 @@ button.list-group-item-danger.active:focus {
 }
 
 .panel-group .panel-heading + .panel-collapse > .panel-body,
-.panel-group .panel-heading + .panel-collapse > .list-group {
+.panel-group .panel-heading + .panel-collapse > .list-group,
+.panel-group .panel-heading + .panel-collapse > .search__results {
   border-top: 1px solid #ddd;
 }
 
@@ -8008,17 +7866,10 @@ button.close {
 .modal-footer .btn + .btn,
 .modal-footer .card__buttons a + .btn,
 .card__buttons .modal-footer a + .btn,
-.modal-footer .search__button + .btn,
 .modal-footer .card__buttons .btn + a,
 .card__buttons .modal-footer .btn + a,
 .modal-footer .card__buttons a + a,
-.card__buttons .modal-footer a + a,
-.modal-footer .card__buttons .search__button + a,
-.card__buttons .modal-footer .search__button + a,
-.modal-footer .btn + .search__button,
-.modal-footer .card__buttons a + .search__button,
-.card__buttons .modal-footer a + .search__button,
-.modal-footer .search__button + .search__button {
+.card__buttons .modal-footer a + a {
   margin-left: 5px;
   margin-bottom: 0;
 }
@@ -8026,17 +7877,10 @@ button.close {
 .modal-footer .btn-group .btn + .btn,
 .modal-footer .btn-group .card__buttons a + .btn,
 .card__buttons .modal-footer .btn-group a + .btn,
-.modal-footer .btn-group .search__button + .btn,
 .modal-footer .btn-group .card__buttons .btn + a,
 .card__buttons .modal-footer .btn-group .btn + a,
 .modal-footer .btn-group .card__buttons a + a,
-.card__buttons .modal-footer .btn-group a + a,
-.modal-footer .btn-group .card__buttons .search__button + a,
-.card__buttons .modal-footer .btn-group .search__button + a,
-.modal-footer .btn-group .btn + .search__button,
-.modal-footer .btn-group .card__buttons a + .search__button,
-.card__buttons .modal-footer .btn-group a + .search__button,
-.modal-footer .btn-group .search__button + .search__button {
+.card__buttons .modal-footer .btn-group a + a {
   margin-left: -1px;
 }
 
@@ -8570,8 +8414,7 @@ button.close {
 
 .carousel-caption .btn,
 .carousel-caption .card__buttons a,
-.card__buttons .carousel-caption a,
-.carousel-caption .search__button {
+.card__buttons .carousel-caption a {
   text-shadow: none;
 }
 
@@ -12529,6 +12372,12 @@ a:hover {
   font-size: 6em;
 }
 
+.search {
+  position: relative;
+  box-shadow: none;
+  padding: 0 15px;
+}
+
 .search input[type=text] {
   background-color: rgba(9, 77, 68, 0.5);
   border-radius: 20px;
@@ -12538,15 +12387,98 @@ a:hover {
   color: #fff;
 }
 
-.search__button {
-  color: #094d44;
+.search.navbar-collapse {
+  box-shadow: none;
 }
 
-.search__button:active,
-.search__button:focus,
-.search__button:hover {
+@media only screen and (max-width: 768px) {
+  .search.navbar-collapse i {
+    right: 30px;
+  }
+}
+
+.search.navbar-collapse.in {
+  overflow: inherit;
+}
+
+.search i {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  opacity: .4;
+}
+
+.search__results {
+  position: absolute;
+  min-width: 300px;
+  padding: 0 15px;
+  left: -50px;
+  z-index: 9;
+}
+
+@media only screen and (max-width: 768px) {
+  .search__results {
+    left: 0;
+  }
+}
+
+.search__item {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  background-color: #fff;
+}
+
+.search__item:first-child {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+.search__item:last-child {
+  margin-bottom: 0;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.search__item:hover,
+.search__item:focus {
+  background-color: #267671;
   color: #fff;
-  outline: none;
+  text-decoration: none;
+}
+
+.search__item:hover .search__body,
+.search__item:focus .search__body {
+  color: #fff;
+}
+
+.search__left,
+.search__right {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.search__left {
+  padding-right: 15px;
+}
+
+.search__image {
+  display: block;
+  max-width: 65px;
+}
+
+.search__heading {
+  font-size: 100%;
+  margin-top: 0;
+}
+
+.search__body {
+  color: #555555;
+  font-size: 70%;
+}
+
+.search__keyword {
+  background-color: #b3d0cd;
 }
 
 .navbar-social > li a.navbar-social__button {
