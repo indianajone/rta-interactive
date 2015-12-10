@@ -22,6 +22,7 @@ module.exports = {
     methods: {
         onChange: function (selected) {
            this.mode = selected.value;
+           this.$dispatch('map.refresh');
         }
     }
 }

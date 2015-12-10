@@ -16,6 +16,12 @@ module.exports = {
         }
     },
 
+    events: {
+        'map.refresh': function () {
+            this.navigateMe();
+        }
+    },
+
     data: function () {
         return {
             width: window.innerWidth,
@@ -106,16 +112,6 @@ module.exports = {
             if (this.route.origin && this.route.destination) {
                 this.$refs.google.getDirection(request);
             }
-        },
-        addToWaypoint: function (place) {
-            this.route.waypoints.push({ 
-                name: place.name,
-                stopover: true,
-                location: place.geometry.location
-            });
-        },
-        removeWaypoint: function (place) {
-            this.route.waypoints.$remove(place);
         }
     }
 }

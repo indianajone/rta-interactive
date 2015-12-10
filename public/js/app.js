@@ -26207,11 +26207,16 @@ module.exports = {
     ready: function ready() {
         var options = {
             center: this.location,
-            scrollwheel: false,
             zoom: 12
         };
 
         this.map = new google.maps.Map(this.$el, options);
+    },
+
+    watch: {
+        things: function things(value) {
+            this.$dispatch('map.refresh');
+        }
     },
 
     methods: {
@@ -26264,8 +26269,7 @@ module.exports = {
             this.services.direction = new google.maps.DirectionsService();
             this.services.place = new google.maps.places.PlacesService(this.map);
             this.services.renderer = new google.maps.DirectionsRenderer({
-                map: this.map,
-                draggable: true
+                map: this.map
             });
 
             // panel: this.$els.panel
@@ -26330,6 +26334,8 @@ module.exports = {
                 stopover: true,
                 location: place.location
             });
+
+            this.$dispatch('map.refresh');
         },
         getPlaceIcon: function getPlaceIcon(place) {
             var icon = {
@@ -26413,6 +26419,12 @@ module.exports = {
     props: {
         'things': {
             type: Array
+        }
+    },
+
+    events: {
+        'map.refresh': function mapRefresh() {
+            this.navigateMe();
         }
     },
 
@@ -26504,16 +26516,6 @@ module.exports = {
             if (this.route.origin && this.route.destination) {
                 this.$refs.google.getDirection(request);
             }
-        },
-        addToWaypoint: function addToWaypoint(place) {
-            this.route.waypoints.push({
-                name: place.name,
-                stopover: true,
-                location: place.geometry.location
-            });
-        },
-        removeWaypoint: function removeWaypoint(place) {
-            this.route.waypoints.$remove(place);
         }
     }
 };
@@ -26545,6 +26547,7 @@ module.exports = {
     methods: {
         onChange: function onChange(selected) {
             this.mode = selected.value;
+            this.$dispatch('map.refresh');
         }
     }
 };
@@ -26702,11 +26705,14 @@ module.exports = {
                 draggable: '.item',
                 onUpdate: function onUpdate(e) {
                     self.waypoints.splice(e.newIndex, 0, self.waypoints.splice(e.oldIndex, 1)[0]);
+
+                    self.$dispatch('map.refresh');
                 }
             });
         },
         remove: function remove(waypoint) {
             this.waypoints.$remove(waypoint);
+            this.$dispatch('map.refresh');
         }
     },
 

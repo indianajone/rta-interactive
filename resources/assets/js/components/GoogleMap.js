@@ -29,11 +29,16 @@ module.exports = {
     ready: function () {
         var options = {
             center: this.location,
-            scrollwheel: false,
             zoom: 12
         };
         
         this.map = new google.maps.Map(this.$el, options);
+    },
+
+    watch: {
+        things: function (value) {
+            this.$dispatch('map.refresh');
+        }
     },
 
     methods: {
@@ -87,7 +92,6 @@ module.exports = {
             this.services.place = new google.maps.places.PlacesService(this.map);
             this.services.renderer = new google.maps.DirectionsRenderer({ 
                 map: this.map,
-                draggable: true,
                 // panel: this.$els.panel
             });
             
@@ -152,6 +156,8 @@ module.exports = {
                 stopover: true,
                 location: place.location
             });
+
+            this.$dispatch('map.refresh');
         },
         getPlaceIcon: function (place) {
             var icon = {
