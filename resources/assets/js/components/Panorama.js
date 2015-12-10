@@ -1,7 +1,7 @@
 var panorama = require('../vendor/jquery.panorama-viewer.js');
 
 module.exports = {
-    template: '<div class="panorama"><img :src="src"></div>',
+    template: '<div id="panorama" class="panorama lity-hide"><img :src="src"></div>',
 
     props: ['src'],
 
@@ -9,7 +9,8 @@ module.exports = {
         $(this.$el).panorama_viewer({
             direction: 'horizontal',
             repeat: true,
-            overay: false
+            overlay: false,
+            resize: true
         });
     }
 }

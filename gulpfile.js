@@ -21,6 +21,8 @@ elixir(function(mix) {
             'lity.css'
         ], 'public/css/vendor.css')
         .copy('node_modules/font-awesome/fonts', 'public/fonts')
+        .copy('node_modules/slick-carousel/slick/fonts', 'public/fonts')
+        .copy('node_modules/slick-carousel/slick/ajax-loader.gif', 'public/images')
         .browserify('app.js')
         .copy([
             'node_modules/jquery/dist/jquery.min.js',

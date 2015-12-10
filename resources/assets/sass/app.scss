@@ -5,6 +5,9 @@
 @import "components/variables";
 @import "components/theme";
 
+@import "node_modules/slick-carousel/slick/slick.scss";
+@import "node_modules/slick-carousel/slick/slick-theme.scss";
+
 @import "components/banner";
 @import "components/card";
 @import "components/ceo";

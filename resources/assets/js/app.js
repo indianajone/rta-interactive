@@ -1,18 +1,17 @@
 require('./core/bootstrap');
+require('./vendor/lity');
 
 new Vue({
     el: '#app',
-    
-    data: {
-        showModal: false
+
+    directives: {
+        slick: require('./components/CarouselSlick.js')
     },
 
     components: {
         placeFilter: require('./pages/PlaceFilter'),
         interactiveMap: require('./components/InteractiveMap'),
-        modal: require('./components/Modal'),
         search: require('./components/Search'),
-        slideshow: require('./components/SlideShow'),
-        panorama: require('./components/Panorama')
+        panorama: require('./components/Panorama'),
     }
 });

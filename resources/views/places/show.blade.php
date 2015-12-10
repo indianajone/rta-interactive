@@ -1,7 +1,14 @@
 @extends('layouts/master')
 
 @section('banner')
-    <slideshow type="banner"></slideshow>
+    <div class="slick slick--black" v-slick>
+        @foreach($place->photos as $photo)
+            <div class="item">
+                <img src="{{ asset($photo->path) }}" alt="{{ $place->name }}">
+                <span>{{ $place->name }}</span>
+            </div>
+        @endforeach
+    </div>
 @stop
 
 @section('content')
@@ -19,11 +26,15 @@
         @if($place->photos->count() >= 1 )
             <div class="place__photos">
                 <h3 class="heading--fancy">คลังภาพ</h3>
-                <slideshow 
-                    type="slideshow" 
-                    :options="{ contain: true }"
-                ></slideshow>
-                
+                <div class="slick" v-slick :options="{ slidesToShow: 3, slidesToScroll: 3 }">
+                    @foreach($place->photos as $photo)
+                        <div class="col-md-4">
+                            <a href="{{ asset($photo->path) }}" data-lity>
+                                <img src="{{ asset($photo->thumbnail_path) }}" alt="{{ $place->name }}">
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         @endif
         <div class="row">
@@ -31,19 +42,12 @@
                 <div class="place__vdo">
                     <h3 class="heading--fancy">วีดีโอ</h3>
                     <div class="place__image">
-                        <a  href="#"
-                            @click.prevent="showModal = true"
-                        >
+                        <a href="{{ $place->video->src }}" data-lity>
                             <img src="{{ asset($place->video->thumbnail) }}" alt="{{ $place->video->title }}">
                             <div class="place__overlay">
                                 <i class="fa fa-play-circle-o"></i>
                             </div>
                         </a>
-                        <modal v-if="showModal" :open.sync="showModal">
-                            <div class="modal-video" slot="body">
-                                {!! $place->video->src !!}
-                            </div>
-                        </modal>
                     </div>
                 </div>
             @endif
@@ -59,15 +63,11 @@
                 <div class="place__panorama">
                     <h3 class="heading--fancy">พาโนราม่า</h3>
                     <div class="place__image">
-                        <a href="#" @click.prevent="showModal = true">
+                        <a href="#panorama" data-lity>
                             <img src="{{ asset($place->panorama->thumbnail_path) }}" alt="{{ $place->name }}-panorama">
                         </a>
                     </div>
-                    <modal v-if="showModal" :open.sync="showModal">
-                        <div class="modal-panorama" slot="body">
-                            <panorama src="{{ asset($place->panorama->path) }}"></panorama>
-                        </div>
-                    </modal>
+                    <panorama src="{{ asset($place->panorama->path) }}"></panorama>
                 </div>
             @endif
         </div>

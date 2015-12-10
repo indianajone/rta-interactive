@@ -1,22 +1,31 @@
-.panorama {
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
+.pv-container {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  height: 600px;
 }
 
 .pv-inner {
-    display: block;
-    height:100%;
-    width:100%;
-    cursor: move;
-    overflow: hidden;
+    display: inline-block;
+    height: 100%;
+    width: auto;
     
-    &.pv-animating {
+    .pv-animating {
         transition: background-position 500ms ease-out;
     }
 
     .pv-pano {
+        height: 100%;
         width: auto;
-        height: 800px;
+    }
+}
+
+.pv-vertical { 
+    .pv-inner {
+        width: 100%;
+        .pv-pano {
+            height: auto;
+            width: 100%;
+        }
     }
 }

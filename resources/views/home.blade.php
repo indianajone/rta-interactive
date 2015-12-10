@@ -1,7 +1,14 @@
 @extends('layouts.master')
 
 @section('banner')
-    <slideshow type="banner"></slideshow>
+    <div class="slick slick--black" v-slick>
+        @foreach($places->first()->photos as $photo)
+            <div class="item">
+                <img class="img-responsive center-block" src="{{ $photo->path }}" alt="">
+                <span>{{ $places->first()->name }}</span>
+            </div>
+        @endforeach
+    </div>
 @stop
 
 @section('content')

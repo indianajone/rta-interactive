@@ -9399,12 +9399,14 @@ S2.define('jquery.select2',[
         document.addEventListener("touchmove", touchHandler, true);
         document.addEventListener("touchend", touchHandler, true);
         document.addEventListener("touchcancel", touchHandler, true);
+        
     
         return this.each(function() {
             var settings = $.extend({}, defaults, options);
             var el = $(this);
       
             el.find("> img").load(function () {
+
                 el.find("> img").addClass("pv-pano");
                 el.addClass("pv-container").wrapInner("<div class='pv-inner pv-animating'></div>");
 
@@ -9420,8 +9422,8 @@ S2.define('jquery.select2',[
                 });
 
                 var imgSrc = el.find(".pv-pano").attr("src");
-                var width = el.find(".pv-pano").width();
-                var height = el.find(".pv-pano").height();
+                var width = el.width(); 
+                var height = el.height();
                 var repeat = "no-repeat";
                 
                 if (settings.repeat == true) {
@@ -9432,7 +9434,7 @@ S2.define('jquery.select2',[
                     height: height,
                     width: width,
                     background: "url(" + imgSrc + ") " + repeat,
-                    "background-size": "cover"
+                    backgroundSize: "cover"
                 });
 
                 if (settings.overlay == true) {
@@ -9520,6 +9522,18 @@ S2.define('jquery.select2',[
 
                 $bg.bind('mousedown mouseup mouseleave', handle);
                 $bg.bind('dblclick', reset);
+               
+                if(settings.resize) {
+                    window.addEventListener("resize", resizeHandler, true);
+                    function resizeHandler(e) {
+                        el.find(".pv-inner").css({
+                            height: $(window).width() / 2,
+                            width: $(window).width()
+                        });
+                    }
+
+                    $(window).trigger('resize');
+                }
 
                 el.find(".pv-pano").hide()
             });
