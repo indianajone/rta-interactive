@@ -51,4 +51,5 @@ Route::group([ 'prefix' => 'api', 'as' => 'api.' ], function () {
     
     Route::post('places/{id}/panorama', ['as' => 'panoramas', 'uses' => 'Api\PanoramaController@store']);
     
+    Route::get('search', 'Api\SearchController@index');
 });

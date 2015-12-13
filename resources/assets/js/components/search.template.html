@@ -6,17 +6,38 @@
     >
     <i class="fa fa-search"></i>
     <div class="search__results">
-        <small class="search__item text-center" v-if="query.length && !results.length">no results</small>
-        <a  href="{{ item.rel }}" 
+        <small class="search__item text-center" v-if="noResults">no results</small>
+        <a v-if="noResults"
+            href="{{ item.rel }}" 
             class="search__item" 
-            v-for="item in results"
+            v-for="item in results.recommended"
             @mousedown="go(item.rel)"
         >
             <div class="search__left">
                 <img class="search__image" :src="item.thumbnail" alt="{{ item.name }}">
             </div>
             <div class="search__right">
-                <h5 class="search__heading">{{{ item.name | highlight }}}</h5>
+                <h5 class="search__heading">
+                    {{{ item.name | highlight }}} 
+                    <small class="label label-primary">แนะนำ</small>
+                </h5>
+                <p class="search__body">{{{ item.excerpt | highlight }}}</p>
+            </div>
+        </a>
+        <a
+            href="{{ item.rel }}" 
+            class="search__item" 
+            v-for="item in results.search | limitBy 5"
+            @mousedown="go(item.rel)"
+        >
+            <div class="search__left">
+                <img class="search__image" :src="item.thumbnail" alt="{{ item.name }}">
+            </div>
+            <div class="search__right">
+                <h5 class="search__heading">
+                    {{{ item.name | highlight }}} 
+                    <small v-if="item.recommended" class="label label-primary">แนะนำ</small>
+                </h5>
                 <p class="search__body">{{{ item.excerpt | highlight }}}</p>
             </div>
         </a>

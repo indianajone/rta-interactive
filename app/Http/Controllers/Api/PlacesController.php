@@ -18,7 +18,6 @@ class PlacesController extends Controller
                 'name' => $place->name,
                 'excerpt' => $place->excerpt,
                 'thumbnail' => asset($place->thumbnail),
-                'rel' => place_path($place),
                 'latitude' => $place->latitude,
                 'longitude' => $place->longitude
             ];

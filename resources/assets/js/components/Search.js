@@ -5,7 +5,10 @@ module.exports = {
     data: function () {
         return {
             query: '',
-            results: []
+            results: {
+                search: [],
+                recommended: []
+            }
         };
     },
 
@@ -30,10 +33,17 @@ module.exports = {
         }
     },
 
+    computed: {
+        noResults: function() {
+            return this.query.length && !this.results.search.length;
+        }
+    },
+
     methods: {
         search: function () {
-            this.$http.get('/api/places?q=' + this.query, function (data) {
-                this.results = data;
+            this.$http.get('/api/search?q=' + this.query, function (data) {
+                this.results.search = data.search;
+                this.results.recommended = data.recommended;
             }.bind(this));
         },
         go: function (rel) {
@@ -41,7 +51,10 @@ module.exports = {
         },  
         reset: function () {
             this.query = '';
-            this.results = [];
+            this.results = {
+                search: [],
+                recommended: []
+            }
         }
     }
  

@@ -30,6 +30,11 @@ class Place extends Model
         return $query->where('name', 'LIKE', "%{$keyword}%");
     }
 
+    public function scopeRecommended($query) 
+    {
+        return $query->where('recommended', true);
+    }
+
     public function banners() 
     {
         return $this->photos->map(function ($item) {
