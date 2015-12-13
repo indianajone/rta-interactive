@@ -46,7 +46,7 @@
                         <li>{!! nav_route('home', 'หน้าหลัก') !!}</li>
                         <li>{!! nav_route('places_path', 'รายชื่อสถานที่ท่องเที่ยว') !!}</li>
                         <li>{!! nav_route('map_path', 'แผนที่') !!}</li>
-                        <li><a class="navbar-main__link" href="#">แนะนำ</a></li>
+                        <li>{!! nav_route('recommended_path', 'แนะนำ') !!}</li>
                         <li>{!! nav_route('about_path', 'เกี่ยวกับเรา') !!}</li>
                     </ul>
                     <search></search>

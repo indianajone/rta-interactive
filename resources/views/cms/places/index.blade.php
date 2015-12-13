@@ -33,6 +33,7 @@
                         <img class="img-responsive" src="{{ asset($place->thumbnail) }}" alt="">
                     </td>
                     <td>
+                        @if($place->recommended) <span class="label label-primary">แนะนำ</span> @endif
                         <a href="{{ route('cms.places.edit', $place->id) }}">{{ $place->name }}</a>
                         <p>{{ $place->address }}</p>
                     </td>

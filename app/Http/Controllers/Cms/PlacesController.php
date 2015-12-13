@@ -27,7 +27,9 @@ class PlacesController extends Controller
      */
     public function index()
     {
-        $places = Place::paginate();
+        $places = Place::orderBy('recommended', 'desc')
+                        ->latest()
+                        ->paginate();
 
         return view('cms.places.index', compact('places'));
     }
@@ -99,17 +101,9 @@ class PlacesController extends Controller
         //
     }
 
-    private function getPlaceFields (PlaceRequest $request)
-    {
-        return $request->only(
-            'name', 'excerpt', 'description', 'street', 'subdistrict', 'district',
-            'province', 'postcode', 'latitude', 'longitude'
-        );
-    }
-
     private function createPlace (PlaceRequest $request) 
     {
-        $place = Place::create($this->getPlaceFields($request));
+        $place = Place::create($request->all());
 
         $place->categories()->attach($request->get('categories'));
 
@@ -120,7 +114,9 @@ class PlacesController extends Controller
 
     private function updatePlace (Place $place, PlaceRequest $request)
     {
-        $place->update($this->getPlaceFields($request));
+        $attributes = $request->all();
+
+        $place->update($attributes);
 
         $place->categories()->sync($request->get('categories'));
 

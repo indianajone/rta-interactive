@@ -4,6 +4,14 @@
         <h3 class="panel-title">ข้อมูล</h3>
     </div>
     <div class="panel-body">
+
+        <div class="form-group checkbox">
+            <label>
+                {!! Form::hidden('recommended', false) !!}
+                {!! Form::checkbox('recommended') !!}
+                เป็นสถานที่แนะนำ
+            </label>
+        </div>
         
         <div class="form-group">
             {!! Form::label('name', 'ชื่อสถานที่') !!}
