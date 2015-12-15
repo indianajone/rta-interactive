@@ -1,6 +1,6 @@
 <div class="ceo">
     <div class="ceo__image">
-        <img src="images/ceo.png" alt="ผู้บังคับบัญชา">
+        <img src="images/ceo.jpg" alt="ผู้บังคับบัญชา">
     </div>
     <div class="ceo__body">
         <h3 class="ceo__body__name">
