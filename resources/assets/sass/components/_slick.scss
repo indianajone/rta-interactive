@@ -1,6 +1,9 @@
 .slick--black {
     background-color: #000;
 }
+.slick-slide--fixed-height {
+    height: 450px;
+}
 .slick-slider {
     .slick-prev,
     .slick-next {
@@ -15,8 +18,7 @@
     .slick-list {
         .slick-slide {
             position: relative;
-            height: 500px;
-            @media only screen and (max-width: 600px) {
+             @media only screen and (max-width: 600px) {
                 height: 300px;
                 img {
                     max-width: none !important;

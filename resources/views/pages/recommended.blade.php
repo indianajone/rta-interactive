@@ -3,8 +3,8 @@
 @section('banner')
     <div class="slick slick--black" v-slick>
         @foreach($places->first()->photos as $photo)
-            <div class="item">
-                <img class="img-responsive center-block" src="{{ $photo->path }}" alt="">
+             <div class="slick-slide slick-slide--fixed-height">
+                <img src="{{ asset($photo->path) }}" alt="">
                 <span>{{ $places->first()->name }}</span>
             </div>
         @endforeach

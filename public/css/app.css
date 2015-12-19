@@ -12360,6 +12360,10 @@ a:hover {
   background-color: #000;
 }
 
+.slick-slide--fixed-height {
+  height: 450px;
+}
+
 .slick-slider .slick-prev,
 .slick-slider .slick-next {
   z-index: 2;
@@ -12375,7 +12379,6 @@ a:hover {
 
 .slick-slider .slick-list .slick-slide {
   position: relative;
-  height: 500px;
 }
 
 @media only screen and (max-width: 600px) {

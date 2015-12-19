@@ -3,7 +3,7 @@
 @section('banner')
     <div class="slick slick--black" v-slick>
         @foreach($place->photos as $photo)
-            <div class="item">
+            <div class="slick-slide slick-slide--fixed-height">
                 <img src="{{ asset($photo->path) }}" alt="{{ $place->name }}">
                 <span>{{ $place->name }}</span>
             </div>

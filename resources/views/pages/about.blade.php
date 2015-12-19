@@ -2,8 +2,8 @@
 
 @section('banner')
     <div class="slick slick--black" v-slick>
-        <div class="item">
-            <img class="img-responsive center-block" src="{{ asset('images/tmp/about.jpg') }}" alt="">
+         <div class="slick-slide">
+            <img src="{{ asset('images/tmp/about.jpg') }}" alt="">
             <span>เกี่ยวกับเรา</span>
         </div>
     </div>
