@@ -44,6 +44,12 @@
                                     <span>หน้าหลัก</span>
                                 </a>
                             </li>
+                            <li class="{{ Route::is('cms.ceo_path') ? 'active' : '' }}">
+                                <a href="{{ route('cms.ceo_path') }}">
+                                    <i class="fa fa-flag"></i>
+                                    <span>ผู้อำนวยการ</span>
+                                </a>
+                            </li>
                             <li class="{{ Route::is('cms.places.*') ? 'active' : '' }}">
                                 <a href="{{ route('cms.places.index') }}">
                                     <i class="fa fa-compass"></i>

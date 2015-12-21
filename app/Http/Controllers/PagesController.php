@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use Ravarin\Entities\Page;
 use Ravarin\Entities\Place;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,7 +12,9 @@ class PagesController extends Controller
 {
     public function about() 
     {
-        return view('pages.about');
+        $page = Page::where('name', 'about')->first();
+
+        return view('pages.about', compact('page'));
     }
 
     public function map() 
