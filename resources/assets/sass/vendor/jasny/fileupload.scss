@@ -1,0 +1,140 @@
+/*!
+ * Jasny Bootstrap v3.1.0 (http://jasny.github.com/bootstrap)
+ * Copyright 2011-2014 Arnold Daniels.
+ * Licensed under Apache-2.0 (https://github.com/jasny/bootstrap/blob/master/LICENSE)
+ */
+
+.btn-file {
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+
+    > input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        font-size: 23px;
+        height: 100%;
+        width: 100%;
+        direction: ltr;
+        cursor: pointer;
+    }
+}
+
+.fileinput {
+    margin-bottom: 9px;
+    display: inline-block;
+    .form-control {
+        padding-top: 7px;
+        padding-bottom: 5px;
+        display: inline-block;
+        margin-bottom: 0px;
+        vertical-align: middle;
+        cursor: text;
+    }
+
+    .thumbnail {
+        overflow: hidden;
+        display: inline-block;
+        margin-bottom: 5px;
+        vertical-align: middle;
+        text-align: center;
+
+        > img {
+            max-height: 100%;
+        }
+    }
+    .btn {
+        vertical-align: middle;
+    }
+
+    &-exists &-new,
+    &-new &-exists {
+        display: none;
+    }
+
+    &-new {
+        &.input-group,
+        .input-group, {
+            .btn-file {
+                border-radius: 0 4px 4px 0;
+                &.btn-xs,
+                &.btn-sm {
+                    border-radius: 0 3px 3px 0;
+                }
+                &.btn-lg {
+                    border-radius: 0 6px 6px 0;
+                }
+            }
+        }
+    }
+
+    &-inline &-controls {
+        display: inline;
+    }
+
+    &-filename {
+        vertical-align: middle;
+        display: inline-block;
+        overflow: hidden;  
+    }
+
+    &.input-group {
+        display: table;
+        > * {
+            position: relative;
+            z-index: 2;
+        }
+        > .btn-file {
+            z-index: 1;
+        }
+    }
+}
+
+.form-control {
+    .fileinput-filename {
+        vertical-align: bottom;
+    }
+}
+
+.form-group {
+    &.has-warning {
+        .fileinput {
+            &-preview {
+                color: #8a6d3b;
+            }
+            .thumbnail {
+                border-color: #faebcc;
+            }
+        }
+    }
+
+    &.has-error {
+        .fileinput {
+            &-preview {
+                color: #a94442;
+            }
+            .thumbnail {
+                border-color: #ebccd1;
+            }
+        }
+    }
+
+    &.has-success {
+        .fileinput {
+            &-preview {
+                color: #3c763d;
+            }
+            .thumbnail {
+                border-color: #d6e9c6;
+            }
+        }
+    }
+}
+
+.input-group-addon:not(:first-child) {
+  border-left: 0;
+}
