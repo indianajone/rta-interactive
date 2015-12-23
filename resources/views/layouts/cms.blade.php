@@ -47,7 +47,7 @@
                             <li class="{{ Route::is('cms.ceo_path') ? 'active' : '' }}">
                                 <a href="{{ route('cms.ceo_path') }}">
                                     <i class="fa fa-flag"></i>
-                                    <span>ผู้อำนวยการ</span>
+                                    <span>ผู้บังคับบัญชา</span>
                                 </a>
                             </li>
                             <li class="{{ Route::is('cms.places.*') ? 'active' : '' }}">

@@ -34,11 +34,34 @@ class Ceo
         return $this->model->body;
     }
 
+    public function name_en() 
+    {
+        $trans = $this->model->translate('en');
+        return $trans ? $trans->title : '';
+    }
+
+    public function position_en() 
+    {
+        $trans = $this->model->translate('en');
+        return $trans ? $trans->excerpt : '';
+    }
+
+    public function description_en() 
+    {
+        $trans = $this->model->translate('en');
+        return $trans ? $trans->body : '';
+    }
+
     public function image() 
     {
         return $this->model->attachments()
                     ->where('type', 'image')
                     ->first();
+    }
+
+    public function model() 
+    {
+        return $this->model;
     }
 
     public function __get($key) 
@@ -49,4 +72,16 @@ class Ceo
 
         return call_user_func_array([$this, $key], []);
     }
+
+    /**
+     * Determine if an attribute exists on the model.
+     *
+     * @param  string  $key
+     * @return bool
+     */
+    public function __isset($key)
+    {
+        return method_exists($this, $key);
+    }
+
 }

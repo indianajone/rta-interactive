@@ -24,7 +24,8 @@ Route::group(['prefix' => 'cms'], function () {
     Route::get('/logout', ['as' => 'cms.logout_path', 'uses' => 'Cms\Auth\AuthController@destroy']);
 
     Route::get('/dashboard', ['as' => 'cms.dashboard_path', 'uses' => 'Cms\DashboardController@index']);
-    Route::get('/ceo', ['as' => 'cms.ceo_path', 'uses' => 'Cms\PagesController@ceo']);
+    Route::get('/ceo', ['as' => 'cms.ceo_path', 'uses' => 'Cms\PagesController@showCeo']);
+    Route::put('/ceo', ['as' => 'cms.ceo_path', 'uses' => 'Cms\PagesController@updateCeo']);
     Route::resource('/places', 'Cms\PlacesController',  [
         'except' => ['show']
     ]);
