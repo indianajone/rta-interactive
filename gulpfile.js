@@ -31,6 +31,7 @@ elixir(function(mix) {
        .scripts([
             'vendor/jquery.min.js',
             'vendor/bootstrap.min.js',
+            'vendor/jasny-fileupload.js',
             'vendor/dropzone.js',
             'vendor/sweetalert-dev.js',
             'vendor/select2.js',
