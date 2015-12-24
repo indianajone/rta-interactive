@@ -11976,6 +11976,30 @@ button.close {
   border-radius: 0 4px 4px 0;
 }
 
+.fileinput-new.input-group .btn-file.btn-xs,
+.fileinput-new.input-group .btn-group-xs > .btn-file.btn,
+.fileinput-new.input-group .btn-file.heading__button--success,
+.fileinput-new.input-group .btn-file.btn-sm,
+.fileinput-new.input-group .btn-group-sm > .btn-file.btn,
+.fileinput-new.input-group .btn-group-sm > .btn-file.heading__button--success,
+.fileinput-new .input-group .btn-file.btn-xs,
+.fileinput-new .input-group .btn-group-xs > .btn-file.btn,
+.fileinput-new .input-group .btn-file.heading__button--success,
+.fileinput-new .input-group .btn-file.btn-sm,
+.fileinput-new .input-group .btn-group-sm > .btn-file.btn,
+.fileinput-new .input-group .btn-group-sm > .btn-file.heading__button--success {
+  border-radius: 0 3px 3px 0;
+}
+
+.fileinput-new.input-group .btn-file.btn-lg,
+.fileinput-new.input-group .btn-group-lg > .btn-file.btn,
+.fileinput-new.input-group .btn-group-lg > .btn-file.heading__button--success,
+.fileinput-new .input-group .btn-file.btn-lg,
+.fileinput-new .input-group .btn-group-lg > .btn-file.btn,
+.fileinput-new .input-group .btn-group-lg > .btn-file.heading__button--success {
+  border-radius: 0 6px 6px 0;
+}
+
 .fileinput-inline .fileinput-controls {
   display: inline;
 }
@@ -12003,31 +12027,7 @@ button.close {
   vertical-align: bottom;
 }
 
-.fileinput-new.input-group .btn-file.btn-xs,
-.fileinput-new.input-group .btn-group-xs > .btn-file.btn,
-.fileinput-new.input-group .btn-file.heading__button--success,
-.fileinput-new .input-group .btn-file.btn-xs,
-.fileinput-new .input-group .btn-group-xs > .btn-file.btn,
-.fileinput-new .input-group .btn-file.heading__button--success,
-.fileinput-new.input-group .btn-file.btn-sm,
-.fileinput-new.input-group .btn-group-sm > .btn-file.btn,
-.fileinput-new.input-group .btn-group-sm > .btn-file.heading__button--success,
-.fileinput-new .input-group .btn-file.btn-sm,
-.fileinput-new .input-group .btn-group-sm > .btn-file.btn,
-.fileinput-new .input-group .btn-group-sm > .btn-file.heading__button--success {
-  border-radius: 0 3px 3px 0;
-}
-
-.fileinput-new.input-group .btn-file.btn-lg,
-.fileinput-new.input-group .btn-group-lg > .btn-file.btn,
-.fileinput-new.input-group .btn-group-lg > .btn-file.heading__button--success,
-.fileinput-new .input-group .btn-file.btn-lg,
-.fileinput-new .input-group .btn-group-lg > .btn-file.btn,
-.fileinput-new .input-group .btn-group-lg > .btn-file.heading__button--success {
-  border-radius: 0 6px 6px 0;
-}
-
-.form-group.has-warning .fileinput .fileinput-preview {
+.form-group.has-warning .fileinput-preview {
   color: #8a6d3b;
 }
 
@@ -12035,7 +12035,7 @@ button.close {
   border-color: #faebcc;
 }
 
-.form-group.has-error .fileinput .fileinput-preview {
+.form-group.has-error .fileinput-preview {
   color: #a94442;
 }
 
@@ -12043,7 +12043,7 @@ button.close {
   border-color: #ebccd1;
 }
 
-.form-group.has-success .fileinput .fileinput-preview {
+.form-group.has-success .fileinput-preview {
   color: #3c763d;
 }
 
@@ -12545,20 +12545,6 @@ button.close {
 
 .pagination .active span {
   background-color: #094d44;
-}
-
-.panel-heading a {
-  float: left;
-}
-
-.panel-heading a.collapsed:before {
-  content: "";
-}
-
-.panel-heading a:before {
-  font-family: 'FontAwesome';
-  content: "";
-  color: grey;
 }
 
 .table tbody .collapseable {
