@@ -26,7 +26,6 @@
 
 .fileinput {
     margin-bottom: 9px;
-    display: inline-block;
     .form-control {
         padding-top: 7px;
         padding-bottom: 5px;
@@ -37,12 +36,8 @@
     }
 
     .thumbnail {
-        overflow: hidden;
-        display: inline-block;
-        margin-bottom: 5px;
-        vertical-align: middle;
-        text-align: center;
-
+        background-color: transparent;
+        border: none;
         > img {
             max-height: 100%;
         }

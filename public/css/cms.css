@@ -11937,7 +11937,6 @@ button.close {
 
 .fileinput {
   margin-bottom: 9px;
-  display: inline-block;
 }
 
 .fileinput .form-control {
@@ -11950,11 +11949,8 @@ button.close {
 }
 
 .fileinput .thumbnail {
-  overflow: hidden;
-  display: inline-block;
-  margin-bottom: 5px;
-  vertical-align: middle;
-  text-align: center;
+  background-color: transparent;
+  border: none;
 }
 
 .fileinput .thumbnail > img {

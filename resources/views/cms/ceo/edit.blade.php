@@ -26,10 +26,10 @@
                                 <div class="form-group">
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                         <div class="fileinput-new thumbnail">
-                                            <img src="{{ asset($ceo->image->path) }}" alt="{{ $ceo->image->title }}">
+                                            <img class="img-circle" src="{{ asset($ceo->image->path) }}" alt="{{ $ceo->image->title }}">
                                         </div>
                                         <div class="fileinput-preview fileinput-exists thumbnail"></div>
-                                        <div>
+                                        <div class="text-center">
                                             <span class="btn btn-default btn-file">
                                                 <span class="fileinput-new">Select image</span>
                                                 <span class="fileinput-exists">Change</span>
@@ -44,30 +44,30 @@
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane active" id="tha">
                                         <div class="form-group">
-                                            {!! Form::label('name', 'ชื่อนามสกุล') !!}
-                                            {!! Form::text('name', null , ['class' => 'form-control', 'placeholder' => 'ชื่อนามสกุล']) !!}
+                                            {!! Form::label('th.name', 'ชื่อนามสกุล') !!}
+                                            {!! Form::text('th.name', null , ['class' => 'form-control', 'placeholder' => 'ชื่อนามสกุล']) !!}
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('position', 'ตำแหน่ง') !!}
-                                            {!! Form::text('position', null, ['class' => 'form-control', 'placeholder' => 'ตำแหน่ง']) !!}
+                                            {!! Form::label('th.position', 'ตำแหน่ง') !!}
+                                            {!! Form::text('th.position', null, ['class' => 'form-control', 'placeholder' => 'ตำแหน่ง']) !!}
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('description', 'คำบรรยาย') !!}
-                                            {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => 5, 'placeholder' => 'คำบรรยาย']) !!}
+                                            {!! Form::label('th.description', 'คำบรรยาย') !!}
+                                            {!! Form::textarea('th.description', null, ['class' => 'form-control', 'rows' => 5, 'placeholder' => 'คำบรรยาย']) !!}
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane" id="eng">
                                         <div class="form-group">
-                                            {!! Form::label('name_en', 'ชื่อนามสกุล') !!}
-                                            {!! Form::text('name_en', null , ['class' => 'form-control', 'placeholder' => 'ชื่อนามสกุล']) !!}
+                                            {!! Form::label('en.name', 'ชื่อนามสกุล') !!}
+                                            {!! Form::text('en.name', null , ['class' => 'form-control', 'placeholder' => 'ชื่อนามสกุล']) !!}
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('position_en', 'ตำแหน่ง') !!}
-                                            {!! Form::text('position_en', null, ['class' => 'form-control', 'placeholder' => 'ตำแหน่ง']) !!}
+                                            {!! Form::label('en.position', 'ตำแหน่ง') !!}
+                                            {!! Form::text('en.position', null, ['class' => 'form-control', 'placeholder' => 'ตำแหน่ง']) !!}
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('description_en', 'คำบรรยาย') !!}
-                                            {!! Form::textarea('description_en', null, ['class' => 'form-control', 'rows' => 5, 'placeholder' => 'คำบรรยาย']) !!}
+                                            {!! Form::label('en.description', 'คำบรรยาย') !!}
+                                            {!! Form::textarea('en.description', null, ['class' => 'form-control', 'rows' => 5, 'placeholder' => 'คำบรรยาย']) !!}
                                         </div>
                                     </div>
                                 </div>

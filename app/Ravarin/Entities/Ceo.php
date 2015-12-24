@@ -14,42 +14,36 @@ class Ceo
      */
     protected $model;
 
+    protected $attributeMapper = [
+        'name' => 'title',
+        'position' => 'excerpt',
+        'description' => 'body'
+    ];
+
     public function __construct(Post $post) 
     {
         $this->model = $post->where('name', 'ceo') ->first();
     }
 
-    public function name() 
+    public function name($lang) 
     {
-        return $this->model->title;
+        $translate = $this->model->translate($lang);
+
+        return $translate ? $translate->title : null;
     }
 
-    public function position() 
+    public function position($lang) 
     {
-        return $this->model->excerpt;
+        $translate = $this->model->translate($lang);
+
+        return $translate ? $translate->excerpt : null;
     }
 
-    public function description() 
+    public function description($lang) 
     {
-        return $this->model->body;
-    }
+        $translate = $this->model->translate($lang);
 
-    public function name_en() 
-    {
-        $trans = $this->model->translate('en');
-        return $trans ? $trans->title : '';
-    }
-
-    public function position_en() 
-    {
-        $trans = $this->model->translate('en');
-        return $trans ? $trans->excerpt : '';
-    }
-
-    public function description_en() 
-    {
-        $trans = $this->model->translate('en');
-        return $trans ? $trans->body : '';
+        return $translate ? $translate->body : null;
     }
 
     public function image() 
@@ -59,18 +53,39 @@ class Ceo
                     ->first();
     }
 
-    public function model() 
+    public function update($data) 
     {
-        return $this->model;
+        foreach ($data as $lang => $attributes) {
+            foreach($attributes as $key => $value) {
+                $attribute = $this->getAttributes($key);
+                $this->model->translateOrNew($lang)->{$attribute} = $value;
+            }
+        }
+
+        $this->model->save();
+    }
+
+    private function getAttributes($key) {
+        if (!isset($this->attributeMapper[$key])) {
+            throw new LogicException("Undefined map key.");
+        } 
+
+        return $this->attributeMapper[$key];
     }
 
     public function __get($key) 
     {
-        if (!method_exists($this, $key)) {
-            throw new LogicException("Propery key: {$key} does not exists in Ceo");
+        $lang = '';
+
+        if (str_contains($key, '_')) {
+            list($lang, $key) = explode('_', $key);
         }
 
-        return call_user_func_array([$this, $key], []);
+        if (!method_exists($this, $key)) {
+            throw new LogicException("Property key: {$key} does not exists in Ceo");
+        }
+      
+        return call_user_func_array([$this, $key], [$lang]);
     }
 
     /**
@@ -81,6 +96,10 @@ class Ceo
      */
     public function __isset($key)
     {
+        if (str_contains($key, '_')) {
+            $key = explode('_', $key)[1];
+        }
+
         return method_exists($this, $key);
     }
 
