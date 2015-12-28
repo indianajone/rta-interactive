@@ -17,8 +17,18 @@ class Post extends Model
      */
     public $translatedAttributes = ['title', 'excerpt', 'body'];
 
-    protected $translationModel = 'Ravarin\Entities\PostTranslations';
+    /**
+     * Define translation model.
+     *
+     * @var string
+     */
+    protected $translationModel = PostTranslations::class;
 
+    /**
+     * Define translation relationship foreign key.
+     *
+     * @var string
+     */
     protected $translationForeignKey = 'post_id';
 
     /**

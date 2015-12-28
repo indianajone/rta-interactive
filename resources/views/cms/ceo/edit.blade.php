@@ -44,30 +44,30 @@
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane active" id="tha">
                                         <div class="form-group">
-                                            {!! Form::label('th.name', 'ชื่อนามสกุล') !!}
-                                            {!! Form::text('th.name', null , ['class' => 'form-control', 'placeholder' => 'ชื่อนามสกุล']) !!}
+                                            {!! Form::label('fullname:th', 'ชื่อนามสกุล') !!}
+                                            {!! Form::text('fullname:th', null , ['class' => 'form-control', 'placeholder' => 'ชื่อนามสกุล']) !!}
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('th.position', 'ตำแหน่ง') !!}
-                                            {!! Form::text('th.position', null, ['class' => 'form-control', 'placeholder' => 'ตำแหน่ง']) !!}
+                                            {!! Form::label('position:th', 'ตำแหน่ง') !!}
+                                            {!! Form::text('position:th', null, ['class' => 'form-control', 'placeholder' => 'ตำแหน่ง']) !!}
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('th.description', 'คำบรรยาย') !!}
-                                            {!! Form::textarea('th.description', null, ['class' => 'form-control', 'rows' => 5, 'placeholder' => 'คำบรรยาย']) !!}
+                                            {!! Form::label('description:th', 'คำบรรยาย') !!}
+                                            {!! Form::textarea('description:th', null, ['class' => 'form-control', 'rows' => 5, 'placeholder' => 'คำบรรยาย']) !!}
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane" id="eng">
                                         <div class="form-group">
-                                            {!! Form::label('en.name', 'ชื่อนามสกุล') !!}
-                                            {!! Form::text('en.name', null , ['class' => 'form-control', 'placeholder' => 'ชื่อนามสกุล']) !!}
+                                            {!! Form::label('fullname:en', 'ชื่อนามสกุล') !!}
+                                            {!! Form::text('fullname:en', null , ['class' => 'form-control', 'placeholder' => 'ชื่อนามสกุล']) !!}
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('en.position', 'ตำแหน่ง') !!}
-                                            {!! Form::text('en.position', null, ['class' => 'form-control', 'placeholder' => 'ตำแหน่ง']) !!}
+                                            {!! Form::label('position:en', 'ตำแหน่ง') !!}
+                                            {!! Form::text('position:en', null, ['class' => 'form-control', 'placeholder' => 'ตำแหน่ง']) !!}
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('en.description', 'คำบรรยาย') !!}
-                                            {!! Form::textarea('en.description', null, ['class' => 'form-control', 'rows' => 5, 'placeholder' => 'คำบรรยาย']) !!}
+                                            {!! Form::label('description:en', 'คำบรรยาย') !!}
+                                            {!! Form::textarea('description:en', null, ['class' => 'form-control', 'rows' => 5, 'placeholder' => 'คำบรรยาย']) !!}
                                         </div>
                                     </div>
                                 </div>

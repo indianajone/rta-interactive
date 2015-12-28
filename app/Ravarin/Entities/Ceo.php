@@ -2,105 +2,71 @@
 
 namespace Ravarin\Entities;
 
-use LogicException;
-use Ravarin\Entities\Post;
+use Ravarin\Entities\Page;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class Ceo
+class Ceo extends Page
 {
-    /**
-     * Ceo Model
-     *
-     * @var Ravarin\Entities\Post
-     */
-    protected $model;
+    // use MapableAttribute;
+
+    public $table = 'posts';
+
+    protected $morphClass = Post::class;
 
     protected $attributeMapper = [
-        'name' => 'title',
+        'fullname' => 'title',
         'position' => 'excerpt',
         'description' => 'body'
     ];
 
-    public function __construct(Post $post) 
+    // public function update(array $attributes = []) {
+    //     // $attributes = $this->transformDataFromRequest($attributes);
+    //     // $this->fill($attributes);
+    //     dd($attributes);
+    //     // return $this->fill($attributes)->save();
+    // }
+
+    protected function transformDataFromRequest(array $request = []) 
     {
-        $this->model = $post->where('name', 'ceo') ->first();
+        $data = [];
+        
+        foreach ($request as $key => $value) {
+            if ($this->isTanslatableFields($key)) {
+                list($lang, $attribute) = explode('_', $key);
+                $data[$lang][$this->getMapableAttribute($attribute)] = $value;
+            }
+            else {
+                $data[$key] = $value;
+            }
+        }
+
+        return $data;
     }
 
-    public function name($lang) 
+    public function updateImage(UploadedFile $file=null) 
     {
-        $translate = $this->model->translate($lang);
+        if ($file) {
+            $name = $file->getClientOriginalName();
+            $baseDir = 'uploaded/components';
+            $attachment = $this->image->fill([
+                'name' => $name,
+                'extension' => $file->getClientOriginalExtension(),
+                'path' => sprintf('%s/%s',$baseDir, $name)
+            ]);
 
-        return $translate ? $translate->title : null;
-    }
+            $file->move($baseDir, $name);
 
-    public function position($lang) 
-    {
-        $translate = $this->model->translate($lang);
-
-        return $translate ? $translate->excerpt : null;
-    }
-
-    public function description($lang) 
-    {
-        $translate = $this->model->translate($lang);
-
-        return $translate ? $translate->body : null;
+            $this->image()->save($attachment);
+        }
     }
 
     public function image() 
     {
-        return $this->model->attachments()
-                    ->where('type', 'image')
-                    ->first();
+        return $this->attachments->where('type', 'image');
     }
 
-    public function update($data) 
+    public function getImageAttribute() 
     {
-        foreach ($data as $lang => $attributes) {
-            foreach($attributes as $key => $value) {
-                $attribute = $this->getAttributes($key);
-                $this->model->translateOrNew($lang)->{$attribute} = $value;
-            }
-        }
-
-        $this->model->save();
+        return $this->image()->first();
     }
-
-    private function getAttributes($key) {
-        if (!isset($this->attributeMapper[$key])) {
-            throw new LogicException("Undefined map key.");
-        } 
-
-        return $this->attributeMapper[$key];
-    }
-
-    public function __get($key) 
-    {
-        $lang = '';
-
-        if (str_contains($key, '_')) {
-            list($lang, $key) = explode('_', $key);
-        }
-
-        if (!method_exists($this, $key)) {
-            throw new LogicException("Property key: {$key} does not exists in Ceo");
-        }
-      
-        return call_user_func_array([$this, $key], [$lang]);
-    }
-
-    /**
-     * Determine if an attribute exists on the model.
-     *
-     * @param  string  $key
-     * @return bool
-     */
-    public function __isset($key)
-    {
-        if (str_contains($key, '_')) {
-            $key = explode('_', $key)[1];
-        }
-
-        return method_exists($this, $key);
-    }
-
 }

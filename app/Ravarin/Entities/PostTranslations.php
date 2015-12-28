@@ -19,4 +19,9 @@ class PostTranslations extends Model
      * @var array
      */
     protected $fillable = ['title', 'excerpt', 'body'];
+
+    public function post() 
+    {
+        return $this->belongsTo(Post::class);
+    }
 }
