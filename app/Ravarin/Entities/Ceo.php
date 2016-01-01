@@ -7,10 +7,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Ceo extends Page
 {
-    // use MapableAttribute;
-
     public $table = 'posts';
-    public $model;
 
     protected $morphClass = Post::class;
 
@@ -25,9 +22,13 @@ class Ceo extends Page
         $data = [];
         
         foreach ($request as $key => $value) {
-            if ($this->isTanslatableFields($key)) {
-                list($lang, $attribute) = explode('_', $key);
-                $data[$lang][$this->getMapableAttribute($attribute)] = $value;
+
+            list($key, $locale) = $this->parseKeyAndLocale($key);
+
+            $key = $this->getMapableAttribute($key);
+            
+            if ($this->isTranslationAttribute($key)) {
+                $data[$locale][$key] = $value;
             }
             else {
                 $data[$key] = $value;
@@ -37,30 +38,90 @@ class Ceo extends Page
         return $data;
     }
 
+    public function isFillable($key) 
+    {
+        if (in_array($key, $this->translatedAttributes)) {
+            return true;
+        }
+
+        return parent::isFillable($key);
+    }
+
+    public function update(array $attributes = []) 
+    {
+        return parent::update($this->transformDataFromRequest($attributes));
+    }
+
     public function updateImage(UploadedFile $file=null) 
     {
         if ($file) {
-            $name = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $name = sha1(time() . '-' . $file->getClientOriginalName()) . '.' . $extension;
             $baseDir = 'uploaded/components';
             $attachment = $this->image->fill([
                 'name' => $name,
-                'extension' => $file->getClientOriginalExtension(),
+                'extension' => $extension,
                 'path' => sprintf('%s/%s',$baseDir, $name)
             ]);
 
             $file->move($baseDir, $name);
 
-            $this->image()->save($attachment);
+            $this->attachments()->where('type', 'image')->save($attachment);
         }
-    }
-
-    public function image() 
-    {
-        return $this->attachments->where('type', 'image');
     }
 
     public function getImageAttribute() 
     {
-        return $this->image()->first();
+        return $this->attachments->where('type', 'image')->first();
+    }
+
+    /**
+     * Get an attribute from the model.
+     *
+     * @param  string  $key
+     * @return mixed
+     */
+    public function getAttribute($key) 
+    {
+        list($key, $locale) = $this->parseKeyAndLocale($key);
+        $key = $this->getMapableAttribute($key);
+
+        return parent::getAttribute("$key:$locale" );
+    }
+
+    protected function parseKeyAndLocale($key) 
+    {
+        if (str_contains($key, ':')) {
+            list($key, $locale) = explode(':', $key);
+        } else {
+            $locale = $this->locale();
+        }
+
+        return [$key, $locale];
+    }
+
+    /**
+     * Determine if an attribute exists on the model.
+     *
+     * @param  string  $key
+     * @return bool
+     */
+    public function __isset($key)
+    {
+        $key = $this->getMapableAttribute($key);
+
+        return parent::__isset($key);
+    }
+
+     /**
+     * Get an real attribute from the mapable model.
+     *
+     * @param  string  $key
+     * @return mixed
+     */
+    public function getMapableAttribute($key) 
+    {
+        list($key, $locale) = $this->parseKeyAndLocale($key);
+        return isset($this->attributeMapper[$key]) ? $this->attributeMapper[$key] : $key;
     }
 }

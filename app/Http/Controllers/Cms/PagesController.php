@@ -27,10 +27,10 @@ class PagesController extends Controller
 
         $ceo = $ceo->where('name', 'ceo')->with('translations')->first();    
         $ceo->update($request->all());
-        // $ceo->updateImage($request->get('image'));
+        $ceo->updateImage($request->file('image'));
 
-        // dd($ceo->toArray());
-
+        flash()->success('Update!', "Ceo has been updated.");
+        
         return redirect()->route('cms.ceo_path');
     }
 }
