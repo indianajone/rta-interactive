@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Ravarin\Entities\Ceo;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->injectCeoComponent();
     }
 
     /**
@@ -24,5 +25,13 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    protected function injectCeoComponent() 
+    {
+        view()->composer('components.ceo', function ($view) {
+            $ceo = (new Ceo)->where('name', 'ceo')->with('translations')->first();
+            $view->with('ceo', $ceo);
+        });
     }
 }

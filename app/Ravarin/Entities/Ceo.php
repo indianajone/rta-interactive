@@ -10,6 +10,7 @@ class Ceo extends Page
     // use MapableAttribute;
 
     public $table = 'posts';
+    public $model;
 
     protected $morphClass = Post::class;
 
@@ -18,13 +19,6 @@ class Ceo extends Page
         'position' => 'excerpt',
         'description' => 'body'
     ];
-
-    // public function update(array $attributes = []) {
-    //     // $attributes = $this->transformDataFromRequest($attributes);
-    //     // $this->fill($attributes);
-    //     dd($attributes);
-    //     // return $this->fill($attributes)->save();
-    // }
 
     protected function transformDataFromRequest(array $request = []) 
     {
