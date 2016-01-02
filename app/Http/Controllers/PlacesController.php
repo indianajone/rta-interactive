@@ -27,7 +27,7 @@ class PlacesController extends Controller
                 'excerpt' => str_limit($place->excerpt),
                 'thumbnail' => asset($place->thumbnail),
                 'categories' => $place->categories->lists('id')->toArray(),
-                'url' => route('place_path', str_replace(' ', '-', $place->name))
+                'url' => place_path($place)
             ];
         }
 
@@ -44,7 +44,7 @@ class PlacesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($lang='th', $slug)
     {
         $place = Place::findBySlug($slug);
 
