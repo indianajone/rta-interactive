@@ -25,7 +25,7 @@ class PlacesController extends Controller
             $output[] = [
                 'name' => $place->name,
                 'excerpt' => str_limit($place->excerpt),
-                'thumbnail' => $place->thumbnail,
+                'thumbnail' => asset($place->thumbnail),
                 'categories' => $place->categories->lists('id')->toArray(),
                 'url' => route('place_path', str_replace(' ', '-', $place->name))
             ];

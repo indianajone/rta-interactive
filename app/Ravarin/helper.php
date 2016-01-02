@@ -1,12 +1,22 @@
 <?php 
 
+if (!function_exists('lang_route')) {
+    function lang_route($locale) {
+        $request = request()->instance();
+        $root = $request->root();
+        $path = preg_replace('/(?:en|th)\b\/?/', '', $request->path());
+        
+        return "{$root}/{$locale}/{$path}";
+    }
+}
+
 if (!function_exists('nav_route')) {
     function nav_route($route, $name) 
     {
         $link = '<a class="navbar-main__link'. 
                 (Route::is($route) ? '--active"' : '"') . 
-                ' href="' . route($route) . '">' . 
-                '<span>' . $name . '</span></a>';
+                ' href="' . route($route, ['lang' => session()->get('locale')]) . '">' . 
+                '<span>' . trans('menu.'.$name) . '</span></a>';
 
         return $link;
     }

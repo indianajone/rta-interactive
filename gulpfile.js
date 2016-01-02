@@ -18,7 +18,8 @@ elixir(function(mix) {
         .styles([
             'flickity.css',
             'sweetalert.css',
-            'lity.css'
+            'lity.css',
+            'summernote.css'
         ], 'public/css/vendor.css')
         .copy('node_modules/font-awesome/fonts', 'public/fonts')
         .copy('node_modules/slick-carousel/slick/fonts', 'public/fonts')
@@ -36,7 +37,8 @@ elixir(function(mix) {
             'vendor/sweetalert-dev.js',
             'vendor/select2.js',
             'vendor/jquery.panorama-viewer.js',
-            'vendor/lity.js'
+            'vendor/lity.js',
+            'vendor/summernote.js'
         ], 'public/js/vendor.js');
 
 });

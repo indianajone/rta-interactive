@@ -4,11 +4,35 @@ namespace App\Http\Controllers\Cms;
 
 use App\Http\Requests;
 use Ravarin\Entities\Ceo;
+use Ravarin\Entities\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Ravarin\Translations\TranslationTransformer;
 
 class PagesController extends Controller
 {
+    public function showAbout(Page $page) 
+    {
+        $page = $page->where('name', 'about')->first();
+
+        return view('cms.about.edit', compact('page'));
+    }
+
+    public function updateAbout(Request $request, Page $page, TranslationTransformer $transformer) 
+    {
+        $this->validate($request, [
+            'title:th' => 'required',
+            'body:th' => 'required'
+        ]);
+        
+        $about = $page->about();
+        $about->update($transformer->transform($request->all()));
+
+        flash()->success('Update!', "About us page has been updated.");
+
+        return redirect()->route('cms.about_path');
+    }
+
     public function showCeo(Ceo $ceo) 
     {
         $ceo = $ceo->where('name', 'ceo')->first();

@@ -49,6 +49,12 @@
                                     <span>ผู้บังคับบัญชา</span>
                                 </a>
                             </li>
+                            <li class="{{ Route::is('cms.about_path') ? 'active' : '' }}">
+                                <a href="{{ route('cms.about_path') }}">
+                                    <i class="fa fa-info"></i>
+                                    <span>เกี่ยวกับเรา</span>
+                                </a>
+                            </li>
                             <li class="{{ Route::is('cms.places.*') ? 'active' : '' }}">
                                 <a href="{{ route('cms.places.index') }}">
                                     <i class="fa fa-compass"></i>

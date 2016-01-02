@@ -31,9 +31,15 @@
                     <div class="navbar-right">
                         @include('components/navbar-social')
                         <ul class="nav navbar-nav">
-                            <li><a class="navbar-nav__link" href="#">เข้าสู่ระบบ</a></li>
-                            <li><a class="navbar-nav__link" href="#">ลงทะเบียน</a></li>
-                            <li><a class="navbar-nav__link" href="#">ลืมรหัสผ่าน</a></li>
+                            <li>
+                                <a class="navbar-nav__link" href="#">{{trans('menu.login') }}</a>
+                            </li>
+                            <li>
+                                <a class="navbar-nav__link" href="#">{{trans('menu.register') }}</a>
+                            </li>
+                            <li>
+                                <a class="navbar-nav__link" href="#">{{trans('menu.forget_password') }}</a>
+                            </li>
                         </ul>
                         @include ('components/navbar-flag')
                     </div>
@@ -43,11 +49,11 @@
             <div class="navbar-bottom">
                 <div class="container">
                     <ul class="navbar-main collapse navbar-collapse">
-                        <li>{!! nav_route('home', 'หน้าหลัก') !!}</li>
-                        <li>{!! nav_route('places_path', 'รายชื่อสถานที่ท่องเที่ยว') !!}</li>
-                        <li>{!! nav_route('map_path', 'แผนที่') !!}</li>
-                        <li>{!! nav_route('recommended_path', 'แนะนำ') !!}</li>
-                        <li>{!! nav_route('about_path', 'เกี่ยวกับเรา') !!}</li>
+                        <li>{!! nav_route('home', 'home') !!}</li>
+                        <li>{!! nav_route('places_path', 'places') !!}</li>
+                        <li>{!! nav_route('map_path', 'map') !!}</li>
+                        <li>{!! nav_route('recommended_path', 'recommended') !!}</li>
+                        <li>{!! nav_route('about_path', 'about') !!}</li>
                     </ul>
                     <search></search>
                 </div>

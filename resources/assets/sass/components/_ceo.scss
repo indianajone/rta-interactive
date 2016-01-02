@@ -1,5 +1,5 @@
 .ceo {
-
+    @extend .clearfix;
     @media (max-width: $screen-sm-max) {
         text-align: center;
     }

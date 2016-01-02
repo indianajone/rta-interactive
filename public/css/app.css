@@ -2087,7 +2087,6 @@ pre code {
 .col-sm-3,
 .col-md-3,
 .filter__category,
-.about__logo,
 .col-lg-3,
 .col-xs-4,
 .col-sm-4,
@@ -2119,7 +2118,6 @@ pre code {
 .col-xs-9,
 .col-sm-9,
 .col-md-9,
-.about__body,
 .col-lg-9,
 .col-xs-10,
 .col-sm-10,
@@ -2584,7 +2582,6 @@ pre code {
   .col-md-2,
   .col-md-3,
   .filter__category,
-  .about__logo,
   .col-md-4,
   .card,
   .place__vdo,
@@ -2598,7 +2595,6 @@ pre code {
   .col-md-7,
   .col-md-8,
   .col-md-9,
-  .about__body,
   .col-md-10,
   .col-md-11,
   .col-md-12 {
@@ -2614,8 +2610,7 @@ pre code {
   }
 
   .col-md-3,
-  .filter__category,
-  .about__logo {
+  .filter__category {
     width: 25%;
   }
 
@@ -2646,8 +2641,7 @@ pre code {
     width: 66.6666666667%;
   }
 
-  .col-md-9,
-  .about__body {
+  .col-md-9 {
     width: 75%;
   }
 
@@ -8447,12 +8441,15 @@ button.close {
 }
 
 .clearfix:before,
-.clearfix:after {
+.ceo:before,
+.clearfix:after,
+.ceo:after {
   content: " ";
   display: table;
 }
 
-.clearfix:after {
+.clearfix:after,
+.ceo:after {
   clear: both;
 }
 
@@ -12457,4 +12454,8 @@ a:hover {
 
 .about__logo img {
   margin: 0 auto;
+}
+
+.about__body {
+  font-size: 100%;
 }
