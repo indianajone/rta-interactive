@@ -2,18 +2,35 @@
 
 namespace Ravarin\Entities;
 
+use Dimsav\Translatable\Translatable;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable = ['name', 'parent_id'];
+    use Translatable;
+
+    protected $fillable = ['parent_id'];
+
+     /**
+     * Determine translatable fields.
+     *
+     * @var array
+     */
+    public $translatedAttributes = ['name'];
+
+    /**
+     * Define translation model.
+     *
+     * @var string
+     */
+    protected $translationModel = CategoryTranslations::class;
 
     public static function getRootsLevelWithChildren() 
     {
         return (new static)->root()
                 ->with('children')
-                ->get(['id', 'name', 'parent_id']);
+                ->get(['id', 'parent_id']);
     }
 
     public function totalPlaces() 
