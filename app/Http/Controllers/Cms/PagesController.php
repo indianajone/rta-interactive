@@ -11,6 +11,17 @@ use Ravarin\Translations\TranslationTransformer;
 
 class PagesController extends Controller
 {
+    protected $transformer;
+
+    public function __construct(TranslationTransformer $transformer) 
+    {
+        $this->middleware('auth');
+
+        $this->transformer = $transformer;
+
+        parent::__construct();    
+    }
+
     public function showAbout(Page $page) 
     {
         $page = $page->where('name', 'about')->first();
@@ -18,15 +29,16 @@ class PagesController extends Controller
         return view('cms.about.edit', compact('page'));
     }
 
-    public function updateAbout(Request $request, Page $page, TranslationTransformer $transformer) 
+    public function updateAbout(Request $request, Page $page) 
     {
         $this->validate($request, [
             'title:th' => 'required',
             'body:th' => 'required'
         ]);
         
-        $about = $page->about();
-        $about->update($transformer->transform($request->all()));
+        $page->about()->update(
+            $this->transformer->transform($request->all())
+        );
 
         flash()->success('Update!', "About us page has been updated.");
 
