@@ -6,8 +6,12 @@
     </div>
     <div class="panel-body"> 
         <div class="form-group">
-            {!! Form::label('name', 'ชื่อ') !!}
-            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'ชื่อ']) !!}
+            {!! Form::label('name:th', 'ชื่อภาษาไทย') !!}
+            {!! Form::text('name:th', null, ['class' => 'form-control', 'placeholder' => 'ภาษาไทย']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('name:en', 'ชื่อภาษาอังกฤษ') !!}
+            {!! Form::text('name:en', null, ['class' => 'form-control', 'placeholder' => 'ภาษาอังกฤษ']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('parent_id', 'เป็นหมวดหมู่ย่อยของ') !!}

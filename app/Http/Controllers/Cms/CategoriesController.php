@@ -6,12 +6,17 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Ravarin\Entities\Category;
 use App\Http\Controllers\Controller;
+use Ravarin\Translations\TranslationTransformer;
 
 class CategoriesController extends Controller
 {
-    public function __construct() 
+    protected $transformer;
+
+    public function __construct(TranslationTransformer $transformer) 
     {
         $this->middleware('auth');
+
+        $this->transformer = $transformer;
 
         parent::__construct();    
     }
@@ -46,7 +51,13 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {  
-        $category = Category::create($request->all());
+        $this->validate($request, [
+            'title:th' => 'required'
+        ]);
+
+        $category = Category::create(
+            $this->transformer->transform($request->all())
+        );
 
         flash()->success('Success!', "$category->name has been created.");
 
@@ -77,7 +88,9 @@ class CategoriesController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        $category->update($request->all());
+        $category->update(
+            $this->transformer->transform($request->all())
+        );
 
         flash()->success('Updated!', "$category->name has been updated.");
 

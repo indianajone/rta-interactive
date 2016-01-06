@@ -5,10 +5,13 @@ namespace Ravarin\Entities;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Ravarin\Translations\TranslateMapable;
 
 class Category extends Model
 {
-    use Translatable;
+    use TranslateMapable, Translatable {
+        TranslateMapable::__isset insteadof Translatable;
+    }
 
     protected $fillable = ['parent_id'];
 
@@ -29,13 +32,18 @@ class Category extends Model
     public static function getRootsLevelWithChildren() 
     {
         return (new static)->root()
-                ->with('children')
+                ->with('children', 'translations')
                 ->get(['id', 'parent_id']);
     }
 
     public function totalPlaces() 
     {
-        return $this->children()->with('places')->get()
+        // dd($this->children()->with('places')->get());
+        return $this->children()->with([
+                        'places' => function ($query) {
+                            return $query->select('id');
+                        }])
+                    ->get()
                     ->lists('places')
                     ->collapse()->unique('id')
                     ->count();
@@ -43,7 +51,14 @@ class Category extends Model
 
     public function listGroups() 
     {
-        return $this->root()->get()->lists('name', 'id');
+        $lists = [];
+        $categories = $this->root()->get();
+
+        foreach ($categories as $category) {
+            $lists = array_add($lists, $category->id ,$category->name);
+        }
+        
+        return $lists;
     }
 
     public function listGroupWithChildren() 
@@ -101,5 +116,23 @@ class Category extends Model
     public function places() 
     {
         return $this->belongsToMany(Place::class)->withTimestamps();
+    }
+
+    /**
+     * Determine if an attribute exists on the model.
+     *
+     * @param  string  $key
+     * @return bool
+     */
+    public function __isset($key) 
+    {
+        $key = $this->getMapableAttribute($key);
+
+        // Bug: when using translatable
+        if ($key == 'useTranslationFallback') {
+            return config('translatable.use_fallback');
+        }
+
+        return $this->isTranslationAttribute($key) || true;
     }
 }
