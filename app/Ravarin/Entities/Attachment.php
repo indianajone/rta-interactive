@@ -4,10 +4,13 @@ namespace Ravarin\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Dimsav\Translatable\Translatable;
+use Ravarin\Translations\TranslateMapable;
 
 class Attachment extends Model
 {
-    use Translatable;
+    use TranslateMapable, Translatable {
+        TranslateMapable::__isset insteadof Translatable;
+    }
 
     /**
      * Determine translatable fields.
@@ -31,5 +34,12 @@ class Attachment extends Model
     public function attachable()
     {
         return $this->morphTo();
+    }
+
+    public function trans($locale, $attribute) 
+    {
+        $trans = $this->translate($locale);
+
+        return $trans ? $trans->{$attribute} : '';
     }
 }

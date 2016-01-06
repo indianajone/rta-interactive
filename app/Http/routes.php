@@ -43,6 +43,9 @@ Route::group([ 'prefix' => 'api', 'as' => 'api.' ], function () {
     Route::post('places/{id}/panorama', ['as' => 'panoramas', 'uses' => 'Api\PanoramaController@store']);
     
     Route::get('search', 'Api\SearchController@index');
+
+    Route::get('attachments/{id}', ['as' => 'attachment_path', 'uses' => 'Api\AttachmentController@show']);
+    Route::put('attachments/{id}', ['as' => 'attachment_path', 'uses' => 'Api\AttachmentController@update']);
 });
 
 
