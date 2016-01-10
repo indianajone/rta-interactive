@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf_token" id="csrf_token" value={{ csrf_token() }}>
     <title>@yield ('title', 'สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก')</title>
     <link rel="stylesheet" href="/css/vendor.css">
     <link rel="stylesheet" href="/css/app.css">
@@ -31,15 +32,24 @@
                     <div class="navbar-right">
                         @include('components/navbar-social')
                         <ul class="nav navbar-nav">
-                            <li>
-                                <a class="navbar-nav__link" href="#">{{trans('menu.login') }}</a>
-                            </li>
-                            <li>
-                                <a class="navbar-nav__link" href="#">{{trans('menu.register') }}</a>
-                            </li>
-                            <li>
-                                <a class="navbar-nav__link" href="#">{{trans('menu.forget_password') }}</a>
-                            </li>
+                            @if(!Auth::check())
+                                <li>
+                                    <button @click="openModal('login', 'login')" class="navbar-nav__link">{{ trans('menu.login') }}</button>
+                                </li>
+                                <li>
+                                    <button @click="openModal('login', 'register')" class="navbar-nav__link">{{trans('menu.register') }}</button>
+                                </li>
+                                <li>
+                                    <button class="navbar-nav__link">{{trans('menu.forget_password') }}</button>
+                                </li>
+                            @else 
+                                <li>
+                                    <p class="navbar-text text-muted"> Hello {{ Auth::user()->name }}</p>
+                                </li>
+                                <li>
+                                    <logout text={{ trans('menu.logout') }}></logout>
+                                </li>
+                            @endif
                         </ul>
                         @include ('components/navbar-flag')
                     </div>
@@ -92,6 +102,7 @@
                 </div>
             </div>
         </footer>
+        @include('components.modals.auth')
     </div>
     @include ('components.vars')
     <script src="/js/app.js"></script>

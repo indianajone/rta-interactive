@@ -11,17 +11,18 @@
 
     .navbar-right {
         @extend .hidden-xs;
-        .navbar-nav {
-            &__link {
-                color: white;
-                font-size: 12px;
-                line-height: 27px;
-                padding: 15px 10px;
-                &:hover {
-                    color: $green-lighter;
-                }
-            }
-        }
+    }
+}
+
+.navbar-nav__link {
+    @extend .btn;
+    background-color: transparent;
+    color: white;
+    font-size: 12px;
+    line-height: 27px;
+    padding: 15px 10px;
+    &:hover {
+        color: $green-lighter;
     }
 }
 
@@ -36,6 +37,7 @@
 .navbar-main {
     @extend .nav;
     @extend .navbar-nav;
+    
     & &__link {
         color: white;
         font-size: 13px;

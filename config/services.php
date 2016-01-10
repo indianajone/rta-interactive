@@ -35,4 +35,16 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => env('FB_APP_ID'), 
+        'client_secret' => env('FB_SECRET'),
+        'redirect' => config('app.url') . '/auth/facebook'
+    ],
+
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => config('app.url') . '/auth/google'
+    ],
+
 ];

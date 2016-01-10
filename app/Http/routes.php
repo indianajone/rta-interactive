@@ -5,8 +5,8 @@
 | Backend Routes
 |--------------------------------------------------------------------------
 */
-Route::group(['prefix' => 'cms'], function () {
-
+Route::group(['prefix' => 'cms'], function () 
+{
     Route::get('/login', ['as' => 'cms.login_path', 'uses' => 'Cms\Auth\AuthController@index']);
     Route::post('/login', ['as' => 'cms.login_path', 'uses' => 'Cms\Auth\AuthController@store']);
     Route::get('/logout', ['as' => 'cms.logout_path', 'uses' => 'Cms\Auth\AuthController@destroy']);
@@ -33,7 +33,13 @@ Route::group(['prefix' => 'cms'], function () {
 | Api Routes
 |--------------------------------------------------------------------------
 */
-Route::group([ 'prefix' => 'api', 'as' => 'api.' ], function () {
+Route::group([ 'prefix' => 'api', 'as' => 'api.' ], function ()
+{
+    Route::get('login/{provider}', ['as' => 'login_path', 'uses' => 'Api\AuthController@store']);
+    Route::post('login', ['as' => 'login_path', 'uses' => 'Api\AuthController@store']);
+    Route::post('register', ['as' => 'register_path', 'uses' => 'Api\UsersController@store']);
+    Route::delete('logout', ['as' => 'logout_path', 'uses' => 'Api\AuthController@destroy']);
+
     
     Route::get('places', [ 'as' => 'place_path', 'uses' => 'Api\PlacesController@index']);
     Route::post('places/{id}/photos', [ 'as' => 'place.photos', 'uses' => 'Api\PhotosController@store']);
@@ -54,7 +60,11 @@ Route::group([ 'prefix' => 'api', 'as' => 'api.' ], function () {
 | Frontend Routes
 |--------------------------------------------------------------------------
 */
-Route::group(['middleware' => ['locale']], function () {
+
+Route::get('auth/{provider}', 'AuthController@index');
+
+Route::group(['middleware' => ['locale']], function () 
+{
     Route::get('{lang?}/', ['as' => 'home', 'uses' => 'HomeController@index']);
     Route::get('{lang?}/map', ['as' => 'map_path', 'uses' => 'PagesController@map']);
     Route::get('{lang?}/aboutus', ['as' => 'about_path', 'uses' => 'PagesController@about']);

@@ -7,6 +7,7 @@ return [
     'recommended' => 'แนะนำ',
     'about' => 'เกี่ยวกับเรา',
     'login' => 'เข้าสู่ระบบ',
+    'logout' => 'ออกจากระบบ',
     'register' => 'ลงทะเบียน',
     'forget_password' => 'ลืมรหัสผ่าน'
 ];

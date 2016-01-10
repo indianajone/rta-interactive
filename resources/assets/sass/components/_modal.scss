@@ -5,55 +5,81 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, .7);
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
     transition: opacity .3s ease;
 }
 
 .modal-wrapper {
-    position: relative;
-    max-width: 80%;
-    margin: 50px auto;
-    overflow: hidden;
-    height: 80%;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .modal-container {
+    width: 80%;
+    @media only screen and (min-width: 768px) {
+        width: 500px;
+    }
     margin: 0px auto;
+    background-color: #fff;
     border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
     transition: all .3s ease;
 }
 
-.modal-header h3 {
-    margin-top: 0;
-    color: #42b983;
-}
-
-.modal-body {
-    margin: 20px 0;
-}
-
-.modal-video {
-    position:relative;
-    padding-bottom:56.25%;
-    padding-top:30px;
-    height:0;
-    overflow:hidden;
-
-    iframe,
-    embed,
-    object {
-        position:absolute;
-        width:100%;
-        height:100%;
+.modal-header { 
+    padding-bottom: 0;
+    .nav-tabs { border: none; }
+    h3 {
+        margin-top: 0;
     }
 }
 
+.modal-body {
+    margin: 20px 30px;
+}
+
+.model-footer {
+}
+
+/*
+ * the following styles are auto-applied to elements with
+ * v-transition="modal" when their visiblity is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+
 .modal-enter, .modal-leave {
-  opacity: 0;
+    opacity: 0;
 }
 
 .modal-enter .modal-container,
 .modal-leave .modal-container {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
+}
+
+.modal-close {
+    color: #fff;
+    font-style: normal;
+    font-size: 35px;
+    font-family: Arial, Baskerville, monospace;
+    line-height: 35px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    border: 0;
+    background: none;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    z-index: 9994;
+    width: 35px;
+    height: 35px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    -webkit-appearance: none;
+    cursor: pointer;
+    text-decoration: none;
 }

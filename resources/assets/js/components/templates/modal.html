@@ -1,0 +1,8 @@
+<div @click="close" class="modal-mask" v-show="show" transition="modal">
+    <div class="modal-wrapper">
+        <div class="modal-container">
+            <slot></slot>
+        </div>
+        <button class="modal-close" @click="show = false">×</button>
+    </div> 
+</div>

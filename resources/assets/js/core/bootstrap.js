@@ -9,6 +9,8 @@ Vue.config.debug = true;
 Vue.use(require('vue-resource'));
 Vue.use(require('vue-chunk'));
 
+Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#csrf_token').getAttribute('value');
+
 /*
  * Load Underscore, used for map / reduce on arrays.
  */
