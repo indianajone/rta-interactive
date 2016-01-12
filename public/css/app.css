@@ -11683,6 +11683,12 @@ a:hover {
   color: #267671;
 }
 
+.notfound__body {
+  color: #777777;
+  font-size: 100%;
+  text-align: center;
+}
+
 /* Slider */
 
 .slick-slider {

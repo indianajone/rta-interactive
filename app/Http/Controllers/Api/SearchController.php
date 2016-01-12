@@ -24,7 +24,7 @@ class SearchController extends Controller
     {
         return $data->map(function ($place) {
             return [
-                'name' => $place->name,
+                'name' => $place->title,
                 'excerpt' => $place->excerpt,
                 'thumbnail' => asset($place->thumbnail),
                 'recommended' => $place->recommended,

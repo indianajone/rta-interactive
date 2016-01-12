@@ -5,14 +5,41 @@ namespace Ravarin\Entities;
 use Illuminate\Support\Str;
 use App\Ravarin\Entities\Photo;
 use App\Ravarin\Entities\Panorama;
+use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
+use Ravarin\Translations\TranslateMapable;
 
 class Place extends Model
 {
-    protected $fillable = [
-        'name', 'recommended', 'excerpt', 'description', 'street', 'subdistrict',
-        'district', 'province', 'postcode', 'latitude', 'longitude'
+    use TranslateMapable, Translatable {
+        TranslateMapable::__isset insteadof Translatable;
+    }
+
+    public static function boot()  
+    {
+        parent::boot();
+
+        static::saving(function($place) {
+            $place->name = slugify($place->title);
+        });
+    }
+
+     /**
+     * Determine translatable fields.
+     *
+     * @var array
+     */
+    public $translatedAttributes = [
+        'title', 'excerpt', 'description',
+        'street', 'subdistrict', 'district', 'province', 'postcode'
     ];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['name', 'recommended', 'latitude', 'longitude'];
 
     /**
      * Get place by its name
@@ -22,7 +49,7 @@ class Place extends Model
      */
     public static function findBySlug($slug)
     {
-        return (new static)->where('name', str_replace('-', ' ', $slug))->firstOrFail();
+        return (new static)->whereTranslation('title', str_replace('-', ' ', $slug))->firstOrFail();
     }
 
     public function scopeSearch($query, $keyword) 
@@ -116,6 +143,24 @@ class Place extends Model
     public function video() 
     {
         return $this->hasOne(Video::class);
+    }
+
+    /**
+     * Determine if an attribute exists on the model.
+     *
+     * @param  string  $key
+     * @return bool
+     */
+    public function __isset($key) 
+    {
+        $key = $this->getMapableAttribute($key);
+
+        // Bug: when using translatable
+        if ($key == 'useTranslationFallback') {
+            return config('translatable.use_fallback');
+        }
+
+        return $this->isTranslationAttribute($key) || true;
     }
 
     /**

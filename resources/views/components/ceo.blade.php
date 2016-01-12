@@ -1,7 +1,9 @@
 <div class="ceo">
-    <div class="ceo__image">
-        <img src="{{ asset($ceo->image->path) }}" alt="{{ $ceo->image->title }}">
-    </div>
+    @if($ceo->image)
+        <div class="ceo__image">
+            <img src="{{ asset($ceo->image->path) }}" alt="{{ $ceo->image->title }}">
+        </div>
+    @endif
     <div class="ceo__body">
         <h3 class="ceo__body__name">
             {{ $ceo->fullname }}

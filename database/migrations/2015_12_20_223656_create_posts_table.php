@@ -42,7 +42,7 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('post_translation');
+        Schema::drop('post_translations');
         Schema::drop('posts');
     }
 }

@@ -3,7 +3,6 @@
 namespace Ravarin\Entities;
 
 use Dimsav\Translatable\Translatable;
-use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Ravarin\Translations\TranslateMapable;
 

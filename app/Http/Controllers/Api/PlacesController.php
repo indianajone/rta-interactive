@@ -15,7 +15,7 @@ class PlacesController extends Controller
 
         $results = $places->map(function ($place) {
             return [
-                'name' => $place->name,
+                'name' => $place->title,
                 'excerpt' => $place->excerpt,
                 'thumbnail' => asset($place->thumbnail),
                 'latitude' => $place->latitude,

@@ -14,20 +14,24 @@ class HomeController extends Controller
     {
         $places = Place::latest()->limit(9)->get();
 
-        $this->generateSlideShow($places);
+        // $this->generateSlideShow($places);
         
         return view('home', compact('places'));
     }
 
     private function generateSlideShow($places) 
     {
-        $photos = $places->first()->photos->sortByDesc('created_at')->map(function($photo) {
-            return [
-                'title' => $photo->place->name,
-                'src' => asset($photo->path)
-            ];
-        })->toArray();
+        $place = $places->first();
 
-        Javascript::put(compact('photos'));
+        if ($place) {
+            $place->photos->sortByDesc('created_at')->map(function($photo) {
+                return [
+                    'title' => $photo->place->name,
+                    'src' => asset($photo->path)
+                ];
+            })->toArray();
+
+            Javascript::put(compact('photos'));
+        }
     }
 }

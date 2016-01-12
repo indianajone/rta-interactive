@@ -1,5 +1,18 @@
 <?php 
 
+if (!function_exists('slugify')) {
+    function slugify($title, $separator=null) 
+    {
+        $separator =  $separator ?: '-';
+
+        $title = preg_replace('~[^\\pL\d้ำัไใาะี๊ๆฯ็้๋่ิ์ุูึๅ]+~u', $separator, $title);
+        $title = trim($title, '-');
+        $title = iconv('utf-8', 'utf-8', $title);
+        
+        return trim(strtolower($title));
+    }
+}
+
 if (!function_exists('lang_route')) {
     function lang_route($locale) {
         $request = request()->instance();

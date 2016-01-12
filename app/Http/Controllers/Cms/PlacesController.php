@@ -10,12 +10,17 @@ use Ravarin\Services\AddPlacePhoto;
 use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManager;
 use App\Http\Requests\Cms\PlaceRequest;
+use Ravarin\Translations\TranslationTransformer;
 
 class PlacesController extends Controller
 {
-    public function __construct() 
+    protected $transformer;
+
+    public function __construct(TranslationTransformer $transformer) 
     {
         $this->middleware('auth');
+
+        $this->transformer = $transformer;
         
         parent::__construct();
     }
@@ -54,6 +59,7 @@ class PlacesController extends Controller
      */
     public function store(PlaceRequest $request)
     {
+        
         $place = $this->createPlace($request);
 
         flash()->success('Success!', "$place->name has been created.");
@@ -103,7 +109,7 @@ class PlacesController extends Controller
 
     private function createPlace (PlaceRequest $request) 
     {
-        $place = Place::create($request->all());
+        $place = Place::create($this->transformer->transform($request->all()));
 
         $place->categories()->attach($request->get('categories'));
 
@@ -114,9 +120,7 @@ class PlacesController extends Controller
 
     private function updatePlace (Place $place, PlaceRequest $request)
     {
-        $attributes = $request->all();
-
-        $place->update($attributes);
+        $place->update($this->transformer->transform($request->all()));
 
         $place->categories()->sync($request->get('categories'));
 

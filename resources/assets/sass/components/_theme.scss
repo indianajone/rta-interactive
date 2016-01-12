@@ -22,3 +22,11 @@ a {
         color: $green-lighter;
     }
 }
+
+.notfound {
+    &__body {
+        color: $gray-light;
+        font-size: 100%;
+        text-align: center;
+    }
+}

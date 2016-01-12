@@ -24,15 +24,15 @@ class PlaceRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
-            'description' => 'required',
-            'street' => 'required',
-            'subdistrict' => 'required',
-            'district' => 'required',
-            'province' => 'required',
-            'postcode' => 'required',
+            'title:th' => 'required',
+            'description:th' => 'required',
+            'street:th' => 'required',
+            'subdistrict:th' => 'required',
+            'district:th' => 'required',
+            'province:th' => 'required',
+            'postcode:th' => 'required',
             'latitude' => 'required',
-            'longitude' => 'required'
+            'longitude' => 'required',
         ];
     }
 }

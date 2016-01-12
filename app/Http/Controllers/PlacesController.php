@@ -23,7 +23,7 @@ class PlacesController extends Controller
         
         foreach($result as $place) {
             $output[] = [
-                'name' => $place->name,
+                'name' => $place->title,
                 'excerpt' => str_limit($place->excerpt),
                 'thumbnail' => asset($place->thumbnail),
                 'categories' => $place->categories->lists('id')->toArray(),

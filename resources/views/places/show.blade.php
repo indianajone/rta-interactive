@@ -4,15 +4,15 @@
     <div class="slick slick--black" v-slick>
         @foreach($place->photos as $photo)
             <div class="slick-slide slick-slide--fixed-height">
-                <img src="{{ asset($photo->path) }}" alt="{{ $place->name }}">
-                <span>{{ $place->name }}</span>
+                <img src="{{ asset($photo->path) }}" alt="{{ $place->title }}">
+                <span>{{ $place->title }}</span>
             </div>
         @endforeach
     </div>
 @stop
 
 @section('content')
-    <h2 class="heading--fancy">{{ $place->name }}</h2>
+    <h2 class="heading--fancy">{{ $place->title }}</h2>
     <div class="place">
         <div class="place__buttons">
             <a href="#"><i class="fa fa-lg fa-car"></i></a>
@@ -21,7 +21,7 @@
             <a href="#"><i class="fa fa-lg fa-share-alt"></i></a>
         </div>
         <div class="place__body">
-            {{ $place->description }}
+            {!! $place->description !!}
         </div>
         @if($place->photos->count() >= 1 )
             <div class="place__photos">
@@ -30,7 +30,7 @@
                     @foreach($place->photos as $photo)
                         <div class="col-md-4">
                             <a href="{{ asset($photo->path) }}" data-lity>
-                                <img src="{{ asset($photo->thumbnail_path) }}" alt="{{ $place->name }}">
+                                <img src="{{ asset($photo->thumbnail_path) }}" alt="{{ $place->title }}">
                             </a>
                         </div>
                     @endforeach
@@ -55,7 +55,7 @@
                 <div class="place__mini-map">
                     <h3 class="heading--fancy">แผนที่</h3>
                     <div class="place__image">
-                        <img src="/images/default.jpg" alt="{{ $place->name }}">
+                        <img src="/images/default.jpg" alt="{{ $place->title }}">
                     </div>
                 </div>
             @endif
@@ -64,7 +64,7 @@
                     <h3 class="heading--fancy">พาโนราม่า</h3>
                     <div class="place__image">
                         <a href="#panorama" data-lity>
-                            <img src="{{ asset($place->panorama->thumbnail_path) }}" alt="{{ $place->name }}-panorama">
+                            <img src="{{ asset($place->panorama->thumbnail_path) }}" alt="{{ $place->title }}-panorama">
                         </a>
                     </div>
                     <panorama src="{{ asset($place->panorama->path) }}"></panorama>
