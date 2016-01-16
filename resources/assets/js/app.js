@@ -35,5 +35,6 @@ new Vue({
         panorama: require('./components/Panorama'),
         login: require('./components/Login'),
         logout: require('./components/Logout'),
+        readmore: require('./components/Readmore')
     }
 });

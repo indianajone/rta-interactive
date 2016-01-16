@@ -23,6 +23,11 @@ a {
     }
 }
 
+.readmore {
+    float: right;
+    margin-top: 15px;
+}
+
 .notfound {
     &__body {
         color: $gray-light;

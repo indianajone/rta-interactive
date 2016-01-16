@@ -49,7 +49,9 @@ class Place extends Model
      */
     public static function findBySlug($slug)
     {
-        return (new static)->whereTranslation('title', str_replace('-', ' ', $slug))->firstOrFail();
+        return (new static)->whereTranslation('title', str_replace('-', ' ', $slug))
+                ->with('photos')
+                ->firstOrFail();
     }
 
     public function scopeSearch($query, $keyword) 
@@ -62,25 +64,25 @@ class Place extends Model
         return $query->where('recommended', true);
     }
 
-    public function banners() 
-    {
-        return $this->photos->map(function ($item) {
-            return [
-                'title' => (string) $this->name,
-                'src' => asset($item->path)
-            ];
-        });
-    }
+    // public function banners() 
+    // {
+    //     return $this->photos->map(function ($item) {
+    //         return [
+    //             'title' => (string) $this->name,
+    //             'src' => asset($item->path)
+    //         ];
+    //     });
+    // }
 
-    public function slideshow() 
-    {
-        return $this->photos->map(function ($item) {
-            return [
-                'title' => $this->name,
-                'src' => asset($item->thumbnail_path)
-            ];
-        });
-    }
+    // public function slideshow() 
+    // {
+    //     return $this->photos->map(function ($item) {
+    //         return [
+    //             'title' => $this->name,
+    //             'src' => asset($item->thumbnail_path)
+    //         ];
+    //     });
+    // }
 
     /**
      * Define relationship between categories and place
@@ -121,7 +123,9 @@ class Place extends Model
      */
     public function photos() 
     {
-        return $this->hasMany(Photo::class);
+        return $this->morphMany(Attachment::class, 'attachable')
+                    ->where('type', 'image');
+        // return $this->hasMany(Photo::class);
     }
 
     /**
@@ -140,9 +144,11 @@ class Place extends Model
      *
      * @return Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function video() 
+    public function videos() 
     {
-        return $this->hasOne(Video::class);
+        return $this->morphMany(Attachment::class, 'attachable')
+                    ->where('type', 'video');
+        // return $this->hasOne(Video::class);
     }
 
     /**
@@ -191,15 +197,15 @@ class Place extends Model
     }
 
     /**
-     * Get thunbnail or return the default one.
+     * Get thumbnail or return the default one.
      *
      * @param  null|string $value
      * @return string
      */
     public function getThumbnailAttribute($value) 
     {
-        $thumbnail = $this->photos()->where('thumbnail', true)->first();
+        $thumbnail = $this->photos->where('thumbnail', 1)->first();
 
-        return $thumbnail ? $thumbnail->thumbnail_path : asset('/images/default.jpg');
+        return $thumbnail ? asset($thumbnail->path) : asset('/images/default.jpg');
     }
 }

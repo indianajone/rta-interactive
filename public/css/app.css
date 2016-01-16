@@ -2055,25 +2055,21 @@ pre code {
 }
 
 .row,
-.filter,
-.place__photos {
+.filter {
   margin-left: -15px;
   margin-right: -15px;
 }
 
 .row:before,
 .filter:before,
-.place__photos:before,
 .row:after,
-.filter:after,
-.place__photos:after {
+.filter:after {
   content: " ";
   display: table;
 }
 
 .row:after,
-.filter:after,
-.place__photos:after {
+.filter:after {
   clear: both;
 }
 
@@ -8581,14 +8577,17 @@ button.close {
 
 .clearfix:before,
 .ceo:before,
+.place__photos:before,
 .clearfix:after,
-.ceo:after {
+.ceo:after,
+.place__photos:after {
   content: " ";
   display: table;
 }
 
 .clearfix:after,
-.ceo:after {
+.ceo:after,
+.place__photos:after {
   clear: both;
 }
 
@@ -11683,6 +11682,11 @@ a:hover {
   color: #267671;
 }
 
+.readmore {
+  float: right;
+  margin-top: 15px;
+}
+
 .notfound__body {
   color: #777777;
   font-size: 100%;
@@ -11966,6 +11970,72 @@ a:hover {
 .slick-dots li.slick-active button:before {
   color: black;
   opacity: 0.75;
+}
+
+.btn-main {
+  color: #fff;
+  background-color: #267671;
+  border-color: transparent;
+  border-radius: 0;
+}
+
+.btn-main:focus,
+.btn-main.focus {
+  color: #fff;
+  background-color: #1a4f4c;
+  border-color: transparent;
+}
+
+.btn-main:hover {
+  color: #fff;
+  background-color: #1a4f4c;
+  border-color: transparent;
+}
+
+.btn-main:active,
+.btn-main.active,
+.open > .btn-main.dropdown-toggle {
+  color: #fff;
+  background-color: #1a4f4c;
+  border-color: transparent;
+}
+
+.btn-main:active:hover,
+.btn-main:active:focus,
+.btn-main:active.focus,
+.btn-main.active:hover,
+.btn-main.active:focus,
+.btn-main.active.focus,
+.open > .btn-main.dropdown-toggle:hover,
+.open > .btn-main.dropdown-toggle:focus,
+.open > .btn-main.dropdown-toggle.focus {
+  color: #fff;
+  background-color: #113432;
+  border-color: transparent;
+}
+
+.btn-main:active,
+.btn-main.active,
+.open > .btn-main.dropdown-toggle {
+  background-image: none;
+}
+
+.btn-main.disabled:hover,
+.btn-main.disabled:focus,
+.btn-main.disabled.focus,
+.btn-main[disabled]:hover,
+.btn-main[disabled]:focus,
+.btn-main[disabled].focus,
+fieldset[disabled] .btn-main:hover,
+fieldset[disabled] .btn-main:focus,
+fieldset[disabled] .btn-main.focus {
+  background-color: #267671;
+  border-color: transparent;
+}
+
+.btn-main .badge {
+  color: #267671;
+  background-color: #fff;
 }
 
 /*
@@ -13500,8 +13570,7 @@ fieldset[disabled] .btn-yahoo.focus {
 }
 
 .cards .row,
-.cards .filter,
-.cards .place__photos {
+.cards .filter {
   margin-left: 0;
   margin-right: 0;
 }
@@ -13900,7 +13969,6 @@ fieldset[disabled] .btn-yahoo.focus {
   text-align: center;
   padding: 10px;
   float: left;
-  width: 25%;
   border-right: 3px solid #eee;
 }
 
@@ -13911,6 +13979,7 @@ fieldset[disabled] .btn-yahoo.focus {
 .place__body {
   background-color: rgba(255, 255, 255, 0.5);
   padding: 15px 30px;
+  overflow: hidden;
 }
 
 .place__image {

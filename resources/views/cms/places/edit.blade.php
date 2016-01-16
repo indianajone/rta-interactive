@@ -6,57 +6,69 @@
         <h1 class="heading__title">{{ $place->name }}</h1>
     </div>
     <div class="row">
-        <div class="col-md-8">
-            @include('components.error')
-            {!! Form::model($place, [
-                'files' => true,
-                'method' => 'PUT',
-                'accept-charset' => 'utf-8',
-                'route' => ['cms.places.update', $place->id]
-            ]) !!}
+        @include('components.error')
+        {!! Form::model($place, [
+            'files' => true,
+            'method' => 'PUT',
+            'accept-charset' => 'utf-8',
+            'route' => ['cms.places.update', $place->id]
+        ]) !!}
+            <div class="col-md-10">
                <div class="panel with-nav-tabs">
                     <div class="panel-heading clearfix">
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active">
                                 <a href="#tha" aria-controls="tha" role="tab" data-toggle="tab">ไทย</a>
                             </li>
-                             <li role="presentation">
+                            <li role="presentation">
                                 <a href="#eng" aria-controls="eng" role="tab" data-toggle="tab">อังกฤษ</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#categories" aria-controls="categories" role="tab" data-toggle="tab">หมวด</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#photos" aria-controls="photos" role="tab" data-toggle="tab">คลังภาพ</a>
                             </li>
                         </ul>
                     </div>
 
                     <div class="panel-body">
-                        <div class="form-group checkbox">
-                            <label>
-                                {!! Form::hidden('recommended', false) !!}
-                                {!! Form::checkbox('recommended') !!}
-                                เป็นสถานที่แนะนำ
-                            </label>
-                        </div>
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="tha">
+                                <div class="form-group checkbox">
+                                    <label>
+                                        {!! Form::hidden('recommended', false) !!}
+                                        {!! Form::checkbox('recommended') !!}
+                                        เป็นสถานที่แนะนำ
+                                    </label>
+                                </div>
                                 @include('cms.places.partials.info', ['lang' => 'th'])
+                                @include('cms.places.partials.latlng')
+                                <div class="pull-right">
+                                    <div class="form-group">
+                                        <input class="btn btn-success" type="submit" name="submit" value="บันทึก">
+                                    </div>
+                                </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="eng">
                                 @include('cms.places.partials.info', ['lang' => 'en'])
+                                <div class="pull-right">
+                                    <div class="form-group">
+                                        <input class="btn btn-success" type="submit" name="submit" value="บันทึก">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        @include('cms.places.partials.latlng')
-                        @include('cms.places.partials.categories')
-                        <div class="pull-right">
-                            <div class="form-group">
-                                <input class="btn btn-success" type="submit" name="submit" value="บันทึก">
+                            <div role="tabpanel" class="tab-pane" id="photos">
+                                @include('cms.places.partials.photos')
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="categories">
+                                @include('cms.places.partials.categories')
                             </div>
                         </div>
                     </div>
                 </div>
-            {!!Form::close() !!}
-        </div>
-        <div class="col-md-4">
-            @include('cms.places.partials.photos')
-            @include('cms.places.partials.panorama')
-        </div>
+            </div>
+        {!!Form::close() !!}
     </div>
 @stop
 
@@ -181,24 +193,24 @@
                     $body.html('');
                 });
             
-            var defaultOptions = {
-                acceptedFiles: 'image/*',
-                forceFallback: false,
-                sending: function (file, xhr, formData) {
-                    formData.append('_token', token);
-                }
-            }
+            // var defaultOptions = {
+            //     acceptedFiles: 'image/*',
+            //     forceFallback: false,
+            //     sending: function (file, xhr, formData) {
+            //         formData.append('_token', token);
+            //     }
+            // }
 
-            Dropzone.options.dzPhotos = $.extend({}, defaultOptions, {
-                paramName: 'photo',
-                url: '/api/places/{{ $place->id }}/photos'
-            });
+            // Dropzone.options.dzPhotos = $.extend({}, defaultOptions, {
+            //     paramName: 'photo',
+            //     url: '/api/places/{{ $place->id }}/photos'
+            // });
 
-            Dropzone.options.dzPanorama = $.extend({}, defaultOptions, {
-                paramName: 'panorama',
-                uploadMultiple: false,
-                url: '/api/places/{{ $place->id }}/panorama'
-            });
+            // Dropzone.options.dzPanorama = $.extend({}, defaultOptions, {
+            //     paramName: 'panorama',
+            //     uploadMultiple: false,
+            //     url: '/api/places/{{ $place->id }}/panorama'
+            // });
         });
     </script>
 @stop

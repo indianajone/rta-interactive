@@ -10,7 +10,6 @@
             text-align: center;
             padding: 10px;
             float: left;
-            width: 25%;
             border-right: 3px solid #eee;
             &:last-child {
                  border-right: 3px solid transparent;
@@ -21,6 +20,7 @@
     &__body {
         background-color: rgba(#fff, .5);
         padding: 15px 30px;
+        overflow: hidden;
     }
     
     &__vdo,
@@ -31,7 +31,7 @@
     }
 
     &__photos {
-        @extend .row;
+        @extend .clearfix;
     }
 
     &__image {

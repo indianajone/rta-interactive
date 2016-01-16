@@ -4,8 +4,8 @@
     <div class="slick slick--black" v-slick>
         @foreach($place->photos as $photo)
             <div class="slick-slide slick-slide--fixed-height">
-                <img src="{{ asset($photo->path) }}" alt="{{ $place->title }}">
-                <span>{{ $place->title }}</span>
+                <img src="{{ asset($photo->path) }}" alt="{{ $photo->title }}">
+                <span>{{ $photo->title }}</span>
             </div>
         @endforeach
     </div>
@@ -16,28 +16,24 @@
     <div class="place">
         <div class="place__buttons">
             <a href="#"><i class="fa fa-lg fa-car"></i></a>
-            <a href="#"><i class="fa fa-lg fa-info"></i></a>
             <a href="#"><i class="fa fa-lg fa-star-o"></i></a>
             <a href="#"><i class="fa fa-lg fa-share-alt"></i></a>
         </div>
-        <div class="place__body">
+        
+        <readmore 
+            class="place__body"
+            max-height="160" 
+            text="{{ trans('common.buttons.readmore') }}"
+            show="true"
+        >
             {!! $place->description !!}
-        </div>
-        @if($place->photos->count() >= 1 )
-            <div class="place__photos">
-                <h3 class="heading--fancy">คลังภาพ</h3>
-                <div class="slick" v-slick :options="{ slidesToShow: 3, slidesToScroll: 3 }">
-                    @foreach($place->photos as $photo)
-                        <div class="col-md-4">
-                            <a href="{{ asset($photo->path) }}" data-lity>
-                                <img src="{{ asset($photo->thumbnail_path) }}" alt="{{ $place->title }}">
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        @endif
-        <div class="row">
+        </readmore>
+    </div>
+    
+    @include('places.partials.photo')
+
+    @include('places.partials.video')
+        {{-- <div class="row">
             @if($place->video)
                 <div class="place__vdo">
                     <h3 class="heading--fancy">วีดีโอ</h3>
@@ -70,6 +66,5 @@
                     <panorama src="{{ asset($place->panorama->path) }}"></panorama>
                 </div>
             @endif
-        </div>
-    </div>
+        </div> --}}
 @stop

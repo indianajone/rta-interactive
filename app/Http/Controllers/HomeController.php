@@ -14,9 +14,10 @@ class HomeController extends Controller
     {
         $places = Place::latest()->limit(9)->get();
 
-        // $this->generateSlideShow($places);
-        
-        return view('home', compact('places'));
+        // Take one of each latest photo from places.
+        $slideshow = [];
+
+        return view('home', compact('places', 'slideshow'));
     }
 
     private function generateSlideShow($places) 

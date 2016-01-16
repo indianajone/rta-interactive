@@ -1,0 +1,8 @@
+<div>
+    <div :style="style">
+        <slot></slot>
+    </div>
+    <div class="readmore">
+        <button v-show="show" class="btn btn-main" @click="toggle">{{ text }}</button>
+    </div>
+</div>

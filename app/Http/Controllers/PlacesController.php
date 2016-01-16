@@ -48,9 +48,9 @@ class PlacesController extends Controller
     {
         $place = Place::findBySlug($slug);
 
-        $photos = $place->banners();
+        // $photos = $place->banners();
 
-        Javascript::put(compact('photos'));
+        // Javascript::put(compact('photos'));
 
         return view('places.show', compact('place'));
     }

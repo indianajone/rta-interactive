@@ -24,7 +24,7 @@ class Attachment extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'extension', 'path', 'width', 'height', 'type'];
+    protected $fillable = ['name', 'thumbnail', 'extension', 'path', 'width', 'height', 'type'];
 
     /**
      * Get all of the owning attachable models.

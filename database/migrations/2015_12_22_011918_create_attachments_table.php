@@ -17,10 +17,12 @@ class CreateAttachmentsTable extends Migration
             $table->integer('attachable_id')->unsigned()->index();
             $table->string('attachable_type')->index();
             $table->string('name');
-            $table->string('extension');
+            $table->string('extension')->nullable();
             $table->string('path');
-            $table->integer('width');
-            $table->integer('height');
+            $table->tinyInteger('thumbnail')->default(0);
+            $table->string('thumbnail_path')->nullable();
+            $table->integer('width')->default(0);
+            $table->integer('height')->default(0);
             $table->string('type');
             $table->timestamps();
         });
