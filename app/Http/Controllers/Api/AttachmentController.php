@@ -16,7 +16,7 @@ class AttachmentController extends Controller
         $this->transformer = $transformer;
     }
 
-    public function show($id, Attachment $attachments) 
+    public function show(Attachment $attachments, $id) 
     {
         $attachment = $attachments->with('translations')->findOrFail($id);
 

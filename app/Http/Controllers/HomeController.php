@@ -15,24 +15,10 @@ class HomeController extends Controller
         $places = Place::latest()->limit(9)->get();
 
         // Take one of each latest photo from places.
-        $slideshow = [];
+        $slideshow = $places->map(function ($place) {
+            return $place->photos->sortByDesc('created_at')->first();
+        });
 
         return view('home', compact('places', 'slideshow'));
-    }
-
-    private function generateSlideShow($places) 
-    {
-        $place = $places->first();
-
-        if ($place) {
-            $place->photos->sortByDesc('created_at')->map(function($photo) {
-                return [
-                    'title' => $photo->place->name,
-                    'src' => asset($photo->path)
-                ];
-            })->toArray();
-
-            Javascript::put(compact('photos'));
-        }
     }
 }

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Ravarin\Entities\Place;
 use Illuminate\Routing\Router;
+use Ravarin\Entities\Attachment;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider

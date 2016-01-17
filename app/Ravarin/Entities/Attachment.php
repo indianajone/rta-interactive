@@ -42,4 +42,22 @@ class Attachment extends Model
 
         return $trans ? $trans->{$attribute} : '';
     }
+
+    /**
+     * Determine if an attribute exists on the model.
+     *
+     * @param  string  $key
+     * @return bool
+     */
+    public function __isset($key) 
+    {
+        $key = $this->getMapableAttribute($key);
+
+        // Bug: when using translatable
+        if ($key == 'useTranslationFallback') {
+            return config('translatable.use_fallback');
+        }
+
+        return $this->isTranslationAttribute($key) || true;
+    }
 }

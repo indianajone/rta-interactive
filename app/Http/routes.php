@@ -26,6 +26,10 @@ Route::group(['prefix' => 'cms'], function ()
     Route::resource('/categories', 'Cms\CategoriesController',  [
         'except' => ['show']
     ]);
+
+    Route::resource('places.attachments', 'Cms\AttachmentsController', [
+        'only' => ['store', 'update']
+    ]);
 });
 
 /*
