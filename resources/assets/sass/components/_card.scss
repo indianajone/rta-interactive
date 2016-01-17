@@ -28,7 +28,12 @@
     &__buttons {
         background-color: #fff;
         border-top: 1px solid $gray-lighter;
-        a {
+        p {
+            float: left;
+            padding: 15px;
+            width: 50%;
+        }
+        a{
             @extend .btn;
             width: 23%;
             padding: 15px 25px;

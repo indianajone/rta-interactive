@@ -31,40 +31,8 @@
     </div>
     
     @include('places.partials.photo')
-
     @include('places.partials.video')
-        {{-- <div class="row">
-            @if($place->video)
-                <div class="place__vdo">
-                    <h3 class="heading--fancy">วีดีโอ</h3>
-                    <div class="place__image">
-                        <a href="{{ $place->video->src }}" data-lity>
-                            <img src="{{ asset($place->video->thumbnail) }}" alt="{{ $place->video->title }}">
-                            <div class="place__overlay">
-                                <i class="fa fa-play-circle-o"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            @endif
-            @if($place->ar)
-                <div class="place__mini-map">
-                    <h3 class="heading--fancy">แผนที่</h3>
-                    <div class="place__image">
-                        <img src="/images/default.jpg" alt="{{ $place->title }}">
-                    </div>
-                </div>
-            @endif
-            @if($place->panorama)
-                <div class="place__panorama">
-                    <h3 class="heading--fancy">พาโนราม่า</h3>
-                    <div class="place__image">
-                        <a href="#panorama" data-lity>
-                            <img src="{{ asset($place->panorama->thumbnail_path) }}" alt="{{ $place->title }}-panorama">
-                        </a>
-                    </div>
-                    <panorama src="{{ asset($place->panorama->path) }}"></panorama>
-                </div>
-            @endif
-        </div> --}}
+    @include('places.partials.panorama')
+    @include('places.partials.marker')
+    @include('places.partials.nearby')
 @stop

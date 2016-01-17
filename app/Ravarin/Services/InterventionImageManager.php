@@ -2,6 +2,7 @@
 
 namespace Ravarin\Services;
 
+use File;
 use Image;
 use Ravarin\Contracts\ImageManagerContract;
 

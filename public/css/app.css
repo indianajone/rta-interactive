@@ -13597,6 +13597,12 @@ fieldset[disabled] .btn-yahoo.focus {
   border-top: 1px solid #eeeeee;
 }
 
+.card__buttons p {
+  float: left;
+  padding: 15px;
+  width: 50%;
+}
+
 .card__buttons a {
   width: 23%;
   padding: 15px 25px;
@@ -14001,6 +14007,7 @@ fieldset[disabled] .btn-yahoo.focus {
   right: 0;
   bottom: 0;
   left: 0;
+  margin: 0 15px 40px;
 }
 
 .place__image:hover .place__overlay {

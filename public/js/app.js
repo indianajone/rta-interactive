@@ -26560,7 +26560,8 @@ exports['default'] = {
             email: '',
             password: '',
             password_confirmation: '',
-            errors: []
+            errors: [],
+            message: ''
         };
     },
 
@@ -26611,6 +26612,18 @@ exports['default'] = {
 
         google: function google() {
             window.location.href = '/api/login/google';
+        },
+
+        forgetPassword: function forgetPassword() {
+            var _this3 = this;
+
+            this.errors = [];
+            this.$http.post('/api/password', { email: this.email }).success(function (data) {
+                _this3.message = data.status;
+            }).error(function (errors) {
+                _this3.email = '';
+                _this3.errors = _.flatten(_.toArray(errors));
+            });
         }
     }
 

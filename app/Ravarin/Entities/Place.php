@@ -2,9 +2,6 @@
 
 namespace Ravarin\Entities;
 
-use Illuminate\Support\Str;
-use App\Ravarin\Entities\Photo;
-use App\Ravarin\Entities\Panorama;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Ravarin\Translations\TranslateMapable;
@@ -24,7 +21,7 @@ class Place extends Model
         });
     }
 
-     /**
+    /**
      * Determine translatable fields.
      *
      * @var array
@@ -64,26 +61,6 @@ class Place extends Model
         return $query->where('recommended', true);
     }
 
-    // public function banners() 
-    // {
-    //     return $this->photos->map(function ($item) {
-    //         return [
-    //             'title' => (string) $this->name,
-    //             'src' => asset($item->path)
-    //         ];
-    //     });
-    // }
-
-    // public function slideshow() 
-    // {
-    //     return $this->photos->map(function ($item) {
-    //         return [
-    //             'title' => $this->name,
-    //             'src' => asset($item->thumbnail_path)
-    //         ];
-    //     });
-    // }
-
     /**
      * Define relationship between categories and place
      *
@@ -94,61 +71,58 @@ class Place extends Model
         return $this->belongsToMany(Category::class)->withTimestamps();
     }
 
-    public function panorama() 
-    {
-        return $this->hasOne(Panorama::class);
-    }
-
-    /**
-     * Add photo for place and save it.
-     *
-     * @param App\Ravarin\Entities\Panorama $photo
-     * @return App\Ravarin\Entities\Photo|boolean
-     */
-    public function addPanorama(Panorama $photo) 
-    {
-        if ($this->panorama) 
-        {
-            // remeber to delete real file to save up spaces.
-            $this->panorama()->delete();
-        }
-
-        return $this->panorama()->save($photo);
-    }
-
     /**
      * Define relationship between photos and place
      *
-     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     * @return Illuminate\Database\Eloquent\Relations\MorphMany
      */
     public function photos() 
     {
         return $this->morphMany(Attachment::class, 'attachable')
                     ->where('type', 'image');
-        // return $this->hasMany(Photo::class);
-    }
-
-    /**
-     * Add photo for place and save it.
-     *
-     * @param App\Ravarin\Entities\Photo $photo
-     * @return App\Ravarin\Entities\Photo|boolean
-     */
-    public function addPhoto(Photo $photo) 
-    {
-        return $this->photos()->save($photo);
     }
 
     /**
      * Define relationship between video and place
      *
-     * @return Illuminate\Database\Eloquent\Relations\HasOne
+     * @return Illuminate\Database\Eloquent\Relations\MorphMany
      */
     public function videos() 
     {
         return $this->morphMany(Attachment::class, 'attachable')
                     ->where('type', 'video');
-        // return $this->hasOne(Video::class);
+    }
+
+    /**
+     * Define relationship between panorana and place
+     *
+     * @return Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function panoramas() 
+    {
+        return $this->morphMany(Attachment::class, 'attachable')
+                    ->where('type', 'panorama');
+    }
+
+    /**
+     * Define relationship between panorana and place
+     *
+     * @return Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function markers() 
+    {
+        return $this->morphMany(Attachment::class, 'attachable')
+                    ->where('type', 'marker');
+    }
+
+    /**
+     * Define relationship between nearby and place
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function nearby() 
+    {
+        return $this->hasMany(Nearby::class);
     }
 
     /**

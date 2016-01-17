@@ -5,6 +5,11 @@ return [
     'heading' => [
         'login' => 'Login',
         'register' => 'Register',
+        'reset' => 'Reset Password',
+    ],
+
+    'descriptions' => [
+        'reset' => 'Please tell us your email address. We will send reset password link to your registered email.'
     ],
 
     'inputs' => [
@@ -19,6 +24,8 @@ return [
         'register' => 'Register',
         'facebook' => 'Login using facebook',
         'google' => 'Login using google+',
+        'confirm' => 'Confirm',
+        'send' => 'Send',
     ]
     
 ];

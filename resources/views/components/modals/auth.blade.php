@@ -12,6 +12,11 @@
                         {{ trans('form.heading.register') }}
                     </a>
                 </li>
+                <li :class="{'active' : tab == 'forget'}">
+                    <a @click="filp('forget')" href="#forget">
+                        {{ trans('form.heading.reset') }}
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="modal-body tab-content">
@@ -65,6 +70,24 @@
                     <div class="form-group">
                         <button @click="register" type="button" class="btn btn-block btn-success">
                             {{ trans('form.buttons.register') }}
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div v-show="tab == 'forget'">
+                <div class="alert alert-success" v-show="message != ''">
+                    <strong>@{{ message }}</strong>
+                </div>
+                <form class="form" @keyup.enter.prevent="forgetPassword">
+                    <div class="form-group">
+                        <p>{{ trans('form.descriptions.reset') }}</p>
+                        <label for="email" class="sr-only">{{ trans('form.inputs.email') }}</label>
+                        <input v-model="email" type="email" name="email" class="form-control" placeholder="{{ trans('form.inputs.email') }}" >
+                    </div>
+                    <div class="form-group">
+                        <button @click="forgetPassword" type="button" class="btn btn-block btn-success">
+                            {{ trans('form.buttons.send') }}
                         </button>
                     </div>
                 </form>

@@ -40,7 +40,7 @@
                                     <button @click="openModal('login', 'register')" class="navbar-nav__link">{{trans('menu.register') }}</button>
                                 </li>
                                 <li>
-                                    <button class="navbar-nav__link">{{trans('menu.forget_password') }}</button>
+                                    <button  @click="openModal('login', 'forget')" class="navbar-nav__link">{{trans('menu.forget_password') }}</button>
                                 </li>
                             @else 
                                 <li>

@@ -30,6 +30,22 @@ Route::group(['prefix' => 'cms'], function ()
     Route::resource('places.attachments', 'Cms\AttachmentsController', [
         'only' => ['store', 'update']
     ]);
+
+    Route::resource('places.video', 'Cms\PlacesVideoController', [
+        'only' => ['store', 'update']
+    ]);
+
+    Route::resource('places.panorama', 'Cms\PlacesPanoramaController', [
+        'only' => ['store', 'update']
+    ]);
+
+    Route::resource('places.marker', 'Cms\PlacesMarkerController', [
+        'only' => ['store', 'update']
+    ]);
+
+    Route::resource('places.nearby', 'Cms\PlacesNearbyController', [
+        'only' => ['store', 'update']
+    ]);
 });
 
 /*
@@ -42,6 +58,7 @@ Route::group([ 'prefix' => 'api', 'as' => 'api.' ], function ()
     Route::get('login/{provider}', ['as' => 'login_path', 'uses' => 'Api\AuthController@store']);
     Route::post('login', ['as' => 'login_path', 'uses' => 'Api\AuthController@store']);
     Route::post('register', ['as' => 'register_path', 'uses' => 'Api\UsersController@store']);
+    Route::post('password', ['as' => 'password_path', 'uses' => 'Api\PasswordsController@store']);
     Route::delete('logout', ['as' => 'logout_path', 'uses' => 'Api\AuthController@destroy']);
 
     
@@ -66,6 +83,9 @@ Route::group([ 'prefix' => 'api', 'as' => 'api.' ], function ()
 */
 
 Route::get('auth/{provider}', 'AuthController@index');
+Route::get('password/reset/{token}', ['as' => 'password_path', 'uses' => 'PasswordController@index']);
+Route::post('password/reset', ['as' => 'password_path', 'uses' => 'PasswordController@store']);
+
 
 Route::group(['middleware' => ['locale']], function () 
 {

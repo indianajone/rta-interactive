@@ -9,7 +9,8 @@ export default {
             email: '',
             password: '',
             password_confirmation: '',
-            errors: []
+            errors: [],
+            message: ''
         }
     },
 
@@ -62,6 +63,18 @@ export default {
 
         google: function () {
             window.location.href = '/api/login/google';
+        }, 
+
+        forgetPassword: function () {
+            this.errors = [];
+            this.$http.post('/api/password', {email: this.email})
+                    .success((data) => {
+                        this.message = data.status;
+                    })
+                    .error((errors) => {
+                        this.email = '';
+                        this.errors = _.flatten(_.toArray(errors));
+                    });
         }
     }
 

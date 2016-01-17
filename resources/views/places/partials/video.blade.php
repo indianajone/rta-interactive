@@ -2,20 +2,21 @@
     <div class="place__photos">
         <h3 class="heading--fancy">{{ trans('common.heading.video') }}</h3>
         <readmore 
-            max-height="230" 
+            max-height="300" 
             text="{{ trans('common.buttons.viewall') }}" 
-            show="{{ $place->videos->count() > 1 }}"
+            show="{{ $place->videos->count() > 3 }}"
         >
              @foreach($place->videos->chunk(3) as $set)
                 <div class="row">
-                    @foreach($set as $photo)
+                    @foreach($set as $video)
                         <div class="place__image">
-                            <a href="{{ asset($photo->path) }}" data-lity>
-                                <img src="{{ asset($photo->thumbnail_path) }}" alt="{{ $photo->title }}">
+                            <a href="{{ asset($video->path) }}" data-lity>
+                                <img src="{{ asset($video->thumbnail_path) }}" alt="{{ $video->title }}">
                                 <div class="place__overlay">
                                     <i class="fa fa-play-circle-o"></i>
                                 </div>
                             </a>
+                            <h4 class="text-center">{{ $video->title }}</h4>
                         </div>
                     @endforeach
                 </div>
@@ -23,15 +24,3 @@
         </readmore>
     </div>
 @endif
-
-{{-- <div class="place__vdo">
-    <h3 class="heading--fancy">วีดีโอ</h3>
-    <div class="place__image">
-        <a href="{{ $place->video->src }}" data-lity>
-            <img src="{{ asset($place->video->thumbnail) }}" alt="{{ $place->video->title }}">
-            <div class="place__overlay">
-                <i class="fa fa-play-circle-o"></i>
-            </div>
-        </a>
-    </div>
-</div> --}}

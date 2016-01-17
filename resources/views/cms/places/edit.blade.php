@@ -29,6 +29,18 @@
                             <li role="presentation">
                                 <a href="#photos" aria-controls="photos" role="tab" data-toggle="tab">คลังภาพ</a>
                             </li>
+                            <li role="presentation">
+                                <a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">วีดีโอ</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#panoramas" aria-controls="panoramas" role="tab" data-toggle="tab">ภาพพาโนรามา</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#markers" aria-controls="markers" role="tab" data-toggle="tab">ภาพ​ AR Marker</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#nearby" aria-controls="nearby" role="tab" data-toggle="tab">สถานที่ท่องเที่ยวใกล้เคียง</a>
+                            </li>
                         </ul>
                     </div>
 
@@ -58,11 +70,23 @@
                                     </div>
                                 </div>
                             </div>
+                            <div role="tabpanel" class="tab-pane" id="categories">
+                                @include('cms.places.partials.categories')
+                            </div>
                             <div role="tabpanel" class="tab-pane" id="photos">
                                 @include('cms.places.partials.photos')
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="categories">
-                                @include('cms.places.partials.categories')
+                            <div role="tabpanel" class="tab-pane" id="videos">
+                                @include('cms.places.partials.videos')
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="panoramas">
+                                @include('cms.places.partials.panoramas')
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="markers">
+                                @include('cms.places.partials.markers')
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="nearby">
+                                @include('cms.places.partials.nearby')
                             </div>
                         </div>
                     </div>
@@ -73,18 +97,82 @@
 @stop
 
 @section('footer')
-    <div id="modal-add" class="modal fade">
-        {!! Form::open(['route' => ['cms.places.attachments.store', $place->id], 'method' => 'POST', 'files' => true]) !!}
-            @include('cms.components.modals.image')
-        {!! Form::close() !!}
-    </div>
-    @foreach($place->photos as $photo)
-        <div id="modal-{{ $photo->id }}" class="modal fade">
-            {!! Form::model($photo, ['route' => ['cms.places.attachments.update', $place->id, $photo->id], 'method' => 'PUT', 'files' => true]) !!}
+    
+    <div class="modals">
+        <div id="modal-addimage" class="modal fade">
+            {!! Form::open(['route' => ['cms.places.attachments.store', $place->id], 'method' => 'POST', 'files' => true]) !!}
                 @include('cms.components.modals.image')
             {!! Form::close() !!}
         </div>
-    @endforeach
+        @foreach($place->photos as $photo)
+            <div id="modal-image-{{ $photo->id }}" class="modal fade">
+                {!! Form::model($photo, ['route' => ['cms.places.attachments.update', $place->id, $photo->id], 'method' => 'PUT', 'files' => true]) !!}
+                    @include('cms.components.modals.image')
+                {!! Form::close() !!}
+            </div>
+        @endforeach
+    </div>
+    
+    <div class="modals">
+        <div id="modal-addvideo" class="modal fade">
+            {!! Form::open(['route' => ['cms.places.video.store', $place->id], 'method' => 'POST', 'files' => true]) !!}
+                @include('cms.components.modals.video')
+            {!! Form::close() !!}
+        </div>
+        @foreach($place->videos as $video)
+            <div id="modal-video-{{ $video->id }}" class="modal fade">
+                {!! Form::model($video, ['route' => ['cms.places.video.update', $place->id, $video->id], 'method' => 'PUT', 'files' => true]) !!}
+                    @include('cms.components.modals.video')
+                {!! Form::close() !!}
+            </div>
+        @endforeach
+    </div>
+
+    <div class="modals">
+        <div id="modal-addpanorama" class="modal fade">
+            {!! Form::open(['route' => ['cms.places.panorama.store', $place->id], 'method' => 'POST', 'files' => true]) !!}
+                @include('cms.components.modals.panorama')
+            {!! Form::close() !!}
+        </div>
+        @foreach($place->panoramas as $panorama)
+            <div id="modal-panorama-{{ $panorama->id }}" class="modal fade">
+                {!! Form::model($panorama, ['route' => ['cms.places.panorama.update', $place->id, $panorama->id], 'method' => 'PUT', 'files' => true]) !!}
+                    @include('cms.components.modals.panorama')
+                {!! Form::close() !!}
+            </div>
+        @endforeach
+    </div>
+    
+    <div class="modals">
+        <div id="modal-addmarker" class="modal fade">
+            {!! Form::open(['route' => ['cms.places.marker.store', $place->id], 'method' => 'POST', 'files' => true]) !!}
+                @include('cms.components.modals.marker')
+            {!! Form::close() !!}
+        </div>
+        @foreach($place->markers as $marker)
+            <div id="modal-marker-{{ $marker->id }}" class="modal fade">
+                {!! Form::model($marker, ['route' => ['cms.places.marker.update', $place->id, $marker->id], 'method' => 'PUT', 'files' => true]) !!}
+                    @include('cms.components.modals.marker')
+                {!! Form::close() !!}
+            </div>
+        @endforeach
+    </div>
+
+    <div class="modals">
+        <div id="modal-addnearby" class="modal fade">
+            {!! Form::open(['route' => ['cms.places.nearby.store', $place->id], 'method' => 'POST', 'files' => true]) !!}
+                @include('cms.components.modals.nearby')
+            {!! Form::close() !!}
+        </div>
+        @foreach($place->nearby as $nearby)
+            <div id="modal-nearby-{{ $nearby->id }}" class="modal fade">
+                {!! Form::model($nearby, ['route' => ['cms.places.nearby.update', $place->id, $nearby->id], 'method' => 'PUT', 'files' => true]) !!}
+                    @include('cms.components.modals.nearby')
+                {!! Form::close() !!}
+            </div>
+        @endforeach
+    </div>
+
 @stop
 
 @section('script.footer')

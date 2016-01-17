@@ -2,30 +2,29 @@
     <div class="col-md-12">
         <div class="form-group pull-right">
             <a 
-                href="#modal-addimage" 
+                href="#modal-addmarker" 
                 class="btn btn-primary"
                 data-toggle="modal" 
-                data-target="#modal-addimage"
+                data-target="#modal-addmarker"
             >
-                เพิ่มรูป
+                เพิ่มภาพ
             </a>
         </div>
     </div>
 </div>
-@foreach($place->photos->chunk(4) as $set)
+@foreach($place->markers->chunk(4) as $set)
     <div class="row">
-        @foreach($set as $photo)
+        @foreach($set as $marker)
             <div class="col-xs-6 col-md-3">
                 <a 
-                    href="#modal-image-{{ $photo->id }}" 
+                    href="#modal-marker-{{ $marker->id }}" 
                     class="thumbnail"
                     data-toggle="modal" 
-                    data-target="#modal-image-{{ $photo->id }}"
+                    data-target="#modal-marker-{{ $marker->id }}"
                 > 
-                    <img src="{{ asset($photo->thumbnail_path) }}" alt="{{ $photo->title }}">
+                    <img src="{{ asset($marker->thumbnail_path) }}" alt="{{ $marker->title }}">
                 </a>
             </div>
         @endforeach
     </div>  
 @endforeach
-
