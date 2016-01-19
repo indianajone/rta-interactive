@@ -45,6 +45,16 @@ if (!function_exists('place_path')) {
     }
 }
 
+if (!function_exists('map_path')) {
+    function map_path($place) 
+    {
+        return route('map_path', [ 
+            'lang' => session()->get('locale'),
+            'slug' => str_replace(' ', '-', $place->name)
+        ]);
+    }
+}
+
 if (!function_exists('page_class')) {
     function page_class() 
     {

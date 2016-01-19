@@ -13,7 +13,9 @@ module.exports = {
 
     ready: function () {
         var self = this;
-        var autoComplete = new google.maps.places.Autocomplete(this.$els.origin);
+        var autoComplete = new google.maps.places.Autocomplete(this.$els.origin, {
+            componentRestrictions: {country: 'th'}
+        });
 
         autoComplete.addListener('place_changed', function () {
             self.onChanged(autoComplete.getPlace());
@@ -45,8 +47,9 @@ module.exports = {
                 this.origin = '';
            }
         },
-        onChanged: function (place){
+        onChanged: function (place) {
             this.origin = place.name;
+            this.$dispatch('map.refresh');
         }
     }
 

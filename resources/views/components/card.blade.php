@@ -11,7 +11,7 @@
         <p class="card__excerpt">{{ $place->excerpt }}</p>
     </div>
     <div class="card__buttons">
-        <a href="#"><i class="fa fa-lg fa-car"></i></a>
+        <a href="{{ map_path($place) }}"><i class="fa fa-lg fa-car"></i></a>
         <a href="{{ place_path($place) }}"><i class="fa fa-lg fa-info"></i></a>
         <a href="#"><i class="fa fa-lg fa-star-o"></i></a>
         <a href="#"><i class="fa fa-lg fa-share-alt"></i></a>

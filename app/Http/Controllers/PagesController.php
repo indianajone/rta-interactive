@@ -17,10 +17,15 @@ class PagesController extends Controller
         return view('pages.about', compact('page'));
     }
 
-    public function map() 
+    public function map($lang=null, $slug=null) 
     { 
         $config = trans('map.waypoints.things');
         $options = [];
+        $place = null;
+
+        if ($slug) {
+            $place = Place::findBySlug($slug);
+        }
 
         foreach ($config as $value => $name) {
             $options[] = [
@@ -32,7 +37,7 @@ class PagesController extends Controller
 
         $options = json_encode($options);
         
-        return view('pages.map', compact('options'));
+        return view('pages.map', compact('options', 'place'));
     }
 
     public function recommended() 

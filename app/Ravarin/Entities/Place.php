@@ -155,6 +155,25 @@ class Place extends Model
     }
 
     /**
+     * Get latitude and longitude.
+     *
+     * @return string
+     */
+    public function getLatLngAttribute() 
+    {
+        return json_encode([
+            'title' => $this->title,
+            'icon' => asset('images/place-pin.png'),
+            'geometry' => [
+                'location' => [
+                    'lat' => (float) $this->latitude,
+                    'lng' => (float) $this->longitude
+                ]
+            ]
+        ]);
+    }
+
+    /**
      * Get full address.
      *
      * @return string

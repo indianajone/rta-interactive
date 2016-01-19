@@ -24,8 +24,9 @@ module.exports = {
 
     data: function () {
         return {
+            marginBottom: 50,
             width: window.innerWidth,
-            height: window.innerHeight,
+            height: window.innerHeight - 50,
             currentLocation: null,
             route: { origin: '', destination: '', travelMode: 'DRIVING', waypoints: [] }
         }
@@ -65,14 +66,15 @@ module.exports = {
         init: function () {
             if (this.browserSupport) {
                 this.getCurrentLocation();
-                window.addEventListener('resize', this.onResize);
             } else {
                 alert('Your browser does not support location service.');
             }
+
+            window.addEventListener('resize', this.onResize);
         },
         onResize: function () {
             this.width = window.innerWidth;
-            this.height = window.innerHeight;
+            this.height = window.innerHeight - this.marginBottom;
         },
         getCurrentLocation: function () {
             var self = this;
@@ -104,7 +106,8 @@ module.exports = {
                 origin: this.route.origin,
                 destination: this.route.destination,
                 travelMode: google.maps.DirectionsTravelMode[this.route.travelMode],
-                optimizeWaypoints: true,
+                // optimizeWaypoints: true,
+                provideRouteAlternatives: true,
                 waypoints: this.selectedWaypoint,
                 region: 'thailand'
             }

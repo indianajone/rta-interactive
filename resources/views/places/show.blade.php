@@ -15,7 +15,7 @@
     <h2 class="heading--fancy">{{ $place->title }}</h2>
     <div class="place">
         <div class="place__buttons">
-            <a href="#"><i class="fa fa-lg fa-car"></i></a>
+            <a href="{{ map_path($place) }}"><i class="fa fa-lg fa-car"></i></a>
             <a href="#"><i class="fa fa-lg fa-star-o"></i></a>
             <a href="#"><i class="fa fa-lg fa-share-alt"></i></a>
         </div>

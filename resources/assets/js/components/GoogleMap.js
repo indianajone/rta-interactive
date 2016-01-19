@@ -6,7 +6,13 @@ module.exports = {
         infoWindow: require('./InfoWindow')
     },
 
-    props: ['route', 'things'],
+    props: {
+        route: {}, 
+        things: {}, 
+        places: {
+            type: Array
+        }
+    },
 
     data: function () {
         return {
@@ -48,9 +54,21 @@ module.exports = {
 
             this.clearMarkers();
             this.services.direction.route(request, function (result, status) {
+                console.log(result);
                 if (status == google.maps.DirectionsStatus.OK) {
+                    // for (var i = 0, len = result.routes.length; i < len; i++) {
+                    //     var renderer = new google.maps.DirectionsRenderer({
+                    //         map: self.map,
+                    //         directions: result,
+                    //         routeIndex: i,
+                    //         draggable: true,
+                    //     });    
+                    // }
                     self.services.renderer.setDirections(result);
                     self.drawBoxes(result.routes);
+                }
+                else {
+                    window.alert('Directions request failed due to ' + status);
                 }
             });
         },
@@ -100,12 +118,41 @@ module.exports = {
                     location: this.location
                 }
             });
+
+            if (this.places) {
+                this.places.map((place) =>  {
+                    place.map = this.map;
+                    this.markers.push(this.createArmyMarker(place));
+                });
+            }
             
             this.map.setCenter(this.location);
             
             google.maps.event.addDomListener(window, 'resize', function() {
                 this.map.setCenter(this.location);
             }.bind(this));
+        },
+
+        createArmyMarker: function (place) {
+            var marker = new google.maps.Marker({
+                title: place.title,
+                map: this.map,
+                icon: {
+                    url: place.icon,
+                    scaledSize: new google.maps.Size(22, 35)
+                },
+                position: place.geometry.location
+            });
+
+            marker.addListener('click', (e) => {
+                this.setInfoWindow({
+                    canAdd: false,
+                    name: place.title,
+                    location: place.geometry.location,
+                }, marker);
+            });
+
+            return marker;
         },
 
         createMarker: function (place) {
@@ -179,7 +226,6 @@ module.exports = {
             this.infoWindow.setContent(infoWindowView.$el);
             this.infoWindow.open(this.map, marker);
         },
-
     }
 
 }

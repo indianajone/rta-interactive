@@ -26207,7 +26207,13 @@ module.exports = {
         infoWindow: require('./InfoWindow')
     },
 
-    props: ['route', 'things'],
+    props: {
+        route: {},
+        things: {},
+        places: {
+            type: Array
+        }
+    },
 
     data: function data() {
         return {
@@ -26249,9 +26255,20 @@ module.exports = {
 
             this.clearMarkers();
             this.services.direction.route(request, function (result, status) {
+                console.log(result);
                 if (status == google.maps.DirectionsStatus.OK) {
+                    // for (var i = 0, len = result.routes.length; i < len; i++) {
+                    //     var renderer = new google.maps.DirectionsRenderer({
+                    //         map: self.map,
+                    //         directions: result,
+                    //         routeIndex: i,
+                    //         draggable: true,
+                    //     });   
+                    // }
                     self.services.renderer.setDirections(result);
                     self.drawBoxes(result.routes);
+                } else {
+                    window.alert('Directions request failed due to ' + status);
                 }
             });
         },
@@ -26287,6 +26304,8 @@ module.exports = {
         },
 
         init: function init(location) {
+            var _this = this;
+
             this.location = location;
             this.infoWindow = new google.maps.InfoWindow();
             this.services.direction = new google.maps.DirectionsService();
@@ -26302,11 +26321,42 @@ module.exports = {
                 }
             });
 
+            if (this.places) {
+                this.places.map(function (place) {
+                    place.map = _this.map;
+                    _this.markers.push(_this.createArmyMarker(place));
+                });
+            }
+
             this.map.setCenter(this.location);
 
             google.maps.event.addDomListener(window, 'resize', (function () {
                 this.map.setCenter(this.location);
             }).bind(this));
+        },
+
+        createArmyMarker: function createArmyMarker(place) {
+            var _this2 = this;
+
+            var marker = new google.maps.Marker({
+                title: place.title,
+                map: this.map,
+                icon: {
+                    url: place.icon,
+                    scaledSize: new google.maps.Size(22, 35)
+                },
+                position: place.geometry.location
+            });
+
+            marker.addListener('click', function (e) {
+                _this2.setInfoWindow({
+                    canAdd: false,
+                    name: place.title,
+                    location: place.geometry.location
+                }, marker);
+            });
+
+            return marker;
         },
 
         createMarker: function createMarker(place) {
@@ -26380,7 +26430,6 @@ module.exports = {
             this.infoWindow.setContent(infoWindowView.$el);
             this.infoWindow.open(this.map, marker);
         }
-
     }
 
 };
@@ -26453,8 +26502,9 @@ module.exports = {
 
     data: function data() {
         return {
+            marginBottom: 50,
             width: window.innerWidth,
-            height: window.innerHeight,
+            height: window.innerHeight - 50,
             currentLocation: null,
             route: { origin: '', destination: '', travelMode: 'DRIVING', waypoints: [] }
         };
@@ -26493,14 +26543,15 @@ module.exports = {
         init: function init() {
             if (this.browserSupport) {
                 this.getCurrentLocation();
-                window.addEventListener('resize', this.onResize);
             } else {
                 alert('Your browser does not support location service.');
             }
+
+            window.addEventListener('resize', this.onResize);
         },
         onResize: function onResize() {
             this.width = window.innerWidth;
-            this.height = window.innerHeight;
+            this.height = window.innerHeight - this.marginBottom;
         },
         getCurrentLocation: function getCurrentLocation() {
             var self = this;
@@ -26531,7 +26582,8 @@ module.exports = {
                 origin: this.route.origin,
                 destination: this.route.destination,
                 travelMode: google.maps.DirectionsTravelMode[this.route.travelMode],
-                optimizeWaypoints: true,
+                // optimizeWaypoints: true,
+                provideRouteAlternatives: true,
                 waypoints: this.selectedWaypoint,
                 region: 'thailand'
             };
@@ -26731,7 +26783,9 @@ module.exports = {
 
     ready: function ready() {
         var self = this;
-        var autoComplete = new google.maps.places.Autocomplete(this.$els.origin);
+        var autoComplete = new google.maps.places.Autocomplete(this.$els.origin, {
+            componentRestrictions: { country: 'th' }
+        });
 
         autoComplete.addListener('place_changed', function () {
             self.onChanged(autoComplete.getPlace());
@@ -26765,6 +26819,7 @@ module.exports = {
         },
         onChanged: function onChanged(place) {
             this.origin = place.name;
+            this.$dispatch('map.refresh');
         }
     }
 
@@ -26948,7 +27003,7 @@ module.exports = '<div class="google-map"></div>';
 },{}],33:[function(require,module,exports){
 module.exports = '<div class="google-map__infowindow">\n    <div v-show="hasPhoto" class="google-map__infowindow__media">\n        <img v-bind:src="photo" alt="{{ title }}">\n    </div>\n    <div class="google-map__infowindow__body">\n        <strong>{{ place.name }}</strong>\n        <p>{{ place.description }}</p>\n        <button\n            v-show="place.canAdd"\n            @click="addToWaypoint(place)"\n            type="button"\n            class="btn btn-success"\n        > \n        Add +\n        </button>\n    </div>\n</div>';
 },{}],34:[function(require,module,exports){
-module.exports = '<div id="map" class="interactive-map"\n    v-bind:style="{ width: width + \'px\', height: height + \'px\'}"\n>\n    <google-map\n        v-ref:google\n        v-bind:route="route"\n        v-bind:things="selectedThings"\n    ></google-map>\n    <form \n        @keyup.enter="navigateMe"\n        accept-charset="utf-8"\n    >\n        <fieldset class="top">\n            <mode :mode.sync="route.travelMode"></mode>\n            <origin :origin.sync="route.origin"></origin>\n            <waypoint :waypoints.sync="route.waypoints"></waypoint>\n            <destinations \n                @change="navigateMe"\n                :selected.sync="route.destination"\n            >\n            </destinations>\n        </fieldset>\n        <fieldset class="bottom" v-if="route.travelMode == \'DRIVING\'">\n            <div class="avoid">\n                <slot name="avoid.title"></slot>\n            </div>\n            <div class="waypoints">\n                <slot name="waypoints.title"></slot>\n                <div \n                    class="col-xs-6"\n                    v-for="thing in things"\n                >\n                    <label class="checkbox-inline">\n                         <input \n                            v-model="thing.selected"\n                            type="checkbox"\n                        > {{ thing.name }}    \n                    </label>\n                </div>\n            </div>\n        </fieldset>\n    </form>\n</div>';
+module.exports = '<div id="map" class="interactive-map"\n    v-bind:style="{ width: width + \'px\', height: height + \'px\'}"\n>\n    <google-map\n        v-ref:google\n        v-bind:route="route"\n        v-bind:things="selectedThings"\n    ></google-map>\n    <form \n        @keyup.enter.prevent="navigateMe"\n        accept-charset="utf-8"\n    >\n        <fieldset class="top">\n            <mode :mode.sync="route.travelMode"></mode>\n            <origin :origin.sync="route.origin"></origin>\n            <waypoint :waypoints.sync="route.waypoints"></waypoint>\n            <destinations \n                @change="navigateMe"\n                :selected.sync="route.destination"\n            >\n            </destinations>\n        </fieldset>\n        <fieldset class="bottom" v-if="route.travelMode == \'DRIVING\'">\n            <div class="avoid">\n                <slot name="avoid.title"></slot>\n            </div>\n            <div class="waypoints">\n                <slot name="waypoints.title"></slot>\n                <div \n                    class="col-xs-6"\n                    v-for="thing in things"\n                >\n                    <label class="checkbox-inline">\n                         <input \n                            v-model="thing.selected"\n                            type="checkbox"\n                        > {{ thing.name }}    \n                    </label>\n                </div>\n            </div>\n        </fieldset>\n    </form>\n</div>';
 },{}],35:[function(require,module,exports){
 module.exports = '<div class="mode">\n    <label \n            v-for="type in types"\n            class="mode__checkbox"\n    >\n        <input \n            v-model="mode"\n            @change="onChange(type)"\n            type="radio"\n            value="{{ type.value }}" \n        >\n        <i :class="[\'fa\', \'fa-lg\', \'fa-\' + type.icon]"></i>\n    </label>\n</div>';
 },{}],36:[function(require,module,exports){

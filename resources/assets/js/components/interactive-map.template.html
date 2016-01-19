@@ -7,7 +7,7 @@
         v-bind:things="selectedThings"
     ></google-map>
     <form 
-        @keyup.enter="navigateMe"
+        @keyup.enter.prevent="navigateMe"
         accept-charset="utf-8"
     >
         <fieldset class="top">
