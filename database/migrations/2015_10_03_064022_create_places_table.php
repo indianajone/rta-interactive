@@ -14,7 +14,7 @@ class CreatePlacesTable extends Migration
     {
         Schema::create('places', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('recommended', 2)->unsigned()->default(0);
+            $table->tinyInteger('recommended')->default(0);
             $table->string('name');
             $table->decimal('latitude', 10, 7);
             $table->decimal('longitude', 10, 7);
