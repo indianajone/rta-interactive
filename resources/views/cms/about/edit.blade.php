@@ -17,9 +17,6 @@
                              <li role="presentation">
                                 <a href="#eng" aria-controls="eng" role="tab" data-toggle="tab">อังกฤษ</a>
                             </li>
-                            <li>
-                                <a href="#slideshow" aria-controls="slideshow" role="tab" data-toggle="tab">Slideshow</a>
-                            </li>
                         </ul>
                     </div>
                     <div class="panel-body">
@@ -93,30 +90,11 @@
     </div>
 @stop
 
-@section('footer')
-    @include('cms.components.modals.image')
-@stop
-
 @section('script.footer')
     <script type="text/javascript" charset="utf-8">
         $(function () {
             $('.editor').summernote({
                 minHeight: 300, 
-            });
-
-            $('#modal-image').on('show.bs.modal', function (e) {
-                var $modal = $(this);
-                var $button = $(e.relatedTarget);
-                var id = $button.data('image-id');
-
-                $.ajax({
-                    url: '/api/attachments/' + id,
-                    success: function (data) {
-                        $modal.find('img').attr('src', data.path);
-                        $modal.find('input[name="title:th"]').val(data.th.title);
-                        $modal.find('input[name="title:en"]').val(data.en.title);
-                    }
-                });
             });
         });
     </script>
