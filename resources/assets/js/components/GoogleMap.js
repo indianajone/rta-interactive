@@ -128,9 +128,9 @@ module.exports = {
             
             this.map.setCenter(this.location);
             
-            google.maps.event.addDomListener(window, 'resize', function() {
+            google.maps.event.addDomListener(window, 'resize', () => {
                 this.map.setCenter(this.location);
-            }.bind(this));
+            });
         },
 
         createArmyMarker: function (place) {

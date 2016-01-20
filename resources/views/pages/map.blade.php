@@ -8,14 +8,9 @@
 @stop
 
 @section('content')
-    <interactive-map inline-template
-        :things="{{ $options }}"
-    >
-        <div id="map" class="interactive-map"
-            :style="{ width: width + 'px', height: height + 'px'}"
-        >
+    <interactive-map inline-template :things="{{ $options }}">
+        <div id="map" class="interactive-map">
             @if (!$place)
-                
                 <form 
                     @submit.prevent="navigateMe"
                     @keyup.prevent.enter="navigateMe"

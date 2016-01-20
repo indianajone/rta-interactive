@@ -2,6 +2,7 @@
     @extend .nav;
     @extend .navbar-nav;
     > li {
+        float: left;
         a.navbar-social__button {
             color: $green;
             padding: 10px 5px;

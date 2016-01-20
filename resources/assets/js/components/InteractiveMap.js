@@ -1,7 +1,5 @@
 module.exports = {
 
-    template: require('./interactive-map.template.html'),
-
     components: {
         googleMap: require('./GoogleMap'),
         origin: require('./Origin'),
@@ -25,8 +23,6 @@ module.exports = {
     data: function () {
         return {
             marginBottom: 50,
-            width: window.innerWidth,
-            height: window.innerHeight - 50,
             currentLocation: null,
             route: { origin: '', destination: '', travelMode: 'DRIVING', waypoints: [] }
         }
