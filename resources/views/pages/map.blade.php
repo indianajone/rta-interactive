@@ -15,7 +15,7 @@
             :style="{ width: width + 'px', height: height + 'px'}"
         >
             @if (!$place)
-                <google-map v-ref:google :route="route" :things="selectedThings"></google-map>
+                
                 <form 
                     @submit.prevent="navigateMe"
                     @keyup.prevent.enter="navigateMe"
@@ -48,6 +48,7 @@
                         </div>
                     </fieldset>
                 </form>
+                <google-map v-ref:google :route="route" :things="selectedThings"></google-map>
             @else
                 <google-map v-ref:google :places="[{{ $place->latLng }}]"></google-map>
             @endif
