@@ -55,7 +55,6 @@
                     </div>
                 </div>
             </div>
-            @yield ('banner')
             <div class="navbar-bottom">
                 <div class="container">
                     <ul class="navbar-main collapse navbar-collapse">
@@ -69,6 +68,7 @@
                 </div>
             </div>
         </nav>
+        @yield ('banner')
         <div class="{{ !Route::is('map_path') ? 'container' : 'container-fluid' }}">
             @yield ('content')
         </div>

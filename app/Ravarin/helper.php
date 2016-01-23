@@ -27,7 +27,7 @@ if (!function_exists('nav_route')) {
     function nav_route($route, $name) 
     {
         $link = '<a class="navbar-main__link'. 
-                (Route::is($route) ? '--active"' : '"') . 
+                (Route::is($route) ? ' navbar-main__link--active"' : '"') . 
                 ' href="' . route($route, ['lang' => session()->get('locale')]) . '">' . 
                 '<span>' . trans('menu.'.$name) . '</span></a>';
 
