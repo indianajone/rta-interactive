@@ -11,7 +11,7 @@ class SearchController extends Controller
 {
     public function index(Request $request) 
     {
-        $search = Place::with('photos')->search($request->get('q', ''))->get();
+        $search = Place::with('photos')->search($request->get('q', null))->get();
         $recommended = Place::with('photos')->recommended()->get();
 
         return \Response::json([
@@ -28,7 +28,8 @@ class SearchController extends Controller
                 'excerpt' => $place->excerpt,
                 'thumbnail' => asset($place->thumbnail),
                 'recommended' => $place->recommended,
-                'rel' => place_path($place)
+                'rel' => place_path($place),
+                'map' => map_path($place)
             ];
         });
     }

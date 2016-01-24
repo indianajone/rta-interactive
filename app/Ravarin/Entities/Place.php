@@ -53,6 +53,10 @@ class Place extends Model
 
     public function scopeSearch($query, $keyword) 
     {
+        if (!$keyword) {
+            return $query;
+        }
+
         return $query->where('name', 'LIKE', "%{$keyword}%");
     }
 

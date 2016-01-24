@@ -2,6 +2,7 @@ module.exports = {
 
     components: {
         googleMap: require('./GoogleMap'),
+        googlePanel: require('./GooglePanel'),
         origin: require('./Origin'),
         destinations: require('./Destination'),
         mode: require('./Mode'),
@@ -32,7 +33,8 @@ module.exports = {
                 lat: 13.724600, 
                 lng: 100.6331108 
             },
-            route: { origin: '', destination: '', travelMode: 'DRIVING', waypoints: [] }
+            route: { origin: '', destination: '', travelMode: 'DRIVING', waypoints: [] },
+            panel: null
         }
     },
 
@@ -128,7 +130,7 @@ module.exports = {
                 destination: this.route.destination,
                 travelMode: google.maps.DirectionsTravelMode[this.route.travelMode],
                 // optimizeWaypoints: true,
-                provideRouteAlternatives: false,
+                provideRouteAlternatives: true,
                 waypoints: this.selectedWaypoint,
                 region: 'thailand'
             }

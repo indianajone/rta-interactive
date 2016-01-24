@@ -1,7 +1,5 @@
 module.exports = {
 
-    template: require('./search.template.html'),
-
     data: function () {
         return {
             query: '',
@@ -10,12 +8,6 @@ module.exports = {
                 recommended: []
             }
         };
-    },
-
-    watch: {
-        query: function () {
-            this.search();
-        }
     },
 
     filters: {
@@ -41,13 +33,12 @@ module.exports = {
 
     methods: {
         search: function () {
-            this.$http.get('/api/search?q=' + this.query, function (data) {
-                this.results.search = data.search;
-                this.results.recommended = data.recommended;
-            }.bind(this));
-        },
-        go: function (rel) {
-            window.location.href = rel;
+            if (this.query.length > 0) {
+                this.$http.get('/api/search?q=' + this.query, function (data) {
+                    this.results.search = data.search;
+                    this.results.recommended = data.recommended;
+                }.bind(this));
+            }
         },  
         reset: function () {
             this.query = '';

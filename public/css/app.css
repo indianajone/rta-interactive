@@ -13713,6 +13713,12 @@ fieldset[disabled] .btn-yahoo.focus {
   background-color: rgba(9, 77, 68, 0.8);
 }
 
+.interactive-map .direction {
+  background-color: #fff;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
 .mode {
   text-align: center;
 }
@@ -14113,18 +14119,6 @@ fieldset[disabled] .btn-yahoo.focus {
   border-bottom-left-radius: 4px;
 }
 
-.search__item:hover,
-.search__item:focus {
-  background-color: #267671;
-  color: #fff;
-  text-decoration: none;
-}
-
-.search__item:hover .search__body,
-.search__item:focus .search__body {
-  color: #fff;
-}
-
 .search__left,
 .search__right {
   display: table-cell;
@@ -14133,6 +14127,10 @@ fieldset[disabled] .btn-yahoo.focus {
 
 .search__left {
   padding-right: 15px;
+}
+
+.search__left .label {
+  position: absolute;
 }
 
 .search__image {

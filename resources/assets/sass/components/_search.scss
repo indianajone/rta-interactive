@@ -58,17 +58,6 @@
             margin-bottom: 0;
             @include border-bottom-radius($list-group-border-radius);
         }
-
-        &:hover,
-        &:focus {
-            background-color: $green-lighter;
-            color: #fff;
-            text-decoration: none;
-
-            .search__body {
-                color: #fff;
-            }
-        }
     }
 
     &__left, 
@@ -79,6 +68,9 @@
 
     &__left {
         padding-right: 15px;
+        .label {
+            position: absolute;
+        }
     }
 
     &__image {
