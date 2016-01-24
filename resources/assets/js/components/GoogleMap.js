@@ -8,9 +8,17 @@ module.exports = {
 
     props: {
         route: {}, 
-        things: {}, 
-        places: {
-            type: Array
+        things: {
+            type: Array,
+            default: function () {
+                return [];
+            }
+        }, 
+        place: {
+            type: Object,
+            default: function () {
+                return null;
+            }
         }
     },
 
@@ -18,27 +26,15 @@ module.exports = {
         return {
             map: null,
             markers: [],
+            nearby: [],
             services: {
                 direction: null,
-                renderer: null,
                 place: null,
-                boxer: new RouteBoxer()
+                renderer: null,
+                boxer: null
             },
-            infoWindow: null,
-            location: {
-                lat: 13.724600, 
-                lng: 100.6331108 
-            }
-        }
-    },
-
-    ready: function () {
-        var options = {
-            center: this.location,
-            zoom: 12
+            infoWindow: null
         };
-        
-        this.map = new google.maps.Map(this.$el, options);
     },
 
     watch: {
@@ -47,14 +43,64 @@ module.exports = {
         }
     },
 
+    events: {
+        init: function () {
+            this.init();
+        },
+        direction: function (request) {
+            this.getDirection(request);
+        },
+        'add.nearby': function (places) {
+            places.map((place) => {
+                this.createArmyMarker(place);
+            });
+        },
+        'remove.nearby': function () {
+            this.nearby.map((marker) => {
+                marker.setMap(null);
+            });
+
+            this.nearby = [];
+        }
+    },
+
     methods: {
+
+        init: function (location) {
+        
+            var options = {
+                center: location,
+                zoom: 12
+            };
+  
+            this.map = new google.maps.Map(this.$el, options);
+            this.infoWindow = new google.maps.InfoWindow();
+            this.services.direction = new google.maps.DirectionsService();
+            this.services.place = new google.maps.places.PlacesService(this.map);
+            this.services.boxer = new RouteBoxer();
+            this.services.renderer = new google.maps.DirectionsRenderer({ 
+                map: this.map
+                // panel: this.$els.panel
+            });
+            
+            this.createMarker({
+                geometry: {
+                    location: location
+                }
+            });
+            
+            this.map.setCenter(location);
+            
+            google.maps.event.addDomListener(window, 'resize', () => {
+                this.map.setCenter(location);
+            });
+        },
 
         getDirection: function (request) {
             var self = this;
 
             this.clearMarkers();
             this.services.direction.route(request, function (result, status) {
-                console.log(result);
                 if (status == google.maps.DirectionsStatus.OK) {
                     // for (var i = 0, len = result.routes.length; i < len; i++) {
                     //     var renderer = new google.maps.DirectionsRenderer({
@@ -64,8 +110,14 @@ module.exports = {
                     //         draggable: true,
                     //     });    
                     // }
+                    var leg = result.routes[ 0 ].legs[ 0 ];
+                    
                     self.services.renderer.setDirections(result);
                     self.drawBoxes(result.routes);
+                    // self.places.map((place) =>  {
+                    //     place.map = self.map;
+                    //     self.markers.push(self.createArmyMarker(place));
+                    // });
                 }
                 else {
                     window.alert('Directions request failed due to ' + status);
@@ -102,55 +154,28 @@ module.exports = {
                 });
             }
         },  
-        
-        init: function (location) {
-            this.location = location;
-            this.infoWindow = new google.maps.InfoWindow();
-            this.services.direction = new google.maps.DirectionsService();
-            this.services.place = new google.maps.places.PlacesService(this.map);
-            this.services.renderer = new google.maps.DirectionsRenderer({ 
-                map: this.map,
-                // panel: this.$els.panel
-            });
-            
-            this.createMarker({
-                geometry: {
-                    location: this.location
-                }
-            });
-
-            if (this.places) {
-                this.places.map((place) =>  {
-                    place.map = this.map;
-                    this.markers.push(this.createArmyMarker(place));
-                });
-            }
-            
-            this.map.setCenter(this.location);
-            
-            google.maps.event.addDomListener(window, 'resize', () => {
-                this.map.setCenter(this.location);
-            });
-        },
 
         createArmyMarker: function (place) {
+            var location = new google.maps.LatLng(place.latitude, place.longitude);
             var marker = new google.maps.Marker({
                 title: place.title,
                 map: this.map,
                 icon: {
-                    url: place.icon,
+                    url: '/images/place-pin.png',
                     scaledSize: new google.maps.Size(22, 35)
                 },
-                position: place.geometry.location
+                position: location
             });
 
             marker.addListener('click', (e) => {
                 this.setInfoWindow({
-                    canAdd: false,
+                    canAdd: true,
                     name: place.title,
-                    location: place.geometry.location,
+                    location: location,
                 }, marker);
             });
+
+            this.nearby.push(marker);
 
             return marker;
         },
@@ -160,12 +185,9 @@ module.exports = {
             var marker = null;
             var markerAttributes = {
                 map: this.map,
-                position: place.geometry.location
+                position: place.geometry.location,
+                icon: this.getPlaceIcon(place)
             };
-
-            if (place.icon) {
-                markerAttributes.icon = this.getPlaceIcon(place);
-            }
              
             marker = new google.maps.Marker(markerAttributes);
 
@@ -213,7 +235,8 @@ module.exports = {
             }
 
             if (!place.icon) {
-                icon.url = 'http://maps.gstatic.com/mapfiles/circle.png';
+                icon.url = 'http://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi_hdpi.png';
+                icon.scaledSize = new google.maps.Size(20, 37);
             }
 
             return icon;
