@@ -6,7 +6,7 @@ use App\Http\Requests;
 use Ravarin\Entities\Page;
 use Ravarin\Entities\Place;
 use Illuminate\Http\Request;
-use Ravarin\Entities\nearby;
+use Ravarin\Entities\Nearby;
 use App\Http\Controllers\Controller;
 
 class PagesController extends Controller
