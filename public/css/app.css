@@ -13713,6 +13713,12 @@ fieldset[disabled] .btn-yahoo.focus {
   background-color: rgba(9, 77, 68, 0.8);
 }
 
+.interactive-map .direction {
+  background-color: #fff;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
 .mode {
   text-align: center;
 }

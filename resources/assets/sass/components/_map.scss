@@ -22,6 +22,12 @@
     .bottom {
         background-color: rgba($green, .8);
     }
+
+    .direction {
+        background-color: #fff;
+        max-height: 300px;
+        overflow-y: scroll;
+    }
 }
 
 .mode {

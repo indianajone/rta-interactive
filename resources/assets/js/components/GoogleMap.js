@@ -88,8 +88,8 @@ module.exports = {
             this.services.place = new google.maps.places.PlacesService(this.map);
             this.services.boxer = new RouteBoxer();
             this.services.renderer = new google.maps.DirectionsRenderer({ 
-                map: this.map
-                // panel: this.$els.panel
+                map: this.map,
+                panel: document.getElementById('direction')
             });
             
             this.createMarker({
@@ -113,6 +113,7 @@ module.exports = {
                 if (status == google.maps.DirectionsStatus.OK) {  
                     self.services.renderer.setDirections(result);
                     self.drawBoxes(result.routes);
+                    console.log(self.services.renderer.getPanel());
                 }
                 else {
                     window.alert('Directions request failed due to ' + status);

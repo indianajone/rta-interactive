@@ -49,6 +49,9 @@
                         </div>
                     </div>
                 </fieldset>
+                <fieldset class="direction">
+                    <google-panel id="direction"></google-panel>
+                </fieldset>
             </form>
             <google-map :route="route" :things="selectedThings"></google-map>
         </div>
