@@ -40,6 +40,15 @@ module.exports = {
     watch: {
         things: function (value) {
             this.$dispatch('map.refresh');
+        },
+        'route.origin': function (value) {
+            this.clearMarkers();
+            this.createMarker({
+                geometry: {
+                    location: value
+                }
+            });
+            this.map.setCenter(value);
         }
     },
 
