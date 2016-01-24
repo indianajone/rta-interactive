@@ -14,7 +14,7 @@
 @stop
 
 @section('content')
-    <h2 class="heading--fancy">สถานที่ท่องเที่ยวแนะนำ</h2>
+    <h2 class="heading--fancy">{{ trans('common.heading.recommended') }}</h2>
     <div class="cards">
         @forelse($places->chunk(3) as $set)
             <div class="row">
@@ -24,7 +24,7 @@
             </div>
         @empty
             <div class="notfound">
-                <h3 class="notfound__body">ไม่พบข้อมูล</h3>
+                <h3 class="notfound__body">{{ trans('common.notfound') }}</h3>
             </div>
         @endforelse 
     </div>

@@ -33,7 +33,7 @@
                 </div>
             </form>
 
-            <h2 class="heading--fancy">สถานที่ท่องเที่ยวยอดนิยม</h2>
+            <h2 class="heading--fancy">{{ trans('common.heading.populars') }}</h2>
 
             <div class="cards">
                 <div v-for="chuck in places | inCategory | chunk 3" class="row">
