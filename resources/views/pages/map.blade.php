@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-    <interactive-map inline-template :things="{{ $options }}" :place="{{ $place or '{}' }}">
+    <interactive-map inline-template :things="{{ $options }}" :place="{{ $place or '{}' }}" :nears="{{ $nearby }}">
         <div id="map" class="interactive-map">
             <form 
                 @submit.prevent="navigateMe"
@@ -25,7 +25,7 @@
                     >
                     </destinations>
                 </fieldset>
-                @if ($place)
+                @if ($nearby)
                 <fieldset class="bottom" v-if="route.travelMode == 'DRIVING'">
                     <div class="waypoints">
                         <legend>{{ trans('map.nearby.title') }}</legend>

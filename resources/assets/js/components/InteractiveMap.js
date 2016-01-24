@@ -17,6 +17,9 @@ module.exports = {
             type: Object,
             default: function () { return null; }
         },
+        nears: {
+            type: Array
+        },
         nearby: { 
             type: Boolean,
             default: function () {return false; }
@@ -45,8 +48,8 @@ module.exports = {
 
     watch: {
         nearby: function (show) {
-            if(show && this.place) {
-                this.$broadcast('add.nearby', this.place.nearby);
+            if(show && this.nears) {
+                this.$broadcast('add.nearby', this.nears);
             } else {
                 this.$broadcast('remove.nearby');
             }
@@ -110,6 +113,7 @@ module.exports = {
                     if (status === google.maps.GeocoderStatus.OK) {
                         if (results[0]) {
                             self.route.origin = self.currentLocation;
+                            self.navigateMe();
                         }
                     }
                 });
