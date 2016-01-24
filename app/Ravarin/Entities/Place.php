@@ -199,6 +199,6 @@ class Place extends Model
     {
         $thumbnail = $this->photos->where('thumbnail', 1)->first();
 
-        return $thumbnail ? asset($thumbnail->path) : asset('/images/default.jpg');
+        return $thumbnail ? asset($thumbnail->thumbnail_path) : asset('/images/default.jpg');
     }
 }
