@@ -9,9 +9,32 @@ module.exports = {
     },
 
     props: {
-        'things': {
-            type: Array
+        things: {
+            type: Array,
+            default: function () { return []; }
+        },
+        place: {
+            type: Object,
+            default: function () { return null; }
+        },
+        nearby: { 
+            type: Boolean,
+            default: function () {return false; }
         }
+    },
+
+    data: function () {
+        return {
+            currentLocation: {
+                lat: 13.724600, 
+                lng: 100.6331108 
+            },
+            route: { origin: '', destination: '', travelMode: 'DRIVING', waypoints: [] }
+        }
+    },
+
+    ready: function () {
+        this.init();
     },
 
     events: {
@@ -20,16 +43,14 @@ module.exports = {
         }
     },
 
-    data: function () {
-        return {
-            marginBottom: 50,
-            currentLocation: null,
-            route: { origin: '', destination: '', travelMode: 'DRIVING', waypoints: [] }
+    watch: {
+        nearby: function (show) {
+            if(show && this.place) {
+                this.$broadcast('add.nearby', this.place.nearby);
+            } else {
+                this.$broadcast('remove.nearby');
+            }
         }
-    },
-
-    ready: function () {
-        this.init();
     },
 
     computed: {
@@ -45,7 +66,7 @@ module.exports = {
                     return thing.selected
                 })
                 .map(function (thing) {
-                    return thing.value
+                    return thing.value;
                 })
         },
         selectedWaypoint: function () {
@@ -66,11 +87,12 @@ module.exports = {
                 alert('Your browser does not support location service.');
             }
 
-            window.addEventListener('resize', this.onResize);
-        },
-        onResize: function () {
-            this.width = window.innerWidth;
-            this.height = window.innerHeight - this.marginBottom;
+            this.$broadcast('init', this.currentLocation);
+
+            if (this.place.latitude && this.place.longitude) {
+                this.route.destination = this.place.latitude + ',' + this.place.longitude;
+            }
+            
         },
         getCurrentLocation: function () {
             var self = this;
@@ -88,7 +110,7 @@ module.exports = {
                     if (status === google.maps.GeocoderStatus.OK) {
                         if (results[0]) {
                             self.route.origin = self.currentLocation;
-                            self.$refs.google.init(self.currentLocation);
+                            self.navigateMe();
                         }
                     }
                 });
@@ -103,13 +125,14 @@ module.exports = {
                 destination: this.route.destination,
                 travelMode: google.maps.DirectionsTravelMode[this.route.travelMode],
                 // optimizeWaypoints: true,
-                provideRouteAlternatives: true,
+                provideRouteAlternatives: false,
                 waypoints: this.selectedWaypoint,
                 region: 'thailand'
             }
 
             if (this.route.origin && this.route.destination) {
-                this.$refs.google.getDirection(request);
+                this.$broadcast('direction', request);
+                // this.$refs.google.getDirection(request);
             }
         }
     }

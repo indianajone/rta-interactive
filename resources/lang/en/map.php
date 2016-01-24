@@ -5,6 +5,11 @@ return [
         'title' => 'Avoid'
     ],
 
+    'nearby' => [
+        'title' => 'Nearby',
+        'show' => 'Display nearby'
+    ],
+
     'waypoints' => [
         'title' => 'Waypoints',
         'things' => [

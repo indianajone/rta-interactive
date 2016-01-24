@@ -48,6 +48,7 @@ module.exports = {
            }
         },
         onChanged: function (place) {
+            console.log('changed', place);
             this.origin = place.name;
             this.$dispatch('map.refresh');
         }

@@ -47,7 +47,7 @@ class Place extends Model
     public static function findBySlug($slug)
     {
         return (new static)->whereTranslation('title', str_replace('-', ' ', $slug))
-                ->with('photos')
+                ->with('photos', 'nearby')
                 ->firstOrFail();
     }
 
@@ -166,8 +166,8 @@ class Place extends Model
             'icon' => asset('images/place-pin.png'),
             'geometry' => [
                 'location' => [
-                    'lat' => (float) $this->latitude,
-                    'lng' => (float) $this->longitude
+                    'lat' => $this->latitude,
+                    'lng' => $this->longitude
                 ]
             ]
         ]);
