@@ -13,7 +13,19 @@
     <div class="card__buttons">
         <a href="{{ map_path($place) }}"><i class="fa fa-lg fa-car"></i></a>
         <a href="{{ place_path($place) }}"><i class="fa fa-lg fa-info"></i></a>
-        <a href="#"><i class="fa fa-lg fa-star-o"></i></a>
-        <a href="#"><i class="fa fa-lg fa-share-alt"></i></a>
+        @if(!Auth::check())
+            <a @click="openModal('login', 'login')"><i class="fa fa-lg fa-star-o"></i></a>
+        @else
+            <a href="#"><i class="fa fa-lg fa-star-o"></i></a>
+            {{-- <form action="api/users/favorite" method="POST">
+                {!! csrf_token() !!}
+                <button><i class="fa fa-lg fa-star-o"></i></button>
+            </form> --}}
+        @endif
+        @if(!Auth::check())
+            <a @click="openModal('login', 'login')"><i class="fa fa-lg fa-share-alt"></i></a>
+        @else
+            <a href="#"><i class="fa fa-lg fa-share-alt"></i></a>
+        @endif
     </div>
 </div>

@@ -33,13 +33,22 @@
             padding: 15px;
             width: 50%;
         }
-        a{
+
+        a, form, button  {
             @extend .btn;
+            background: none;
             width: 23%;
             padding: 15px 25px;
             &:not(:first-child) {
                 border-left: 1px solid $gray-lighter;
             }
         }
-    }
+
+        form {
+            > button {
+                background: none;
+                @extend .btn;
+            }
+        }
+    }   
 }
