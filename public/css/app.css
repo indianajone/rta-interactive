@@ -13953,6 +13953,11 @@ fieldset[disabled] .btn-yahoo.focus {
   font-family: "Quarkbold", sans-serif;
 }
 
+.navbar-toggle {
+  color: #fff;
+  padding: 9px 0 10px 9px;
+}
+
 .pv-container {
   overflow: hidden;
   white-space: nowrap;
