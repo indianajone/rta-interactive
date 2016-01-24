@@ -26245,8 +26245,8 @@ module.exports = {
     },
 
     events: {
-        init: function init() {
-            this.init();
+        init: function init(location) {
+            this.init(location);
         },
         direction: function direction(request) {
             this.getDirection(request);
@@ -26306,25 +26306,11 @@ module.exports = {
             this.clearMarkers();
             this.services.direction.route(request, function (result, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
-                    // for (var i = 0, len = result.routes.length; i < len; i++) {
-                    //     var renderer = new google.maps.DirectionsRenderer({
-                    //         map: self.map,
-                    //         directions: result,
-                    //         routeIndex: i,
-                    //         draggable: true,
-                    //     });   
-                    // }
-                    var leg = result.routes[0].legs[0];
-
                     self.services.renderer.setDirections(result);
                     self.drawBoxes(result.routes);
-                    // self.places.map((place) =>  {
-                    //     place.map = self.map;
-                    //     self.markers.push(self.createArmyMarker(place));
-                    // });
                 } else {
-                        window.alert('Directions request failed due to ' + status);
-                    }
+                    window.alert('Directions request failed due to ' + status);
+                }
             });
         },
 
@@ -26594,12 +26580,11 @@ module.exports = {
                 alert('Your browser does not support location service.');
             }
 
-            if (this.place) {
+            this.$broadcast('init', this.currentLocation);
+
+            if (this.place.latitude && this.place.longitude) {
                 this.route.destination = this.place.latitude + ',' + this.place.longitude;
             }
-
-            this.$broadcast('init');
-            // this.$refs.google.init(this.currentLocation);
         },
         getCurrentLocation: function getCurrentLocation() {
             var self = this;
@@ -26617,7 +26602,6 @@ module.exports = {
                     if (status === google.maps.GeocoderStatus.OK) {
                         if (results[0]) {
                             self.route.origin = self.currentLocation;
-                            // self.$refs.google.init(self.currentLocation);
                             self.navigateMe();
                         }
                     }

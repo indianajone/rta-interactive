@@ -44,8 +44,8 @@ module.exports = {
     },
 
     events: {
-        init: function () {
-            this.init();
+        init: function (location) {
+            this.init(location);
         },
         direction: function (request) {
             this.getDirection(request);
@@ -67,7 +67,7 @@ module.exports = {
     methods: {
 
         init: function (location) {
-        
+
             var options = {
                 center: location,
                 zoom: 12
@@ -101,23 +101,9 @@ module.exports = {
 
             this.clearMarkers();
             this.services.direction.route(request, function (result, status) {
-                if (status == google.maps.DirectionsStatus.OK) {
-                    // for (var i = 0, len = result.routes.length; i < len; i++) {
-                    //     var renderer = new google.maps.DirectionsRenderer({
-                    //         map: self.map,
-                    //         directions: result,
-                    //         routeIndex: i,
-                    //         draggable: true,
-                    //     });    
-                    // }
-                    var leg = result.routes[ 0 ].legs[ 0 ];
-                    
+                if (status == google.maps.DirectionsStatus.OK) {  
                     self.services.renderer.setDirections(result);
                     self.drawBoxes(result.routes);
-                    // self.places.map((place) =>  {
-                    //     place.map = self.map;
-                    //     self.markers.push(self.createArmyMarker(place));
-                    // });
                 }
                 else {
                     window.alert('Directions request failed due to ' + status);

@@ -87,12 +87,12 @@ module.exports = {
                 alert('Your browser does not support location service.');
             }
 
-            if (this.place) {
+            this.$broadcast('init', this.currentLocation);
+
+            if (this.place.latitude && this.place.longitude) {
                 this.route.destination = this.place.latitude + ',' + this.place.longitude;
             }
-
-            this.$broadcast('init');
-            // this.$refs.google.init(this.currentLocation);
+            
         },
         getCurrentLocation: function () {
             var self = this;
@@ -110,7 +110,6 @@ module.exports = {
                     if (status === google.maps.GeocoderStatus.OK) {
                         if (results[0]) {
                             self.route.origin = self.currentLocation;
-                            // self.$refs.google.init(self.currentLocation);
                             self.navigateMe();
                         }
                     }
