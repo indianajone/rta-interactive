@@ -26241,6 +26241,15 @@ module.exports = {
     watch: {
         things: function things(value) {
             this.$dispatch('map.refresh');
+        },
+        'route.origin': function routeOrigin(value) {
+            this.clearMarkers();
+            this.createMarker({
+                geometry: {
+                    location: value
+                }
+            });
+            this.map.setCenter(value);
         }
     },
 
@@ -26602,7 +26611,6 @@ module.exports = {
                     if (status === google.maps.GeocoderStatus.OK) {
                         if (results[0]) {
                             self.route.origin = self.currentLocation;
-                            self.navigateMe();
                         }
                     }
                 });

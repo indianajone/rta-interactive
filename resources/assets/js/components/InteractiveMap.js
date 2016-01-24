@@ -110,7 +110,6 @@ module.exports = {
                     if (status === google.maps.GeocoderStatus.OK) {
                         if (results[0]) {
                             self.route.origin = self.currentLocation;
-                            self.navigateMe();
                         }
                     }
                 });
