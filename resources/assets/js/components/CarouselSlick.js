@@ -10,8 +10,6 @@ module.exports = {
         }, this.params.options);
 
         $(this.el).slick(options);
-
-        console.log(this.el);
     },
     unbind: function () {
        $(this.el).slick('unslick');

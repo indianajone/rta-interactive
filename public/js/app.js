@@ -26155,8 +26155,6 @@ module.exports = {
         }, this.params.options);
 
         $(this.el).slick(options);
-
-        console.log(this.el);
     },
     unbind: function unbind() {
         $(this.el).slick('unslick');
