@@ -65,7 +65,7 @@
                         <li>{!! nav_route('recommended_path', 'recommended') !!}</li>
                         <li>{!! nav_route('about_path', 'about') !!}</li>
                     </ul>
-                    <search></search>
+                    @include('components.search')
                 </div>
             </div>
         </nav>
