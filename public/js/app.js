@@ -26487,7 +26487,7 @@ module.exports = {
     },
 
     props: {
-        things: {
+        'things': {
             type: Array
         }
     },
