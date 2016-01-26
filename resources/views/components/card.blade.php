@@ -16,11 +16,7 @@
         @if(!Auth::check())
             <a @click="openModal('login', 'login')"><i class="fa fa-lg fa-star-o"></i></a>
         @else
-            <a href="#"><i class="fa fa-lg fa-star-o"></i></a>
-            {{-- <form action="api/users/favorite" method="POST">
-                {!! csrf_token() !!}
-                <button><i class="fa fa-lg fa-star-o"></i></button>
-            </form> --}}
+            <favorite-button place="{{ $place->id }}" favorited="{{ $place->hasFavoritedByUser(Auth::user()) }}"></favorite-button>
         @endif
         @if(!Auth::check())
             <a @click="openModal('login', 'login')"><i class="fa fa-lg fa-share-alt"></i></a>

@@ -129,6 +129,16 @@ class Place extends Model
         return $this->hasMany(Nearby::class);
     }
 
+    public function favoriteUsers() 
+    {
+        return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
+    }
+
+    public function hasFavoritedByUser(User $user) 
+    {
+        return (boolean) $user->hasFavoritePlace($this);
+    }
+
     /**
      * Determine if an attribute exists on the model.
      *

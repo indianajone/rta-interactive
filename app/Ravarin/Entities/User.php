@@ -57,4 +57,14 @@ class User extends Model implements AuthenticatableContract,
 
         return $user;
     }
+
+    public function favoritePlaces() 
+    {
+        return $this->belongsToMany(Place::class, 'favorites')->withTimestamps();
+    }
+
+    public function hasFavoritePlace(Place $place) 
+    {
+        return $this->favoritePlaces()->where('place_id', $place->id)->count();
+    }
 }

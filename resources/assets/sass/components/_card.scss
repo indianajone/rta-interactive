@@ -34,20 +34,14 @@
             width: 50%;
         }
 
-        a, form, button  {
+        a, button  {
             @extend .btn;
+            color: $green;
             background: none;
             width: 23%;
             padding: 15px 25px;
             &:not(:first-child) {
                 border-left: 1px solid $gray-lighter;
-            }
-        }
-
-        form {
-            > button {
-                background: none;
-                @extend .btn;
             }
         }
     }   

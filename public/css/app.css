@@ -292,15 +292,11 @@ th {
 
   .btn > .caret,
   .card__buttons a > .caret,
-  .card__buttons form > .caret,
   .card__buttons button > .caret,
-  .card__buttons form > button > .caret,
   .navbar-nav__link > .caret,
   .dropup > .btn > .caret,
   .card__buttons
   .dropup > a > .caret,
-  .card__buttons
-  .dropup > form > .caret,
   .card__buttons
   .dropup > button > .caret,
   .dropup > .navbar-nav__link > .caret {
@@ -3603,8 +3599,6 @@ fieldset[disabled]
 .card__buttons
   .input-group-lg > .input-group-btn > a.form-control-static,
 .card__buttons
-  .input-group-lg > .input-group-btn > form.form-control-static,
-.card__buttons
   .input-group-lg > .input-group-btn > button.form-control-static,
 .input-group-lg > .input-group-btn > .form-control-static.navbar-nav__link,
 .form-control-static.input-sm,
@@ -3613,8 +3607,6 @@ fieldset[disabled]
 .input-group-sm > .input-group-btn > .form-control-static.btn,
 .card__buttons
   .input-group-sm > .input-group-btn > a.form-control-static,
-.card__buttons
-  .input-group-sm > .input-group-btn > form.form-control-static,
 .card__buttons
   .input-group-sm > .input-group-btn > button.form-control-static,
 .input-group-sm > .input-group-btn > .form-control-static.navbar-nav__link {
@@ -3628,8 +3620,6 @@ fieldset[disabled]
 .input-group-sm > .input-group-btn > .btn,
 .card__buttons
 .input-group-sm > .input-group-btn > a,
-.card__buttons
-.input-group-sm > .input-group-btn > form,
 .card__buttons
 .input-group-sm > .input-group-btn > button,
 .input-group-sm > .input-group-btn > .navbar-nav__link {
@@ -3694,8 +3684,6 @@ select[multiple].input-sm,
 .input-group-lg > .input-group-btn > .btn,
 .card__buttons
 .input-group-lg > .input-group-btn > a,
-.card__buttons
-.input-group-lg > .input-group-btn > form,
 .card__buttons
 .input-group-lg > .input-group-btn > button,
 .input-group-lg > .input-group-btn > .navbar-nav__link {
@@ -3782,8 +3770,6 @@ select[multiple].input-lg,
 .card__buttons
 .input-group-lg > .input-group-btn > a + .form-control-feedback,
 .card__buttons
-.input-group-lg > .input-group-btn > form + .form-control-feedback,
-.card__buttons
 .input-group-lg > .input-group-btn > button + .form-control-feedback,
 .input-group-lg > .input-group-btn > .navbar-nav__link + .form-control-feedback,
 .input-group-lg + .form-control-feedback,
@@ -3799,8 +3785,6 @@ select[multiple].input-lg,
 .input-group-sm > .input-group-btn > .btn + .form-control-feedback,
 .card__buttons
 .input-group-sm > .input-group-btn > a + .form-control-feedback,
-.card__buttons
-.input-group-sm > .input-group-btn > form + .form-control-feedback,
 .card__buttons
 .input-group-sm > .input-group-btn > button + .form-control-feedback,
 .input-group-sm > .input-group-btn > .navbar-nav__link + .form-control-feedback,
@@ -4043,9 +4027,7 @@ select[multiple].input-lg,
 
 .btn,
 .card__buttons a,
-.card__buttons form,
 .card__buttons button,
-.card__buttons form > button,
 .navbar-nav__link {
   display: inline-block;
   margin-bottom: 0;
@@ -4070,32 +4052,26 @@ select[multiple].input-lg,
 
 .btn:focus,
 .card__buttons a:focus,
-.card__buttons form:focus,
 .card__buttons button:focus,
 .navbar-nav__link:focus,
 .btn.focus,
 .card__buttons a.focus,
-.card__buttons form.focus,
 .card__buttons button.focus,
 .focus.navbar-nav__link,
 .btn:active:focus,
 .card__buttons a:active:focus,
-.card__buttons form:active:focus,
 .card__buttons button:active:focus,
 .navbar-nav__link:active:focus,
 .btn:active.focus,
 .card__buttons a:active.focus,
-.card__buttons form:active.focus,
 .card__buttons button:active.focus,
 .navbar-nav__link:active.focus,
 .btn.active:focus,
 .card__buttons a.active:focus,
-.card__buttons form.active:focus,
 .card__buttons button.active:focus,
 .active.navbar-nav__link:focus,
 .btn.active.focus,
 .card__buttons a.active.focus,
-.card__buttons form.active.focus,
 .card__buttons button.active.focus,
 .active.focus.navbar-nav__link {
   outline: thin dotted;
@@ -4105,17 +4081,14 @@ select[multiple].input-lg,
 
 .btn:hover,
 .card__buttons a:hover,
-.card__buttons form:hover,
 .card__buttons button:hover,
 .navbar-nav__link:hover,
 .btn:focus,
 .card__buttons a:focus,
-.card__buttons form:focus,
 .card__buttons button:focus,
 .navbar-nav__link:focus,
 .btn.focus,
 .card__buttons a.focus,
-.card__buttons form.focus,
 .card__buttons button.focus,
 .focus.navbar-nav__link {
   color: #333;
@@ -4124,12 +4097,10 @@ select[multiple].input-lg,
 
 .btn:active,
 .card__buttons a:active,
-.card__buttons form:active,
 .card__buttons button:active,
 .navbar-nav__link:active,
 .btn.active,
 .card__buttons a.active,
-.card__buttons form.active,
 .card__buttons button.active,
 .active.navbar-nav__link {
   outline: 0;
@@ -4139,21 +4110,16 @@ select[multiple].input-lg,
 
 .btn.disabled,
 .card__buttons a.disabled,
-.card__buttons form.disabled,
 .card__buttons button.disabled,
 .disabled.navbar-nav__link,
 .btn[disabled],
 .card__buttons a[disabled],
-.card__buttons form[disabled],
 .card__buttons button[disabled],
 [disabled].navbar-nav__link,
 fieldset[disabled] .btn,
 fieldset[disabled] .card__buttons a,
 .card__buttons
   fieldset[disabled] a,
-fieldset[disabled] .card__buttons form,
-.card__buttons
-  fieldset[disabled] form,
 fieldset[disabled] .card__buttons button,
 .card__buttons
   fieldset[disabled] button,
@@ -4605,7 +4571,6 @@ fieldset[disabled] .btn-link:focus {
 .btn-lg,
 .btn-group-lg > .btn,
 .card__buttons .btn-group-lg > a,
-.card__buttons .btn-group-lg > form,
 .card__buttons .btn-group-lg > button,
 .btn-group-lg > .navbar-nav__link {
   padding: 10px 16px;
@@ -4617,7 +4582,6 @@ fieldset[disabled] .btn-link:focus {
 .btn-sm,
 .btn-group-sm > .btn,
 .card__buttons .btn-group-sm > a,
-.card__buttons .btn-group-sm > form,
 .card__buttons .btn-group-sm > button,
 .btn-group-sm > .navbar-nav__link {
   padding: 5px 10px;
@@ -4629,7 +4593,6 @@ fieldset[disabled] .btn-link:focus {
 .btn-xs,
 .btn-group-xs > .btn,
 .card__buttons .btn-group-xs > a,
-.card__buttons .btn-group-xs > form,
 .card__buttons .btn-group-xs > button,
 .btn-group-xs > .navbar-nav__link {
   padding: 1px 5px;
@@ -4859,14 +4822,11 @@ tbody.collapse.in {
 
 .btn-group > .btn,
 .card__buttons .btn-group > a,
-.card__buttons .btn-group > form,
 .card__buttons .btn-group > button,
 .btn-group > .navbar-nav__link,
 .btn-group-vertical > .btn,
 .card__buttons
   .btn-group-vertical > a,
-.card__buttons
-  .btn-group-vertical > form,
 .card__buttons
   .btn-group-vertical > button,
 .btn-group-vertical > .navbar-nav__link {
@@ -4876,29 +4836,23 @@ tbody.collapse.in {
 
 .btn-group > .btn:hover,
 .card__buttons .btn-group > a:hover,
-.card__buttons .btn-group > form:hover,
 .card__buttons .btn-group > button:hover,
 .btn-group > .navbar-nav__link:hover,
 .btn-group > .btn:focus,
 .card__buttons .btn-group > a:focus,
-.card__buttons .btn-group > form:focus,
 .card__buttons .btn-group > button:focus,
 .btn-group > .navbar-nav__link:focus,
 .btn-group > .btn:active,
 .card__buttons .btn-group > a:active,
-.card__buttons .btn-group > form:active,
 .card__buttons .btn-group > button:active,
 .btn-group > .navbar-nav__link:active,
 .btn-group > .btn.active,
 .card__buttons .btn-group > a.active,
-.card__buttons .btn-group > form.active,
 .card__buttons .btn-group > button.active,
 .btn-group > .active.navbar-nav__link,
 .btn-group-vertical > .btn:hover,
 .card__buttons
     .btn-group-vertical > a:hover,
-.card__buttons
-    .btn-group-vertical > form:hover,
 .card__buttons
     .btn-group-vertical > button:hover,
 .btn-group-vertical > .navbar-nav__link:hover,
@@ -4906,23 +4860,17 @@ tbody.collapse.in {
 .card__buttons
     .btn-group-vertical > a:focus,
 .card__buttons
-    .btn-group-vertical > form:focus,
-.card__buttons
     .btn-group-vertical > button:focus,
 .btn-group-vertical > .navbar-nav__link:focus,
 .btn-group-vertical > .btn:active,
 .card__buttons
     .btn-group-vertical > a:active,
 .card__buttons
-    .btn-group-vertical > form:active,
-.card__buttons
     .btn-group-vertical > button:active,
 .btn-group-vertical > .navbar-nav__link:active,
 .btn-group-vertical > .btn.active,
 .card__buttons
     .btn-group-vertical > a.active,
-.card__buttons
-    .btn-group-vertical > form.active,
 .card__buttons
     .btn-group-vertical > button.active,
 .btn-group-vertical > .active.navbar-nav__link {
@@ -4932,98 +4880,46 @@ tbody.collapse.in {
 .btn-group .btn + .btn,
 .btn-group .card__buttons a + .btn,
 .card__buttons .btn-group a + .btn,
-.btn-group .card__buttons form + .btn,
-.card__buttons .btn-group form + .btn,
 .btn-group .card__buttons button + .btn,
 .card__buttons .btn-group button + .btn,
-.btn-group .card__buttons form > button + .btn,
-.card__buttons .btn-group form > button + .btn,
 .btn-group .navbar-nav__link + .btn,
 .btn-group .card__buttons .btn + a,
 .card__buttons .btn-group .btn + a,
 .btn-group .card__buttons a + a,
 .card__buttons .btn-group a + a,
-.btn-group .card__buttons form + a,
-.card__buttons .btn-group form + a,
 .btn-group .card__buttons button + a,
 .card__buttons .btn-group button + a,
-.btn-group .card__buttons form > button + a,
-.card__buttons .btn-group form > button + a,
 .btn-group .card__buttons .navbar-nav__link + a,
 .card__buttons .btn-group .navbar-nav__link + a,
-.btn-group .card__buttons .btn + form,
-.card__buttons .btn-group .btn + form,
-.btn-group .card__buttons a + form,
-.card__buttons .btn-group a + form,
-.btn-group .card__buttons form + form,
-.card__buttons .btn-group form + form,
-.btn-group .card__buttons button + form,
-.card__buttons .btn-group button + form,
-.btn-group .card__buttons form > button + form,
-.card__buttons .btn-group form > button + form,
-.btn-group .card__buttons .navbar-nav__link + form,
-.card__buttons .btn-group .navbar-nav__link + form,
 .btn-group .card__buttons .btn + button,
 .card__buttons .btn-group .btn + button,
 .btn-group .card__buttons a + button,
 .card__buttons .btn-group a + button,
-.btn-group .card__buttons form + button,
-.card__buttons .btn-group form + button,
 .btn-group .card__buttons button + button,
 .card__buttons .btn-group button + button,
-.btn-group .card__buttons form > button + button,
-.card__buttons .btn-group form > button + button,
 .btn-group .card__buttons .navbar-nav__link + button,
 .card__buttons .btn-group .navbar-nav__link + button,
-.btn-group .card__buttons form > .btn + button,
-.card__buttons .btn-group form > .btn + button,
-.btn-group .card__buttons form > a + button,
-.card__buttons .btn-group form > a + button,
-.btn-group .card__buttons form > form + button,
-.card__buttons .btn-group form > form + button,
-.btn-group .card__buttons form > button + button,
-.card__buttons .btn-group form > button + button,
-.btn-group .card__buttons form > button + button,
-.card__buttons .btn-group form > button + button,
-.btn-group .card__buttons form > .navbar-nav__link + button,
-.card__buttons .btn-group form > .navbar-nav__link + button,
 .btn-group .btn + .navbar-nav__link,
 .btn-group .card__buttons a + .navbar-nav__link,
 .card__buttons .btn-group a + .navbar-nav__link,
-.btn-group .card__buttons form + .navbar-nav__link,
-.card__buttons .btn-group form + .navbar-nav__link,
 .btn-group .card__buttons button + .navbar-nav__link,
 .card__buttons .btn-group button + .navbar-nav__link,
-.btn-group .card__buttons form > button + .navbar-nav__link,
-.card__buttons .btn-group form > button + .navbar-nav__link,
 .btn-group .navbar-nav__link + .navbar-nav__link,
 .btn-group .btn + .btn-group,
 .btn-group .card__buttons a + .btn-group,
 .card__buttons
 .btn-group a + .btn-group,
-.btn-group .card__buttons form + .btn-group,
-.card__buttons
-.btn-group form + .btn-group,
 .btn-group .card__buttons button + .btn-group,
 .card__buttons
 .btn-group button + .btn-group,
-.btn-group .card__buttons form > button + .btn-group,
-.card__buttons
-.btn-group form > button + .btn-group,
 .btn-group .navbar-nav__link + .btn-group,
 .btn-group .btn-group + .btn,
 .btn-group .card__buttons .btn-group + a,
 .card__buttons
 .btn-group .btn-group + a,
-.btn-group .card__buttons .btn-group + form,
-.card__buttons
-.btn-group .btn-group + form,
 .btn-group .card__buttons .btn-group + button,
 .card__buttons
 .btn-group .btn-group + button,
-.btn-group .card__buttons form > .btn-group + button,
-.card__buttons
-.btn-group form > .btn-group + button,
 .btn-group .btn-group + .navbar-nav__link,
 .btn-group .btn-group + .btn-group {
   margin-left: -1px;
@@ -5046,8 +4942,6 @@ tbody.collapse.in {
 .btn-toolbar .btn,
 .btn-toolbar .card__buttons a,
 .card__buttons .btn-toolbar a,
-.btn-toolbar .card__buttons form,
-.card__buttons .btn-toolbar form,
 .btn-toolbar .card__buttons button,
 .card__buttons .btn-toolbar button,
 .btn-toolbar .navbar-nav__link,
@@ -5058,7 +4952,6 @@ tbody.collapse.in {
 
 .btn-toolbar > .btn,
 .card__buttons .btn-toolbar > a,
-.card__buttons .btn-toolbar > form,
 .card__buttons .btn-toolbar > button,
 .btn-toolbar > .navbar-nav__link,
 .btn-toolbar > .btn-group,
@@ -5068,7 +4961,6 @@ tbody.collapse.in {
 
 .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle),
 .card__buttons .btn-group > a:not(:first-child):not(:last-child):not(.dropdown-toggle),
-.card__buttons .btn-group > form:not(:first-child):not(:last-child):not(.dropdown-toggle),
 .card__buttons .btn-group > button:not(:first-child):not(:last-child):not(.dropdown-toggle),
 .btn-group > .navbar-nav__link:not(:first-child):not(:last-child):not(.dropdown-toggle) {
   border-radius: 0;
@@ -5076,7 +4968,6 @@ tbody.collapse.in {
 
 .btn-group > .btn:first-child,
 .card__buttons .btn-group > a:first-child,
-.card__buttons .btn-group > form:first-child,
 .card__buttons .btn-group > button:first-child,
 .btn-group > .navbar-nav__link:first-child {
   margin-left: 0;
@@ -5084,7 +4975,6 @@ tbody.collapse.in {
 
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle),
 .card__buttons .btn-group > a:first-child:not(:last-child):not(.dropdown-toggle),
-.card__buttons .btn-group > form:first-child:not(:last-child):not(.dropdown-toggle),
 .card__buttons .btn-group > button:first-child:not(:last-child):not(.dropdown-toggle),
 .btn-group > .navbar-nav__link:first-child:not(:last-child):not(.dropdown-toggle) {
   border-bottom-right-radius: 0;
@@ -5093,7 +4983,6 @@ tbody.collapse.in {
 
 .btn-group > .btn:last-child:not(:first-child),
 .card__buttons .btn-group > a:last-child:not(:first-child),
-.card__buttons .btn-group > form:last-child:not(:first-child),
 .card__buttons .btn-group > button:last-child:not(:first-child),
 .btn-group > .navbar-nav__link:last-child:not(:first-child),
 .btn-group > .dropdown-toggle:not(:first-child) {
@@ -5107,7 +4996,6 @@ tbody.collapse.in {
 
 .btn-group > .btn-group:not(:first-child):not(:last-child) > .btn,
 .card__buttons .btn-group > .btn-group:not(:first-child):not(:last-child) > a,
-.card__buttons .btn-group > .btn-group:not(:first-child):not(:last-child) > form,
 .card__buttons .btn-group > .btn-group:not(:first-child):not(:last-child) > button,
 .btn-group > .btn-group:not(:first-child):not(:last-child) > .navbar-nav__link {
   border-radius: 0;
@@ -5115,7 +5003,6 @@ tbody.collapse.in {
 
 .btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child,
 .card__buttons .btn-group > .btn-group:first-child:not(:last-child) > a:last-child,
-.card__buttons .btn-group > .btn-group:first-child:not(:last-child) > form:last-child,
 .card__buttons .btn-group > .btn-group:first-child:not(:last-child) > button:last-child,
 .btn-group > .btn-group:first-child:not(:last-child) > .navbar-nav__link:last-child,
 .btn-group > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
@@ -5125,7 +5012,6 @@ tbody.collapse.in {
 
 .btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child,
 .card__buttons .btn-group > .btn-group:last-child:not(:first-child) > a:first-child,
-.card__buttons .btn-group > .btn-group:last-child:not(:first-child) > form:first-child,
 .card__buttons .btn-group > .btn-group:last-child:not(:first-child) > button:first-child,
 .btn-group > .btn-group:last-child:not(:first-child) > .navbar-nav__link:first-child {
   border-bottom-left-radius: 0;
@@ -5139,7 +5025,6 @@ tbody.collapse.in {
 
 .btn-group > .btn + .dropdown-toggle,
 .card__buttons .btn-group > a + .dropdown-toggle,
-.card__buttons .btn-group > form + .dropdown-toggle,
 .card__buttons .btn-group > button + .dropdown-toggle,
 .btn-group > .navbar-nav__link + .dropdown-toggle {
   padding-left: 8px;
@@ -5149,7 +5034,6 @@ tbody.collapse.in {
 .btn-group > .btn-lg + .dropdown-toggle,
 .btn-group-lg.btn-group > .btn + .dropdown-toggle,
 .card__buttons .btn-group-lg.btn-group > a + .dropdown-toggle,
-.card__buttons .btn-group-lg.btn-group > form + .dropdown-toggle,
 .card__buttons .btn-group-lg.btn-group > button + .dropdown-toggle,
 .btn-group-lg.btn-group > .navbar-nav__link + .dropdown-toggle {
   padding-left: 12px;
@@ -5166,7 +5050,6 @@ tbody.collapse.in {
 
 .btn .caret,
 .card__buttons a .caret,
-.card__buttons form .caret,
 .card__buttons button .caret,
 .navbar-nav__link .caret {
   margin-left: 0;
@@ -5175,7 +5058,6 @@ tbody.collapse.in {
 .btn-lg .caret,
 .btn-group-lg > .btn .caret,
 .card__buttons .btn-group-lg > a .caret,
-.card__buttons .btn-group-lg > form .caret,
 .card__buttons .btn-group-lg > button .caret,
 .btn-group-lg > .navbar-nav__link .caret {
   border-width: 5px 5px 0;
@@ -5186,8 +5068,6 @@ tbody.collapse.in {
 .dropup .btn-group-lg > .btn .caret,
 .dropup .card__buttons .btn-group-lg > a .caret,
 .card__buttons .dropup .btn-group-lg > a .caret,
-.dropup .card__buttons .btn-group-lg > form .caret,
-.card__buttons .dropup .btn-group-lg > form .caret,
 .dropup .card__buttons .btn-group-lg > button .caret,
 .card__buttons .dropup .btn-group-lg > button .caret,
 .dropup .btn-group-lg > .navbar-nav__link .caret {
@@ -5196,15 +5076,12 @@ tbody.collapse.in {
 
 .btn-group-vertical > .btn,
 .card__buttons .btn-group-vertical > a,
-.card__buttons .btn-group-vertical > form,
 .card__buttons .btn-group-vertical > button,
 .btn-group-vertical > .navbar-nav__link,
 .btn-group-vertical > .btn-group,
 .btn-group-vertical > .btn-group > .btn,
 .card__buttons
 .btn-group-vertical > .btn-group > a,
-.card__buttons
-.btn-group-vertical > .btn-group > form,
 .card__buttons
 .btn-group-vertical > .btn-group > button,
 .btn-group-vertical > .btn-group > .navbar-nav__link {
@@ -5226,7 +5103,6 @@ tbody.collapse.in {
 
 .btn-group-vertical > .btn-group > .btn,
 .card__buttons .btn-group-vertical > .btn-group > a,
-.card__buttons .btn-group-vertical > .btn-group > form,
 .card__buttons .btn-group-vertical > .btn-group > button,
 .btn-group-vertical > .btn-group > .navbar-nav__link {
   float: none;
@@ -5234,42 +5110,29 @@ tbody.collapse.in {
 
 .btn-group-vertical > .btn + .btn,
 .card__buttons .btn-group-vertical > a + .btn,
-.card__buttons .btn-group-vertical > form + .btn,
 .card__buttons .btn-group-vertical > button + .btn,
 .btn-group-vertical > .navbar-nav__link + .btn,
 .card__buttons .btn-group-vertical > .btn + a,
 .card__buttons .btn-group-vertical > a + a,
-.card__buttons .btn-group-vertical > form + a,
 .card__buttons .btn-group-vertical > button + a,
 .card__buttons .btn-group-vertical > .navbar-nav__link + a,
-.card__buttons .btn-group-vertical > .btn + form,
-.card__buttons .btn-group-vertical > a + form,
-.card__buttons .btn-group-vertical > form + form,
-.card__buttons .btn-group-vertical > button + form,
-.card__buttons .btn-group-vertical > .navbar-nav__link + form,
 .card__buttons .btn-group-vertical > .btn + button,
 .card__buttons .btn-group-vertical > a + button,
-.card__buttons .btn-group-vertical > form + button,
 .card__buttons .btn-group-vertical > button + button,
 .card__buttons .btn-group-vertical > .navbar-nav__link + button,
 .btn-group-vertical > .btn + .navbar-nav__link,
 .card__buttons .btn-group-vertical > a + .navbar-nav__link,
-.card__buttons .btn-group-vertical > form + .navbar-nav__link,
 .card__buttons .btn-group-vertical > button + .navbar-nav__link,
 .btn-group-vertical > .navbar-nav__link + .navbar-nav__link,
 .btn-group-vertical > .btn + .btn-group,
 .card__buttons
 .btn-group-vertical > a + .btn-group,
 .card__buttons
-.btn-group-vertical > form + .btn-group,
-.card__buttons
 .btn-group-vertical > button + .btn-group,
 .btn-group-vertical > .navbar-nav__link + .btn-group,
 .btn-group-vertical > .btn-group + .btn,
 .card__buttons
 .btn-group-vertical > .btn-group + a,
-.card__buttons
-.btn-group-vertical > .btn-group + form,
 .card__buttons
 .btn-group-vertical > .btn-group + button,
 .btn-group-vertical > .btn-group + .navbar-nav__link,
@@ -5280,7 +5143,6 @@ tbody.collapse.in {
 
 .btn-group-vertical > .btn:not(:first-child):not(:last-child),
 .card__buttons .btn-group-vertical > a:not(:first-child):not(:last-child),
-.card__buttons .btn-group-vertical > form:not(:first-child):not(:last-child),
 .card__buttons .btn-group-vertical > button:not(:first-child):not(:last-child),
 .btn-group-vertical > .navbar-nav__link:not(:first-child):not(:last-child) {
   border-radius: 0;
@@ -5288,7 +5150,6 @@ tbody.collapse.in {
 
 .btn-group-vertical > .btn:first-child:not(:last-child),
 .card__buttons .btn-group-vertical > a:first-child:not(:last-child),
-.card__buttons .btn-group-vertical > form:first-child:not(:last-child),
 .card__buttons .btn-group-vertical > button:first-child:not(:last-child),
 .btn-group-vertical > .navbar-nav__link:first-child:not(:last-child) {
   border-top-right-radius: 4px;
@@ -5299,7 +5160,6 @@ tbody.collapse.in {
 
 .btn-group-vertical > .btn:last-child:not(:first-child),
 .card__buttons .btn-group-vertical > a:last-child:not(:first-child),
-.card__buttons .btn-group-vertical > form:last-child:not(:first-child),
 .card__buttons .btn-group-vertical > button:last-child:not(:first-child),
 .btn-group-vertical > .navbar-nav__link:last-child:not(:first-child) {
   border-top-right-radius: 0;
@@ -5310,7 +5170,6 @@ tbody.collapse.in {
 
 .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn,
 .card__buttons .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > a,
-.card__buttons .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > form,
 .card__buttons .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > button,
 .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .navbar-nav__link {
   border-radius: 0;
@@ -5318,7 +5177,6 @@ tbody.collapse.in {
 
 .btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child,
 .card__buttons .btn-group-vertical > .btn-group:first-child:not(:last-child) > a:last-child,
-.card__buttons .btn-group-vertical > .btn-group:first-child:not(:last-child) > form:last-child,
 .card__buttons .btn-group-vertical > .btn-group:first-child:not(:last-child) > button:last-child,
 .btn-group-vertical > .btn-group:first-child:not(:last-child) > .navbar-nav__link:last-child,
 .btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
@@ -5328,7 +5186,6 @@ tbody.collapse.in {
 
 .btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child,
 .card__buttons .btn-group-vertical > .btn-group:last-child:not(:first-child) > a:first-child,
-.card__buttons .btn-group-vertical > .btn-group:last-child:not(:first-child) > form:first-child,
 .card__buttons .btn-group-vertical > .btn-group:last-child:not(:first-child) > button:first-child,
 .btn-group-vertical > .btn-group:last-child:not(:first-child) > .navbar-nav__link:first-child {
   border-top-right-radius: 0;
@@ -5344,7 +5201,6 @@ tbody.collapse.in {
 
 .btn-group-justified > .btn,
 .card__buttons .btn-group-justified > a,
-.card__buttons .btn-group-justified > form,
 .card__buttons .btn-group-justified > button,
 .btn-group-justified > .navbar-nav__link,
 .btn-group-justified > .btn-group {
@@ -5356,8 +5212,6 @@ tbody.collapse.in {
 .btn-group-justified > .btn-group .btn,
 .btn-group-justified > .btn-group .card__buttons a,
 .card__buttons .btn-group-justified > .btn-group a,
-.btn-group-justified > .btn-group .card__buttons form,
-.card__buttons .btn-group-justified > .btn-group form,
 .btn-group-justified > .btn-group .card__buttons button,
 .card__buttons .btn-group-justified > .btn-group button,
 .btn-group-justified > .btn-group .navbar-nav__link {
@@ -5370,14 +5224,11 @@ tbody.collapse.in {
 
 [data-toggle="buttons"] > .btn input[type="radio"],
 .card__buttons [data-toggle="buttons"] > a input[type="radio"],
-.card__buttons [data-toggle="buttons"] > form input[type="radio"],
 .card__buttons [data-toggle="buttons"] > button input[type="radio"],
 [data-toggle="buttons"] > .navbar-nav__link input[type="radio"],
 [data-toggle="buttons"] > .btn input[type="checkbox"],
 .card__buttons
 [data-toggle="buttons"] > a input[type="checkbox"],
-.card__buttons
-[data-toggle="buttons"] > form input[type="checkbox"],
 .card__buttons
 [data-toggle="buttons"] > button input[type="checkbox"],
 [data-toggle="buttons"] > .navbar-nav__link input[type="checkbox"],
@@ -5385,15 +5236,11 @@ tbody.collapse.in {
 .card__buttons
 [data-toggle="buttons"] > .btn-group > a input[type="radio"],
 .card__buttons
-[data-toggle="buttons"] > .btn-group > form input[type="radio"],
-.card__buttons
 [data-toggle="buttons"] > .btn-group > button input[type="radio"],
 [data-toggle="buttons"] > .btn-group > .navbar-nav__link input[type="radio"],
 [data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"],
 .card__buttons
 [data-toggle="buttons"] > .btn-group > a input[type="checkbox"],
-.card__buttons
-[data-toggle="buttons"] > .btn-group > form input[type="checkbox"],
 .card__buttons
 [data-toggle="buttons"] > .btn-group > button input[type="checkbox"],
 [data-toggle="buttons"] > .btn-group > .navbar-nav__link input[type="checkbox"] {
@@ -5463,8 +5310,6 @@ tbody.collapse.in {
 .card__buttons
   .input-group-sm > .input-group-btn > a.input-group-addon,
 .card__buttons
-  .input-group-sm > .input-group-btn > form.input-group-addon,
-.card__buttons
   .input-group-sm > .input-group-btn > button.input-group-addon,
 .input-group-sm > .input-group-btn > .input-group-addon.navbar-nav__link {
   padding: 5px 10px;
@@ -5477,8 +5322,6 @@ tbody.collapse.in {
 .input-group-lg > .input-group-btn > .input-group-addon.btn,
 .card__buttons
   .input-group-lg > .input-group-btn > a.input-group-addon,
-.card__buttons
-  .input-group-lg > .input-group-btn > form.input-group-addon,
 .card__buttons
   .input-group-lg > .input-group-btn > button.input-group-addon,
 .input-group-lg > .input-group-btn > .input-group-addon.navbar-nav__link {
@@ -5498,15 +5341,11 @@ tbody.collapse.in {
 .card__buttons
 .input-group-btn:first-child > a,
 .card__buttons
-.input-group-btn:first-child > form,
-.card__buttons
 .input-group-btn:first-child > button,
 .input-group-btn:first-child > .navbar-nav__link,
 .input-group-btn:first-child > .btn-group > .btn,
 .card__buttons
 .input-group-btn:first-child > .btn-group > a,
-.card__buttons
-.input-group-btn:first-child > .btn-group > form,
 .card__buttons
 .input-group-btn:first-child > .btn-group > button,
 .input-group-btn:first-child > .btn-group > .navbar-nav__link,
@@ -5515,15 +5354,11 @@ tbody.collapse.in {
 .card__buttons
 .input-group-btn:last-child > a:not(:last-child):not(.dropdown-toggle),
 .card__buttons
-.input-group-btn:last-child > form:not(:last-child):not(.dropdown-toggle),
-.card__buttons
 .input-group-btn:last-child > button:not(:last-child):not(.dropdown-toggle),
 .input-group-btn:last-child > .navbar-nav__link:not(:last-child):not(.dropdown-toggle),
 .input-group-btn:last-child > .btn-group:not(:last-child) > .btn,
 .card__buttons
 .input-group-btn:last-child > .btn-group:not(:last-child) > a,
-.card__buttons
-.input-group-btn:last-child > .btn-group:not(:last-child) > form,
 .card__buttons
 .input-group-btn:last-child > .btn-group:not(:last-child) > button,
 .input-group-btn:last-child > .btn-group:not(:last-child) > .navbar-nav__link {
@@ -5541,15 +5376,11 @@ tbody.collapse.in {
 .card__buttons
 .input-group-btn:last-child > a,
 .card__buttons
-.input-group-btn:last-child > form,
-.card__buttons
 .input-group-btn:last-child > button,
 .input-group-btn:last-child > .navbar-nav__link,
 .input-group-btn:last-child > .btn-group > .btn,
 .card__buttons
 .input-group-btn:last-child > .btn-group > a,
-.card__buttons
-.input-group-btn:last-child > .btn-group > form,
 .card__buttons
 .input-group-btn:last-child > .btn-group > button,
 .input-group-btn:last-child > .btn-group > .navbar-nav__link,
@@ -5558,15 +5389,11 @@ tbody.collapse.in {
 .card__buttons
 .input-group-btn:first-child > a:not(:first-child),
 .card__buttons
-.input-group-btn:first-child > form:not(:first-child),
-.card__buttons
 .input-group-btn:first-child > button:not(:first-child),
 .input-group-btn:first-child > .navbar-nav__link:not(:first-child),
 .input-group-btn:first-child > .btn-group:not(:first-child) > .btn,
 .card__buttons
 .input-group-btn:first-child > .btn-group:not(:first-child) > a,
-.card__buttons
-.input-group-btn:first-child > .btn-group:not(:first-child) > form,
 .card__buttons
 .input-group-btn:first-child > .btn-group:not(:first-child) > button,
 .input-group-btn:first-child > .btn-group:not(:first-child) > .navbar-nav__link {
@@ -5586,7 +5413,6 @@ tbody.collapse.in {
 
 .input-group-btn > .btn,
 .card__buttons .input-group-btn > a,
-.card__buttons .input-group-btn > form,
 .card__buttons .input-group-btn > button,
 .input-group-btn > .navbar-nav__link {
   position: relative;
@@ -5594,27 +5420,18 @@ tbody.collapse.in {
 
 .input-group-btn > .btn + .btn,
 .card__buttons .input-group-btn > a + .btn,
-.card__buttons .input-group-btn > form + .btn,
 .card__buttons .input-group-btn > button + .btn,
 .input-group-btn > .navbar-nav__link + .btn,
 .card__buttons .input-group-btn > .btn + a,
 .card__buttons .input-group-btn > a + a,
-.card__buttons .input-group-btn > form + a,
 .card__buttons .input-group-btn > button + a,
 .card__buttons .input-group-btn > .navbar-nav__link + a,
-.card__buttons .input-group-btn > .btn + form,
-.card__buttons .input-group-btn > a + form,
-.card__buttons .input-group-btn > form + form,
-.card__buttons .input-group-btn > button + form,
-.card__buttons .input-group-btn > .navbar-nav__link + form,
 .card__buttons .input-group-btn > .btn + button,
 .card__buttons .input-group-btn > a + button,
-.card__buttons .input-group-btn > form + button,
 .card__buttons .input-group-btn > button + button,
 .card__buttons .input-group-btn > .navbar-nav__link + button,
 .input-group-btn > .btn + .navbar-nav__link,
 .card__buttons .input-group-btn > a + .navbar-nav__link,
-.card__buttons .input-group-btn > form + .navbar-nav__link,
 .card__buttons .input-group-btn > button + .navbar-nav__link,
 .input-group-btn > .navbar-nav__link + .navbar-nav__link {
   margin-left: -1px;
@@ -5622,17 +5439,14 @@ tbody.collapse.in {
 
 .input-group-btn > .btn:hover,
 .card__buttons .input-group-btn > a:hover,
-.card__buttons .input-group-btn > form:hover,
 .card__buttons .input-group-btn > button:hover,
 .input-group-btn > .navbar-nav__link:hover,
 .input-group-btn > .btn:focus,
 .card__buttons .input-group-btn > a:focus,
-.card__buttons .input-group-btn > form:focus,
 .card__buttons .input-group-btn > button:focus,
 .input-group-btn > .navbar-nav__link:focus,
 .input-group-btn > .btn:active,
 .card__buttons .input-group-btn > a:active,
-.card__buttons .input-group-btn > form:active,
 .card__buttons .input-group-btn > button:active,
 .input-group-btn > .navbar-nav__link:active {
   z-index: 2;
@@ -5640,7 +5454,6 @@ tbody.collapse.in {
 
 .input-group-btn:first-child > .btn,
 .card__buttons .input-group-btn:first-child > a,
-.card__buttons .input-group-btn:first-child > form,
 .card__buttons .input-group-btn:first-child > button,
 .input-group-btn:first-child > .navbar-nav__link,
 .input-group-btn:first-child > .btn-group {
@@ -5649,7 +5462,6 @@ tbody.collapse.in {
 
 .input-group-btn:last-child > .btn,
 .card__buttons .input-group-btn:last-child > a,
-.card__buttons .input-group-btn:last-child > form,
 .card__buttons .input-group-btn:last-child > button,
 .input-group-btn:last-child > .navbar-nav__link,
 .input-group-btn:last-child > .btn-group {
@@ -6356,7 +6168,6 @@ tbody.collapse.in {
 .navbar-btn.btn-sm,
 .btn-group-sm > .navbar-btn.btn,
 .card__buttons .btn-group-sm > a.navbar-btn,
-.card__buttons .btn-group-sm > form.navbar-btn,
 .card__buttons .btn-group-sm > button.navbar-btn,
 .btn-group-sm > .navbar-btn.navbar-nav__link {
   margin-top: 10px;
@@ -6366,7 +6177,6 @@ tbody.collapse.in {
 .navbar-btn.btn-xs,
 .btn-group-xs > .navbar-btn.btn,
 .card__buttons .btn-group-xs > a.navbar-btn,
-.card__buttons .btn-group-xs > form.navbar-btn,
 .card__buttons .btn-group-xs > button.navbar-btn,
 .btn-group-xs > .navbar-btn.navbar-nav__link {
   margin-top: 14px;
@@ -6985,7 +6795,6 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 
 .btn .label,
 .card__buttons a .label,
-.card__buttons form .label,
 .card__buttons button .label,
 .navbar-nav__link .label {
   position: relative;
@@ -7074,7 +6883,6 @@ a.label:focus {
 
 .btn .badge,
 .card__buttons a .badge,
-.card__buttons form .badge,
 .card__buttons button .badge,
 .navbar-nav__link .badge {
   position: relative;
@@ -7084,14 +6892,11 @@ a.label:focus {
 .btn-xs .badge,
 .btn-group-xs > .btn .badge,
 .card__buttons .btn-group-xs > a .badge,
-.card__buttons .btn-group-xs > form .badge,
 .card__buttons .btn-group-xs > button .badge,
 .btn-group-xs > .navbar-nav__link .badge,
 .btn-group-xs > .btn .badge,
 .card__buttons
   .btn-group-xs > a .badge,
-.card__buttons
-  .btn-group-xs > form .badge,
 .card__buttons
   .btn-group-xs > button .badge,
 .btn-group-xs > .navbar-nav__link .badge {
@@ -8328,70 +8133,30 @@ button.close {
 .modal-footer .btn + .btn,
 .modal-footer .card__buttons a + .btn,
 .card__buttons .modal-footer a + .btn,
-.modal-footer .card__buttons form + .btn,
-.card__buttons .modal-footer form + .btn,
 .modal-footer .card__buttons button + .btn,
 .card__buttons .modal-footer button + .btn,
-.modal-footer .card__buttons form > button + .btn,
-.card__buttons .modal-footer form > button + .btn,
 .modal-footer .navbar-nav__link + .btn,
 .modal-footer .card__buttons .btn + a,
 .card__buttons .modal-footer .btn + a,
 .modal-footer .card__buttons a + a,
 .card__buttons .modal-footer a + a,
-.modal-footer .card__buttons form + a,
-.card__buttons .modal-footer form + a,
 .modal-footer .card__buttons button + a,
 .card__buttons .modal-footer button + a,
-.modal-footer .card__buttons form > button + a,
-.card__buttons .modal-footer form > button + a,
 .modal-footer .card__buttons .navbar-nav__link + a,
 .card__buttons .modal-footer .navbar-nav__link + a,
-.modal-footer .card__buttons .btn + form,
-.card__buttons .modal-footer .btn + form,
-.modal-footer .card__buttons a + form,
-.card__buttons .modal-footer a + form,
-.modal-footer .card__buttons form + form,
-.card__buttons .modal-footer form + form,
-.modal-footer .card__buttons button + form,
-.card__buttons .modal-footer button + form,
-.modal-footer .card__buttons form > button + form,
-.card__buttons .modal-footer form > button + form,
-.modal-footer .card__buttons .navbar-nav__link + form,
-.card__buttons .modal-footer .navbar-nav__link + form,
 .modal-footer .card__buttons .btn + button,
 .card__buttons .modal-footer .btn + button,
 .modal-footer .card__buttons a + button,
 .card__buttons .modal-footer a + button,
-.modal-footer .card__buttons form + button,
-.card__buttons .modal-footer form + button,
 .modal-footer .card__buttons button + button,
 .card__buttons .modal-footer button + button,
-.modal-footer .card__buttons form > button + button,
-.card__buttons .modal-footer form > button + button,
 .modal-footer .card__buttons .navbar-nav__link + button,
 .card__buttons .modal-footer .navbar-nav__link + button,
-.modal-footer .card__buttons form > .btn + button,
-.card__buttons .modal-footer form > .btn + button,
-.modal-footer .card__buttons form > a + button,
-.card__buttons .modal-footer form > a + button,
-.modal-footer .card__buttons form > form + button,
-.card__buttons .modal-footer form > form + button,
-.modal-footer .card__buttons form > button + button,
-.card__buttons .modal-footer form > button + button,
-.modal-footer .card__buttons form > button + button,
-.card__buttons .modal-footer form > button + button,
-.modal-footer .card__buttons form > .navbar-nav__link + button,
-.card__buttons .modal-footer form > .navbar-nav__link + button,
 .modal-footer .btn + .navbar-nav__link,
 .modal-footer .card__buttons a + .navbar-nav__link,
 .card__buttons .modal-footer a + .navbar-nav__link,
-.modal-footer .card__buttons form + .navbar-nav__link,
-.card__buttons .modal-footer form + .navbar-nav__link,
 .modal-footer .card__buttons button + .navbar-nav__link,
 .card__buttons .modal-footer button + .navbar-nav__link,
-.modal-footer .card__buttons form > button + .navbar-nav__link,
-.card__buttons .modal-footer form > button + .navbar-nav__link,
 .modal-footer .navbar-nav__link + .navbar-nav__link {
   margin-left: 5px;
   margin-bottom: 0;
@@ -8400,70 +8165,30 @@ button.close {
 .modal-footer .btn-group .btn + .btn,
 .modal-footer .btn-group .card__buttons a + .btn,
 .card__buttons .modal-footer .btn-group a + .btn,
-.modal-footer .btn-group .card__buttons form + .btn,
-.card__buttons .modal-footer .btn-group form + .btn,
 .modal-footer .btn-group .card__buttons button + .btn,
 .card__buttons .modal-footer .btn-group button + .btn,
-.modal-footer .btn-group .card__buttons form > button + .btn,
-.card__buttons .modal-footer .btn-group form > button + .btn,
 .modal-footer .btn-group .navbar-nav__link + .btn,
 .modal-footer .btn-group .card__buttons .btn + a,
 .card__buttons .modal-footer .btn-group .btn + a,
 .modal-footer .btn-group .card__buttons a + a,
 .card__buttons .modal-footer .btn-group a + a,
-.modal-footer .btn-group .card__buttons form + a,
-.card__buttons .modal-footer .btn-group form + a,
 .modal-footer .btn-group .card__buttons button + a,
 .card__buttons .modal-footer .btn-group button + a,
-.modal-footer .btn-group .card__buttons form > button + a,
-.card__buttons .modal-footer .btn-group form > button + a,
 .modal-footer .btn-group .card__buttons .navbar-nav__link + a,
 .card__buttons .modal-footer .btn-group .navbar-nav__link + a,
-.modal-footer .btn-group .card__buttons .btn + form,
-.card__buttons .modal-footer .btn-group .btn + form,
-.modal-footer .btn-group .card__buttons a + form,
-.card__buttons .modal-footer .btn-group a + form,
-.modal-footer .btn-group .card__buttons form + form,
-.card__buttons .modal-footer .btn-group form + form,
-.modal-footer .btn-group .card__buttons button + form,
-.card__buttons .modal-footer .btn-group button + form,
-.modal-footer .btn-group .card__buttons form > button + form,
-.card__buttons .modal-footer .btn-group form > button + form,
-.modal-footer .btn-group .card__buttons .navbar-nav__link + form,
-.card__buttons .modal-footer .btn-group .navbar-nav__link + form,
 .modal-footer .btn-group .card__buttons .btn + button,
 .card__buttons .modal-footer .btn-group .btn + button,
 .modal-footer .btn-group .card__buttons a + button,
 .card__buttons .modal-footer .btn-group a + button,
-.modal-footer .btn-group .card__buttons form + button,
-.card__buttons .modal-footer .btn-group form + button,
 .modal-footer .btn-group .card__buttons button + button,
 .card__buttons .modal-footer .btn-group button + button,
-.modal-footer .btn-group .card__buttons form > button + button,
-.card__buttons .modal-footer .btn-group form > button + button,
 .modal-footer .btn-group .card__buttons .navbar-nav__link + button,
 .card__buttons .modal-footer .btn-group .navbar-nav__link + button,
-.modal-footer .btn-group .card__buttons form > .btn + button,
-.card__buttons .modal-footer .btn-group form > .btn + button,
-.modal-footer .btn-group .card__buttons form > a + button,
-.card__buttons .modal-footer .btn-group form > a + button,
-.modal-footer .btn-group .card__buttons form > form + button,
-.card__buttons .modal-footer .btn-group form > form + button,
-.modal-footer .btn-group .card__buttons form > button + button,
-.card__buttons .modal-footer .btn-group form > button + button,
-.modal-footer .btn-group .card__buttons form > button + button,
-.card__buttons .modal-footer .btn-group form > button + button,
-.modal-footer .btn-group .card__buttons form > .navbar-nav__link + button,
-.card__buttons .modal-footer .btn-group form > .navbar-nav__link + button,
 .modal-footer .btn-group .btn + .navbar-nav__link,
 .modal-footer .btn-group .card__buttons a + .navbar-nav__link,
 .card__buttons .modal-footer .btn-group a + .navbar-nav__link,
-.modal-footer .btn-group .card__buttons form + .navbar-nav__link,
-.card__buttons .modal-footer .btn-group form + .navbar-nav__link,
 .modal-footer .btn-group .card__buttons button + .navbar-nav__link,
 .card__buttons .modal-footer .btn-group button + .navbar-nav__link,
-.modal-footer .btn-group .card__buttons form > button + .navbar-nav__link,
-.card__buttons .modal-footer .btn-group form > button + .navbar-nav__link,
 .modal-footer .btn-group .navbar-nav__link + .navbar-nav__link {
   margin-left: -1px;
 }
@@ -8999,8 +8724,6 @@ button.close {
 .carousel-caption .btn,
 .carousel-caption .card__buttons a,
 .card__buttons .carousel-caption a,
-.carousel-caption .card__buttons form,
-.card__buttons .carousel-caption form,
 .carousel-caption .card__buttons button,
 .card__buttons .carousel-caption button,
 .carousel-caption .navbar-nav__link {
@@ -12537,11 +12260,9 @@ fieldset[disabled] .btn-main.focus {
 .btn-group-lg > .btn-social.btn,
 .btn-group-lg > .btn.btn-social-icon,
 .card__buttons .btn-group-lg > a.btn-social-icon,
-.card__buttons .btn-group-lg > form.btn-social-icon,
 .card__buttons .btn-group-lg > button.btn-social-icon,
 .btn-group-lg > .btn-social-icon.navbar-nav__link,
 .card__buttons .btn-group-lg > a.btn-social,
-.card__buttons .btn-group-lg > form.btn-social,
 .card__buttons .btn-group-lg > button.btn-social,
 .btn-group-lg > .btn-social.navbar-nav__link,
 .btn-lg.btn-social-icon {
@@ -12552,11 +12273,9 @@ fieldset[disabled] .btn-main.focus {
 .btn-group-lg > .btn-social.btn > :first-child,
 .btn-group-lg > .btn.btn-social-icon > :first-child,
 .card__buttons .btn-group-lg > a.btn-social-icon > :first-child,
-.card__buttons .btn-group-lg > form.btn-social-icon > :first-child,
 .card__buttons .btn-group-lg > button.btn-social-icon > :first-child,
 .btn-group-lg > .btn-social-icon.navbar-nav__link > :first-child,
 .card__buttons .btn-group-lg > a.btn-social > :first-child,
-.card__buttons .btn-group-lg > form.btn-social > :first-child,
 .card__buttons .btn-group-lg > button.btn-social > :first-child,
 .btn-group-lg > .btn-social.navbar-nav__link > :first-child,
 .btn-lg.btn-social-icon > :first-child {
@@ -12569,11 +12288,9 @@ fieldset[disabled] .btn-main.focus {
 .btn-group-sm > .btn-social.btn,
 .btn-group-sm > .btn.btn-social-icon,
 .card__buttons .btn-group-sm > a.btn-social-icon,
-.card__buttons .btn-group-sm > form.btn-social-icon,
 .card__buttons .btn-group-sm > button.btn-social-icon,
 .btn-group-sm > .btn-social-icon.navbar-nav__link,
 .card__buttons .btn-group-sm > a.btn-social,
-.card__buttons .btn-group-sm > form.btn-social,
 .card__buttons .btn-group-sm > button.btn-social,
 .btn-group-sm > .btn-social.navbar-nav__link,
 .btn-sm.btn-social-icon {
@@ -12584,11 +12301,9 @@ fieldset[disabled] .btn-main.focus {
 .btn-group-sm > .btn-social.btn > :first-child,
 .btn-group-sm > .btn.btn-social-icon > :first-child,
 .card__buttons .btn-group-sm > a.btn-social-icon > :first-child,
-.card__buttons .btn-group-sm > form.btn-social-icon > :first-child,
 .card__buttons .btn-group-sm > button.btn-social-icon > :first-child,
 .btn-group-sm > .btn-social-icon.navbar-nav__link > :first-child,
 .card__buttons .btn-group-sm > a.btn-social > :first-child,
-.card__buttons .btn-group-sm > form.btn-social > :first-child,
 .card__buttons .btn-group-sm > button.btn-social > :first-child,
 .btn-group-sm > .btn-social.navbar-nav__link > :first-child,
 .btn-sm.btn-social-icon > :first-child {
@@ -12601,11 +12316,9 @@ fieldset[disabled] .btn-main.focus {
 .btn-group-xs > .btn-social.btn,
 .btn-group-xs > .btn.btn-social-icon,
 .card__buttons .btn-group-xs > a.btn-social-icon,
-.card__buttons .btn-group-xs > form.btn-social-icon,
 .card__buttons .btn-group-xs > button.btn-social-icon,
 .btn-group-xs > .btn-social-icon.navbar-nav__link,
 .card__buttons .btn-group-xs > a.btn-social,
-.card__buttons .btn-group-xs > form.btn-social,
 .card__buttons .btn-group-xs > button.btn-social,
 .btn-group-xs > .btn-social.navbar-nav__link,
 .btn-xs.btn-social-icon {
@@ -12616,11 +12329,9 @@ fieldset[disabled] .btn-main.focus {
 .btn-group-xs > .btn-social.btn > :first-child,
 .btn-group-xs > .btn.btn-social-icon > :first-child,
 .card__buttons .btn-group-xs > a.btn-social-icon > :first-child,
-.card__buttons .btn-group-xs > form.btn-social-icon > :first-child,
 .card__buttons .btn-group-xs > button.btn-social-icon > :first-child,
 .btn-group-xs > .btn-social-icon.navbar-nav__link > :first-child,
 .card__buttons .btn-group-xs > a.btn-social > :first-child,
-.card__buttons .btn-group-xs > form.btn-social > :first-child,
 .card__buttons .btn-group-xs > button.btn-social > :first-child,
 .btn-group-xs > .btn-social.navbar-nav__link > :first-child,
 .btn-xs.btn-social-icon > :first-child {
@@ -12644,7 +12355,6 @@ fieldset[disabled] .btn-main.focus {
 .btn-social-icon.btn-lg,
 .btn-group-lg > .btn-social-icon.btn,
 .card__buttons .btn-group-lg > a.btn-social-icon,
-.card__buttons .btn-group-lg > form.btn-social-icon,
 .card__buttons .btn-group-lg > button.btn-social-icon,
 .btn-group-lg > .btn-social-icon.navbar-nav__link {
   height: 45px;
@@ -12656,7 +12366,6 @@ fieldset[disabled] .btn-main.focus {
 .btn-social-icon.btn-sm,
 .btn-group-sm > .btn-social-icon.btn,
 .card__buttons .btn-group-sm > a.btn-social-icon,
-.card__buttons .btn-group-sm > form.btn-social-icon,
 .card__buttons .btn-group-sm > button.btn-social-icon,
 .btn-group-sm > .btn-social-icon.navbar-nav__link {
   height: 30px;
@@ -12668,7 +12377,6 @@ fieldset[disabled] .btn-main.focus {
 .btn-social-icon.btn-xs,
 .btn-group-xs > .btn-social-icon.btn,
 .card__buttons .btn-group-xs > a.btn-social-icon,
-.card__buttons .btn-group-xs > form.btn-social-icon,
 .card__buttons .btn-group-xs > button.btn-social-icon,
 .btn-group-xs > .btn-social-icon.navbar-nav__link {
   height: 22px;
@@ -14098,21 +13806,16 @@ fieldset[disabled] .btn-yahoo.focus {
 }
 
 .card__buttons a,
-.card__buttons form,
 .card__buttons button {
+  color: #094d44;
   background: none;
   width: 23%;
   padding: 15px 25px;
 }
 
 .card__buttons a:not(:first-child),
-.card__buttons form:not(:first-child),
 .card__buttons button:not(:first-child) {
   border-left: 1px solid #eeeeee;
-}
-
-.card__buttons form > button {
-  background: none;
 }
 
 .ceo {
