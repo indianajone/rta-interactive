@@ -26221,7 +26221,7 @@ exports['default'] = {
         favorite: function favorite() {
             var _this = this;
 
-            this.$http.post('api/favorites/' + this.place).then(function (data) {
+            this.$http.post('/api/favorites/' + this.place).then(function (data) {
                 _this.favorited = true;
             });
         },
@@ -26229,7 +26229,7 @@ exports['default'] = {
         unfavorite: function unfavorite() {
             var _this2 = this;
 
-            this.$http['delete']('api/favorites/' + this.place).then(function (data) {
+            this.$http['delete']('/api/favorites/' + this.place).then(function (data) {
                 _this2.favorited = false;
             });
         }

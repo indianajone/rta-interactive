@@ -16,14 +16,14 @@ export default {
         },
 
         favorite: function () {
-            this.$http.post('api/favorites/' + this.place)
+            this.$http.post('/api/favorites/' + this.place)
                 .then((data) => {
                     this.favorited = true;
                 });
         },
 
         unfavorite: function () {
-            this.$http.delete('api/favorites/' + this.place)
+            this.$http.delete('/api/favorites/' + this.place)
                 .then((data) => {
                     this.favorited = false;
                 });
