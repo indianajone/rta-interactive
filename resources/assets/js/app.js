@@ -2,6 +2,7 @@ require('./core/bootstrap');
 require('./vendor/lity');
 
 Vue.component('modal', require('./components/Modal'));
+Vue.component('favoriteButton', require('./components/FavoriteButton'));
 
 new Vue({
     el: '#app',

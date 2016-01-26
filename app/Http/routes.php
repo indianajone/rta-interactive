@@ -73,6 +73,9 @@ Route::group([ 'prefix' => 'api', 'as' => 'api.' ], function ()
 
     Route::get('attachments/{id}', ['as' => 'attachment_path', 'uses' => 'Api\AttachmentController@show']);
     Route::put('attachments/{id}', ['as' => 'attachment_path', 'uses' => 'Api\AttachmentController@update']);
+
+    Route::post('favorites/{id}', 'Api\FavoritesController@store');
+    Route::delete('favorites/{id}', 'Api\FavoritesController@destroy');
 });
 
 
