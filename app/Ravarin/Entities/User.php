@@ -67,4 +67,9 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->favoritePlaces()->where('place_id', $place->id)->count();
     }
+
+    public function setPasswordAttribute($value) 
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 }

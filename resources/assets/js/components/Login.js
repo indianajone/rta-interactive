@@ -48,10 +48,10 @@ export default {
             };
 
             this.$http.post('/api/register', data)
-                    .success((data) => {
+                    .then((data) => {
                         window.location.reload();
                     })
-                    .error((errors) => {
+                    .catch((errors) => {
                         this.password = '';
                         this.password_confirmation = '';
                         this.errors = _.flatten(_.toArray(errors));

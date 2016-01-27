@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use Ravarin\Entities\User;
 use Illuminate\Http\Request;
@@ -9,15 +10,15 @@ use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
 {
-    public function store(Request $request, User $users) 
+    public function store(Request $request) 
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
 
-        $user = $this->users->create($request()->all());
+        $user = User::create($request->all());
 
         Auth::login($user);
 

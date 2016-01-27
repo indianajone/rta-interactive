@@ -26747,9 +26747,9 @@ exports['default'] = {
                 password_confirmation: this.password_confirmation
             };
 
-            this.$http.post('/api/register', data).success(function (data) {
+            this.$http.post('/api/register', data).then(function (data) {
                 window.location.reload();
-            }).error(function (errors) {
+            })['catch'](function (errors) {
                 _this2.password = '';
                 _this2.password_confirmation = '';
                 _this2.errors = _.flatten(_.toArray(errors));
