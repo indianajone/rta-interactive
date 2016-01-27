@@ -28,4 +28,7 @@
             </div>
         @endforelse 
     </div>
+    <div class="text-center">
+        {!! $places->render() !!}
+    </div>
 @stop
