@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
 @section('banner')
-    @if($places->count())
-        <div class="slick slick--black" v-slick>
+    <div class="slick slick--black" v-slick>
+         @if($places->count())
             @foreach($places->first()->photos as $photo)
                  <div class="slick-slide slick-slide--fixed-height">
                     <img src="{{ asset($photo->path) }}" alt="">
                     <span>{{ $places->first()->name }}</span>
                 </div>
             @endforeach
-        </div>
-    @endif
+        @endif
+    </div>
 @stop
 
 @section('content')

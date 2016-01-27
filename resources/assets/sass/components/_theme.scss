@@ -1,15 +1,27 @@
-html, body, #app {
-    min-height: 100%;
+html, body {
+    height: 100%;
 }
 
 body {
+    background-color: #eee;
+}
+
+#app {
+    height: 100%;
+    .container-fluid {
+        padding: 0;
+    }
+}
+
+.wrapper {
     background: $bg-color url("../images/bg-bottom.png") no-repeat;
     background-position: bottom center;
     background-size: contain;
-}
-
-#app .container-fluid {
-    padding: 0;
+    min-height: 100%;
+    > div {
+        overflow:auto;
+        padding-bottom:150px
+    }
 }
 
 h1, h2, h3, h4, h5, h6 {

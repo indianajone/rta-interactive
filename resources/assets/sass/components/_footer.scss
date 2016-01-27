@@ -2,6 +2,11 @@
     background-color: $green;
     margin-top: 40px;
     padding-top: 40px;
+    position: relative;
+    margin-top: -150px; /* negative value of footer height */
+    // height: 150px;
+    clear:both;
+
     &__top {
         address {
             color: #fff;

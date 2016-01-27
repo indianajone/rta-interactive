@@ -70,8 +70,10 @@
             </div>
         </nav>
         @yield ('banner')
-        <div class="{{ !Route::is('map_path') ? 'container' : 'container-fluid' }}">
-            @yield ('content')
+        <div class="wrapper">
+            <div class="{{ !Route::is('map_path') ? 'container' : 'container-fluid' }}">
+                @yield ('content')
+            </div>
         </div>
         <footer class="footer">
             <div class="footer__top">

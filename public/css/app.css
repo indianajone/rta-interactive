@@ -11836,20 +11836,33 @@ button.close {
 }
 
 html,
-body,
-#app {
-  min-height: 100%;
+body {
+  height: 100%;
 }
 
 body {
-  background: #eeeeee url("../images/bg-bottom.png") no-repeat;
-  background-position: bottom center;
-  background-size: contain;
+  background-color: #eee;
+}
+
+#app {
+  height: 100%;
 }
 
 #app .container-fluid,
 #app .navbar-top {
   padding: 0;
+}
+
+.wrapper {
+  background: #eeeeee url("../images/bg-bottom.png") no-repeat;
+  background-position: bottom center;
+  background-size: contain;
+  min-height: 100%;
+}
+
+.wrapper > div {
+  overflow: auto;
+  padding-bottom: 150px;
 }
 
 h1,
@@ -14440,6 +14453,10 @@ fieldset[disabled] .btn-yahoo.focus {
   background-color: #094d44;
   margin-top: 40px;
   padding-top: 40px;
+  position: relative;
+  margin-top: -150px;
+  /* negative value of footer height */
+  clear: both;
 }
 
 .footer__top address {
