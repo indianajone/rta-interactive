@@ -2,7 +2,7 @@
 
 @section('banner')
     <div class="slick slick--black" v-slick>
-        @foreach($place->photos as $photo)
+        @foreach($place->photos()->orderBy('updated_at')->take(5)->get() as $photo)
             <div class="slick-slide slick-slide--fixed-height">
                 <img src="{{ asset($photo->path) }}" alt="{{ $photo->title }}">
                 <span>{{ $photo->title }}</span>
