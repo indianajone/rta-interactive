@@ -26788,7 +26788,7 @@ Object.defineProperty(exports, '__esModule', {
 });
 exports['default'] = {
 
-    template: '<button @click="logout" class="navbar-nav__link">{{ text }}</button>',
+    template: '<a @click="logout" class="navbar-nav__link">{{ text }}</a>',
 
     props: ['text'],
 

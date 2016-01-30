@@ -38,10 +38,14 @@ class Authenticate
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->guest(route('cms.login_path'));
+                return redirect()->guest($this->getRedirectRoute($request));
             }
         }
 
         return $next($request);
+    }
+
+    private function getRedirectRoute($request) {
+        return $request->is('cms/*') ? route('cms.login_path') : route('home');
     }
 }

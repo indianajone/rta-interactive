@@ -11860,6 +11860,10 @@ body {
   min-height: 100%;
 }
 
+.wrapper > .container {
+  margin-top: 50px;
+}
+
 .wrapper > div {
   overflow: auto;
   padding-bottom: 150px;
@@ -14112,11 +14116,13 @@ fieldset[disabled] .btn-yahoo.focus {
   background-color: transparent;
   color: white;
   font-size: 12px;
-  line-height: 27px;
-  padding: 15px 10px;
+  line-height: 35px;
+  padding: 0;
 }
 
-.navbar-nav__link:hover {
+.navbar-nav__link:hover,
+.navbar-nav__link:focus {
+  background-color: transparent !important;
   color: #267671;
 }
 
@@ -14127,26 +14133,36 @@ fieldset[disabled] .btn-yahoo.focus {
   width: 100%;
 }
 
+.navbar-main > li {
+  padding: 15px;
+}
+
 .navbar-main .navbar-main__link {
   color: white;
   font-size: 13px;
+  padding: 0;
 }
 
 .navbar-main .navbar-main__link:hover,
+.navbar-main .navbar-main__link:focus,
 .navbar-main .navbar-main__link--active,
-.navbar-main .navbar-main__link--active:hover {
+.navbar-main .navbar-main__link--active:hover,
+.navbar-main .navbar-main__link--active:focus {
   background-color: transparent;
 }
 
 .navbar-main .navbar-main__link:hover:after,
+.navbar-main .navbar-main__link:focus:after,
 .navbar-main .navbar-main__link--active:after,
-.navbar-main .navbar-main__link--active:hover:after {
+.navbar-main .navbar-main__link--active:hover:after,
+.navbar-main .navbar-main__link--active:focus:after {
   content: '';
   height: 0;
   width: 100%;
   display: block;
   margin: 0 auto;
   border-bottom: 4px solid #094d44;
+  position: absolute;
 }
 
 .navbar-brand {

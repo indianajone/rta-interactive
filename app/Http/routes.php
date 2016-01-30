@@ -93,9 +93,10 @@ Route::post('password/reset', ['as' => 'password_path', 'uses' => 'PasswordContr
 Route::group(['middleware' => ['locale']], function () 
 {
     Route::get('{lang?}/', ['as' => 'home', 'uses' => 'HomeController@index']);
+    Route::get('{lang?}/profile', ['as' => 'profile_path', 'uses' => 'ProfileController@index']);
     Route::get('{lang?}/map/{slug?}', ['as' => 'map_path', 'uses' => 'PagesController@map']);
     Route::get('{lang?}/aboutus', ['as' => 'about_path', 'uses' => 'PagesController@about']);
     Route::get('{lang?}/places', ['as' => 'places_path', 'uses' => 'PlacesController@index']);
+    Route::get('{lang?}/places/{slug}', ['as' => 'place_path', 'uses' => 'PlacesController@show']);
     Route::get('{lang?}/recommended', ['as' => 'recommended_path', 'uses' => 'PagesController@recommended']);
-    Route::get('{lang?}/{slug}', ['as' => 'place_path', 'uses' => 'PlacesController@show']);
 });

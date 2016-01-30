@@ -18,6 +18,11 @@ body {
     background-position: bottom center;
     background-size: contain;
     min-height: 100%;
+
+    >.container {
+        margin-top: 50px;
+    }
+
     > div {
         overflow:auto;
         padding-bottom:150px
