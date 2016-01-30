@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html itemscope itemtype="http://schema.org/Product">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
     <meta name="csrf_token" id="csrf_token" value={{ csrf_token() }}>
+    <meta name="author" content="สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก">
+    @yield ('meta')
     <title>@yield ('title', 'สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก')</title>
     <link rel="stylesheet" href="/css/vendor.css">
     <link rel="stylesheet" href="/css/app.css">

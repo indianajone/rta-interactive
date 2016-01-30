@@ -1,5 +1,25 @@
 @extends('layouts/master')
 
+@section('meta')
+    {{-- SEO --}}
+    <meta name="description" content="{{ $place->excerpt }}">
+
+    {{-- facebook --}}
+    <meta property="fb:app_id" content="{{ env('FB_APP_ID') }}">
+    <meta property="og:url" content="{{ request()->getUri() }}">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ $place->title }}">
+    <meta property="og:image" content="{{ $place->thumbnail }}"/>
+    <meta property="og:description" content="{{ $place->excerpt }}">
+
+    {{-- google+ --}}
+    <meta itemprop="name" content="{{ $place->title }}">
+    <meta itemprop="description" content="{{ $place->excerpt }}">
+    <meta itemprop="image" content="{{ $place->thumbnail }}">
+@stop
+
+@section('title') {{ $place->title }} @stop
+
 @section('banner')
     <div class="slick slick--black" v-slick>
         @foreach($place->photos()->orderBy('updated_at')->take(5)->get() as $photo)
