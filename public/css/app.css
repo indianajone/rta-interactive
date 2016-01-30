@@ -14113,7 +14113,7 @@ fieldset[disabled] .btn-yahoo.focus {
   color: white;
   font-size: 12px;
   line-height: 27px;
-  padding: 15px 15px;
+  padding: 15px 10px;
 }
 
 .navbar-nav__link:hover {
@@ -14288,6 +14288,31 @@ fieldset[disabled] .btn-yahoo.focus {
   min-width: 200px;
   border: none;
   color: #fff;
+  padding-right: 30px;
+}
+
+.search input[type=text]::-webkit-input-placeholder {
+  color: #fff;
+  opacity: .5;
+  text-align: center;
+}
+
+.search input[type=text]::-moz-placeholder {
+  color: #fff;
+  opacity: .5;
+  text-align: center;
+}
+
+.search input[type=text]:-ms-input-placeholder {
+  color: #fff;
+  opacity: .5;
+  text-align: center;
+}
+
+.search input[type=text]::placeholder {
+  color: #fff;
+  opacity: .5;
+  text-align: center;
 }
 
 .search.navbar-collapse {
@@ -14307,7 +14332,7 @@ fieldset[disabled] .btn-yahoo.focus {
 .search i {
   position: absolute;
   top: 10px;
-  right: 20px;
+  right: 30px;
   opacity: .4;
 }
 

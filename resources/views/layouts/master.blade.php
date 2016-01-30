@@ -17,13 +17,9 @@
             <div class="navbar-top">
                 <div class="container">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-main" aria-expanded="false" aria-controls="navbar-main">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-bottom" aria-expanded="false" aria-controls="navbar-bottom">
                             <span class="sr-only">Toggle navigation</span>
                             <i class="fa fa-navicon"></i>
-                        </button>
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".search" aria-expanded="false" aria-controls="search">
-                            <span class="sr-only">Toggle navigation</span>
-                            <i class="fa fa-search"></i>
                         </button>
                         <a class="navbar-brand" href="/">
                             <img src="/images/logo.png" alt="สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก">
@@ -32,40 +28,21 @@
                     </div>
                     <div class="navbar-right">
                         @include('components/navbar-social')
-                        <ul class="nav navbar-nav">
-                            @if(!Auth::check())
-                                <li>
-                                    <button @click="openModal('login', 'login')" class="navbar-nav__link">{{ trans('menu.login') }}</button>
-                                </li>
-                                <li>
-                                    <button @click="openModal('login', 'register')" class="navbar-nav__link">{{trans('menu.register') }}</button>
-                                </li>
-                                <li>
-                                    <button  @click="openModal('login', 'forget')" class="navbar-nav__link">{{trans('menu.forget_password') }}</button>
-                                </li>
-                            @else 
-                                <li>
-                                    <p class="navbar-text text-muted"> Hello {{ Auth::user()->name }}</p>
-                                </li>
-                                <li>
-                                    <logout text={{ trans('menu.logout') }}></logout>
-                                </li>
-                            @endif
-                        </ul>
-                        @include ('components/navbar-flag')
+                        @include('components/navbar-auth')
+                        @include('components/navbar-flag')
                     </div>
                 </div>
             </div>
-            <div class="navbar-bottom">
+            <div class="navbar-bottom collapse navbar-collapse">
                 <div class="container">
-                    <ul class="navbar-main collapse navbar-collapse">
+                    @include('components.search')
+                    <ul class="navbar-main">
                         <li>{!! nav_route('home', 'home') !!}</li>
                         <li>{!! nav_route('places_path', 'places') !!}</li>
                         <li>{!! nav_route('map_path', 'map') !!}</li>
                         <li>{!! nav_route('recommended_path', 'recommended') !!}</li>
                         <li>{!! nav_route('about_path', 'about') !!}</li>
                     </ul>
-                    @include('components.search')
                 </div>
             </div>
         </nav>

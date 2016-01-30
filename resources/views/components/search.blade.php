@@ -1,5 +1,5 @@
 <search inline-template>
-    <div class="search navbar-right collapse navbar-collapse">
+    <div class="search navbar-right">
         <input type="text" class="form-control" placeholder="SmartSearch"
             @blur="reset | debounce 500"
             v-model="query"
