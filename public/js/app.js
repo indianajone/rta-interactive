@@ -27052,12 +27052,12 @@ new Vue({
     }
 });
 
-},{"./components/FavoriteButton":18,"./components/InteractiveMap":22,"./components/Login":23,"./components/Logout":24,"./components/Modal":25,"./components/Panorama":28,"./components/Readmore":29,"./components/Search":30,"./components/SocialShare":31,"./core/bootstrap":41,"./directives/CarouselSlick.js":42,"./directives/JsSocials.js":43,"./pages/PlaceFilter":44,"./vendor/lity":48}],17:[function(require,module,exports){
+},{"./components/FavoriteButton":18,"./components/InteractiveMap":22,"./components/Login":23,"./components/Logout":24,"./components/Modal":25,"./components/Panorama":28,"./components/Readmore":29,"./components/Search":30,"./components/SocialShare":31,"./core/bootstrap":40,"./directives/CarouselSlick.js":41,"./directives/JsSocials.js":42,"./pages/PlaceFilter":43,"./vendor/lity":47}],17:[function(require,module,exports){
 'use strict';
 
 module.exports = {
 
-    template: require('./destination.template.html'),
+    template: require('./templates/destination.html'),
 
     props: ['selected'],
 
@@ -27085,7 +27085,7 @@ module.exports = {
     }
 };
 
-},{"./destination.template.html":33}],18:[function(require,module,exports){
+},{"./templates/destination.html":33}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -27132,7 +27132,7 @@ module.exports = exports['default'];
 
 module.exports = {
 
-    template: require('./google-map.template.html'),
+    template: '<div class="google-map"></div>',
 
     components: {
         infoWindow: require('./InfoWindow')
@@ -27385,7 +27385,7 @@ module.exports = {
 
 };
 
-},{"./InfoWindow":21,"./google-map.template.html":34}],20:[function(require,module,exports){
+},{"./InfoWindow":21}],20:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -27397,7 +27397,7 @@ module.exports = {
 
 module.exports = {
 
-    template: require('./info-window.template.html'),
+    template: require('./templates/info-window.html'),
 
     el: function el() {
         return document.createElement('div');
@@ -27431,7 +27431,7 @@ module.exports = {
     }
 };
 
-},{"./info-window.template.html":35}],22:[function(require,module,exports){
+},{"./templates/info-window.html":34}],22:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -27721,12 +27721,12 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{"./templates/modal.html":38}],26:[function(require,module,exports){
+},{"./templates/modal.html":35}],26:[function(require,module,exports){
 'use strict';
 
 module.exports = {
 
-    template: require('./mode.template.html'),
+    template: require('./templates/mode.html'),
 
     props: ['mode'],
 
@@ -27753,12 +27753,12 @@ module.exports = {
     }
 };
 
-},{"./mode.template.html":36}],27:[function(require,module,exports){
+},{"./templates/mode.html":36}],27:[function(require,module,exports){
 'use strict';
 
 module.exports = {
 
-    template: require('./origin.template.html'),
+    template: require('./templates/origin.html'),
 
     props: ['origin'],
 
@@ -27814,7 +27814,7 @@ module.exports = {
 
 };
 
-},{"./origin.template.html":37}],28:[function(require,module,exports){
+},{"./templates/origin.html":37}],28:[function(require,module,exports){
 'use strict';
 
 var panorama = require('../vendor/jquery.panorama-viewer.js');
@@ -27834,7 +27834,7 @@ module.exports = {
     }
 };
 
-},{"../vendor/jquery.panorama-viewer.js":46}],29:[function(require,module,exports){
+},{"../vendor/jquery.panorama-viewer.js":45}],29:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -27874,7 +27874,7 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{"./templates/readmore.html":39}],30:[function(require,module,exports){
+},{"./templates/readmore.html":38}],30:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -27952,7 +27952,7 @@ var Sortable = require('../vendor/Sortable.min.js');
 
 module.exports = {
 
-    template: require('./waypoint.template.html'),
+    template: require('./templates/waypoint.html'),
 
     props: ['waypoints'],
 
@@ -27991,23 +27991,21 @@ module.exports = {
 
 };
 
-},{"../vendor/Sortable.min.js":45,"./waypoint.template.html":40}],33:[function(require,module,exports){
+},{"../vendor/Sortable.min.js":44,"./templates/waypoint.html":39}],33:[function(require,module,exports){
 module.exports = '  <div class="form-group">\n    <select \n        v-model="selected"\n        type="text" \n        class="form-control" \n        required\n    >\n        <option \n            v-for="location in destinations" \n            v-bind:value="location.value"\n        >\n            {{ location.text }}\n        </option>\n    </select>\n</div>';
 },{}],34:[function(require,module,exports){
-module.exports = '<div class="google-map"></div>';
-},{}],35:[function(require,module,exports){
 module.exports = '<div class="google-map__infowindow">\n    <div v-show="hasPhoto" class="google-map__infowindow__media">\n        <img v-bind:src="photo" alt="{{ title }}">\n    </div>\n    <div class="google-map__infowindow__body">\n        <strong>{{ place.name }}</strong>\n        <p>{{ place.description }}</p>\n        <button\n            v-show="place.canAdd"\n            @click="addToWaypoint(place)"\n            type="button"\n            class="btn btn-success"\n        > \n        Add +\n        </button>\n    </div>\n</div>';
+},{}],35:[function(require,module,exports){
+module.exports = '<div @click="close" class="modal-mask" v-show="show" transition="modal">\n    <div class="modal-wrapper">\n        <div class="modal-container">\n            <slot></slot>\n        </div>\n        <button class="modal-close" @click="show = false">×</button>\n    </div> \n</div>';
 },{}],36:[function(require,module,exports){
 module.exports = '<div class="mode">\n    <label \n            v-for="type in types"\n            class="mode__checkbox"\n    >\n        <input \n            v-model="mode"\n            @change="onChange(type)"\n            type="radio"\n            value="{{ type.value }}" \n        >\n        <i :class="[\'fa\', \'fa-lg\', \'fa-\' + type.icon]"></i>\n    </label>\n</div>';
 },{}],37:[function(require,module,exports){
 module.exports = '<div class="form-group">\n    <input \n        v-el:origin\n        v-model="value"\n        @blur="onBlur"\n        @focus="onFocus"\n        type="text"\n        class="form-control"\n        placeholder="Your origin"\n        required >\n</div>';
 },{}],38:[function(require,module,exports){
-module.exports = '<div @click="close" class="modal-mask" v-show="show" transition="modal">\n    <div class="modal-wrapper">\n        <div class="modal-container">\n            <slot></slot>\n        </div>\n        <button class="modal-close" @click="show = false">×</button>\n    </div> \n</div>';
-},{}],39:[function(require,module,exports){
 module.exports = '<div>\n    <div :style="style">\n        <slot></slot>\n    </div>\n    <div class="readmore">\n        <button v-show="show" class="btn btn-main" @click="toggle">{{ text }}</button>\n    </div>\n</div>';
-},{}],40:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 module.exports = '<div class="form-group">\n    <div class="input-group item" v-for="waypoint in waypoints">\n        <input type="text" class="form-control" value="{{ waypoint.name }}" readonly >\n        <div class="input-group-btn">\n            <button class="btn btn-danger" @click="remove(waypoint)">X</button>\n        </div>\n    </div>\n</div>\n';
-},{}],41:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 /*
  * Load Vue & Vue's components.
  */
@@ -28043,7 +28041,7 @@ if (window.Rta === undefined) {
 
 require('bootstrap-sass/assets/javascripts/bootstrap');
 
-},{"bootstrap-sass/assets/javascripts/bootstrap":1,"jquery":2,"underscore":5,"vue":15,"vue-chunk":6,"vue-resource":8}],42:[function(require,module,exports){
+},{"bootstrap-sass/assets/javascripts/bootstrap":1,"jquery":2,"underscore":5,"vue":15,"vue-chunk":6,"vue-resource":8}],41:[function(require,module,exports){
 'use strict';
 
 require('slick-carousel');
@@ -28064,7 +28062,7 @@ module.exports = {
     }
 };
 
-},{"slick-carousel":4}],43:[function(require,module,exports){
+},{"slick-carousel":4}],42:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -28100,7 +28098,7 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{"../vendor/js-social":47}],44:[function(require,module,exports){
+},{"../vendor/js-social":46}],43:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -28132,7 +28130,7 @@ module.exports = {
 
 };
 
-},{}],45:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 /*! Sortable 1.4.2 - MIT | git://github.com/rubaxa/Sortable.git */
 "use strict";
 
@@ -28382,7 +28380,7 @@ module.exports = {
   }, a.version = "1.4.2", a;
 });
 
-},{}],46:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 /* ===========================================================
  * jquery-panorama_viewer.js v1
  * ===========================================================
@@ -28599,7 +28597,7 @@ module.exports = {
     };
 })(window.jQuery);
 
-},{}],47:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 /*! jssocials - v1.1.0 - 2015-12-19
 * http://js-socials.com
 * Copyright (c) 2015 Artem Tabalin; Licensed MIT */
@@ -29055,7 +29053,7 @@ module.exports = {
     });
 })(window, jQuery, window.jsSocials);
 
-},{}],48:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 /*! Lity - v1.5.1 - 2015-12-02
 * http://sorgalla.com/lity/
 * Copyright (c) 2015 Jan Sorgalla; Licensed MIT */

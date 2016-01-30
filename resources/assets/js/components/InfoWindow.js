@@ -1,6 +1,6 @@
 module.exports = {
 
-    template: require('./info-window.template.html'),
+    template: require('./templates/info-window.html'),
 
     el: function () {
         return document.createElement('div');

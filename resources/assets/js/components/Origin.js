@@ -1,6 +1,6 @@
 module.exports = {
 
-    template: require('./origin.template.html'),
+    template: require('./templates/origin.html'),
 
     props: ['origin'],
 

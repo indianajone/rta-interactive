@@ -1,6 +1,6 @@
 module.exports = {
     
-    template: require('./google-map.template.html'),
+    template: '<div class="google-map"></div>',
 
     components: {
         infoWindow: require('./InfoWindow')

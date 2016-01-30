@@ -1,6 +1,6 @@
 module.exports = {
     
-    template: require('./destination.template.html'),
+    template: require('./templates/destination.html'),
 
     props: ['selected'],
 

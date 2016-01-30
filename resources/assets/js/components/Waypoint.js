@@ -2,7 +2,7 @@ var Sortable = require('../vendor/Sortable.min.js');
 
 module.exports = {
 
-    template: require('./waypoint.template.html'),
+    template: require('./templates/waypoint.html'),
 
     props: ['waypoints'],
 

@@ -1,6 +1,6 @@
 module.exports = {
     
-    template: require('./mode.template.html'),
+    template: require('./templates/mode.html'),
 
     props: ['mode'],
 
