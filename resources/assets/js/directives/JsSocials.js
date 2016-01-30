@@ -7,7 +7,7 @@ export default {
     bind: function () {
         $(this.el)
             .popover({
-                placement: 'top',
+                placement: 'bottom',
                 html: true,
                 content: function () {
                     return '<div class="share-buttons></div>';
