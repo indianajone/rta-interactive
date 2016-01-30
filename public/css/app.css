@@ -13856,7 +13856,7 @@ fieldset[disabled] .btn-yahoo.focus {
 .interactive-map form {
   color: #fff;
   position: absolute;
-  top: 111px;
+  top: 107px;
   width: 450px;
   left: 0;
   z-index: 99;
@@ -14442,8 +14442,7 @@ fieldset[disabled] .btn-yahoo.focus {
   margin-top: 40px;
   padding-top: 40px;
   position: relative;
-  margin-top: -150px;
-  /* negative value of footer height */
+  margin-top: 0;
   clear: both;
 }
 
