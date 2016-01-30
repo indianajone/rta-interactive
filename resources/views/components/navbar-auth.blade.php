@@ -12,7 +12,7 @@
     @else 
         <li>
             <a href="{{ route('profile_path', ['lang' => session()->get('locale')]) }}" class="navbar-nav__link">
-                <img class="img-circle" style="width: 30px;" src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}">
+                {{-- <img class="img-circle" style="width: 30px;" src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}"> --}}
                 {{ Auth::user()->name }}
             </a>
         </li>
