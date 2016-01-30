@@ -27,7 +27,7 @@ elixir(function(mix) {
         .browserify('app.js')
         .copy([
             'node_modules/jquery/dist/jquery.min.js',
-            'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js'
+            'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
         ], 'resources/assets/js/vendor')
        .scripts([
             'vendor/jquery.min.js',
@@ -38,7 +38,7 @@ elixir(function(mix) {
             'vendor/select2.js',
             'vendor/jquery.panorama-viewer.js',
             'vendor/lity.js',
-            'vendor/summernote.js'
+            'vendor/summernote.js',
         ], 'public/js/vendor.js');
 
 });

@@ -3,6 +3,10 @@ require('./vendor/lity');
 
 Vue.component('modal', require('./components/Modal'));
 Vue.component('favoriteButton', require('./components/FavoriteButton'));
+Vue.component('socialShare', require('./components/SocialShare'));
+
+Vue.directive('slick', require('./directives/CarouselSlick.js'));
+Vue.directive('socials', require('./directives/JsSocials.js'));
 
 new Vue({
     el: '#app',
@@ -23,10 +27,6 @@ new Vue({
                 this.modals[name].tab = tab;
             }
         }
-    },
-
-    directives: {
-        slick: require('./components/CarouselSlick.js')
     },
 
     components: {

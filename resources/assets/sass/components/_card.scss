@@ -28,21 +28,30 @@
     &__buttons {
         background-color: #fff;
         border-top: 1px solid $gray-lighter;
+        overflow: hidden;
         p {
             float: left;
             padding: 15px;
             width: 50%;
         }
-
-        a, button  {
-            @extend .btn;
-            color: $green;
-            background: none;
-            width: 23%;
-            padding: 15px 25px;
-            &:not(:first-child) {
-                border-left: 1px solid $gray-lighter;
-            }
-        }
     }   
+
+     &__button {
+        color: $green;
+        background: none;
+        width: 25%;
+        float: left;
+        padding: 10px;
+        text-align: center;
+        &:not(:first-child) {
+            border-left: 1px solid $gray-lighter;
+        }
+        > * {
+            @extend .btn;
+        }
+
+        .jssocials {
+            min-width: 160px;
+        }
+    }
 }

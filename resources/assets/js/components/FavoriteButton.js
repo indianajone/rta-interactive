@@ -1,6 +1,6 @@
 export default {
 
-    template: `<button @click="action"><i :class="['fa', 'fa-lg', star]"></i></button>`,
+    template: `<a @click.prevent="action"><i :class="['fa', 'fa-lg', star]"></i></a>`,
 
     props: ['place', 'favorited'],
 
