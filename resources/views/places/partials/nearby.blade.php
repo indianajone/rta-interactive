@@ -17,8 +17,6 @@
                                     <i class="fa fa-lg fa-phone"></i>
                                     {{ $place->tel }}
                                 </p>
-                                <a href="#"><i class="fa fa-lg fa-map-marker"></i></a>
-                                <a href="#"><i class="fa fa-lg fa-car"></i></a>
                             </div>
                         </div>
                     @endforeach
