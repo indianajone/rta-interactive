@@ -1,15 +1,30 @@
   <div class="form-group">
-    <select 
-        v-model="selected"
-        type="text" 
-        class="form-control" 
-        required
-    >
-        <option 
-            v-for="location in destinations" 
-            v-bind:value="location.value"
+    <div class="input-group">
+        <div class="input-group-btn">
+            <select 
+                v-dropdown-checkbox 
+                v-model="filteredBy"
+                multiple 
+            >
+                <option 
+                    v-for="(id, name) in categories" 
+                    :value="id">{{ name }}
+                </option>
+            </select>
+        </div>
+        <select 
+            v-dropdown-checkbox
+            v-model="selected"
+            type="text" 
+            class="form-control" 
+            required
         >
-            {{ location.text }}
-        </option>
-    </select>
+            <option 
+                v-for="location in destinations | inCategory" 
+                v-bind:value="location.latitude + ',' + location.longitude"
+            >
+                {{ location.title }}
+            </option>
+        </select>
+    </div>
 </div>

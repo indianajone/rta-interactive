@@ -1,6 +1,10 @@
 <?php 
 
 return [
+    'current_position' => 'ที่อยู่ปัจจุบัน',
+    'origin' => 'ต้นทาง',
+    'destination' => 'ปลายทาง',
+
     'avoid' => [
         'title' => 'หลีกเลี่ยง'
     ],

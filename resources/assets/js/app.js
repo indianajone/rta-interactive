@@ -7,6 +7,22 @@ Vue.component('socialShare', require('./components/SocialShare'));
 
 Vue.directive('slick', require('./directives/CarouselSlick.js'));
 Vue.directive('socials', require('./directives/JsSocials.js'));
+Vue.directive('dropdownCheckbox', require('./directives/DropdownCheckbox.js'));
+
+Vue.filter('inCategory', function (places) {
+    if (this.filteredBy.length == 0) {
+        return places;
+    }
+    var self = this;
+    var result = _.filter(places, function (place) {
+        return _.intersection(
+                    _.toArray(place.categories), 
+                    self.filteredBy.map(Number)
+                ).length === self.filteredBy.length;
+    });
+
+    return result;
+});
 
 new Vue({
     el: '#app',

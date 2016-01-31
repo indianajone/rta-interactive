@@ -7,6 +7,7 @@ use Ravarin\Entities\Page;
 use Ravarin\Entities\Place;
 use Illuminate\Http\Request;
 use Ravarin\Entities\Nearby;
+use Ravarin\Entities\Category;
 use App\Http\Controllers\Controller;
 
 class PagesController extends Controller
@@ -18,12 +19,13 @@ class PagesController extends Controller
         return view('pages.about', compact('page'));
     }
 
-    public function map($lang=null, $slug=null) 
+    public function map(Category $categories, $lang=null, $slug=null) 
     { 
         $config = trans('map.waypoints.things');
         $options = [];
         $place = null;
         $nearby = Place::all();
+        $categories = $categories->listGroups();
 
         if ($slug) {
             $place = Place::findBySlug($slug);
@@ -39,7 +41,7 @@ class PagesController extends Controller
 
         $options = json_encode($options);
         
-        return view('pages.map', compact('options', 'place', 'nearby'));
+        return view('pages.map', compact('options', 'place', 'nearby', 'categories'));
     }
 
     public function recommended() 

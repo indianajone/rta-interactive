@@ -19,10 +19,27 @@
                     <mode :mode.sync="route.travelMode"></mode>
                     <origin :origin.sync="route.origin"></origin>
                     <waypoint :waypoints.sync="route.waypoints"></waypoint>
-                    <destinations 
+                    <destinations inline-template
                         @change="navigateMe"
-                        :selected.sync="route.destination"
+                        :selected.sync="route.destination",
+                        :categories="{{ $categories }}"
+                        :destinations="{{ $nearby }}"
                     >
+                         <select 
+                            v-dropdown-checkbox
+                            v-model="selected"
+                            type="text" 
+                            class="form-control" 
+                            required
+                        >
+                            <option value=''>{{ trans('map.destination') }}</option>
+                            <option 
+                                v-for="location in destinations | inCategory" 
+                                v-bind:value="location.latitude + ',' + location.longitude"
+                            >
+                                @{{ location.title }}
+                            </option>
+                        </select>
                     </destinations>
                 </fieldset>
                 @if ($nearby)

@@ -57,7 +57,7 @@ class Category extends Model
             $lists = array_add($lists, $category->id ,$category->name);
         }
         
-        return $lists;
+        return collect($lists);
     }
 
     public function listGroupWithChildren() 

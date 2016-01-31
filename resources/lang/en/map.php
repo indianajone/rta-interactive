@@ -1,6 +1,10 @@
 <?php 
 
 return [
+    'current_position' => 'Current Position',
+    'origin' => 'Origin',
+    'destination' => 'Destination',
+
     'avoid' => [
         'title' => 'Avoid'
     ],
