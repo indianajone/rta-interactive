@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Cms;
 use App\Http\Requests;
 use Ravarin\Entities\Place;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Ravarin\Entities\Attachment;
 use App\Http\Controllers\Controller;
 use Ravarin\Translations\TranslationTransformer;
@@ -100,7 +101,7 @@ class AttachmentsController extends Controller
             $this->images->make($file, $attachment->path);
             $this->images->thumbnail($file, $attachment->thumbnail_path);
 
-            \File::delete([
+            File::delete([
                 $attachment->getOriginal('path'),
                 $attachment->getOriginal('thumbnail_path') 
             ]);
@@ -110,6 +111,15 @@ class AttachmentsController extends Controller
 
         flash()->success('Update!', 'Photo has been updated.');
 
-        return redirect()->route('cms.places.edit', $placeId);
+        return back();
+    }
+
+    public function destroy(Request $request, $placeId, $id) 
+    {
+        $place = Place::findOrFail($placeId)->attachment()->findOrFail($id)->delete();
+
+        flash()->success('Deleted!', '');
+
+        return back();
     }
 }

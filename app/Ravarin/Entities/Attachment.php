@@ -2,6 +2,7 @@
 
 namespace Ravarin\Entities;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Database\Eloquent\Model;
 use Dimsav\Translatable\Translatable;
 use Ravarin\Translations\TranslateMapable;
@@ -59,5 +60,14 @@ class Attachment extends Model
         }
 
         return $this->isTranslationAttribute($key) || true;
+    }
+
+    public function delete() 
+    {
+        File::delete([
+            $this->path, $this->thumbnail_path
+        ]);
+
+        parent::delete();
     }
 }

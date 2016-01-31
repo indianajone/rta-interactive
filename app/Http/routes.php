@@ -28,7 +28,7 @@ Route::group(['prefix' => 'cms'], function ()
     ]);
 
     Route::resource('places.attachments', 'Cms\AttachmentsController', [
-        'only' => ['store', 'update']
+        'only' => ['store', 'update', 'destroy']
     ]);
 
     Route::resource('places.video', 'Cms\PlacesVideoController', [

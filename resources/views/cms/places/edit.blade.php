@@ -177,7 +177,7 @@
 
 @section('script.footer')
     <script type="text/javascript" charset="utf-8">
-        $(function(){
+        $(function() {
             $('.select2').select2();
             $('.editor').summernote({
                 minHeight: 300, 
