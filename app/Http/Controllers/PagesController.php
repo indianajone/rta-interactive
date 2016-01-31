@@ -23,7 +23,7 @@ class PagesController extends Controller
         $config = trans('map.waypoints.things');
         $options = [];
         $place = null;
-        $nearby = Nearby::all();
+        $nearby = Place::all();
 
         if ($slug) {
             $place = Place::findBySlug($slug);
