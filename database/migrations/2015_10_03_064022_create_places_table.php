@@ -18,6 +18,7 @@ class CreatePlacesTable extends Migration
             $table->string('name');
             $table->decimal('latitude', 10, 7);
             $table->decimal('longitude', 10, 7);
+            $table->integer('view')->unsigned()->default(0);
             $table->timestamps();
         });
 

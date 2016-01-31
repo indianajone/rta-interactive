@@ -4,16 +4,19 @@
         position: absolute;
         top: -40px;
         right: 0;
-         a {
-            background-color: #e3e5e5;
-            display: block;
-            text-align: center;
-            padding: 10px;
-            float: left;
-            border-right: 3px solid #eee;
-            &:last-child {
-                 border-right: 3px solid transparent;
-            }
+    }
+
+    &__buttons > a,
+    &__button {
+        color: $green;
+        background-color: #e3e5e5;
+        display: block;
+        text-align: center;
+        padding: 10px;
+        float: left;
+        border-right: 3px solid #eee;
+        &:last-child {
+             border-right: 3px solid transparent;
         }
     }
 

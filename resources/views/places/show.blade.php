@@ -46,6 +46,7 @@
             @else
                 <social-share url="{{ place_path($place) }}"></social-share>
             @endif
+            <span class="place__button">{{ $place->views }}</span>
         </div>
         
         <readmore 

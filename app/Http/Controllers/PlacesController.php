@@ -48,9 +48,7 @@ class PlacesController extends Controller
     {
         $place = Place::findBySlug($slug);
 
-        // $photos = $place->banners();
-
-        // Javascript::put(compact('photos'));
+        $place->increment('view');
 
         return view('places.show', compact('place'));
     }

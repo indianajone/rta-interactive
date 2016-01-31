@@ -215,4 +215,16 @@ class Place extends Model
 
         return $thumbnail ? asset($thumbnail->thumbnail_path) : asset('/images/default.jpg');
     }
+
+    public function getViewsAttribute() 
+    {
+        $text = trans('common.views');
+        $views = $this->view;
+
+        if (app()->getLocale() == 'th') {
+            return trans('common.views', compact('views'));
+        }
+
+        return $views . ' ' . str_plural(trans('common.views'), $views);
+    }
 }

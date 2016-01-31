@@ -14502,7 +14502,9 @@ fieldset[disabled] .btn-yahoo.focus {
   right: 0;
 }
 
-.place__buttons a {
+.place__buttons > a,
+.place__button {
+  color: #094d44;
   background-color: #e3e5e5;
   display: block;
   text-align: center;
@@ -14511,7 +14513,8 @@ fieldset[disabled] .btn-yahoo.focus {
   border-right: 3px solid #eee;
 }
 
-.place__buttons a:last-child {
+.place__buttons > a:last-child,
+.place__button:last-child {
   border-right: 3px solid transparent;
 }
 

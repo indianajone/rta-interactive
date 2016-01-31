@@ -20,5 +20,7 @@ return [
         'viewall' => 'view all',
     ],
 
-    'notfound' => 'data not found'
+    'notfound' => 'data not found',
+
+    'views' => 'view'
 ];
