@@ -2,14 +2,12 @@
 
 @section('banner')
     <div class="slick slick--black" v-slick>
-         @if($places->count())
-            @foreach($places->first()->photos as $photo)
-                 <div class="slick-slide slick-slide--fixed-height">
-                    <img src="{{ asset($photo->path) }}" alt="">
-                    <span>{{ $places->first()->name }}</span>
-                </div>
-            @endforeach
-        @endif
+        @foreach($slideshow as $item)
+            <div class="slick-slide slick-slide--fixed-height">
+                <img src="{{ asset($item->path) }}" alt="$item->title">
+                <span>{{ $item->title }}</span>
+            </div>
+        @endforeach
     </div>
 @stop
 

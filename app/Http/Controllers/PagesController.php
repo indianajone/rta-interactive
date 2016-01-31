@@ -46,6 +46,11 @@ class PagesController extends Controller
     {
         $places = Place::where('recommended', true)->paginate();
 
-        return view('pages.recommended', compact('places'));
+         // Take one of each latest photo from places.
+        $slideshow = $places->map(function ($place) {
+            return $place->photos->sortByDesc('created_at')->first();
+        });
+
+        return view('pages.recommended', compact('places', 'slideshow'));
     }
 }
