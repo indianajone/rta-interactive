@@ -13,7 +13,7 @@
 
 @section('content')
     @include('components/ceo')
-    <h2 class="heading--fancy">{{ trans('common.heading.places') }}</h2>
+    <h2 class="heading--fancy">{{ trans('common.heading.populars') }}</h2>
     <div class="cards">
         @forelse($places->chunk(3) as $set)
             <div class="row">
