@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index() 
     {
-        $places = Place::has('photos')->latest()->limit(9)->get();
+        $places = Place::has('photos')->orderBy('view', 'desc')->limit(9)->get();
 
         // Take one of each latest photo from places.
         $slideshow = $places->map(function ($place) {
