@@ -11761,6 +11761,10 @@ body {
   padding: 0;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 .wrapper {
   background: #eeeeee url("../images/bg-bottom.png") no-repeat;
   background-position: bottom center;
