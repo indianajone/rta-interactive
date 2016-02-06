@@ -37,6 +37,25 @@
             </div>
             <div class="navbar-bottom collapse navbar-collapse">
                 <div class="container">
+                    <ul class="navbar-main visible-xs">
+                        <li>
+                            <ul class="nav nav-pills">
+                                @if(!Auth::check())
+                                    <li>
+                                        <a @click="openModal('login', 'login')" class="navbar-nav__link">{{ trans('menu.login') }}</a>
+                                    </li>
+                                 @else 
+                                    <li>
+                                        <a href="{{ route('profile_path', ['lang' => session()->get('locale')]) }}" class="navbar-nav__link">{{ Auth::user()->name }}</a>
+                                    </li>
+                                    <li>
+                                        <logout text={{ trans('menu.logout') }}></logout>
+                                    </li>
+                                @endif
+                                <li class="pull-right">@include('components/navbar-flag')</li>
+                            </ul>
+                        </li>
+                    </ul>
                     @include('components.search')
                     <ul class="navbar-main">
                         <li>{!! nav_route('home', 'home') !!}</li>
