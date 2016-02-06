@@ -18,20 +18,19 @@ class PlacesController extends Controller
      */
     public function index()
     {
-        $result = Place::with('categories')->get();
-        $output = [];
-        
-        foreach($result as $place) {
-            $output[] = [
-                'name' => $place->title,
-                'excerpt' => str_limit($place->excerpt),
-                'thumbnail' => asset($place->thumbnail),
-                'categories' => $place->categories->lists('id')->toArray(),
-                'url' => place_path($place)
-            ];
-        }
-
-        $places = collect($output);
+        $places = Place::with('categories', 'translations', 'photos')->get()
+                        ->map(function ($place) {
+                            return [
+                                'id' => $place->id,
+                                'name' => $place->title,
+                                'excerpt' => str_limit($place->excerpt),
+                                'thumbnail' => asset($place->thumbnail),
+                                'categories' => $place->categories->lists('id')->toArray(),
+                                'url' => place_path($place),
+                                'map_url' => map_path($place),
+                                'favorited' => $place->hasFavoritedByUser($this->user)
+                            ];
+                        });
 
         $categories = Category::getRootsLevelWithChildren();
 

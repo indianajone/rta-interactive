@@ -12,7 +12,8 @@ return [
         'panorama' => 'Panorama',
         'marker' => 'AR Code',
         'nearby' => 'Nearby',
-        'favorites' => 'Favorite Place'
+        'favorites' => 'Favorite Place',
+        'filter' => 'Filter',
     ],
 
     'buttons' => [

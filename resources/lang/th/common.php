@@ -12,7 +12,8 @@ return [
         'panorama' => 'พาโนรามา',
         'marker' => 'ภาพ AR',
         'nearby' => 'สถานที่ท่องเที่ยวใกล้เคียง',
-        'favorites' => 'สถานที่โปรด'
+        'favorites' => 'สถานที่โปรด',
+        'filter' => 'ตัวกรอง',
     ],
 
     'buttons' => [

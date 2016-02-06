@@ -1,6 +1,6 @@
 module.exports = {
 
-    props: ['places'],
+    props: ['places', 'openModal'],
 
     data: function () {
         return {

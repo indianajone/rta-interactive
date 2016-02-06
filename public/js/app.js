@@ -28137,7 +28137,7 @@ module.exports = exports['default'];
 
 module.exports = {
 
-    props: ['places'],
+    props: ['places', 'openModal'],
 
     data: function data() {
         return {

@@ -134,8 +134,10 @@ class Place extends Model
         return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
     }
 
-    public function hasFavoritedByUser(User $user) 
+    public function hasFavoritedByUser($user) 
     {
+        if (!$user) return false;
+
         return (boolean) $user->hasFavoritePlace($this);
     }
 
