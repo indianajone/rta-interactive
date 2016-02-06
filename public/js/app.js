@@ -28097,7 +28097,9 @@ require('../vendor/dropdown-checkbox');
 exports['default'] = {
 
     bind: function bind() {
-        $(this.el).selectpicker();
+        $(this.el).selectpicker({
+            mobile: true
+        });
     },
 
     unbind: function unbind() {
