@@ -13,6 +13,10 @@ body {
     }
 }
 
+[v-cloak] {
+    display: none;
+}
+
 .wrapper {
     background: $bg-color url("../images/bg-bottom.png") no-repeat;
     background-position: bottom center;

@@ -6,7 +6,7 @@
             @keyup="search | debounce 300"
         >
         <i class="fa fa-search"></i>
-        <div class="search__results">
+        <div class="search__results" v-cloak>
             <small class="search__item text-center" v-if="noResults">no results</small>
             <div class="search__item" v-for="item in results.recommended" v-if="noResults">
                 <div class="search__left">
