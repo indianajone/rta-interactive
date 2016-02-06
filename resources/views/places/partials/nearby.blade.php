@@ -12,12 +12,14 @@
                             <div class="card__details">
                                 <h3 class="card__title">{{ $place->title }}</h3>
                             </div>
-                            <div class="card__buttons">
-                                <p>
-                                    <i class="fa fa-lg fa-phone"></i>
-                                    {{ $place->tel }}
-                                </p>
-                            </div>
+                            @if ($place->tel)
+                                <div class="card__buttons">
+                                    <p>
+                                        <i class="fa fa-lg fa-phone"></i>
+                                        {{ $place->tel }}
+                                    </p>
+                                </div>
+                            @endif
                         </div>
                     @endforeach
                 </div>
