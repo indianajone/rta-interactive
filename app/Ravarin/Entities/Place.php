@@ -46,7 +46,7 @@ class Place extends Model
      */
     public static function findBySlug($slug)
     {
-        return (new static)->whereTranslation('title', str_replace('-', ' ', $slug))
+        return (new static)->where('name', $slug)
                 ->with('photos', 'nearby')
                 ->firstOrFail();
     }
