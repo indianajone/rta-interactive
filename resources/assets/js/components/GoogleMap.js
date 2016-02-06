@@ -1,5 +1,3 @@
-require('../vendor/RouteBoxer');
-
 module.exports = {
     
     template: '<div class="google-map"></div>',
