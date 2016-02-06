@@ -57,7 +57,9 @@ class Place extends Model
             return $query;
         }
 
-        return $query->where('name', 'LIKE', "%{$keyword}%");
+        return $query->whereHas('translations', function($q) use ($keyword) {
+            return $q->where('title', 'LIKE', "%{$keyword}%");
+        });
     }
 
     public function scopeRecommended($query) 

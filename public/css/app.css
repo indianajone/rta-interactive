@@ -14643,6 +14643,7 @@ fieldset[disabled] .btn-yahoo.focus {
 .search__heading {
   font-size: 100%;
   margin-top: 0;
+  word-wrap: break-word;
 }
 
 .search__body {

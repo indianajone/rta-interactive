@@ -27907,6 +27907,8 @@ module.exports = exports['default'];
 
 module.exports = {
 
+    props: ['locale'],
+
     data: function data() {
         return {
             query: '',
@@ -27941,7 +27943,7 @@ module.exports = {
     methods: {
         search: function search() {
             if (this.query.length > 0) {
-                this.$http.get('/api/search?q=' + this.query, (function (data) {
+                this.$http.get('/api/search?q=' + this.query + '&lang=' + this.locale, (function (data) {
                     this.results.search = data.search;
                     this.results.recommended = data.recommended;
                 }).bind(this));

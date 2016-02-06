@@ -11,8 +11,11 @@ class SearchController extends Controller
 {
     public function index(Request $request) 
     {
-        $search = Place::with('photos')->search($request->get('q', null))->get();
+        $locale = $request->get('lang', app()->getLocale());
+        $search = Place::with('photos')->search($request->get('q', null), $locale)->get();
         $recommended = Place::with('photos')->recommended()->get();
+
+        app()->setLocale($locale);
 
         return \Response::json([
             'search' => $this->transform($search),
@@ -25,7 +28,7 @@ class SearchController extends Controller
         return $data->map(function ($place) {
             return [
                 'name' => $place->title,
-                'excerpt' => $place->excerpt,
+                'excerpt' => str_limit($place->excerpt, 50),
                 'thumbnail' => asset($place->thumbnail),
                 'recommended' => $place->recommended,
                 'rel' => place_path($place),

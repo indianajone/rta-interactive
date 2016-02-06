@@ -68,7 +68,6 @@ Route::group([ 'prefix' => 'api', 'as' => 'api.' ], function ()
     Route::delete('places/{id}/photos/{photo_id}', [ 'as' => 'place.photos', 'uses' => 'Api\PhotosController@destroy']);
     
     Route::post('places/{id}/panorama', ['as' => 'panoramas', 'uses' => 'Api\PanoramaController@store']);
-    
     Route::get('search', 'Api\SearchController@index');
 
     Route::get('attachments/{id}', ['as' => 'attachment_path', 'uses' => 'Api\AttachmentController@show']);
