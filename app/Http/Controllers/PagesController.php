@@ -24,8 +24,8 @@ class PagesController extends Controller
         $config = trans('map.waypoints.things');
         $options = [];
         $place = null;
-        $nearby = Place::all();
-        $categories = $categories->listGroups();
+        $nearby = Place::with('categories')->get();
+        $categories = $categories->listChildren();
 
         if ($slug) {
             $place = Place::findBySlug($slug);

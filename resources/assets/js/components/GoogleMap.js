@@ -1,3 +1,5 @@
+require('../vendor/RouteBoxer');
+
 module.exports = {
     
     template: '<div class="google-map"></div>',
@@ -113,7 +115,6 @@ module.exports = {
                 if (status == google.maps.DirectionsStatus.OK) {  
                     self.services.renderer.setDirections(result);
                     self.drawBoxes(result.routes);
-                    console.log(self.services.renderer.getPanel());
                 }
                 else {
                     window.alert('Directions request failed due to ' + status);

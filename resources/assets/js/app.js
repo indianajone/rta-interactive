@@ -13,15 +13,12 @@ Vue.filter('inCategory', function (places) {
     if (this.filteredBy.length == 0) {
         return places;
     }
-    var self = this;
-    var result = _.filter(places, function (place) {
+    return  _.filter(places, (place) => {
         return _.intersection(
                     _.toArray(place.categories), 
-                    self.filteredBy.map(Number)
-                ).length === self.filteredBy.length;
+                    _.flatten(this.filteredBy.map(Number))
+                ).length === this.filteredBy.length;
     });
-
-    return result;
 });
 
 new Vue({

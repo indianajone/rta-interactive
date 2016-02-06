@@ -1,7 +1,6 @@
 {
   "private": true,
   "devDependencies": {
-    "babel-runtime": "^6.3.13",
     "gulp": "^3.8.8",
     "vue-hot-reload-api": "^1.2.2",
     "vueify-insert-css": "^1.0.0"

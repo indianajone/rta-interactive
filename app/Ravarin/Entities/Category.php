@@ -60,6 +60,23 @@ class Category extends Model
         return collect($lists);
     }
 
+    public function listChildren() 
+    {
+        $groups = $this->getRootsLevelWithChildren();
+
+        $collection = [];
+
+        foreach ($groups as $group) {
+            $groupName = $group->name;
+            $collection[$groupName] = [];
+            foreach ($group->children as $category) {
+                $collection[$groupName][] = $category->id;
+            }
+        }
+
+        return collect($collection);
+    }
+
     public function listGroupWithChildren() 
     {
         $groups = $this->getRootsLevelWithChildren();

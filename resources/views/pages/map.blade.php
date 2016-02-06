@@ -1,10 +1,7 @@
 @extends('layouts.master')
 
 @section('script.header')
-    
-    <script src="//maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_API_KEY') }}&libraries=places"></script>
-    <script src="//google-maps-utility-library-v3.googlecode.com/svn/trunk/routeboxer/src/RouteBoxer.js"></script>
-
+    <script src="//maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_API_KEY') }}&amp;libraries=places"></script>
 @stop
 
 @section('content')
@@ -17,30 +14,24 @@
             >
                 <fieldset class="top">
                     <mode :mode.sync="route.travelMode"></mode>
-                    <origin :origin.sync="route.origin"></origin>
+                    
+                    <origin :origin.sync="route.origin" inline-template>
+                        <div class="form-group">
+                            <input 
+                                v-el:origin
+                                v-model="value"
+                                @blur="onBlur"
+                                @focus="onFocus"
+                                type="text"
+                                class="form-control"
+                                placeholder="{{ trans('map.origin') }}"
+                                required >
+                        </div>
+                    </origin>
+                    
                     <waypoint :waypoints.sync="route.waypoints"></waypoint>
-                    <destinations inline-template
-                        @change="navigateMe"
-                        :selected.sync="route.destination",
-                        :categories="{{ $categories }}"
-                        :destinations="{{ $nearby }}"
-                    >
-                         <select 
-                            v-dropdown-checkbox
-                            v-model="selected"
-                            type="text" 
-                            class="form-control" 
-                            required
-                        >
-                            <option value=''>{{ trans('map.destination') }}</option>
-                            <option 
-                                v-for="location in destinations | inCategory" 
-                                v-bind:value="location.latitude + ',' + location.longitude"
-                            >
-                                @{{ location.title }}
-                            </option>
-                        </select>
-                    </destinations>
+                    
+                    @include('components.destination')
                 </fieldset>
                 @if ($nearby)
                 <fieldset class="bottom" v-if="route.travelMode == 'DRIVING'">

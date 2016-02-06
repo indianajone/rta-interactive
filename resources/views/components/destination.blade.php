@@ -29,13 +29,14 @@
         <select 
             v-dropdown-checkbox
             v-model="selected"
+            v-el:destination
             type="text" 
             class="form-control" 
             required
         >
             <option value=''>{{ trans('map.destination') }}</option>
             <option 
-                v-for="place in destinations | inCategory" 
+                v-for="place in destinations | children" 
                 v-bind:value="place.location"
             >
                 @{{ place.title }}
