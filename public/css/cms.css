@@ -12596,6 +12596,10 @@ hr {
   left: 10%;
 }
 
+.form-remove {
+  margin-bottom: 10px;
+}
+
 .select2-container--default .select2-selection--single,
 .select2-container--default .select2-selection--multiple {
   border: 1px solid #ccc;

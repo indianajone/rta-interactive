@@ -26,9 +26,10 @@
                 </a>
                 {!! Form::open([
                     'route' => ['cms.places.attachments.destroy', $place->id, $video->id], 
-                    'method' => 'DELETE'
+                    'method' => 'DELETE',
+                    'class' => 'form-remove'
                 ]) !!}
-                    <button name="delete" class="btn btn-danger">ลบ</button>
+                    <button name="delete" class="btn btn-sm btn-danger">ลบ</button>
                 {!! Form::close() !!}
             </div>
         @endforeach
