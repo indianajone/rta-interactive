@@ -15,7 +15,7 @@
 @foreach($place->photos->chunk(4) as $set)
     <div class="row">
         @foreach($set as $photo)
-            <div class="col-xs-6 col-md-3">
+            <div class="col-xs-6 col-md-3 text-center">
                 <a 
                     href="#modal-image-{{ $photo->id }}" 
                     class="thumbnail"
@@ -24,6 +24,12 @@
                 > 
                     <img src="{{ asset($photo->thumbnail_path) }}" alt="{{ $photo->title }}">
                 </a>
+                {!! Form::open([
+                    'route' => ['cms.places.attachments.destroy', $place->id, $photo->id], 
+                    'method' => 'DELETE'
+                ]) !!}
+                    <button name="delete" class="btn btn-danger">Delete</button>
+                {!! Form::close() !!}
             </div>
         @endforeach
     </div>  

@@ -67,4 +67,15 @@ class Nearby extends Model
 
         return $thumbnail ? asset($thumbnail->thumbnail_path) : asset('/images/default.jpg');
     }
+
+    public function delete()
+    {
+        $attachments = $this->photos()->get();
+
+        $attachments->each(function ($attachment) {
+            $attachment->delete();
+        });
+
+        return parent::delete();
+    }
 }

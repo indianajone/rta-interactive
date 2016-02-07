@@ -24,6 +24,12 @@
                 > 
                     <img src="{{ asset($marker->thumbnail_path) }}" alt="{{ $marker->title }}">
                 </a>
+                {!! Form::open([
+                    'route' => ['cms.places.attachments.destroy', $place->id, $marker->id], 
+                    'method' => 'DELETE'
+                ]) !!}
+                    <button name="delete" class="btn btn-danger">Delete</button>
+                {!! Form::close() !!}
             </div>
         @endforeach
     </div>  

@@ -115,4 +115,14 @@ class PlacesNearbyController extends Controller
 
         return redirect()->route('cms.places.edit', $placeId);
     }
+
+    public function destroy(Request $request, $placeId, $id) 
+    {
+        $nearby = Place::findOrFail($placeId)->nearby()->findOrFail($id);
+        $nearby->delete();
+
+        flash()->success('Deleted!', "Successfully deleted.");
+
+        return redirect()->route('cms.places.edit', $placeId);
+    }
 }

@@ -44,7 +44,7 @@ Route::group(['prefix' => 'cms'], function ()
     ]);
 
     Route::resource('places.nearby', 'Cms\PlacesNearbyController', [
-        'only' => ['store', 'update']
+        'only' => ['store', 'update', 'destroy']
     ]);
 });
 

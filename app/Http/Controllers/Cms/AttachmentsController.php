@@ -116,9 +116,10 @@ class AttachmentsController extends Controller
 
     public function destroy(Request $request, $placeId, $id) 
     {
-        $place = Place::findOrFail($placeId)->attachment()->findOrFail($id)->delete();
+        $attachment = Place::findOrFail($placeId)->attachments()->findOrFail($id);
+        $attachment->delete();
 
-        flash()->success('Deleted!', '');
+        flash()->success('Deleted!', "Successfully deleted.");
 
         return back();
     }

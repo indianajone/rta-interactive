@@ -19,6 +19,7 @@
                 <th width="10%">รูป</th>
                 <th>ชื่อสถานที่</th>
                 <th>เบอร์โทรติดต่อ</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -35,6 +36,14 @@
                         </a>
                     </td>
                     <td>{{ $nearby->tel }}</td>
+                    <td>
+                        {!! Form::open([
+                            'route' => ['cms.places.nearby.destroy', $place->id, $nearby->id], 
+                            'method' => 'DELETE'
+                        ]) !!}
+                            <button name="delete" class="btn btn-danger">ลบ</button>
+                        {!! Form::close() !!}
+                    </td>
                 </tr>
             @endforeach
         </tbody>
