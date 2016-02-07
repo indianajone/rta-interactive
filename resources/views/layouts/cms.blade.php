@@ -67,6 +67,12 @@
                                     <span>หมวดหมู่สถานที่</span>
                                 </a>
                             </li>
+                            <li class="{{ Route::is('cms.admin.*') ? 'active' : '' }}">
+                                <a href="{{ route('cms.admin.index') }}">
+                                    <i class="fa fa-user"></i>
+                                    <span>ผู้ดูแลระบบ</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div class="main">

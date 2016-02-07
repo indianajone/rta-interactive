@@ -18,6 +18,10 @@ Route::group(['prefix' => 'cms'], function ()
     
     Route::get('/ceo', ['as' => 'cms.ceo_path', 'uses' => 'Cms\PagesController@showCeo']);
     Route::put('/ceo', ['as' => 'cms.ceo_path', 'uses' => 'Cms\PagesController@updateCeo']);
+
+    Route::resource('/admin', 'Cms\AdminController', [
+        'except' => ['show']
+    ]);
     
     Route::resource('/places', 'Cms\PlacesController',  [
         'except' => ['show']
