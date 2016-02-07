@@ -58,6 +58,11 @@ class User extends Model implements AuthenticatableContract,
         return $user;
     }
 
+    public function isAdmin() 
+    {
+        return $this->admin != 0;
+    }
+
     public function favoritePlaces() 
     {
         return $this->belongsToMany(Place::class, 'favorites')->withTimestamps();

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Cms\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 
@@ -30,20 +31,22 @@ class AuthController extends Controller
     {
         $this->validate($request, ['email' => 'required', 'password' => 'required']);
 
-        if (\Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->intended($this->redirectPath());
+        if (!Auth::attempt($request->only('email', 'password')) || !Auth::user()->isAdmin()) {
+            Auth::logout();
+            return redirect($this->loginPath())
+                ->withInput($request->only('email'))
+                ->withErrors([
+                    'email' => $this->getFailedLoginMessage(),
+                ]);
         }
 
-        return redirect($this->loginPath())
-            ->withInput($request->only('email'))
-            ->withErrors([
-                'email' => $this->getFailedLoginMessage(),
-            ]);
+        return redirect()->intended($this->redirectPath());
+
     }
 
     public function destroy() 
     {
-        \Auth::logout();
+        Auth::logout();
 
         return redirect(route('cms.login_path'));
     }
