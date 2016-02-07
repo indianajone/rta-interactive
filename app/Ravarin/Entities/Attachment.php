@@ -68,6 +68,6 @@ class Attachment extends Model
             $this->path, $this->thumbnail_path
         ]);
 
-        parent::delete();
+        return parent::delete();
     }
 }

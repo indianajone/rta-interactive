@@ -104,7 +104,13 @@ class PlacesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $place = Place::findOrFail($id);
+        
+        $place->delete();
+
+        flash()->success('Deleted!', "$place->title has been deleted.");
+
+        return redirect(route('cms.places.index'));
     }
 
     private function createPlace (PlaceRequest $request) 

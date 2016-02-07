@@ -2,6 +2,7 @@
 
 namespace Ravarin\Entities;
 
+use Illuminate\Support\Facades\File;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Ravarin\Translations\TranslateMapable;
@@ -12,11 +13,11 @@ class Place extends Model
         TranslateMapable::__isset insteadof Translatable;
     }
 
-    public static function boot()  
+    public static function boot()
     {
         parent::boot();
 
-        static::saving(function($place) {
+        static::saving(function ($place) {
             $place->name = slugify($place->title);
         });
     }
@@ -51,20 +52,25 @@ class Place extends Model
                 ->firstOrFail();
     }
 
-    public function scopeSearch($query, $keyword) 
+    public function scopeSearch($query, $keyword)
     {
         if (!$keyword) {
             return $query;
         }
 
-        return $query->whereHas('translations', function($q) use ($keyword) {
+        return $query->whereHas('translations', function ($q) use ($keyword) {
             return $q->where('title', 'LIKE', "%{$keyword}%");
         });
     }
 
-    public function scopeRecommended($query) 
+    public function scopeRecommended($query)
     {
         return $query->where('recommended', true);
+    }
+
+    public function attachments()
+    {
+        return $this->morphMany(Attachment::class, 'attachable');
     }
 
     /**
@@ -72,7 +78,7 @@ class Place extends Model
      *
      * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function categories() 
+    public function categories()
     {
         return $this->belongsToMany(Category::class)->withTimestamps();
     }
@@ -82,10 +88,9 @@ class Place extends Model
      *
      * @return Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function photos() 
+    public function photos()
     {
-        return $this->morphMany(Attachment::class, 'attachable')
-                    ->where('type', 'image');
+        return $this->attachments()->where('type', 'image');
     }
 
     /**
@@ -93,10 +98,9 @@ class Place extends Model
      *
      * @return Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function videos() 
+    public function videos()
     {
-        return $this->morphMany(Attachment::class, 'attachable')
-                    ->where('type', 'video');
+        return $this->attachments()->where('type', 'video');
     }
 
     /**
@@ -104,10 +108,9 @@ class Place extends Model
      *
      * @return Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function panoramas() 
+    public function panoramas()
     {
-        return $this->morphMany(Attachment::class, 'attachable')
-                    ->where('type', 'panorama');
+        return $this->attachments()->where('type', 'panorama');
     }
 
     /**
@@ -115,10 +118,9 @@ class Place extends Model
      *
      * @return Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function markers() 
+    public function markers()
     {
-        return $this->morphMany(Attachment::class, 'attachable')
-                    ->where('type', 'marker');
+        return $this->attachments()->where('type', 'marker');
     }
 
     /**
@@ -126,19 +128,21 @@ class Place extends Model
      *
      * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function nearby() 
+    public function nearby()
     {
         return $this->hasMany(Nearby::class);
     }
 
-    public function favoriteUsers() 
+    public function favoriteUsers()
     {
         return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
     }
 
-    public function hasFavoritedByUser($user) 
+    public function hasFavoritedByUser($user)
     {
-        if (!$user) return false;
+        if (!$user) {
+            return false;
+        }
 
         return (boolean) $user->hasFavoritePlace($this);
     }
@@ -149,7 +153,7 @@ class Place extends Model
      * @param  string  $key
      * @return bool
      */
-    public function __isset($key) 
+    public function __isset($key)
     {
         $key = $this->getMapableAttribute($key);
 
@@ -167,7 +171,7 @@ class Place extends Model
      * @param  string $value
      * @return string
      */
-    public function getExcerptAttribute($value) 
+    public function getExcerptAttribute($value)
     {
         return $value ?: str_limit($this->description);
     }
@@ -177,7 +181,7 @@ class Place extends Model
      *
      * @return string
      */
-    public function getLatLngAttribute() 
+    public function getLatLngAttribute()
     {
         return json_encode([
             'title' => $this->title,
@@ -196,12 +200,12 @@ class Place extends Model
      *
      * @return string
      */
-    public function getAddressAttribute() 
+    public function getAddressAttribute()
     {
-        return implode(' ', [ 
-            $this->street, 
-            $this->subdistrict, 
-            $this->district, 
+        return implode(' ', [
+            $this->street,
+            $this->subdistrict,
+            $this->district,
             $this->province,
             $this->postcode
         ]);
@@ -213,14 +217,14 @@ class Place extends Model
      * @param  null|string $value
      * @return string
      */
-    public function getThumbnailAttribute($value) 
+    public function getThumbnailAttribute($value)
     {
         $thumbnail = $this->photos->where('thumbnail', 1)->first();
 
         return $thumbnail ? asset($thumbnail->thumbnail_path) : asset('/images/default.jpg');
     }
 
-    public function getViewsAttribute() 
+    public function getViewsAttribute()
     {
         $text = trans('common.views');
         $views = $this->view;
@@ -230,5 +234,16 @@ class Place extends Model
         }
 
         return $views . ' ' . str_plural(trans('common.views'), $views);
+    }
+
+    public function delete()
+    {
+        $attachments = $this->attachments()->get();
+
+        $attachments->each(function ($attachment) {
+            $attachment->delete();
+        });
+
+        return parent::delete();
     }
 }

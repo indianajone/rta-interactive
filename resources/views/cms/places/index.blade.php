@@ -24,6 +24,7 @@
             <tr>
                 <th width="10%">รูปภาพ</th>
                 <th>สถานที่</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -37,10 +38,18 @@
                         <a href="{{ route('cms.places.edit', $place->id) }}">{{ $place->name }}</a>
                         <p>{{ $place->address }}</p>
                     </td>
+                    <td>
+                        {!! Form::open([
+                            'route' => ['cms.places.destroy', $place->id], 
+                            'method' => 'DELETE'
+                        ]) !!}
+                            <button name="delete" class="btn btn-danger">ลบ</button>
+                        {!! Form::close() !!}
+                    </td>
                 </tr>
             @empty
                 <tr>
-                    <td class="text-center text-muted" colspan="3">ไม่พบข้อมูล</td>
+                    <td class="text-center text-muted" colspan="4">ไม่พบข้อมูล</td>
                 </tr>
             @endforelse
         </tbody>
@@ -48,4 +57,27 @@
     <div class="text-center">
         {!! $places->render() !!}
     </div> 
+@stop
+
+@section('script.footer')
+    <script type="text/javascript" charset="utf-8">
+        $(function() {
+            $('button[name="delete"]').on('click', function (e) {
+                e.preventDefault();
+                swal({   
+                    title: "Are you sure?",   
+                    text: "You will not be able to recover this imaginary file!",
+                    type: "warning",   
+                    showCancelButton: true,   
+                    confirmButtonColor: "#DD6B55",   
+                    confirmButtonText: "Yes, delete it!",   
+                    closeOnConfirm: false 
+                }, function (confirmed) {
+                    if(confirmed) {
+                        $(e.target).closest('form').submit();
+                    }
+                });
+            });
+        });
+    </script>
 @stop
