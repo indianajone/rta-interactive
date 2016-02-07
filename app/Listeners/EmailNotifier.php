@@ -27,8 +27,11 @@ class EmailNotifier
      */
     public function whenUserWasRegistered(UserWasRegistered $event)
     {
-        // me = n0rRlz
-        // TODO: email user their auto generate password.
-        \Log::debug($event->password);
+        $user = $event->user;
+        $password = $event->password;
+        
+        $this->mailer->send('emails.register', compact('user', 'password'), function ($m) use ($user) {
+            $m->to($user->getEmailForPasswordReset());
+        });
     }
 }
