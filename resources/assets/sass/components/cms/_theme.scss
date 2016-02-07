@@ -15,6 +15,10 @@ hr {
     border-top: 1px solid #ddd;
 }
 
+.huge {
+    font-size: 40px
+}
+
 .main {
     @extend .col-sm-9;
     @extend .col-sm-offset-3;

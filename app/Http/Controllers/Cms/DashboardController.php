@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Cms;
 
-use Illuminate\Http\Request;
 use App\Http\Requests;
+use Ravarin\Entities\Place;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
@@ -17,6 +18,10 @@ class DashboardController extends Controller
 
     public function index() 
     {
-        return view('cms.dashboard.index');
+        $count = Place::count();
+
+        $mostView = Place::with('translations')->orderBy('view', 'desc')->first();
+
+        return view('cms.dashboard.index', compact('count', 'mostView'));
     }
 }
