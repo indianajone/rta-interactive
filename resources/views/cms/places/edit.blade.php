@@ -8,7 +8,7 @@
     <div class="row">
         @include('components.error')
        
-            <div class="col-md-10">
+            <div class="col-md-12">
                <div class="panel with-nav-tabs">
                     <div class="panel-heading clearfix">
                         <ul class="nav nav-tabs" role="tablist">
@@ -193,7 +193,7 @@
                 e.preventDefault();
                 swal({   
                     title: "Are you sure?",   
-                    text: "You will not be able to recover this file!",
+                    text: "You will not be able to recover this!",
                     type: "warning",   
                     showCancelButton: true,   
                     confirmButtonColor: "#DD6B55",   

@@ -15,7 +15,7 @@
 @foreach($place->markers->chunk(4) as $set)
     <div class="row">
         @foreach($set as $marker)
-            <div class="col-xs-6 col-md-3">
+            <div class="col-xs-6 col-md-3 text-center">
                 <a 
                     href="#modal-marker-{{ $marker->id }}" 
                     class="thumbnail"
@@ -28,7 +28,7 @@
                     'route' => ['cms.places.attachments.destroy', $place->id, $marker->id], 
                     'method' => 'DELETE'
                 ]) !!}
-                    <button name="delete" class="btn btn-danger">Delete</button>
+                    <button name="delete" class="btn btn-danger">ลบ</button>
                 {!! Form::close() !!}
             </div>
         @endforeach

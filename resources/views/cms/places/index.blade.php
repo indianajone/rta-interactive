@@ -66,7 +66,7 @@
                 e.preventDefault();
                 swal({   
                     title: "Are you sure?",   
-                    text: "You will not be able to recover this imaginary file!",
+                    text: "You will not be able to recover this!",
                     type: "warning",   
                     showCancelButton: true,   
                     confirmButtonColor: "#DD6B55",   
