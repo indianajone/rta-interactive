@@ -1,8 +1,8 @@
 <div class="form-group">
-    <div class="input-group item" v-for="waypoint in waypoints">
+    <div class="input-group waypoint" v-for="waypoint in waypoints">
         <input type="text" class="form-control" value="{{ waypoint.name }}" readonly >
         <div class="input-group-btn">
-            <button class="btn btn-danger" @click="remove(waypoint)">X</button>
+            <button class="btn btn-danger" @click="remove(waypoint)"><i class="fa fa-close"></i></button>
         </div>
     </div>
 </div>

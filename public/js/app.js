@@ -27394,6 +27394,7 @@ module.exports = {
         setInfoWindow: function setInfoWindow(place, marker) {
             var infoWindowView = new this.$options.components.infoWindow();
             infoWindowView.$set('place', place);
+            infoWindowView.$set('marker', marker);
             infoWindowView.$set('addToWaypoint', this.addWaypoint);
 
             this.infoWindow.setContent(infoWindowView.$el);
@@ -27424,7 +27425,8 @@ module.exports = {
     data: function data() {
         return {
             place: {},
-            addWaypoint: null
+            addWaypoint: null,
+            marker: null
         };
     },
 
@@ -27445,6 +27447,7 @@ module.exports = {
     methods: {
         addToWaypoint: function addToWaypoint() {
             this.addWaypoint(this.place);
+            this.marker.setMap(null);
         }
     }
 };
@@ -27984,10 +27987,9 @@ module.exports = {
         init: function init() {
             var self = this;
             Sortable.create(this.$el, {
-                draggable: '.item',
+                draggable: '.waypoint',
                 onUpdate: function onUpdate(e) {
                     self.waypoints.splice(e.newIndex, 0, self.waypoints.splice(e.oldIndex, 1)[0]);
-
                     self.$dispatch('map.refresh');
                 }
             });
@@ -28018,7 +28020,7 @@ module.exports = '<div class="mode">\n    <label \n            v-for="type in ty
 },{}],36:[function(require,module,exports){
 module.exports = '<div>\n    <div :style="style">\n        <slot></slot>\n    </div>\n    <div class="readmore">\n        <button v-show="show" class="btn btn-main" @click="toggle">{{ text }}</button>\n    </div>\n</div>';
 },{}],37:[function(require,module,exports){
-module.exports = '<div class="form-group">\n    <div class="input-group item" v-for="waypoint in waypoints">\n        <input type="text" class="form-control" value="{{ waypoint.name }}" readonly >\n        <div class="input-group-btn">\n            <button class="btn btn-danger" @click="remove(waypoint)">X</button>\n        </div>\n    </div>\n</div>\n';
+module.exports = '<div class="form-group">\n    <div class="input-group waypoint" v-for="waypoint in waypoints">\n        <input type="text" class="form-control" value="{{ waypoint.name }}" readonly >\n        <div class="input-group-btn">\n            <button class="btn btn-danger" @click="remove(waypoint)"><i class="fa fa-close"></i></button>\n        </div>\n    </div>\n</div>\n';
 },{}],38:[function(require,module,exports){
 /*
  * Load Vue & Vue's components.

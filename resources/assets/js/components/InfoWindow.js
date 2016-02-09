@@ -9,7 +9,8 @@ module.exports = {
     data: function () {
         return {
             place: {},
-            addWaypoint: null
+            addWaypoint: null,
+            marker: null
         }
     },
 
@@ -30,6 +31,7 @@ module.exports = {
     methods: {
         addToWaypoint: function () {
             this.addWaypoint(this.place);
+            this.marker.setMap(null);
         }
     }
 }

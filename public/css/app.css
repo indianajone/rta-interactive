@@ -13844,6 +13844,10 @@ fieldset[disabled] .btn-yahoo.focus {
   overflow-y: scroll;
 }
 
+.waypoint {
+  margin-bottom: 1em;
+}
+
 .mode {
   text-align: center;
 }

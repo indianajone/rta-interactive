@@ -239,6 +239,7 @@ module.exports = {
         setInfoWindow: function (place, marker) {
             var infoWindowView = new this.$options.components.infoWindow;
                 infoWindowView.$set('place', place);
+                infoWindowView.$set('marker', marker);
                 infoWindowView.$set('addToWaypoint', this.addWaypoint);
 
             this.infoWindow.setContent(infoWindowView.$el);
