@@ -60,21 +60,15 @@ class Category extends Model
         return collect($lists);
     }
 
-    public function listChildren() 
+    public function listsChildFromGroup(Category $group) 
     {
-        $groups = $this->getRootsLevelWithChildren();
+        $collection = collect();
 
-        $collection = [];
+        $group->children->map(function ($category) use ($collection) {
+            return $collection->put($category->name, $category->id);
+        });
 
-        foreach ($groups as $group) {
-            $groupName = $group->name;
-            $collection[$groupName] = [];
-            foreach ($group->children as $category) {
-                $collection[$groupName][] = $category->id;
-            }
-        }
-
-        return collect($collection);
+        return $collection;
     }
 
     public function listGroupWithChildren() 

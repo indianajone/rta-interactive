@@ -25,7 +25,7 @@ class PagesController extends Controller
         $options = [];
         $place = null;
         $nearby = Place::with('categories')->get();
-        $categories = $categories->listChildren();
+        $categories = $categories->listsChildFromGroup($categories->first());
 
         if ($slug) {
             $place = Place::findBySlug($slug);
