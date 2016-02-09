@@ -36,7 +36,7 @@
         >
             <option value=''>{{ trans('map.destination') }}</option>
             <option 
-                v-for="place in destinations | children" 
+                v-for="place in destinations | inCategory" 
                 v-bind:value="place.location"
             >
                 @{{ place.title }}
