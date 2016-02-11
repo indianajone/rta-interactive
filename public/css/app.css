@@ -11798,6 +11798,11 @@ a:hover {
   color: #267671;
 }
 
+address a[href^=tel],
+address a[href^=mail] {
+  color: #fff;
+}
+
 .readmore {
   float: right;
   margin-top: 15px;

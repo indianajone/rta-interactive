@@ -44,6 +44,13 @@ a {
     }
 }
 
+address {
+    a[href^=tel],
+    a[href^=mail] {
+        color: #fff;
+    }
+}
+
 .readmore {
     float: right;
     margin-top: 15px;
