@@ -76,12 +76,12 @@ class PlacesNearbyController extends Controller
         $nearby =  $place->nearby()->findOrFail($id);
         $nearby->update($this->transformer->transform($request->all()));
         
-        $attachment = $nearby->photos()->first();
-        $attachment->fill([
-            'th' => ['title' => $nearby->translate('th')->title],
-            'en' => ['title' => $nearby->translate('en')->title],
-            'thumbnail' => true
-        ]);
+        $attachment = $nearby->photos()->firstOrCreate([])
+                        ->fill([
+                            'th' => ['title' => $nearby->translate('th')->title],
+                            'en' => ['title' => $nearby->translate('en')->title],
+                            'thumbnail' => true
+                        ]);
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
