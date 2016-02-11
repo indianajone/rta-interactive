@@ -78,21 +78,10 @@
                 <div class="container">
                     <div class="col-md-6"></div>
                     <div class="col-md-3">
-                        <address>
-                            <p>
-                                <strong>สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก</strong><br>
-                                279 อาคารสวัสดิการทหารบก ชั้น 3 ถนนศรีอยุธยา<br>
-                                แขวงวชิระ เขตดุสิต กรุงเทพมหานคร 10300
-                            </p>
-                            <p>
-                                โทร. 02-2826835, 02-2975831, 083-1232647<br>
-                                โทรสาร. 02-2826835, 02-2820620 โทร.ทบ. 95831<br>
-                                โทรสาร.ทบ. 91635
-                            </p>
-                        </address>
+                        @include('components.address')
                     </div>
                     <div class="col-md-3">
-                        @include('components/navbar-social')
+                        @include('components.navbar-social')
                     </div>
                 </div>
             </div>
