@@ -1,7 +1,7 @@
 <search inline-template locale="{{ App::getLocale() }}">
     <div class="search">
         <input type="text" class="form-control" placeholder="SmartSearch"
-            @_blur="reset | debounce 500"
+            @blur="reset | debounce 500"
             v-model="query"
             @keyup="search | debounce 300"
         >
