@@ -27,4 +27,15 @@ class PlaceTranslations extends Model
     {
         return $this->belongsTo(Place::class);
     }
+
+     /**
+     * Get excerpt or grap description and shorten it.
+     *
+     * @param  string $value
+     * @return string
+     */
+    public function getExcerptAttribute($value)
+    {
+        return $value ?: str_limit($this->description);
+    }
 }

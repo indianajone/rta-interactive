@@ -166,17 +166,6 @@ class Place extends Model
     }
 
     /**
-     * Get excerpt or grap description and shorten it.
-     *
-     * @param  string $value
-     * @return string
-     */
-    public function getExcerptAttribute($value)
-    {
-        return $value ?: str_limit($this->description);
-    }
-
-    /**
      * Get latitude and longitude.
      *
      * @return string
