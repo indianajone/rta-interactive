@@ -7,7 +7,7 @@ export default {
             mobile: true
         });
     },
-
+    
     unbind: function () {
         $(this.el).selectpicker('destroy');
     }

@@ -27086,6 +27086,9 @@ module.exports = {
     },
 
     watch: {
+        selected: function selected() {
+            $(this.$els.destination).selectpicker('refresh');
+        },
         filteredBy: function filteredBy() {
             $(this.$els.destination).selectpicker('refresh');
         }
@@ -27095,12 +27098,6 @@ module.exports = {
         return {
             filteredBy: []
         };
-    },
-
-    methods: {
-        isInCategory: function isInCategory(categories) {
-            return _.intersection(_.toArray(categories), _.flatten(_.toArray(this.filteredBy))).length > 0;
-        }
     }
 };
 

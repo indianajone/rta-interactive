@@ -17,6 +17,9 @@ module.exports = {
     },
 
     watch: {
+        selected: function () {
+            $(this.$els.destination).selectpicker('refresh');
+        },
         filteredBy: function () {
             $(this.$els.destination).selectpicker('refresh');
         }
@@ -25,16 +28,6 @@ module.exports = {
     data: function () {
         return {
             filteredBy: []
-        }
-    },
-
-    methods: {
-        isInCategory: function (categories) {
-            return _.intersection(
-                _.toArray(categories), 
-                _.flatten(_.toArray(this.filteredBy))
-            ).length > 0;
-          
         }
     }
 }
