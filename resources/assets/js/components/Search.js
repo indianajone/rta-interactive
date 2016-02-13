@@ -19,7 +19,7 @@ module.exports = {
             var specialChar = 'ุูึํัี๊่๋้็ิื์';
             var regex = new RegExp('('+ query + ')[' + specialChar + ']?', 'g');
             
-            if (this.query.length) {
+            if (this.query.length && str) {
                 str = str.replace(regex, '<span class="search__keyword">$&</span>');
             }
             

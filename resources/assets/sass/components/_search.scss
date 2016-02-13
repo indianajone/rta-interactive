@@ -1,14 +1,35 @@
 .search {
     @extend .navbar-form;
+    @extend .navbar-right;
+
     position: relative;
     box-shadow: none;
-    padding: 0 15px;
+    width: 100%;
+    margin-right: 0;
+
+    &:after {
+        content: $fa-var-search;
+        font-family: 'FontAwesome';
+        position: absolute;
+        top: 17px;
+        right: 30px;
+        opacity: .4;
+    }
+
+    @media only screen and (min-width: 1000px)  {
+        width: 25%;
+        @at-root {
+            .search:after {         
+                top: 8px;
+            }       
+        }
+    }
 
     input[type=text] {
         background-color: rgba($green, .5);
         border-radius: 20px;
         font-size: 12px;
-        min-width: 200px;
+        width: 100%;
         border: none;
         color: #fff;
         padding-right: 30px;
@@ -32,19 +53,12 @@
         }
     }
 
-    i {
-        position: absolute;
-        top: 10px;
-        right: 30px;
-        opacity: .4;
-    }
-
     &__results {
         @extend .list-group;
         position: absolute;
-        min-width: 300px;
+        width: 100%;
         padding: 0 15px;
-        left: -50px;
+        left: 0;
         z-index: 9;
 
         @media only screen and (max-width: 768px) {
@@ -53,10 +67,11 @@
     }
 
     &__item {
+        @extend .row;
         position: relative;
-        display: block;
         padding: 10px 15px;
         background-color: $list-group-bg;
+        clear: both;
 
         &:first-child {
             @include border-top-radius($list-group-border-radius);
@@ -67,26 +82,30 @@
         }
     }
 
-    &__left, 
-    &__right {
-        display: table-cell;
-        vertical-align: top;
-    }
-
-    &__left {
-        padding-right: 15px;
+    &__image {
+        @extend .col-xs-3;
+        padding: 0;
         .label {
             position: absolute;
         }
+        img {
+            @extend .img-responsive;
+        }
     }
 
-    &__image {
-        display: block;
-        max-width: 65px;
+    &__title {
+        @extend .col-xs-7;
+        padding-right: 0;
+    }
+
+    &__links {
+        padding: 0;
+        text-align: right;
+        @extend .col-xs-2;
     }
 
     &__heading {
-        font-size: 100%;
+        font-size: 1em;
         margin-top: 0;
         word-wrap: break-word;
     }
