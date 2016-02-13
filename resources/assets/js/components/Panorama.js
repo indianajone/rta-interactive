@@ -1,7 +1,7 @@
 var panorama = require('../vendor/jquery.panorama-viewer.js');
 
 module.exports = {
-    template: '<div id="panorama" class="panorama lity-hide"><img :src="src"></div>',
+    template: '<div class="panorama lity-hide"><img :src="src"></div>',
 
     props: ['src'],
 

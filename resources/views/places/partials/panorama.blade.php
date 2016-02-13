@@ -10,12 +10,12 @@
                 <div class="row">
                     @foreach($set as $panorama)
                         <div class="place__image">
-                            <a href="#panorama" data-lity>
+                            <a href="#panorama-{{ $panorama->id }}" data-lity>
                                 <img src="{{ asset($panorama->thumbnail_path) }}" alt="{{ $panorama->title }}">
                                 <h4 class="text-center">{{ $panorama->title }}</h4>
                             </a>
                         </div>
-                        <panorama src="{{ asset($panorama->path) }}"></panorama>
+                        <panorama id="panorama-{{ $panorama->id }}" src="{{ asset($panorama->path) }}"></panorama>
                     @endforeach
                 </div>
             @endforeach
