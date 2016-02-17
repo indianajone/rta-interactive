@@ -10,6 +10,8 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ $place->title }}">
     <meta property="og:image" content="{{ $place->thumbnail }}"/>
+    <meta property="og:image:width" content="800"/>
+    <meta property="og:image:height" content="600"/>
     <meta property="og:description" content="{{ $place->excerpt }}">
 
     {{-- google+ --}}
