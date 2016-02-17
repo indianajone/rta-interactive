@@ -5,7 +5,6 @@
         @foreach($page->slides as $item)
             <div class="slick-slide">
                 <img src="{{ asset($item->path) }}" alt="{{ $item->title }}">
-                <span>{{ $item->title }}</span>
             </div>
         @endforeach
     </div>
