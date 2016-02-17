@@ -14112,11 +14112,12 @@ fieldset[disabled] .btn-yahoo.focus {
 .navbar-brand {
   color: white;
   text-align: center;
+  font-size: 22px;
 }
 
 @media (max-width: 400px) {
   .navbar-brand {
-    font-size: 100%;
+    font-size: 18px;
     display: block;
     margin: 0 auto;
     float: none;
