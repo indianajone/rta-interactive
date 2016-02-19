@@ -55,7 +55,7 @@
             class="place__body"
             max-height="160" 
             text="{{ trans('common.buttons.readmore') }}"
-            show="{{ mb_strlen($place->description, 'UTF-8') >= 1000 }}"
+            show="{{ mb_strlen($place->description, 'UTF-8') >= 800 }}"
         >
             {!! $place->description !!}
         </readmore>
