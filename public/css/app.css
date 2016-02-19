@@ -14058,6 +14058,12 @@ fieldset[disabled] .btn-yahoo.focus {
   padding: 0;
 }
 
+@media only screen and (max-width: 992px) {
+  .navbar-nav__link {
+    font-size: 11px;
+  }
+}
+
 .navbar-nav__link:hover,
 .navbar-nav__link:focus {
   background-color: transparent !important;
@@ -14085,6 +14091,12 @@ fieldset[disabled] .btn-yahoo.focus {
   color: white;
   font-size: 13px;
   padding: 0;
+}
+
+@media only screen and (max-width: 992px) {
+  .navbar-main .navbar-main__link {
+    font-size: 11px;
+  }
 }
 
 .navbar-main .navbar-main__link:hover,
@@ -14572,7 +14584,7 @@ fieldset[disabled] .btn-yahoo.focus {
   content: "";
   font-family: 'FontAwesome';
   position: absolute;
-  top: 17px;
+  top: 7px;
   right: 30px;
   opacity: .4;
 }
@@ -14580,10 +14592,6 @@ fieldset[disabled] .btn-yahoo.focus {
 @media only screen and (min-width: 1000px) {
   .search {
     width: 25%;
-  }
-
-  .search:after {
-    top: 8px;
   }
 }
 

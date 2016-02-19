@@ -26,6 +26,10 @@
     line-height: 35px;
     padding: 0;
 
+    @media only screen and (max-width: 992px) {
+        font-size: 11px;
+    }
+
     &:hover,
     &:focus {
         background-color: transparent !important;
@@ -55,6 +59,10 @@
         color: white;
         font-size: 13px;
         padding: 0;
+
+        @media only screen and (max-width: 992px) {
+            font-size: 11px;
+        }
     }
 
     & &__link:hover, 

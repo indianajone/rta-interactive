@@ -11,18 +11,13 @@
         content: $fa-var-search;
         font-family: 'FontAwesome';
         position: absolute;
-        top: 17px;
+        top: 7px;
         right: 30px;
         opacity: .4;
     }
 
     @media only screen and (min-width: 1000px)  {
         width: 25%;
-        @at-root {
-            .search:after {         
-                top: 8px;
-            }       
-        }
     }
 
     input[type=text] {
