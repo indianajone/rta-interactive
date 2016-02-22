@@ -52,7 +52,7 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {  
         $this->validate($request, [
-            'title:th' => 'required'
+            'name:th' => 'required'
         ]);
 
         $category = Category::create(
