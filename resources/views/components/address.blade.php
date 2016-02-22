@@ -6,7 +6,7 @@
             เขตดุสิต กรุงเทพฯ ๑๐๓๐๐
         </p>
         <p>
-            อีเมลล์ <a href="mailto:armytour95904@hotmail.com">armytour95904@hotmail.com</a><br>
+            อีเมลล์ <a href="mailto:info@armytour.go.th">info@armytour.go.th</a><br>
             สำนักงาน ๐-๒๑๒๖-๕๔๕๔<br>
             โทรสาร ๐-๒๒๙๗-๕๙๐๔<br>
             โทร. ทบ. ๙๕๘๓๑, ๙๕๗๙๘
@@ -19,7 +19,7 @@
             Dusit, Bangkok 10300
         </p>
         <p>
-            Email: <a href="mailto:armytour95904@hotmail.com">armytour95904@hotmail.com</a><br>
+            Email: <a href="mailto:info@armytour.go.th">info@armytour.go.th</a><br>
             Office's Telephone: 0-2126-5454<br>
             Telefax: 0-2297-5904<br>
             Military lines: 95831, 95798

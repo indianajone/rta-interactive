@@ -86,7 +86,7 @@
             </div>
             <div class="copyright">
                 <div class="container">
-                    <span class="copyright__left">Copyright &copy; 2015 ATS.MI.TH All Rights Reserved.</span>
+                    <span class="copyright__left">Copyright &copy; 2015 armytour.go.th All Rights Reserved.</span>
                     <span class="copyright__right">สงวนสิทธิ์โดย สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก</span>
                 </div>
             </div>
