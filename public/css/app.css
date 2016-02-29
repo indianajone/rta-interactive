@@ -11787,9 +11787,7 @@ body {
 }
 
 .wrapper {
-  background: #eeeeee url("../images/bg-bottom.png") no-repeat;
-  background-position: bottom center;
-  background-size: contain;
+  background: #eeeeee;
   min-height: 100%;
 }
 
