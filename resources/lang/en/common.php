@@ -17,8 +17,14 @@ return [
     ],
 
     'buttons' => [
-        'readmore' => 'read more',
-        'viewall' => 'view all',
+        'readmore' => [
+            'read more',
+            'hide'
+        ],
+        'viewall' => [
+            'view all',
+            'hide'
+        ]
     ],
 
     'notfound' => 'data not found',

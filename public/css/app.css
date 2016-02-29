@@ -14535,6 +14535,10 @@ fieldset[disabled] .btn-yahoo.focus {
   overflow: hidden;
 }
 
+.place__body > div {
+  overflow: hidden;
+}
+
 .place__image {
   position: relative;
 }

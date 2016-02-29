@@ -3,7 +3,7 @@
         <h3 class="heading--fancy">{{ trans('common.heading.video') }}</h3>
         <readmore 
             max-height="300" 
-            text="{{ trans('common.buttons.viewall') }}" 
+            text="{{ collect(trans('common.buttons.viewall')) }}" 
             show="{{ $place->videos->count() > 3 }}"
         >
              @foreach($place->videos->chunk(3) as $set)

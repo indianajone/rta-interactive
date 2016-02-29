@@ -27865,8 +27865,7 @@ exports['default'] = {
     data: function data() {
         return {
             style: {
-                height: 'auto',
-                overflow: 'hidden'
+                height: 'auto'
             }
         };
     },
@@ -27877,13 +27876,21 @@ exports['default'] = {
         }
     },
 
+    computed: {
+        isOpen: function isOpen() {
+            return this.style.height === 'auto';
+        },
+        body: function body() {
+            console.log(this.text);
+            var text = JSON.parse(this.text);
+            console.log(text);
+            return this.isOpen ? text[1] : text[0];
+        }
+    },
+
     methods: {
         toggle: function toggle() {
-            if (this.style.height !== 'auto') {
-                this.style.height = 'auto';
-            } else {
-                this.style.height = this.maxHeight + 'px';
-            }
+            this.style.height = !this.isOpen ? 'auto' : this.maxHeight + 'px';
         }
     }
 
@@ -28015,7 +28022,7 @@ module.exports = '<div @click="close" class="modal-mask" v-show="show" transitio
 },{}],35:[function(require,module,exports){
 module.exports = '<div class="mode">\n    <label \n            v-for="type in types"\n            class="mode__checkbox"\n    >\n        <input \n            v-model="mode"\n            @change="onChange(type)"\n            type="radio"\n            value="{{ type.value }}" \n        >\n        <i :class="[\'fa\', \'fa-lg\', \'fa-\' + type.icon]"></i>\n    </label>\n</div>';
 },{}],36:[function(require,module,exports){
-module.exports = '<div>\n    <div :style="style">\n        <slot></slot>\n    </div>\n    <div class="readmore">\n        <button v-show="show" class="btn btn-main" @click="toggle">{{ text }}</button>\n    </div>\n</div>';
+module.exports = '<div>\n    <div :style="style">\n        <slot></slot>\n    </div>\n    <div class="readmore">\n        <button v-show="show" class="btn btn-main" @click="toggle">{{ body }}</button>\n    </div>\n</div>';
 },{}],37:[function(require,module,exports){
 module.exports = '<div class="form-group">\n    <div class="input-group waypoint" v-for="waypoint in waypoints">\n        <input type="text" class="form-control" value="{{ waypoint.name }}" readonly >\n        <div class="input-group-btn">\n            <button class="btn btn-danger" @click="remove(waypoint)"><i class="fa fa-close"></i></button>\n        </div>\n    </div>\n</div>\n';
 },{}],38:[function(require,module,exports){

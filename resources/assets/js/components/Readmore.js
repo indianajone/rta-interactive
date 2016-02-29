@@ -8,8 +8,7 @@ export default {
     data: function () {
         return {
             style: {
-                height: 'auto',
-                overflow: 'hidden'
+                height: 'auto'
             }
         }
     },
@@ -20,13 +19,21 @@ export default {
         }
     },
 
+    computed: {
+        isOpen: function () {
+            return this.style.height === 'auto';
+        },
+        body: function () {
+            console.log(this.text);
+            var text = JSON.parse(this.text);
+            console.log(text);
+            return this.isOpen ? text[1] : text[0];
+        }
+    },
+
     methods: {
         toggle: function () {
-           if (this.style.height !== 'auto') {
-                this.style.height = 'auto';
-           } else {
-                this.style.height = this.maxHeight + 'px';
-           }
+           this.style.height = !this.isOpen ? 'auto' : this.maxHeight + 'px';
         }
     }
 
