@@ -13819,6 +13819,10 @@ fieldset[disabled] .btn-yahoo.focus {
   overflow: hidden;
 }
 
+.filter__category {
+  width: auto;
+}
+
 .heading--fancy {
   text-align: center;
   margin-bottom: 40px;

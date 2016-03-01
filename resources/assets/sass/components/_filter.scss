@@ -20,5 +20,6 @@
 
     &__category {
         @extend .col-md-3;
+        width: auto;
     }
 }
