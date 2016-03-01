@@ -19,6 +19,9 @@
     &__details {
         background-color: #fff;
         padding: 20px 15px 15px;
+        height: 150px;
+        overflow: hidden;
+        line-height: 25px;
     }
 
     &__title {

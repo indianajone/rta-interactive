@@ -13731,6 +13731,9 @@ fieldset[disabled] .btn-yahoo.focus {
 .card__details {
   background-color: #fff;
   padding: 20px 15px 15px;
+  height: 150px;
+  overflow: hidden;
+  line-height: 25px;
 }
 
 .card__title {
