@@ -9,6 +9,7 @@ return [
     ],
 
     'descriptions' => [
+        'login' => 'Login to enable favorite places function.',
         'reset' => 'Please tell us your email address. We will send reset password link to your registered email.'
     ],
 

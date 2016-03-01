@@ -39,6 +39,7 @@
                 <button @click="login" type="button" class="btn btn-block btn-success">
                     {{ trans('form.buttons.login') }}
                 </button>
+                <p class="help-block text-center">{{ trans('form.descriptions.login') }}</p>
                 <hr/>
                 <button @click="facebook" type="button" class="btn btn-block btn-social btn-facebook"> 
                     <i class="fa fa-facebook"></i>
