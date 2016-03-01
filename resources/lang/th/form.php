@@ -19,6 +19,10 @@ return [
         'password_confirmation' => 'ยืนยันรหัสผ่าน',
     ],
 
+    'search' => 'ค้นหา',
+
+    'recommended' => 'แนะนำ',
+
     'buttons' => [
         'login' => 'เข้าสู่ระบบ',
         'register' => 'ลงทะเบียน',

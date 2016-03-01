@@ -1,6 +1,6 @@
 <search inline-template locale="{{ App::getLocale() }}">
     <div class="search">
-        <input type="text" class="form-control" placeholder="SmartSearch"
+        <input type="text" class="form-control" placeholder="{{ trans('form.search') }}"
             @blur="reset | debounce 500"
             v-model="query"
             @keyup="search | debounce 300"
@@ -11,7 +11,7 @@
             </div>
             <div class="search__item" v-for="item in results.recommended" v-if="noResults">
                 <div class="search__image">
-                    <small class="label label-primary">แนะนำ</small>
+                    <small class="label label-primary">{{ trans('form.recommended') }}</small>
                     <img :src="item.thumbnail" alt="@{{ item.name }}">
                 </div>
                 <div class="search__title">
@@ -28,7 +28,7 @@
             </div>
             <div class="search__item" v-for="item in results.search | limitBy 5">
                 <div class="search__image">
-                    <small v-if="item.recommended" class="label label-primary">แนะนำ</small>
+                    <small v-if="item.recommended" class="label label-primary">{{ trans('form.recommended') }}</small>
                     <img :src="item.thumbnail" alt="@{{ item.name }}">
                 </div>
                 <div class="search__title">

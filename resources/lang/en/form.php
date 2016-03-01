@@ -19,6 +19,10 @@ return [
         'password_confirmation' => 'Password Confirmation',
     ],
 
+    'search' => 'SmartSearch',
+
+    'recommended' => 'Featured',
+
     'buttons' => [
         'login' => 'Login',
         'register' => 'Register',

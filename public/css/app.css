@@ -14576,9 +14576,15 @@ fieldset[disabled] .btn-yahoo.focus {
   content: "";
   font-family: 'FontAwesome';
   position: absolute;
-  top: 7px;
+  top: 17px;
   right: 30px;
   opacity: .4;
+}
+
+@media only screen and (min-width: 767px) {
+  .search:after {
+    top: 7px;
+  }
 }
 
 @media only screen and (min-width: 1000px) {
