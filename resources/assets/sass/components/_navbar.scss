@@ -15,6 +15,7 @@
 
     .navbar-right {
         @extend .hidden-xs;
+        padding: 5px;
     }
 }
 
@@ -24,7 +25,7 @@
     color: white;
     font-size: 12px;
     line-height: 35px;
-    padding: 0;
+    padding: 15px 5px !important;
 
     @media only screen and (max-width: 992px) {
         font-size: 11px;
@@ -45,15 +46,11 @@
 .navbar-main {
     @extend .nav;
     @extend .navbar-nav;
-
-    > li {
-        padding: 15px;
-    }
     
     & &__link {
         color: white;
         font-size: 13px;
-        padding: 0;
+        // padding: 0;
 
         @media only screen and (max-width: 992px) {
             font-size: 11px;
@@ -61,39 +58,36 @@
     }
 
     & &__link:hover, 
-    & &__link:focus,
+    & &__link:focus {
+         background-color: $green-lighter;
+    }
+
     & &__link--active, 
     & &__link--active:hover,
     & &__link--active:focus {
-        background-color: transparent;
-        &:after {
-            content: '';
-            height: 0;
-            width: 100%;
-            display: block;
-            margin: 0 auto;
-            border-bottom: 4px solid $green;
-            position: absolute;
-        }
+        background-color: $green;
     }
 }
 
 .navbar-brand {
     color: white;
-    text-align: center;
-    font-size: 22px;
-    @media (max-width: 400px) {
-        font-size: 18px;
+    font-size: 18px;
+    height: auto;
+    @media (max-width: 420px) {
+        font-size: 13px;
         display: block;
         margin: 0 auto;
         float: none;
     }
-    img {
-        display: inline-block;
-        max-height: 30px;
+    &__logo {
+        @extend .pull-left;
+        max-height: 40px;
+        margin-right: 15px;
     }
-    span {
-        font-family: $font-family-heading;
+    small {
+        display: block;
+        font-size: 70%;
+        // font-family: $font-family-heading;
     }
 }
 

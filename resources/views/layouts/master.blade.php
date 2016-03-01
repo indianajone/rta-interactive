@@ -23,8 +23,9 @@
                             <i class="fa fa-navicon"></i>
                         </button>
                         <a class="navbar-brand" href="/">
-                            <img src="/images/logo.png" alt="สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก">
-                            <span>สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก</span>
+                            <img class="navbar-brand__logo" src="/images/logo.png" alt="สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก">
+                            สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก
+                            <small>ข้อมูลและแผนที่ แหล่งท่องเที่ยวในเขตทหาร</small>
                         </a>
                     </div>
                     <div class="navbar-right">

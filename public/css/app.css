@@ -7009,7 +7009,8 @@ a.thumbnail.active {
 }
 
 .media-left,
-.media > .pull-left {
+.media > .pull-left,
+.media > .navbar-brand__logo {
   padding-right: 10px;
 }
 
@@ -8530,7 +8531,8 @@ button.close {
   float: right !important;
 }
 
-.pull-left {
+.pull-left,
+.navbar-brand__logo {
   float: left !important;
 }
 
@@ -8936,11 +8938,13 @@ button.close {
   float: right;
 }
 
-.pull-left {
+.pull-left,
+.navbar-brand__logo {
   float: left;
 }
 
-.fa.pull-left {
+.fa.pull-left,
+.fa.navbar-brand__logo {
   margin-right: .3em;
 }
 
@@ -14052,12 +14056,17 @@ fieldset[disabled] .btn-yahoo.focus {
   min-height: 57px;
 }
 
+.navbar-top .navbar-right,
+.navbar-top .search {
+  padding: 5px;
+}
+
 .navbar-nav__link {
   background-color: transparent;
   color: white;
   font-size: 12px;
   line-height: 35px;
-  padding: 0;
+  padding: 15px 5px !important;
 }
 
 @media only screen and (max-width: 992px) {
@@ -14077,14 +14086,9 @@ fieldset[disabled] .btn-yahoo.focus {
   background-color: rgba(38, 118, 113, 0.8);
 }
 
-.navbar-main > li {
-  padding: 15px;
-}
-
 .navbar-main .navbar-main__link {
   color: white;
   font-size: 13px;
-  padding: 0;
 }
 
 @media only screen and (max-width: 992px) {
@@ -14094,49 +14098,39 @@ fieldset[disabled] .btn-yahoo.focus {
 }
 
 .navbar-main .navbar-main__link:hover,
-.navbar-main .navbar-main__link:focus,
+.navbar-main .navbar-main__link:focus {
+  background-color: #267671;
+}
+
 .navbar-main .navbar-main__link--active,
 .navbar-main .navbar-main__link--active:hover,
 .navbar-main .navbar-main__link--active:focus {
-  background-color: transparent;
-}
-
-.navbar-main .navbar-main__link:hover:after,
-.navbar-main .navbar-main__link:focus:after,
-.navbar-main .navbar-main__link--active:after,
-.navbar-main .navbar-main__link--active:hover:after,
-.navbar-main .navbar-main__link--active:focus:after {
-  content: '';
-  height: 0;
-  width: 100%;
-  display: block;
-  margin: 0 auto;
-  border-bottom: 4px solid #094d44;
-  position: absolute;
+  background-color: #094d44;
 }
 
 .navbar-brand {
   color: white;
-  text-align: center;
-  font-size: 22px;
+  font-size: 18px;
+  height: auto;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 420px) {
   .navbar-brand {
-    font-size: 18px;
+    font-size: 13px;
     display: block;
     margin: 0 auto;
     float: none;
   }
 }
 
-.navbar-brand img {
-  display: inline-block;
-  max-height: 30px;
+.navbar-brand__logo {
+  max-height: 40px;
+  margin-right: 15px;
 }
 
-.navbar-brand span {
-  font-family: "Quarkbold", sans-serif;
+.navbar-brand small {
+  display: block;
+  font-size: 70%;
 }
 
 .navbar-toggle {
