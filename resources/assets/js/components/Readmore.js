@@ -8,7 +8,8 @@ export default {
     data: function () {
         return {
             style: {
-                height: 'auto'
+                height: 'auto',
+                overflow: 'hidden'
             }
         }
     },
@@ -24,9 +25,7 @@ export default {
             return this.style.height === 'auto';
         },
         body: function () {
-            console.log(this.text);
             var text = JSON.parse(this.text);
-            console.log(text);
             return this.isOpen ? text[1] : text[0];
         }
     },
