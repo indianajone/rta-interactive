@@ -27865,7 +27865,8 @@ exports['default'] = {
     data: function data() {
         return {
             style: {
-                height: 'auto'
+                height: 'auto',
+                overflow: 'hidden'
             }
         };
     },
@@ -27881,9 +27882,7 @@ exports['default'] = {
             return this.style.height === 'auto';
         },
         body: function body() {
-            console.log(this.text);
             var text = JSON.parse(this.text);
-            console.log(text);
             return this.isOpen ? text[1] : text[0];
         }
     },
