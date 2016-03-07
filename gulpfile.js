@@ -24,6 +24,11 @@ elixir(function(mix) {
         .copy('node_modules/font-awesome/fonts', 'public/fonts')
         .copy('node_modules/slick-carousel/slick/fonts', 'public/fonts')
         .copy('node_modules/slick-carousel/slick/ajax-loader.gif', 'public/images')
+        .copy([
+            'node_modules/photoswipe/dist/default-skin/default-skin.svg',
+            'node_modules/photoswipe/dist/default-skin/default-skin.png',
+            'node_modules/photoswipe/dist/default-skin/preloader.gif'
+        ], 'public/css')
         .browserify('app.js')
         .copy([
             'node_modules/jquery/dist/jquery.min.js',

@@ -3,6 +3,7 @@ require('./vendor/lity');
 
 Vue.component('modal', require('./components/Modal'));
 Vue.component('favoriteButton', require('./components/FavoriteButton'));
+Vue.component('gallery', require('./components/Gallery'));
 Vue.component('socialShare', require('./components/SocialShare'));
 
 Vue.directive('slick', require('./directives/CarouselSlick.js'));

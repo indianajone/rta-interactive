@@ -1,5 +1,5 @@
 <login :show.sync="modals.login.show" :tab.sync="modals.login.tab" inline-template>
-    <modal :show.sync="show">
+    <modal v-cloak :show.sync="show">
         <div class="modal-header">
             <ul class="nav nav-tabs" role="tablist">
                 <li :class="{'active' : tab == 'login'}">

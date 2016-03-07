@@ -1,5 +1,7 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "node_modules/font-awesome/scss/font-awesome";
+@import "node_modules/photoswipe/src/css/main";
+@import "node_modules/photoswipe/src/css/default-skin/default-skin";
 
 @import "vendor/js-socials/flat";
 
@@ -15,6 +17,7 @@
 @import "components/ceo";
 @import "components/filter";
 @import "components/heading";
+@import "components/gallery";
 @import "components/map";
 @import "components/modal";
 @import "components/navbar";

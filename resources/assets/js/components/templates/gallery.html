@@ -1,0 +1,18 @@
+<div class="gallery" data-pswp-uid="{{ _uid }}">
+    <div 
+        v-for="set in parse(photos) | chunk 3"
+        class="row"
+    >
+        <div
+            v-for="(index, item) in set" 
+            class="place__image">
+            <a 
+                @click.prevent="openPhotoSwipe(index)"
+                href="{{ '/' + item.path }}"
+                data-size="{{item.width + 'x' + item.height }}"
+            >
+                <img :src="'/' + item.thumbnail_path" alt="{{ item.title }}">
+            </a>
+        </div>
+    </div>
+</div>

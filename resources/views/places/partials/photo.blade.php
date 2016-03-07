@@ -6,11 +6,22 @@
             text="{{ collect(trans('common.buttons.viewall')) }}"
             show="{{ $place->photos->count() > 3 }}"
         >
+            <gallery 
+                photos="{{ $place->photos }}"
+                buttons="{{ collect(trans('common.buttons.viewall')) }}"
+            >
+            </gallery>
+        </readmore>
+        <!-- <readmore 
+            max-height="300" 
+            text="{{ collect(trans('common.buttons.viewall')) }}"
+            show="{{ $place->photos->count() > 3 }}"
+        >
              @foreach($place->photos->chunk(3) as $set)
                 <div class="row">
                     @foreach($set as $photo)     
                         <div class="place__image">
-                            <a href="{{ asset($photo->path) }}" data-lity>
+                            <a href="{{ asset($photo->path) }}" v-photoswipe>
                                 <img src="{{ asset($photo->thumbnail_path) }}" alt="{{ $photo->title }}">
                                 <h4 class="text-center">{{ $photo->title }}</h4>
                             </a>
@@ -18,6 +29,6 @@
                     @endforeach
                 </div>
             @endforeach
-        </readmore>
+        </readmore> -->
     </div>
 @endif
