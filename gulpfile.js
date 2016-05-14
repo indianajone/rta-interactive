@@ -34,7 +34,7 @@ elixir(function(mix) {
             'node_modules/jquery/dist/jquery.min.js',
             'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
         ], 'resources/assets/js/vendor')
-       .scripts([
+        .scripts([
             'vendor/jquery.min.js',
             'vendor/bootstrap.min.js',
             'vendor/jasny-fileupload.js',
@@ -45,5 +45,4 @@ elixir(function(mix) {
             'vendor/lity.js',
             'vendor/summernote.js',
         ], 'public/js/vendor.js');
-
 });
