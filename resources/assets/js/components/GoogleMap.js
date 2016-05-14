@@ -1,3 +1,5 @@
+require('../vendor/RouteBoxer');
+
 module.exports = {
     
     template: '<div class="google-map"></div>',
@@ -77,6 +79,7 @@ module.exports = {
 
         init: function (location) {
 
+            var RouteBoxer = window.RouteBoxer;
             var options = {
                 center: location,
                 zoom: 12

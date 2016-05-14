@@ -99,6 +99,7 @@
         @include('components.modals.auth')
     </div>
     @include ('components.vars')
+    <script src="//maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_API_KEY') }}&amp;libraries=places"></script>
     <script src="/js/app.js"></script>
     @yield ('script.footer')
 </body>
