@@ -233,7 +233,7 @@ module.exports = {
             }
 
             if (!place.icon) {
-                icon.url = 'http://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi_hdpi.png';
+                icon.url = 'https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi_hdpi.png';
                 icon.scaledSize = new google.maps.Size(20, 37);
             }
 
