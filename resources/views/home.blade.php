@@ -4,8 +4,12 @@
     <div class="slick slick--black" v-slick>
         @foreach($slideshow as $item)
             <div class="slick-slide slick-slide--fixed-height">
-                <img src="{{ asset($item->path) }}" alt="$item->title">
-                <span>{{ $item->title }}</span>
+                <div class="slide-item">
+                    <img class="slide-item__image" src="{{ asset($item->path) }}" alt="{{ $item->title }}">
+                    @if ($item->title)
+                        <span class="slide-item__title">{{ $item->title }}</span>
+                    @endif
+                </div>
             </div>
         @endforeach
     </div>
