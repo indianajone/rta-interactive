@@ -15556,14 +15556,20 @@ fieldset[disabled] .btn-yahoo.focus {
   }
 }
 
-.slick-slider .slick-list .slick-slide img {
+.slick-slider .slick-list .slick-slide .slide-item {
+  height: 100%;
+}
+
+.slick-slider .slick-list .slick-slide img,
+.slick-slider .slick-list .slick-slide .slide-item__image {
   display: block;
   margin: 0 auto;
   max-width: 100%;
   max-height: 100%;
 }
 
-.slick-slider .slick-list .slick-slide span {
+.slick-slider .slick-list .slick-slide span,
+.slick-slider .slick-list .slick-slide .slide-item__title {
   color: #fff;
   background-color: rgba(38, 118, 113, 0.7);
   position: absolute;

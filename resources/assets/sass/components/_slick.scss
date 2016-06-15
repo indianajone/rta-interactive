@@ -25,13 +25,17 @@
                     min-height: 300px;
                 }
             }
-            img {
+
+            .slide-item {
+                height: 100%;
+            }
+            img, .slide-item__image {
                 display: block;
                 margin: 0 auto;
                 max-width: 100%;
                 max-height: 100%;
             }
-            span {
+            span, .slide-item__title {
                 color: #fff;
                 background-color: rgba($green-lighter, .7);
                 position: absolute;
