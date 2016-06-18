@@ -15,6 +15,11 @@ class Page extends Post
         return $this->attachments()->where('type', 'slide');
     }
 
+    public function places() 
+    {
+        return $this->belongsToMany(Place::class);
+    }
+
     public function scopeAbout($query) 
     {
         return $query->with('translations')->where('name', 'about')->first();
