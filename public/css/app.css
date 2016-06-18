@@ -1665,7 +1665,8 @@ mark,
   text-align: right;
 }
 
-.text-center {
+.text-center,
+.wrapper .bottom-buttons {
   text-align: center;
 }
 
@@ -12610,6 +12611,10 @@ body {
 
 .wrapper > div {
   overflow: auto;
+}
+
+.wrapper .bottom-buttons {
+  margin-bottom: 1em;
 }
 
 h1,

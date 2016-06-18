@@ -25,6 +25,11 @@
                     @include('components/card')
                 @endforeach
             </div>
+            <div class="bottom-buttons">
+                <a class="btn btn-main" href="{{ route('places_path', ['lang' => session()->get('locale')]) }}">
+                    {{ trans('common.buttons.viewall')[0] }}
+                </a>
+            </div>
         @empty
             <div class="notfound">
                 <h3 class="notfound__body">{{ trans('common.notfound') }}</h3>
