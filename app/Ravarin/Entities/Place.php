@@ -52,6 +52,11 @@ class Place extends Model
                 ->firstOrFail();
     }
 
+    public function getByMostView($limit=9) 
+    {
+        $this->has('photos')->orderBy('view', 'desc')->limit($limit)->get();
+    }
+
     public function scopeSearch($query, $keyword)
     {
         if (!$keyword) {

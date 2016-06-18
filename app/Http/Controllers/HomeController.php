@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use Ravarin\Entities\Page;
-use Ravarin\Entities\Place;
 use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
-    public function index() 
+    public function index(Page $pages) 
     {
-        $page = Page::where('name', 'home')->first();
+        $page = $pages->where('name', 'home')->with(['places' => function ($query) {
+            return $query->latest()->limit(9);
+        }])->first();
 
-        $slideshow = $page->slides()->get();
-     
-        $places = Place::has('photos')->orderBy('view', 'desc')->limit(9)->get();
-
-        return view('home', compact('places', 'slideshow'));
+        return view('home', [
+            'places' => $page->places,
+            'slideshow' => $page->slides()->get()
+        ]);
     }
 }
