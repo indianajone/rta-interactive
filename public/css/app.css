@@ -15599,6 +15599,42 @@ fieldset[disabled] .btn-yahoo.focus {
   color: #267671;
 }
 
+.tooltip-inner {
+  background-color: #267671;
+}
+
+.tooltip.top .tooltip-arrow {
+  border-top-color: #267671;
+}
+
+.tooltip.top-left .tooltip-arrow {
+  border-top-color: #267671;
+}
+
+.tooltip.top-right .tooltip-arrow {
+  border-top-color: #267671;
+}
+
+.tooltip.right .tooltip-arrow {
+  border-right-color: #267671;
+}
+
+.tooltip.left .tooltip-arrow {
+  border-left-color: #267671;
+}
+
+.tooltip.bottom .tooltip-arrow {
+  border-bottom-color: #267671;
+}
+
+.tooltip.bottom-left .tooltip-arrow {
+  border-bottom-color: #267671;
+}
+
+.tooltip.bottom-right .tooltip-arrow {
+  border-bottom-color: #267671;
+}
+
 .footer {
   background-color: #094d44;
   margin-top: 40px;

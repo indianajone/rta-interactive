@@ -1,0 +1,30 @@
+.tooltip-inner {
+    background-color: $green-lighter;
+}
+
+.tooltip {
+  &.top .tooltip-arrow {
+    border-top-color: $green-lighter;
+  }
+  &.top-left .tooltip-arrow {
+    border-top-color: $green-lighter;
+  }
+  &.top-right .tooltip-arrow {
+    border-top-color: $green-lighter;
+  }
+  &.right .tooltip-arrow {
+    border-right-color: $green-lighter;
+  }
+  &.left .tooltip-arrow {
+    border-left-color: $green-lighter;
+  }
+  &.bottom .tooltip-arrow {
+    border-bottom-color: $green-lighter;
+  }
+  &.bottom-left .tooltip-arrow {
+    border-bottom-color: $green-lighter;
+  }
+  &.bottom-right .tooltip-arrow {
+    border-bottom-color: $green-lighter;
+  }
+}
