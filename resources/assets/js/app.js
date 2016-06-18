@@ -34,6 +34,10 @@ new Vue({
         }
     },
 
+    ready() {
+        $('[data-toggle="tooltip"]').tooltip();
+    },
+
     methods: {
         openModal: function (name, tab) {
             this.modals[name].show = true;

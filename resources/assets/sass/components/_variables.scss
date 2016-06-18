@@ -3,10 +3,16 @@ $green:                 #094d44;
 $green-lighter:         #267671;
 $green-lightest:        #b3d0cd;
 
+
 $font-family-heading:   'Quarkbold', sans-serif;
 $header-height:         57px;
 $sprite-path:           '../images/sprite.png';
 $footer-height:         60px;
+
+
+$tooltip-bg:            $green-lighter;
+$tooltip-arrow-color:   $green-lighter;
+
 
 $slick-loader-path: '../images/';
 $slick-font-path: '../fonts/';

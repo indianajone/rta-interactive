@@ -17,6 +17,10 @@ return [
     ],
 
     'buttons' => [
+        'to_map' => 'get direction',
+        'to_content' => 'see more details',
+        'favorite' => 'add to my favorite',
+        'share' => 'share',
         'readmore' => [
             'read more',
             'hide'
