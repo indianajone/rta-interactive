@@ -23,11 +23,17 @@
 @section('title') {{ $place->title }} @stop
 
 @section('banner')
-    <div class="slick slick--black" v-slick>
+    <div class="slick slick--black" v-slick 
+         :options="{ slidesToScroll: 1, autoplay: true, autoplaySpeed: 2000 }"
+    >
         @foreach($place->photos()->orderBy('updated_at')->take(5)->get() as $photo)
             <div class="slick-slide slick-slide--fixed-height">
-                <img src="{{ asset($photo->path) }}" alt="{{ $photo->title }}">
-                <span>{{ $photo->title }}</span>
+                <div class="slide-item">
+                    <img class="slide-item__image" src="{{ asset($photo->path) }}" alt="{{ $photo->title }}">
+                    @if ($photo->title)
+                        <span class="slide-item__title">{{ $photo->title }}</span>
+                    @endif
+                </div>
             </div>
         @endforeach
     </div>
@@ -37,23 +43,23 @@
     <h2 class="heading--fancy">{{ $place->title }}</h2>
     <div class="place">
         <div class="place__buttons">
-            <a href="{{ map_path($place) }}" data-toggle="tooltip" title="{{ trans('common.buttons.to_map') }}">
-                <i class="fa fa-lg fa-car"></i>
-            </a>
-            @if(!Auth::check())
-                <a @click="openModal('login', 'login')" data-toggle="tooltip" title="{{ trans('common.buttons.favorite') }}">
-                    <i class="fa fa-lg fa-star-o"></i>
-                </a>
-            @else
-                <favorite-button place="{{ $place->id }}" favorited="{{ $place->hasFavoritedByUser(Auth::user()) }}"></favorite-button>
-            @endif
-            @if(!Auth::check())
-                <a @click="openModal('login', 'login')" data-toggle="tooltip" title="{{ trans('common.buttons.share') }}">
-                    <i class="fa fa-lg fa-share-alt"></i>
-                </a>
-            @else
-                <social-share url="{{ place_path($place) }}"></social-share>
-            @endif
+            <div class="place__button" data-toggle="tooltip" title="{{ trans('common.buttons.to_map') }}">
+                <a href="{{ map_path($place) }}"><i class="fa fa-lg fa-car"></i></a>
+            </div>
+            <div class="place__button" data-toggle="tooltip" title="{{ trans('common.buttons.favorite') }}">
+                @if(!Auth::check())
+                    <a @click="openModal('login', 'login')"><i class="fa fa-lg fa-star-o"></i></a>
+                @else
+                    <favorite-button place="{{ $place->id }}" favorited="{{ $place->hasFavoritedByUser(Auth::user()) }}"></favorite-button>
+                @endif
+            </div>
+            <div class="place__button" data-toggle="tooltip" title="{{ trans('common.buttons.share') }}">
+                @if(!Auth::check())
+                    <a @click="openModal('login', 'login')"><i class="fa fa-lg fa-share-alt"></i></a>
+                @else
+                    <social-share url="{{ place_path($place) }}"></social-share>
+                @endif
+            </div>
             <span class="place__button">{{ $place->views }}</span>
         </div>
         
