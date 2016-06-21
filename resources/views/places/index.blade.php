@@ -49,20 +49,20 @@
                             <p class="card__excerpt">@{{ place.excerpt }}</p>
                         </div>
                         <div class="card__buttons">
-                            <div class="card__button">
+                            <div class="card__button" data-toggle="tooltip" title="{{ trans('common.buttons.to_map') }}">
                                 <a href="@{{ place.map_url }}"><i class="fa fa-lg fa-car"></i></a>
                             </div>
-                            <div class="card__button">
+                            <div class="card__button" data-toggle="tooltip" title="{{ trans('common.buttons.to_content') }}">
                                 <a href="@{{ place.url }}"><i class="fa fa-lg fa-info"></i></a>
                             </div>
-                            <div class="card__button">
+                            <div class="card__button" data-toggle="tooltip" title="{{ trans('common.buttons.favorite') }}">
                                 @if(!Auth::check())
                                     <a @click="openModal('login', 'login')"><i class="fa fa-lg fa-star-o"></i></a>
                                 @else
                                     <favorite-button place="@{{ place.id }}" favorited="@{{ place.favorited }}"></favorite-button>
                                 @endif
                             </div>
-                            <div class="card__button">
+                            <div class="card__button" data-toggle="tooltip" title="{{ trans('common.buttons.share') }}">
                                 @if(!Auth::check())
                                     <a @click="openModal('login', 'login')"><i class="fa fa-lg fa-share-alt"></i></a>
                                 @else
