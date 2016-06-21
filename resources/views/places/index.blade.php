@@ -4,6 +4,7 @@
     
     <place-filter inline-template :open-modal="openModal" :places="{{ $places }}">
         <div class="place-filter" v-cloak>
+        
             <div class="filter">
                 <div class="filter__heading">
                     <h3 class="filter__heading__title">
@@ -59,14 +60,14 @@
                                 @if(!Auth::check())
                                     <a @click="openModal('login', 'login')"><i class="fa fa-lg fa-star-o"></i></a>
                                 @else
-                                    <favorite-button place="@{{ place.id }}" favorited="@{{ place.favorited }}"></favorite-button>
+                                    <favorite-button :place="place.id" :favorited=" place.favorited"></favorite-button>
                                 @endif
                             </div>
                             <div class="card__button" data-toggle="tooltip" title="{{ trans('common.buttons.share') }}">
                                 @if(!Auth::check())
                                     <a @click="openModal('login', 'login')"><i class="fa fa-lg fa-share-alt"></i></a>
                                 @else
-                                    <social-share url="@{{ place.url }}"></social-share>
+                                    <social-share :url="place.url"></social-share>
                                 @endif
                             </div>
                         </div>
