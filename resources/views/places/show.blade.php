@@ -37,14 +37,20 @@
     <h2 class="heading--fancy">{{ $place->title }}</h2>
     <div class="place">
         <div class="place__buttons">
-            <a href="{{ map_path($place) }}"><i class="fa fa-lg fa-car"></i></a>
-             @if(!Auth::check())
-                <a @click="openModal('login', 'login')"><i class="fa fa-lg fa-star-o"></i></a>
+            <a href="{{ map_path($place) }}" data-toggle="tooltip" title="{{ trans('common.buttons.to_map') }}">
+                <i class="fa fa-lg fa-car"></i>
+            </a>
+            @if(!Auth::check())
+                <a @click="openModal('login', 'login')" data-toggle="tooltip" title="{{ trans('common.buttons.favorite') }}">
+                    <i class="fa fa-lg fa-star-o"></i>
+                </a>
             @else
                 <favorite-button place="{{ $place->id }}" favorited="{{ $place->hasFavoritedByUser(Auth::user()) }}"></favorite-button>
             @endif
             @if(!Auth::check())
-                <a @click="openModal('login', 'login')"><i class="fa fa-lg fa-share-alt"></i></a>
+                <a @click="openModal('login', 'login')" data-toggle="tooltip" title="{{ trans('common.buttons.share') }}">
+                    <i class="fa fa-lg fa-share-alt"></i>
+                </a>
             @else
                 <social-share url="{{ place_path($place) }}"></social-share>
             @endif
