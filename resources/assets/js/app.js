@@ -11,7 +11,7 @@ Vue.directive('socials', require('./directives/JsSocials.js'));
 Vue.directive('dropdownCheckbox', require('./directives/DropdownCheckbox.js'));
 
 Vue.filter('inCategory', function (places) {
-    if (this.filteredBy.length == 0) {
+    if (!this.filteredBy || this.filteredBy.length == 0) {
         return places;
     }
     return  _.filter(places, (place) => {

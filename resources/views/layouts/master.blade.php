@@ -73,7 +73,7 @@
         </nav>
         @yield ('banner')
         <div class="wrapper">
-            <div class="{{ !Route::is('map_path') ? 'container' : 'container-fluid' }}">
+            <div class="{{ Route::is('map_path') ? 'container-fluid' : 'container' }}">
                 @yield ('content')
             </div>
         </div>
