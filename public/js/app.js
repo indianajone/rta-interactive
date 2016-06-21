@@ -32083,7 +32083,7 @@ Vue.directive('dropdownCheckbox', require('./directives/DropdownCheckbox.js'));
 Vue.filter('inCategory', function (places) {
     var _this = this;
 
-    if (this.filteredBy.length == 0) {
+    if (!this.filteredBy || this.filteredBy.length == 0) {
         return places;
     }
     return _.filter(places, function (place) {
@@ -33299,8 +33299,34 @@ module.exports = {
 
     data: function data() {
         return {
-            filteredBy: []
+            filteredBy: [],
+            open: true,
+            noResult: false
         };
+    },
+
+    ready: function ready() {
+        var _this = this;
+
+        setTimeout(function () {
+            _this.open = false;
+        }, 700);
+    },
+
+    computed: {
+        noResult: function noResult() {
+            var _this2 = this;
+
+            return _.filter(this.places, function (place) {
+                return _.intersection(_.toArray(place.categories), _.flatten(_this2.filteredBy.map(Number))).length === _this2.filteredBy.length;
+            }).length === 0;
+        }
+    },
+
+    methods: {
+        toggle: function toggle() {
+            this.open = !this.open;
+        }
     }
 };
 

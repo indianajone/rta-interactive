@@ -4,38 +4,12 @@
     
     <place-filter inline-template :open-modal="openModal" :places="{{ $places }}">
         <div class="place-filter" v-cloak>
-        
-            <div class="filter">
-                <div class="filter__heading">
-                    <h3 class="filter__heading__title">
-                        <i class="fa fa-sliders"></i>
-                        <span>{{ trans('common.heading.filter') }}</span>
-                    </h3>
-                </div>
-                <div class="filter__body">
-                    @foreach($categories as $category)
-                        <div class="filter__category">
-                            <h4 class="filter__category__heading">{{ $category->name }}</h4>
-                            @foreach($category->children as $child)
-                                <div class="checkbox">
-                                    <label>
-                                        <input 
-                                            v-model="filteredBy"
-                                            type="checkbox" 
-                                            value="{{ $child->id }}"
-                                        >
-                                        {{ $child->name }}
-                                    </label>
-                                </div>
-                            @endforeach
-                        </div>
-                    @endforeach
-                </div>
-            </div>
             
-            <h2 class="heading--fancy">{{ trans('common.heading.places') }}</h2>
+            <h2 class="heading--fancy">
+                {{ trans('common.heading.places') }}
+            </h2>
             
-            <div class="cards">
+            <div :class="['cards', { 'show-nav': open }]">
                 <div class="row" v-for="chuck in places | inCategory | chunk 3">
                     <div v-for="place in chuck" class="card">
                         <div class="card__image">
@@ -74,6 +48,42 @@
                     </div>
                 </div>
             </div>
+
+            <div class="notfound" v-if="noResult">
+                <h3 class="notfound__body">{{ trans('common.notfound') }}</h3>
+            </div>
+
+            <div :class="['filter', { 'show-nav': open }]">
+                <div @click="toggle()" class="filter__button">
+                    <i :class="['fa', 'fa-arrow-' + (open ? 'left' : 'right')]"></i>
+                </div>
+                <div class="filter__heading">
+                    <h3 class="filter__heading__title">
+                        <i class="fa fa-sliders"></i>
+                        <span>{{ trans('common.heading.filter') }}</span>
+                    </h3>
+                </div>
+                <div class="filter__body">
+                    @foreach($categories as $category)
+                        <div class="filter__category">
+                            <h4 class="filter__category__heading">{{ $category->name }}</h4>
+                            @foreach($category->children as $child)
+                                <div class="checkbox">
+                                    <label>
+                                        <input 
+                                            v-model="filteredBy"
+                                            type="checkbox" 
+                                            value="{{ $child->id }}"
+                                        >
+                                        {{ $child->name }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        
         </div>
     </place-filter>
 @stop
