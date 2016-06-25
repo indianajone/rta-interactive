@@ -1,13 +1,19 @@
 .interactive-map {
     
+    position: relative;
+    height: 100%;
+    
     form {
         color: #fff;
         position: absolute;
         width: 450px;
+        height: 100%;
         left: 0;
         z-index: 99;
+        overflow-y: scroll;
         @media only screen and (max-width: 768px) {
             width: 100%;
+            height: auto;
             position: static;
         }
     }
@@ -23,8 +29,6 @@
 
     .direction {
         background-color: #fff;
-        max-height: 300px;
-        overflow-y: scroll;
     }
 }
 
@@ -64,13 +68,10 @@
 }
 
 .google-map {
-    height: 800px;
-    @media only screen and (max-width: 768px) {
-        height: 400px;
-    }
+    height: 100%;
+    min-height: 100%;
 }
 
 .google-map__panel {
-    max-height: 500px;
     overflow-y: scroll;
 }

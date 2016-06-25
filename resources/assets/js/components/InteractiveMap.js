@@ -12,18 +12,18 @@ module.exports = {
     props: {
         things: {
             type: Array,
-            default: function () { return []; }
+            default: () => []
         },
         place: {
             type: Object,
-            default: function () { return null; }
+            default: () => null
         },
         nears: {
             type: Array
         },
         nearby: { 
             type: Boolean,
-            default: function () {return false; }
+            default: () => false
         }
     },
 
@@ -67,15 +67,15 @@ module.exports = {
                 return [];
             }
 
-            return this.things.filter(function (thing) {
+            return this.things.filter( thing => {
                     return thing.selected
                 })
-                .map(function (thing) {
+                .map( thing => {
                     return thing.value;
-                })
+                });
         },
         selectedWaypoint: function () {
-            return this.route.waypoints.map(function (place) {
+            return this.route.waypoints.map( place => {
                 return {
                     location: place.location,
                     stopover: place.stopover
@@ -92,40 +92,40 @@ module.exports = {
                 alert('Your browser does not support location service.');
             }
 
-            this.$broadcast('init', this.currentLocation);
-
             if (this.place.latitude && this.place.longitude) {
                 this.route.destination = this.place.latitude + ',' + this.place.longitude;
             }
-            
+
+            this.$broadcast('init', this.currentLocation);  
+            this.$broadcast('add.nearby', this.nears);      
         },
         getCurrentLocation: function () {
-            var self = this;
-            var geocoder = new google.maps.Geocoder;
+    
+            let geocoder = new google.maps.Geocoder;
 
-            navigator.geolocation.getCurrentPosition(function (position) {
-                self.currentLocation = {
+            navigator.geolocation.getCurrentPosition( position => {
+                this.currentLocation = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
 
                 geocoder.geocode({
-                    'location': self.currentLocation
-                }, function (results, status) {
+                    'location': this.currentLocation
+                }, (results, status) => {
                     if (status === google.maps.GeocoderStatus.OK) {
                         if (results[0]) {
-                            self.route.origin = self.currentLocation;
-                            self.navigateMe();
+                            this.route.origin = this.currentLocation;
+                            this.navigateMe();
                         }
                     }
                 });
 
-            }, function () {
+            }, () => {
                 alert('Can not get your current location.');
             });
         },
         navigateMe: function () {  
-            var request = {
+            let request = {
                 origin: this.route.origin,
                 destination: this.route.destination,
                 travelMode: google.maps.DirectionsTravelMode[this.route.travelMode],
@@ -137,7 +137,6 @@ module.exports = {
 
             if (this.route.origin && this.route.destination) {
                 this.$broadcast('direction', request);
-                // this.$refs.google.getDirection(request);
             }
         }
     }

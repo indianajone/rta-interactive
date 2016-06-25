@@ -32321,6 +32321,7 @@ module.exports = {
     data: function data() {
         return {
             map: null,
+            distance: 3,
             markers: [],
             nearby: [],
             services: {
@@ -32406,13 +32407,13 @@ module.exports = {
         },
 
         getDirection: function getDirection(request) {
-            var self = this;
+            var _this3 = this;
 
             this.clearMarkers();
             this.services.direction.route(request, function (result, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
-                    self.services.renderer.setDirections(result);
-                    self.drawBoxes(result.routes);
+                    _this3.services.renderer.setDirections(result);
+                    _this3.drawBoxes(result.routes);
                 } else {
                     window.alert('Directions request failed due to ' + status);
                 }
@@ -32420,28 +32421,27 @@ module.exports = {
         },
 
         drawBoxes: function drawBoxes(routes) {
-            var self = this;
-            var distance = 3;
+            var _this4 = this;
 
             routes.map(function (route) {
-                var boxes = self.services.boxer.box(route.overview_path, distance);
-                self.findPlaces(boxes);
+                _this4.findPlaces(_this4.services.boxer.box(route.overview_path, _this4.distance));
             });
         },
 
         findPlaces: function findPlaces(areas) {
+            var _this5 = this;
+
             if (this.things.length) {
-                var self = this;
                 areas.forEach(function (bound) {
                     var request = {
                         bounds: bound,
-                        types: self.things
+                        types: _this5.things
                     };
 
-                    self.services.place.nearbySearch(request, function (results, status) {
+                    _this5.services.place.nearbySearch(request, function (results, status) {
                         if (status === google.maps.places.PlacesServiceStatus.OK) {
                             results.forEach(function (place) {
-                                self.createMarker(place);
+                                _this5.createMarker(place);
                             });
                         }
                     });
@@ -32450,7 +32450,7 @@ module.exports = {
         },
 
         createArmyMarker: function createArmyMarker(place) {
-            var _this3 = this;
+            var _this6 = this;
 
             var location = new google.maps.LatLng(place.latitude, place.longitude);
             var marker = new google.maps.Marker({
@@ -32464,7 +32464,7 @@ module.exports = {
             });
 
             marker.addListener('click', function (e) {
-                _this3.setInfoWindow({
+                _this6.setInfoWindow({
                     canAdd: true,
                     name: place.title,
                     location: location
@@ -32477,26 +32477,24 @@ module.exports = {
         },
 
         createMarker: function createMarker(place) {
-            var self = this;
-            var marker = null;
-            var markerAttributes = {
+            var _this7 = this;
+
+            var marker = new google.maps.Marker({
                 map: this.map,
                 position: place.geometry.location,
                 icon: this.getPlaceIcon(place)
-            };
+            });
 
-            marker = new google.maps.Marker(markerAttributes);
-
-            marker.addListener('click', function () {
+            marker.addListener('click', function (e) {
                 if (!place.place_id) {
-                    self.setInfoWindow({
+                    _this7.setInfoWindow({
                         name: 'You are here.',
                         canAdd: false
                     }, marker);
                 } else {
-                    self.services.place.getDetails(place, function (place, status) {
+                    _this7.services.place.getDetails(place, function (place, status) {
                         if (status == google.maps.places.PlacesServiceStatus.OK) {
-                            self.setInfoWindow({
+                            _this7.setInfoWindow({
                                 canAdd: true,
                                 name: place.name,
                                 description: place.vicinity,
@@ -32700,29 +32698,31 @@ module.exports = {
                 alert('Your browser does not support location service.');
             }
 
-            this.$broadcast('init', this.currentLocation);
-
             if (this.place.latitude && this.place.longitude) {
                 this.route.destination = this.place.latitude + ',' + this.place.longitude;
             }
+
+            this.$broadcast('init', this.currentLocation);
+            this.$broadcast('add.nearby', this.nears);
         },
         getCurrentLocation: function getCurrentLocation() {
-            var self = this;
+            var _this = this;
+
             var geocoder = new google.maps.Geocoder();
 
             navigator.geolocation.getCurrentPosition(function (position) {
-                self.currentLocation = {
+                _this.currentLocation = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
 
                 geocoder.geocode({
-                    'location': self.currentLocation
+                    'location': _this.currentLocation
                 }, function (results, status) {
                     if (status === google.maps.GeocoderStatus.OK) {
                         if (results[0]) {
-                            self.route.origin = self.currentLocation;
-                            self.navigateMe();
+                            _this.route.origin = _this.currentLocation;
+                            _this.navigateMe();
                         }
                     }
                 });
@@ -32743,7 +32743,6 @@ module.exports = {
 
             if (this.route.origin && this.route.destination) {
                 this.$broadcast('direction', request);
-                // this.$refs.google.getDirection(request);
             }
         }
     }

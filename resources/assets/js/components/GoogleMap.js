@@ -12,21 +12,18 @@ module.exports = {
         route: {}, 
         things: {
             type: Array,
-            default: function () {
-                return [];
-            }
+            default: () => []
         }, 
         place: {
             type: Object,
-            default: function () {
-                return null;
-            }
+            default:  () => null
         }
     },
 
     data: function () {
         return {
             map: null,
+            distance: 3, 
             markers: [],
             nearby: [],
             services: {
@@ -62,12 +59,12 @@ module.exports = {
             this.getDirection(request);
         },
         'add.nearby': function (places) {
-            places.map((place) => {
+            places.map(place => {
                 this.createArmyMarker(place);
             });
         },
         'remove.nearby': function () {
-            this.nearby.map((marker) => {
+            this.nearby.map(marker => {
                 marker.setMap(null);
             });
 
@@ -79,8 +76,8 @@ module.exports = {
 
         init: function (location) {
 
-            var RouteBoxer = window.RouteBoxer;
-            var options = {
+            let RouteBoxer = window.RouteBoxer;
+            let options = {
                 center: location,
                 zoom: 12
             };
@@ -109,13 +106,12 @@ module.exports = {
         },
 
         getDirection: function (request) {
-            var self = this;
-
+        
             this.clearMarkers();
-            this.services.direction.route(request, function (result, status) {
+            this.services.direction.route(request, (result, status) => {
                 if (status == google.maps.DirectionsStatus.OK) {  
-                    self.services.renderer.setDirections(result);
-                    self.drawBoxes(result.routes);
+                    this.services.renderer.setDirections(result);
+                    this.drawBoxes(result.routes);
                 }
                 else {
                     window.alert('Directions request failed due to ' + status);
@@ -124,28 +120,25 @@ module.exports = {
         },
 
         drawBoxes: function (routes) {
-            var self = this;
-            var distance = 3;
-
-            routes.map(function (route) {
-                var boxes = self.services.boxer.box(route.overview_path, distance);
-                self.findPlaces(boxes);
+            routes.map(route => {
+                this.findPlaces(
+                    this.services.boxer.box(route.overview_path, this.distance)
+                );
             });
         },
 
         findPlaces: function (areas) {
             if (this.things.length) {
-                var self = this;
-                areas.forEach(function (bound) {
-                    var request = {
+                areas.forEach( bound => {
+                    let request = {
                         bounds: bound,
-                        types: self.things
+                        types: this.things
                     }
 
-                    self.services.place.nearbySearch(request, function (results, status) {
+                    this.services.place.nearbySearch(request, (results, status) => {
                         if (status === google.maps.places.PlacesServiceStatus.OK) {
-                            results.forEach(function (place) {
-                                self.createMarker(place);
+                            results.forEach( place => {
+                                this.createMarker(place);
                             });
                         }
                     });
@@ -154,8 +147,8 @@ module.exports = {
         },  
 
         createArmyMarker: function (place) {
-            var location = new google.maps.LatLng(place.latitude, place.longitude);
-            var marker = new google.maps.Marker({
+            let location = new google.maps.LatLng(place.latitude, place.longitude);
+            let marker = new google.maps.Marker({
                 title: place.title,
                 map: this.map,
                 icon: {
@@ -165,7 +158,7 @@ module.exports = {
                 position: location
             });
 
-            marker.addListener('click', (e) => {
+            marker.addListener('click', e => {
                 this.setInfoWindow({
                     canAdd: true,
                     name: place.title,
@@ -179,26 +172,24 @@ module.exports = {
         },
 
         createMarker: function (place) {
-            var self = this;
-            var marker = null;
-            var markerAttributes = {
+            
+            let marker = new google.maps.Marker({
                 map: this.map,
                 position: place.geometry.location,
                 icon: this.getPlaceIcon(place)
-            };
+            });
              
-            marker = new google.maps.Marker(markerAttributes);
 
-            marker.addListener('click', function () {
+            marker.addListener('click', e => {
                 if (!place.place_id) {
-                    self.setInfoWindow({
+                    this.setInfoWindow({
                         name: 'You are here.',
                         canAdd: false
                     }, marker);
                 } else {
-                    self.services.place.getDetails(place, function(place, status) {
+                    this.services.place.getDetails(place, (place, status) => {
                         if (status == google.maps.places.PlacesServiceStatus.OK) {
-                            self.setInfoWindow({
+                            this.setInfoWindow({
                                 canAdd: true,
                                 name: place.name,
                                 description: place.vicinity,
@@ -213,7 +204,7 @@ module.exports = {
             this.markers.push(marker);
         },
         clearMarkers: function () {
-            this.markers.map(function(marker) {
+            this.markers.map( marker => {
                 marker.setMap(null);
             });
         },
@@ -227,7 +218,7 @@ module.exports = {
             this.$dispatch('map.refresh');
         },
         getPlaceIcon: function (place) {
-            var icon = {
+            let icon = {
                 url: place.icon,
                 scaledSize: new google.maps.Size(10, 10)
             }
@@ -240,7 +231,7 @@ module.exports = {
             return icon;
         },
         setInfoWindow: function (place, marker) {
-            var infoWindowView = new this.$options.components.infoWindow;
+            let infoWindowView = new this.$options.components.infoWindow;
                 infoWindowView.$set('place', place);
                 infoWindowView.$set('marker', marker);
                 infoWindowView.$set('addToWaypoint', this.addWaypoint);
