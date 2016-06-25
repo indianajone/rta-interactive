@@ -33222,7 +33222,10 @@ module.exports = {
 
     bind: function bind() {
         var options = _.extend({
-            dots: true
+            dots: true,
+            slidesToScroll: 1,
+            autoplay: false,
+            autoplaySpeed: 5000
         }, this.params.options);
 
         $(this.el).slick(options);
