@@ -1,9 +1,10 @@
 @extends('layouts.master')
 
 @section('banner')
-    <div class="slick slick--black" v-slick 
-         :options="{ slidesToScroll: 1, autoplay: true, autoplaySpeed: 2000 }"
-        >
+    <div class="slick slick--black" 
+         v-slick 
+         :options="{ autoplay: true }"
+    >
         @foreach($slideshow as $item)
             <div class="slick-slide slick-slide--fixed-height">
                 <div class="slide-item">
