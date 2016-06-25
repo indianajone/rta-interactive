@@ -2104,8 +2104,8 @@ pre code {
 .col-xs-6,
 .col-sm-6,
 .col-md-6,
-.copyright__left,
-.copyright__right,
+.copyright .thai,
+.copyright .eng,
 .col-lg-6,
 .col-xs-7,
 .search__title,
@@ -2599,8 +2599,8 @@ pre code {
   .place__panorama,
   .col-md-5,
   .col-md-6,
-  .copyright__left,
-  .copyright__right,
+  .copyright .thai,
+  .copyright .eng,
   .col-md-7,
   .col-md-8,
   .col-md-9,
@@ -2636,8 +2636,8 @@ pre code {
   }
 
   .col-md-6,
-  .copyright__left,
-  .copyright__right {
+  .copyright .thai,
+  .copyright .eng {
     width: 50%;
   }
 
@@ -15701,10 +15701,17 @@ fieldset[disabled] .btn-yahoo.focus {
   border-top: rgba(255, 255, 255, 0.5) solid 1px;
   font-size: 80%;
   line-height: 40px;
+  text-align: center;
 }
 
-.copyright__right {
-  text-align: right;
+@media (min-width: 1200px) {
+  .copyright .thai {
+    text-align: left;
+  }
+
+  .copyright .eng {
+    text-align: right;
+  }
 }
 
 .map {

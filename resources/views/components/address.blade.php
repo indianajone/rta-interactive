@@ -2,7 +2,7 @@
     @if(app()->getLocale() === 'th')
         <p>
             <strong>สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก</strong><br>
-            อาคารพระตำหนักเพชรรัตน์ ภายใน กอ.รมน. สวนรื่นฤดี ถนนนครราชสีมา<br>
+            อาคารพระตำหนักเพชรรัตน์ สวนรื่นฤดี ถนนนครราชสีมา<br>
             เขตดุสิต กรุงเทพฯ ๑๐๓๐๐
         </p>
         <p>
@@ -13,7 +13,7 @@
         </p>
     @else
         <p>
-            <strong>Royal Thai Army Tourism Organization</strong><br>
+            <strong>Royal Thai Army Tourism Promotion Office</strong><br>
             Pratamnakphet building, Internal Security Operations Command<br>
             Suan Ruenrudee, Nakornrachasima Road<br>
             Dusit, Bangkok 10300
@@ -21,7 +21,7 @@
         <p>
             Email: <a href="mailto:info@armytour.go.th">info@armytour.go.th</a><br>
             Office's Telephone: 0-2126-5454<br>
-            Telefax: 0-2297-5904<br>
+            Fax: 0-2297-5904<br>
             Military lines: 95831, 95798
         </p>
     @endif

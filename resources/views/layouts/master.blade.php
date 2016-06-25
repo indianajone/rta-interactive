@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf_token" id="csrf_token" value={{ csrf_token() }}>
     <meta name="author" content="สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก">
+    <meta name="desctiption" content="ตะลุยเที่ยวในเขตทหาร กองทัพบก">
     @yield ('meta')
-    <title>@yield ('title', 'สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก')</title>
+    <title>@yield ('title', 'สำนักงานส่งเสริมการท่องเที่ยว กองทัพบก')</title>
     <link rel="stylesheet" href="/css/vendor.css">
     <link rel="stylesheet" href="/css/app.css">
     <!--[if lt IE 9]>
@@ -27,9 +28,9 @@
                             <i class="fa fa-navicon"></i>
                         </button>
                         <a class="navbar-brand" href="/">
-                            <img class="navbar-brand__logo" src="/images/logo.png" alt="สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก">
-                            สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก
-                            <small>ข้อมูลและแผนที่ แหล่งท่องเที่ยวในเขตทหาร</small>
+                            <img class="navbar-brand__logo" src="/images/logo.png" alt="สำนักงานส่งเสริมการท่องเที่ยว กองทัพบก">
+                            สำนักงานส่งเสริมการท่องเที่ยว กองทัพบก
+                            <small>ตะลุยเที่ยวในเขตทหาร กองทัพบก</small>
                         </a>
                     </div>
                     <div class="navbar-right">
@@ -91,8 +92,8 @@
             </div>
             <div class="copyright">
                 <div class="container">
-                    <span class="copyright__left">Copyright &copy; 2015 armytour.go.th All Rights Reserved.</span>
-                    <span class="copyright__right">สงวนสิทธิ์โดย สำนักงานส่งเสริมการท่องเที่ยวกองทัพบก</span>
+                    <div class="thai">Copyright &copy; 2015 armytour.go.th All Rights Reserved.</div>
+                    <div class="eng">สงวนสิทธิ์โดย สำนักงานส่งเสริมการท่องเที่ยว กองทัพบก</div>
                 </div>
             </div>
         </footer>
