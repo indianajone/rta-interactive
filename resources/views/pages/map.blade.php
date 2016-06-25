@@ -1,7 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-    <interactive-map inline-template :things="{{ $options }}" :place="{{ $place or '{}' }}" :nears="{{ $nearby }}">
+
+    <interactive-map inline-template :things="{{ $options }}" :place="{{ $place or '{}' }}" :nears="{{ $nearby }}" :nearby="true" v-cloak>
         <div id="map" class="interactive-map">
             <form 
                 @submit.prevent="navigateMe"
@@ -34,7 +35,7 @@
                     <div class="waypoints">
                         <legend>{{ trans('map.nearby.title') }}</legend>
                         <div class="col-xs-12">
-                            <input v-model="nearby"type="checkbox">
+                            <input v-model="nearby" type="checkbox">
                             {{ trans('map.nearby.show') }}
                         </div>
                     </div>

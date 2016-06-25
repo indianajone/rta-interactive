@@ -19,11 +19,8 @@ body {
 
 .wrapper {
     background: $bg-color;
-    min-height: 86%;
-
-    >.container {
-        margin-top: 50px;
-    }
+    height: 100%;
+    min-height: 100%;
 
     > div {
         overflow:auto;

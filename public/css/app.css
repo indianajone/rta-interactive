@@ -12598,11 +12598,8 @@ body {
 
 .wrapper {
   background: #eeeeee;
-  min-height: 86%;
-}
-
-.wrapper > .container {
-  margin-top: 50px;
+  height: 100%;
+  min-height: 100%;
 }
 
 .wrapper > div {
@@ -14702,17 +14699,25 @@ fieldset[disabled] .btn-yahoo.focus {
   padding-bottom: 30px;
 }
 
+.interactive-map {
+  position: relative;
+  height: 100%;
+}
+
 .interactive-map form {
   color: #fff;
   position: absolute;
   width: 450px;
+  height: 100%;
   left: 0;
   z-index: 99;
+  overflow-y: scroll;
 }
 
 @media only screen and (max-width: 768px) {
   .interactive-map form {
     width: 100%;
+    height: auto;
     position: static;
   }
 }
@@ -14732,8 +14737,6 @@ fieldset[disabled] .btn-yahoo.focus {
 
 .interactive-map .direction {
   background-color: #fff;
-  max-height: 300px;
-  overflow-y: scroll;
 }
 
 .waypoint {
@@ -14772,17 +14775,11 @@ fieldset[disabled] .btn-yahoo.focus {
 }
 
 .google-map {
-  height: 800px;
-}
-
-@media only screen and (max-width: 768px) {
-  .google-map {
-    height: 400px;
-  }
+  height: 100%;
+  min-height: 100%;
 }
 
 .google-map__panel {
-  max-height: 500px;
   overflow-y: scroll;
 }
 
@@ -15714,8 +15711,10 @@ fieldset[disabled] .btn-yahoo.focus {
   }
 }
 
-.map {
-  height: 600px;
+.map .container-fluid,
+.map .navbar-top {
+  min-height: 100%;
+  height: 100%;
 }
 
 .map .footer {
