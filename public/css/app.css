@@ -12598,7 +12598,6 @@ body {
 
 .wrapper {
   background: #eeeeee;
-  height: 100%;
   min-height: 100%;
 }
 
@@ -15709,6 +15708,10 @@ fieldset[disabled] .btn-yahoo.focus {
   .copyright .eng {
     text-align: right;
   }
+}
+
+.map .wrapper {
+  height: 100%;
 }
 
 .map .container-fluid,
