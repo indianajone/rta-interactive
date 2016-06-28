@@ -8,7 +8,7 @@ module.exports = {
                 return {
                     title: place.title,
                     location: place.latitude + ',' + place.longitude,
-                    categories: place.categories.map( category => category.id)
+                    categories: place.categories.map( category => category.id )
                 }
             });
         }

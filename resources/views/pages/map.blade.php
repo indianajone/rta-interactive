@@ -2,12 +2,13 @@
 
 @section('content')
 
-    <interactive-map inline-template :things="{{ $options }}" :place="{{ $place or '{}' }}" :nears="{{ $nearby }}" :nearby="true" v-cloak>
+    <interactive-map inline-template :things="{{ $options }}" :place="{{ $place or '{}' }}" :nears="{{ $nearby }}" :nearby="true">
         <div id="map" class="interactive-map">
             <form 
                 @submit.prevent="navigateMe"
                 @keyup.prevent.enter="navigateMe"
                 accept-charset="utf-8"
+                v-cloak
             >
                 <fieldset class="top">
                     <mode :mode.sync="route.travelMode"></mode>
