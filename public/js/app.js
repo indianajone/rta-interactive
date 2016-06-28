@@ -32136,13 +32136,13 @@ module.exports = {
 
     computed: {
         destinations: function destinations() {
+            var _this = this;
+
             return this.places.map(function (place) {
                 return {
                     title: place.title,
-                    location: place.latitude + ',' + place.longitude,
-                    categories: place.categories.map(function (category) {
-                        return category.id;
-                    })
+                    location: _this.getLocation(place),
+                    categories: _this.getCategories(place)
                 };
             });
         }
@@ -32161,6 +32161,24 @@ module.exports = {
         return {
             filteredBy: []
         };
+    },
+
+    methods: {
+
+        getCategories: function getCategories(place) {
+
+            if (!place.categories) {
+                return [];
+            }
+
+            return place.categories.map(function (category) {
+                return category.id;
+            });
+        },
+
+        getLocation: function getLocation(place) {
+            return place.latitude + ',' + place.longitude;
+        }
     }
 };
 

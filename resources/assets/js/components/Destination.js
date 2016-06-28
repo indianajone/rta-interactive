@@ -7,8 +7,8 @@ module.exports = {
             return this.places.map( place => {
                 return {
                     title: place.title,
-                    location: place.latitude + ',' + place.longitude,
-                    categories: place.categories.map( category => category.id )
+                    location: this.getLocation(place),
+                    categories: this.getCategories(place)
                 }
             });
         }
@@ -26,6 +26,22 @@ module.exports = {
     data: function () {
         return {
             filteredBy: []
+        }
+    },
+
+    methods: {
+
+        getCategories(place) {
+            
+            if (!place.categories) {
+                return [];
+            }
+
+            return place.categories.map( category => category.id );
+        },
+
+        getLocation(place) {
+            return place.latitude + ',' + place.longitude;
         }
     }
 }
