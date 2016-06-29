@@ -79,7 +79,7 @@ module.exports = {
             let RouteBoxer = window.RouteBoxer;
             let options = {
                 center: location,
-                zoom: 12
+                zoom: 6
             };
   
             this.map = new google.maps.Map(this.$el, options);
@@ -147,6 +147,7 @@ module.exports = {
         },  
 
         createArmyMarker: function (place) {
+
             let location = new google.maps.LatLng(place.latitude, place.longitude);
             let marker = new google.maps.Marker({
                 title: place.title,
@@ -162,6 +163,7 @@ module.exports = {
                 this.setInfoWindow({
                     canAdd: true,
                     name: place.title,
+                    description: place.description,
                     location: location,
                 }, marker);
             });

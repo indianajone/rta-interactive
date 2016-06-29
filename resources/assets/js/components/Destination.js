@@ -4,13 +4,14 @@ module.exports = {
 
     computed: {
         destinations: function () {
-            return this.places.map( place => {
-                return {
-                    title: place.title,
-                    location: this.getLocation(place),
-                    categories: this.getCategories(place)
-                }
-            });
+            return this.places
+                        .map( place => {
+                            return {
+                                title: place.title,
+                                location: this.getLocation(place),
+                                categories: this.getCategories(place)
+                            }
+                        });
         }
     },
 
@@ -32,11 +33,6 @@ module.exports = {
     methods: {
 
         getCategories(place) {
-            
-            if (!place.categories) {
-                return [];
-            }
-
             return place.categories.map( category => category.id );
         },
 

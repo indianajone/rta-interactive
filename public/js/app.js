@@ -32166,11 +32166,6 @@ module.exports = {
     methods: {
 
         getCategories: function getCategories(place) {
-
-            if (!place.categories) {
-                return [];
-            }
-
             return place.categories.map(function (category) {
                 return category.id;
             });
@@ -32398,7 +32393,7 @@ module.exports = {
             var RouteBoxer = window.RouteBoxer;
             var options = {
                 center: location,
-                zoom: 12
+                zoom: 6
             };
 
             this.map = new google.maps.Map(this.$el, options);
@@ -32485,6 +32480,7 @@ module.exports = {
                 _this6.setInfoWindow({
                     canAdd: true,
                     name: place.title,
+                    description: place.description,
                     location: location
                 }, marker);
             });

@@ -8,6 +8,7 @@ use Ravarin\Entities\Place;
 use Illuminate\Http\Request;
 use Ravarin\Entities\Nearby;
 use Ravarin\Entities\Category;
+use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
 
 class PagesController extends Controller
@@ -24,7 +25,24 @@ class PagesController extends Controller
         $config = trans('map.waypoints.things');
         $options = [];
         $place = null;
-        $nearby = Place::with('categories')->get();
+        $nearby = Place::with('categories', 'photos')->get()
+                    ->map(function ($place) {
+                        return [
+                            'id' => $place->id,
+                            'title' => $place->title,
+                            'description' => $place->excerpt,
+                            'latitude' => $place->latitude,
+                            'longitude' => $place->longitude,
+                            'categories' => $place->categories->map(function ($cat) {
+                                return [
+                                    'id' => $cat->id,
+                                    'name' => $cat->name,
+                                    'parent_id' => $cat->parent_id
+                                ];
+                            })
+                        ];
+                    });
+        
         $categories = $categories->listsChildFromGroup($categories->first());
 
         if ($slug) {
