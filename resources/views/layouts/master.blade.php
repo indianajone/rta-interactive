@@ -19,7 +19,7 @@
 </head>
 <body>
     <div id="app" class="{{ page_class() }}">
-        <nav class="navbar navbar-static-top">
+        <nav class="navbar">
             <div class="navbar-top">
                 <div class="container">
                     <div class="navbar-header">
@@ -27,11 +27,11 @@
                             <span class="sr-only">Toggle navigation</span>
                             <i class="fa fa-navicon"></i>
                         </button>
-                        <a class="navbar-brand" href="/">
-                            <img class="navbar-brand__logo" src="/images/logo.png" alt="สำนักงานส่งเสริมการท่องเที่ยว กองทัพบก">
+                        <div class="navbar-brand">
+                            <a href="/"><img class="navbar-brand__logo" src="/images/logo.png" alt="สำนักงานส่งเสริมการท่องเที่ยว กองทัพบก"></a>
                             สำนักงานส่งเสริมการท่องเที่ยว กองทัพบก
                             <small>ตะลุยเที่ยวในเขตทหาร กองทัพบก</small>
-                        </a>
+                        </div>
                     </div>
                     <div class="navbar-right">
                         @include('components/navbar-social')
@@ -73,10 +73,8 @@
             </div>
         </nav>
         @yield ('banner')
-        <div class="wrapper">
-            <div class="{{ Route::is('map_path') ? 'container-fluid' : 'container' }}">
-                @yield ('content')
-            </div>
+        <div class="{{ Route::is('map_path') ? 'container-fluid' : 'container' }}">
+            @yield ('content')
         </div>
         <footer class="footer">
             <div class="footer__top">

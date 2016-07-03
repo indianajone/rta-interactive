@@ -5,7 +5,9 @@
         @foreach($slideshow as $item)
             <div class="slick-slide slick-slide--fixed-height">
                 <img src="{{ asset($item->path) }}" alt="$item->title">
-                <span>{{ $item->title }}</span>
+                @if($item->title)
+                    <span>{{ $item->title }}</span>
+                @endif
             </div>
         @endforeach
     </div>

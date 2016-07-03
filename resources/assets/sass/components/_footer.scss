@@ -1,6 +1,5 @@
 .footer {
     background-color: $green;
-    margin-top: 40px;
     padding-top: 40px;
     position: relative;
     margin-top: 0;
@@ -13,28 +12,6 @@
                 font-family: sans-serif;
                 font-size: 80%;
             }
-        }
-    }
-}
-
-.copyright {
-    color: #fff;
-    border-top: rgba(#fff, .5) solid 1px;
-    font-size: 80%;
-    line-height: 40px;
-    text-align: center;
-
-    .thai, .eng {
-        @extend .col-md-6;
-    }
-
-    @media (min-width: $screen-lg-min) {
-        .thai {
-            text-align: left;
-        }
-
-        .eng {
-            text-align: right;
         }
     }
 }

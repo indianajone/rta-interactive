@@ -2,6 +2,7 @@
 
 .navbar {
     margin-bottom: 0;
+    border: none;
 }
 
 .navbar-static-top {
@@ -50,9 +51,12 @@
     & &__link {
         color: white;
         font-size: 13px;
-        // padding: 0;
+        
+        @media only screen and (max-width: $screen-lg-min) {
+            font-size: 10px;
+        }
 
-        @media only screen and (max-width: 992px) {
+        @media only screen and (max-width: $screen-md-min) {
             font-size: 11px;
         }
     }

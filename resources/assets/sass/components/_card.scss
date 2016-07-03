@@ -1,12 +1,27 @@
 .cards {
+    
+    position: relative;
+    overflow: hidden;
+
+    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
+    transition: 300ms ease all;
+    backface-visibility: hidden;
+
     .row {
         margin-left: 0;
         margin-right: 0; 
+    }
+
+    &.show-nav  {
+        transform: translateX(300px);
+        transform: translate3d(300px, 0, 0);
     }
 }
 
 .card {
     @extend .col-md-4;
+    
     margin-bottom: 30px;
     &__image {
         img {

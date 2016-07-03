@@ -1,4 +1,4 @@
-html, body {
+html, body, #app {
     height: 100%;
 }
 
@@ -6,29 +6,9 @@ body {
     background-color: #eee;
 }
 
-#app {
-    height: 100%;
-    .container-fluid {
-        padding: 0;
-    }
-}
-
-[v-cloak] {
-    display: none;
-}
-
-.wrapper {
-    background: $bg-color;
-    min-height: 100%;
-
-    > div {
-        overflow:auto;
-    }
-
-    .bottom-buttons {
-        @extend .text-center;
-        margin-bottom: 1em;
-    }
+.container-fluid {
+    padding: 0;
+    height: inherit;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -47,6 +27,10 @@ address {
     a[href^=mail] {
         color: #fff;
     }
+}
+
+[v-cloak] {
+    display: none;
 }
 
 .readmore {
