@@ -15711,11 +15711,14 @@ fieldset[disabled] .btn-yahoo.focus {
 
 .places .container {
   min-height: 100%;
-  height: auto;
 }
 
 .places .place-filter {
   overflow: hidden;
+}
+
+.place .container {
+  min-height: 100%;
 }
 
 .map .footer {
