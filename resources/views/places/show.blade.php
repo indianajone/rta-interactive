@@ -74,9 +74,9 @@
     </div>
     
     @include('places.partials.photo')
+    @include('places.partials.marker')
     @include('places.partials.video')
     @include('places.partials.panorama')
-    @include('places.partials.marker')
     @include('places.partials.nearby')
 
     <!-- Root element of PhotoSwipe. Must have class pswp. -->
