@@ -9,67 +9,74 @@
     backface-visibility: hidden;
 
     .row {
-        margin-left: 0;
-        margin-right: 0; 
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     &.show-nav  {
         transform: translateX(300px);
         transform: translate3d(300px, 0, 0);
     }
+
+    .card {
+        @extend .col-md-4;
+        
+        margin-bottom: 30px;
+        &__image {
+            img {
+                @extend .img-responsive;
+            }
+        }
+        &__excerpt {
+            min-height: 65px;
+        }
+        &__details {
+            background-color: #fff;
+            padding: 20px 15px 15px;
+            height: 150px;
+            overflow: hidden;
+            line-height: 25px;
+        }
+
+        &__title {
+            margin: 0;
+        }
+
+        &__buttons {
+            background-color: #fff;
+            border-top: 1px solid $gray-lighter;
+            overflow: hidden;
+            p {
+                float: left;
+                padding: 15px;
+                width: 50%;
+            }
+        }   
+
+         &__button {
+            color: $green;
+            background: none;
+            width: 25%;
+            float: left;
+            padding: 10px;
+            text-align: center;
+            &:not(:first-child) {
+                border-left: 1px solid $gray-lighter;
+            }
+            > * {
+                @extend .btn;
+            }
+
+            .jssocials {
+                min-width: 160px;
+            }
+        }
+    }
 }
 
-.card {
-    @extend .col-md-4;
+.cards--col-2 {
+    .card {
     
-    margin-bottom: 30px;
-    &__image {
-        img {
-            @extend .img-responsive;
-        }
-    }
-    &__excerpt {
-        min-height: 65px;
-    }
-    &__details {
-        background-color: #fff;
-        padding: 20px 15px 15px;
-        height: 150px;
-        overflow: hidden;
-        line-height: 25px;
-    }
-
-    &__title {
-        margin: 0;
-    }
-
-    &__buttons {
-        background-color: #fff;
-        border-top: 1px solid $gray-lighter;
-        overflow: hidden;
-        p {
-            float: left;
-            padding: 15px;
-            width: 50%;
-        }
-    }   
-
-     &__button {
-        color: $green;
-        background: none;
-        width: 25%;
-        float: left;
-        padding: 10px;
-        text-align: center;
-        &:not(:first-child) {
-            border-left: 1px solid $gray-lighter;
-        }
-        > * {
-            @extend .btn;
-        }
-
-        .jssocials {
-            min-width: 160px;
-        }
     }
 }

@@ -5,6 +5,7 @@ return [
     'heading' => [
         'places' => 'Places',
         'populars' => 'Populars',
+        'ar_code' => 'What is AR Code?',
         'recommended' => 'Recommended',
         'about' => 'About us',
         'photo' => 'Gallery',

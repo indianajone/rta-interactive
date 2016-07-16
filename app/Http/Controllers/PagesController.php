@@ -64,7 +64,7 @@ class PagesController extends Controller
 
     public function recommended() 
     {
-        $places = Place::where('recommended', true)->paginate();
+        $places = Place::where('recommended', true)->get();
 
          // Take one of each latest photo from places.
         $slideshow = $places->map(function ($place) {
