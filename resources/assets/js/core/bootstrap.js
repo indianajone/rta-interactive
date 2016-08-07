@@ -1,4 +1,23 @@
 /*
+ * Check browser support.
+ */
+
+let ua = navigator.userAgent;
+let re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+let ie = false;
+let version = 0;
+
+if (re.exec(ua) != null) {
+    ie = true;
+    version = parseFloat( RegExp.$1 );
+}
+
+if(ie && version <= 8) {
+    window.location = '/supports';
+}   
+
+
+/*
  * Load Vue & Vue's components.
  */
 if (window.Vue === undefined) {

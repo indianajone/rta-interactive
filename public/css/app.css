@@ -6822,7 +6822,8 @@ a.badge:focus {
   }
 }
 
-.thumbnail {
+.thumbnail,
+.supports__browser {
   display: block;
   padding: 4px;
   margin-bottom: 20px;
@@ -6834,7 +6835,9 @@ a.badge:focus {
 }
 
 .thumbnail > img,
-.thumbnail a > img {
+.supports__browser > img,
+.thumbnail a > img,
+.supports__browser a > img {
   display: block;
   max-width: 100%;
   height: auto;
@@ -6842,14 +6845,18 @@ a.badge:focus {
   margin-right: auto;
 }
 
-.thumbnail .caption {
+.thumbnail .caption,
+.supports__browser .caption {
   padding: 9px;
   color: #333333;
 }
 
 a.thumbnail:hover,
+a.supports__browser:hover,
 a.thumbnail:focus,
-a.thumbnail.active {
+a.supports__browser:focus,
+a.thumbnail.active,
+a.active.supports__browser {
   border-color: #337ab7;
 }
 
@@ -15808,4 +15815,44 @@ fieldset[disabled] .btn-yahoo.focus {
 
 .about__body {
   font-size: 100%;
+}
+
+.supports {
+  height: 100%;
+  min-height: 100%;
+}
+
+.supports:after {
+  content: '';
+  display: block;
+}
+
+.supports .supports__title {
+  margin-top: 3em;
+  text-align: center;
+}
+
+.supports .supports__title small {
+  display: block;
+  padding: 1em 0;
+}
+
+.supports__browser {
+  background: none;
+  border: none;
+  float: left;
+  width: 33%;
+  margin-top: 2em;
+}
+
+.supports__browser > img {
+  max-width: 100px;
+  max-height: 100%;
+  display: block;
+}
+
+.supports .footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }

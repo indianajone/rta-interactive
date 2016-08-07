@@ -73,4 +73,9 @@ class PagesController extends Controller
 
         return view('pages.recommended', compact('places', 'slideshow'));
     }
+
+    public function supports() 
+    {
+        return view('pages.supports');
+    }
 }

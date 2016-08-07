@@ -91,7 +91,7 @@ Route::group([ 'prefix' => 'api', 'as' => 'api.' ], function ()
 Route::get('auth/{provider}', 'AuthController@index');
 Route::get('password/reset/{token}', ['as' => 'password_path', 'uses' => 'PasswordController@index']);
 Route::post('password/reset', ['as' => 'password_path', 'uses' => 'PasswordController@store']);
-
+Route::get('/supports', 'PagesController@supports');
 
 Route::group(['middleware' => ['locale']], function () 
 {

@@ -33190,10 +33190,28 @@ module.exports = '<div>\n    <div :style="style">\n        <slot></slot>\n    </
 module.exports = '<div class="form-group">\n    <div class="input-group waypoint" v-for="waypoint in waypoints">\n        <input type="text" class="form-control" value="{{ waypoint.name }}" readonly >\n        <div class="input-group-btn">\n            <button class="btn btn-danger" @click="remove(waypoint)"><i class="fa fa-close"></i></button>\n        </div>\n    </div>\n</div>\n';
 },{}],42:[function(require,module,exports){
 /*
- * Load Vue & Vue's components.
+ * Check browser support.
  */
+
 'use strict';
 
+var ua = navigator.userAgent;
+var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+var ie = false;
+var version = 0;
+
+if (re.exec(ua) != null) {
+    ie = true;
+    version = parseFloat(RegExp.$1);
+}
+
+if (ie && version <= 8) {
+    window.location = '/supports';
+}
+
+/*
+ * Load Vue & Vue's components.
+ */
 if (window.Vue === undefined) {
     window.Vue = require('vue');
 }
