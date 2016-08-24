@@ -26,7 +26,7 @@
     <div class="slick slick--black" v-slick 
          :options="{ slidesToScroll: 1, autoplay: true, autoplaySpeed: 2000 }"
     >
-        @foreach($place->photos()->orderBy('updated_at')->take(5)->get() as $photo)
+        @foreach($place->slideshow as $photo)
             <div class="slick-slide slick-slide--fixed-height">
                 <div class="slide-item">
                     <img class="slide-item__image" src="{{ asset($photo->path) }}" alt="{{ $photo->title }}">

@@ -99,6 +99,19 @@ class Place extends Model
     }
 
     /**
+     * Define relationship between slideshow and place
+     *
+     * @return Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function slideshow()
+    {
+        return $this->attachments()
+                    ->where('type', 'slide')
+                    ->orderBy('updated_at')
+                    ->take(5);
+    }
+
+    /**
      * Define relationship between video and place
      *
      * @return Illuminate\Database\Eloquent\Relations\MorphMany
