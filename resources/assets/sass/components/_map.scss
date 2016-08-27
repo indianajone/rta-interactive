@@ -75,3 +75,13 @@
 .google-map__panel {
     overflow-y: scroll;
 }
+
+.google-map__infowindow {
+    &__body, &__media {
+        float: left;
+    }
+
+    &__media {
+        padding-right: 10px;
+    }
+}

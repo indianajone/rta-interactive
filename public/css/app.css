@@ -14874,6 +14874,15 @@ fieldset[disabled] .btn-yahoo.focus {
   overflow-y: scroll;
 }
 
+.google-map__infowindow__body,
+.google-map__infowindow__media {
+  float: left;
+}
+
+.google-map__infowindow__media {
+  padding-right: 10px;
+}
+
 .modal-mask {
   position: fixed;
   z-index: 9998;

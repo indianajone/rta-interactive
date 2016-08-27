@@ -32454,7 +32454,9 @@ module.exports = {
                     _this5.services.place.nearbySearch(request, function (results, status) {
                         if (status === google.maps.places.PlacesServiceStatus.OK) {
                             results.forEach(function (place) {
-                                _this5.createMarker(place);
+                                if (_this5.canAdd(place.name)) {
+                                    _this5.createMarker(place);
+                                }
                             });
                         }
                     });
@@ -32478,7 +32480,7 @@ module.exports = {
 
             marker.addListener('click', function (e) {
                 _this6.setInfoWindow({
-                    canAdd: true,
+                    canAdd: _this6.canAdd(place.title),
                     name: place.title,
                     description: place.description,
                     location: location
@@ -32509,7 +32511,7 @@ module.exports = {
                     _this7.services.place.getDetails(place, function (place, status) {
                         if (status == google.maps.places.PlacesServiceStatus.OK) {
                             _this7.setInfoWindow({
-                                canAdd: true,
+                                canAdd: _this7.canAdd(place.name),
                                 name: place.name,
                                 description: place.vicinity,
                                 location: place.geometry.location,
@@ -32522,11 +32524,25 @@ module.exports = {
 
             this.markers.push(marker);
         },
+
+        canAdd: function canAdd(placeName) {
+            var can = true;
+
+            this.route.waypoints.map(function (waypoint) {
+                if (waypoint.name === placeName) {
+                    can = false;
+                }
+            });
+
+            return can;
+        },
+
         clearMarkers: function clearMarkers() {
             this.markers.map(function (marker) {
                 marker.setMap(null);
             });
         },
+
         addWaypoint: function addWaypoint(place) {
             this.route.waypoints.push({
                 name: place.name,
@@ -32536,6 +32552,7 @@ module.exports = {
 
             this.$dispatch('map.refresh');
         },
+
         getPlaceIcon: function getPlaceIcon(place) {
             var icon = {
                 url: place.icon,
@@ -32549,6 +32566,7 @@ module.exports = {
 
             return icon;
         },
+
         setInfoWindow: function setInfoWindow(place, marker) {
             var infoWindowView = new this.$options.components.infoWindow();
             infoWindowView.$set('place', place);
