@@ -21,7 +21,7 @@
                             <h3 class="card__title">
                                 <a href="@{{ place.url }}">@{{ place.name }}</a>
                             </h3>
-                            <p class="card__excerpt">@{{ place.excerpt }}</p>
+                           {{--  <p class="card__excerpt">@{{ place.excerpt }}</p> --}}
                         </div>
                         <div class="card__buttons">
                             <div class="card__button" data-toggle="tooltip" title="{{ trans('common.buttons.to_map') }}">
