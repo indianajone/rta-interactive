@@ -15817,6 +15817,15 @@ fieldset[disabled] .btn-yahoo.focus {
   font-size: 100%;
 }
 
+h5 {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+ol {
+  padding: 0 0 0 1em;
+}
+
 .supports {
   height: 100%;
   min-height: 100%;
