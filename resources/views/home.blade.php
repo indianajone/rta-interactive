@@ -1,7 +1,8 @@
 @extends('layouts.master')
 
 @section('banner')
-    <div class="slick slick--black" 
+    <iframe width="100%" height="50%" src="https://www.youtube.com/embed/GXS719Ed7GQ?controls=0&amp;showinfo=0&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>
+    {{-- <div class="slick slick--black" 
          v-slick 
          :options="{ autoplay: true }"
     >
@@ -15,7 +16,7 @@
                 </div>
             </div>
         @endforeach
-    </div>
+    </div> --}}
 @stop
 
 @section('content')
