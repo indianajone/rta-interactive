@@ -103,10 +103,15 @@ class Place extends Model
      *
      * @return Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function slideshow()
+    public function slideshows()
     {
         return $this->attachments()
-                    ->where('type', 'slide')
+                    ->where('type', 'slide');
+    }
+
+    public function slideshow()
+    {
+        return $this->slideshows()
                     ->orderBy('updated_at')
                     ->take(5);
     }

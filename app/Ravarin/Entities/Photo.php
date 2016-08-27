@@ -22,6 +22,10 @@ class Photo extends Model
         return 'uploaded/places';
     }
 
+    public function isSlideShow() {
+        return $this->type == 'slide';
+    }
+
     public function isThumbnail() 
     {
         return $this->thumbnail;

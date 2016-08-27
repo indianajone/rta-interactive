@@ -28,13 +28,16 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <div class="form-group checkbox">
-                        <label for="thumbnail">
-                            {!! Form::hidden('thumbnail', false) !!}
-                            {!! Form::checkbox('thumbnail') !!}
-                            ใช้เป็นรูป thumbnail
-                        </label>
-                    </div>
+                    {!! Form::hidden('slideshow', $slideshow) !!}
+                    @if(!$slideshow)
+                        <div class="form-group checkbox">
+                            <label for="thumbnail">
+                                {!! Form::hidden('thumbnail', false) !!}
+                                {!! Form::checkbox('thumbnail') !!}
+                                ใช้เป็นรูป thumbnail
+                            </label>
+                        </div>
+                    @endif
                     <div class="form-group">
                         {!! Form::label('title:th', 'ชื่อรูปภาษาไทย') !!}
                         {!! Form::text('title:th', null , ['class' => 'form-control', 'placeholder' => 'ชื่อรูปภาษาไทย', 'required']) !!}

@@ -32,12 +32,16 @@ class AttachmentsController extends Controller
     {
         $place = Place::find($placeId);
 
+        $relation = $request->slideshow ? 'slideshows' : 'photos';
+
         // Toggle thumbnail
         if ($request->thumbnail) {
             $place->photos()->where('thumbnail', true)->update(['thumbnail' => false]);
         }
 
-        $attachment = $place->photos()->create($this->transformer->transform($request->all()));
+        $attachment = $place->$relation()->create(
+            $this->transformer->transform($request->all())
+        );
 
         // Upload and create thumbnail
         if ($request->hasFile('image')) {
@@ -46,7 +50,7 @@ class AttachmentsController extends Controller
             
             $attachment->name = sha1(time() . '-' . $file->getClientOriginalName()) . '.' . $extension;
             $attachment->extension = $extension;
-            $attachment->type = 'image';
+            $attachment->type = $request->slideshow ? 'slide' : 'image';
             
             $imageSize = @getimagesize($file->getPathname());
             
@@ -64,7 +68,7 @@ class AttachmentsController extends Controller
             $attachment->save();
         }
 
-        flash()->success('Created!', 'Photo has been created.');
+        flash()->success('Created!', ucfirst($relation).' has been created.');
 
         return redirect()->route('cms.places.edit', $placeId);
     }

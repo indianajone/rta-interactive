@@ -18,6 +18,9 @@
                             <li role="presentation">
                                 <a href="#eng" aria-controls="eng" role="tab" data-toggle="tab">อังกฤษ</a>
                             </li>
+                             <li role="presentation">
+                                <a href="#slideshow" aria-controls="slideshow" role="tab" data-toggle="tab">slideshow</a>
+                            </li>
                             <li role="presentation">
                                 <a href="#photos" aria-controls="photos" role="tab" data-toggle="tab">คลังภาพ</a>
                             </li>
@@ -79,6 +82,9 @@
                                     </div>
                                 {!! Form::close() !!}
                             </div>
+                             <div role="tabpanel" class="tab-pane" id="slideshow">
+                                @include('cms.places.partials.slideshow')
+                            </div>
                             <div role="tabpanel" class="tab-pane" id="photos">
                                 @include('cms.places.partials.photos')
                             </div>
@@ -102,17 +108,32 @@
 @stop
 
 @section('footer')
-    
+
     <div class="modals">
         <div id="modal-addimage" class="modal fade">
             {!! Form::open(['route' => ['cms.places.attachments.store', $place->id], 'method' => 'POST', 'files' => true]) !!}
-                @include('cms.components.modals.image')
+                @include('cms.components.modals.image', [ 'slideshow' => false ])
             {!! Form::close() !!}
         </div>
         @foreach($place->photos as $photo)
             <div id="modal-image-{{ $photo->id }}" class="modal fade">
                 {!! Form::model($photo, ['route' => ['cms.places.attachments.update', $place->id, $photo->id], 'method' => 'PUT', 'files' => true]) !!}
-                    @include('cms.components.modals.image')
+                    @include('cms.components.modals.image', [ 'slideshow' => false ])
+                {!! Form::close() !!}
+            </div>
+        @endforeach
+    </div>
+    
+    <div class="modals">
+        <div id="modal-addslideshow" class="modal fade">
+            {!! Form::open(['route' => ['cms.places.attachments.store', $place->id], 'method' => 'POST', 'files' => true]) !!}
+                @include('cms.components.modals.image', [ 'slideshow' => true ])
+            {!! Form::close() !!}
+        </div>
+        @foreach($place->slideshows as $photo)
+            <div id="modal-image-{{ $photo->id }}" class="modal fade">
+                {!! Form::model($photo, ['route' => ['cms.places.attachments.update', $place->id, $photo->id], 'method' => 'PUT', 'files' => true]) !!}
+                    @include('cms.components.modals.image', [ 'slideshow' => true ])
                 {!! Form::close() !!}
             </div>
         @endforeach
