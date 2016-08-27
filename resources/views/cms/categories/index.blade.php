@@ -16,6 +16,7 @@
                 <th width="5%"></th>
                 <th>ชื่อ</th>
                 <th class="text-center">จำนวนสถานที่</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -39,6 +40,14 @@
                         </a>
                     </td>
                     <td class="text-center">{{ $group->totalPlaces() }}</td>
+                    <td>
+                        {!! Form::open([
+                            'route' => ['cms.categories.destroy', $group->id], 
+                            'method' => 'DELETE'
+                        ]) !!}
+                            <button name="delete" class="btn btn-danger">ลบ</button>
+                        {!! Form::close() !!}
+                    </td>
                 </tr>
 
                 <tbody id="group-{{ $group->id }}" class="collapse">
@@ -51,6 +60,14 @@
                                 </a>
                             </td>
                             <td class="text-center">{{ $category->places->count() }}</td>
+                            <td>
+                                {!! Form::open([
+                                    'route' => ['cms.categories.destroy', $group->id], 
+                                    'method' => 'DELETE'
+                                ]) !!}
+                                    <button name="delete" class="btn btn-danger">ลบ</button>
+                                {!! Form::close() !!}
+                            </td>
                         </tr>
                     @endforeach
                 <tbody>
@@ -61,4 +78,27 @@
             @endforelse
         </tbody>
     </table>
+@stop
+
+@section('script.footer')
+    <script type="text/javascript" charset="utf-8">
+        $(function() {
+            $('button[name="delete"]').on('click', function (e) {
+                e.preventDefault();
+                swal({   
+                    title: "Are you sure?",   
+                    text: "You will not be able to recover this!",
+                    type: "warning",   
+                    showCancelButton: true,   
+                    confirmButtonColor: "#DD6B55",   
+                    confirmButtonText: "Yes, delete it!",   
+                    closeOnConfirm: false 
+                }, function (confirmed) {
+                    if(confirmed) {
+                        $(e.target).closest('form').submit();
+                    }
+                });
+            });
+        });
+    </script>
 @stop
