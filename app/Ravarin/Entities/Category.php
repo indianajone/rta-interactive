@@ -37,7 +37,6 @@ class Category extends Model
 
     public function totalPlaces() 
     {
-        // dd($this->children()->with('places')->get());
         return $this->children()->with([
                         'places' => function ($query) {
                             return $query->select('id');
