@@ -10,8 +10,11 @@
 
     .row {
         display: flex;
-        flex-wrap: wrap;
         justify-content: center;
+        flex-wrap: wrap;
+        @media (min-width: $screen-md-min) {
+            flex-wrap: nowrap;
+        }
     }
 
     &.show-nav  {
@@ -72,11 +75,5 @@
                 min-width: 160px;
             }
         }
-    }
-}
-
-.cards--col-2 {
-    .card {
-    
     }
 }
