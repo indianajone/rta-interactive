@@ -35,10 +35,19 @@
     &__mini-map,
     &__panorama {
         @extend .col-md-4;
+
     }
 
     &__photos {
         @extend .clearfix;
+        .row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            @media (min-width: $screen-md-min) {
+                flex-wrap: nowrap;
+            }
+        }
     }
 
     &__image {

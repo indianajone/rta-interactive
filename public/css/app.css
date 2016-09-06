@@ -12695,7 +12695,6 @@ address a[href^=mail] {
 
 .readmore {
   float: right;
-  margin-top: 15px;
 }
 
 .notfound__body {
@@ -14796,6 +14795,27 @@ fieldset[disabled] .btn-yahoo.focus {
 
 .gallery .row,
 .gallery .search__item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 992px) {
+  .gallery .row,
+  .gallery .search__item {
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+  }
+}
+
+.gallery .place__image {
   padding-bottom: 30px;
 }
 
@@ -15496,6 +15516,28 @@ fieldset[disabled] .btn-yahoo.focus {
 
 .place__body > div {
   overflow: hidden;
+}
+
+.place__photos .row,
+.place__photos .search__item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 992px) {
+  .place__photos .row,
+  .place__photos .search__item {
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+  }
 }
 
 .place__image {

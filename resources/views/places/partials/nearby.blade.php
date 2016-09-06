@@ -1,7 +1,7 @@
 @if($place->nearby->count()) 
     <div class="place__photos">
         <h3 class="heading--fancy">{{ trans('common.heading.nearby') }}</h3>
-        <div class="cards row">
+        <div class="cards">
             @foreach($place->nearby->chunk(3) as $set)
                 <div class="row">
                     @foreach($set as $place)

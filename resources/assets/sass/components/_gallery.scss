@@ -1,5 +1,14 @@
 .gallery {
     .row {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        @media (min-width: $screen-md-min) {
+            flex-wrap: nowrap;
+        }
+    }
+
+    .place__image {
         padding-bottom: 30px;
     }
 }
