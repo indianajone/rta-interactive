@@ -49,7 +49,7 @@
             </div>
         </div>
     </fieldset>
-    <fieldset class="direction">
-        <google-panel id="direction"></google-panel>
+    <fieldset class="text-center" v-if="hasDirection">
+        <direction-button text="{{ collect(trans('common.buttons.direction')) }}"></direction-button>   
     </fieldset>
 </form>

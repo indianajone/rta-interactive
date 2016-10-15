@@ -1,3 +1,3 @@
 module.exports = {
-    template: '<div></div>'
+    template: '<div class="direction"></div>'
 }

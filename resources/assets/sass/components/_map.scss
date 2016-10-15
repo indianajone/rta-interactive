@@ -1,21 +1,17 @@
 .interactive-map {
     
-    position: relative;
     height: 100%;
+    display: flex;
+
+    @media only screen and (max-width: 768px) {
+        flex-wrap: wrap;
+    }
     
     form {
         color: #fff;
-        position: absolute;
-        width: 450px;
-        height: 100%;
-        left: 0;
-        z-index: 99;
-        overflow-y: scroll;
-        @media only screen and (max-width: 768px) {
-            width: 100%;
-            height: auto;
-            position: static;
-        }
+        background-color: #094d44;
+        min-width: 300px;
+        flex: 0 3 100%;
     }
     .top, .bottom {
         padding: 15px;
@@ -26,9 +22,32 @@
     .bottom {
         background-color: rgba($green, .8);
     }
+}
 
-    .direction {
-        background-color: #fff;
+.direction {
+    display: none;
+    flex: 1 1 50%;
+    overflow: scroll;
+}
+
+.google-map {
+    flex: 1 1 100%;
+    @media only screen and (max-width: 768px) {
+        height: 70%;
+    }
+}
+
+.google-map__panel {
+    overflow-y: scroll;
+}
+
+.google-map__infowindow {
+    &__body, &__media {
+        float: left;
+    }
+
+    &__media {
+        padding-right: 10px;
     }
 }
 
@@ -64,24 +83,5 @@
         padding: 0 15px;
         line-height: inherit;
         border: none;
-    }
-}
-
-.google-map {
-    height: 100%;
-    min-height: 100%;
-}
-
-.google-map__panel {
-    overflow-y: scroll;
-}
-
-.google-map__infowindow {
-    &__body, &__media {
-        float: left;
-    }
-
-    &__media {
-        padding-right: 10px;
     }
 }

@@ -12651,6 +12651,15 @@ img.jssocials-share-logo {
   font-style: normal;
 }
 
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  min-width: 320px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-rendering: optimizeLegibility;
+}
+
 html,
 body,
 #app {
@@ -14820,26 +14829,27 @@ fieldset[disabled] .btn-yahoo.focus {
 }
 
 .interactive-map {
-  position: relative;
   height: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media only screen and (max-width: 768px) {
+  .interactive-map {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
 }
 
 .interactive-map form {
   color: #fff;
-  position: absolute;
-  width: 450px;
-  height: 100%;
-  left: 0;
-  z-index: 99;
-  overflow-y: scroll;
-}
-
-@media only screen and (max-width: 768px) {
-  .interactive-map form {
-    width: 100%;
-    height: auto;
-    position: static;
-  }
+  background-color: #094d44;
+  min-width: 300px;
+  -webkit-flex: 0 3 100%;
+  -ms-flex: 0 3 100%;
+  flex: 0 3 100%;
 }
 
 .interactive-map .top,
@@ -14855,8 +14865,37 @@ fieldset[disabled] .btn-yahoo.focus {
   background-color: rgba(9, 77, 68, 0.8);
 }
 
-.interactive-map .direction {
-  background-color: #fff;
+.direction {
+  display: none;
+  -webkit-flex: 1 1 50%;
+  -ms-flex: 1 1 50%;
+  flex: 1 1 50%;
+  overflow: scroll;
+}
+
+.google-map {
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .google-map {
+    height: 70%;
+  }
+}
+
+.google-map__panel {
+  overflow-y: scroll;
+}
+
+.google-map__infowindow__body,
+.google-map__infowindow__media {
+  float: left;
+}
+
+.google-map__infowindow__media {
+  padding-right: 10px;
 }
 
 .waypoint {
@@ -14892,24 +14931,6 @@ fieldset[disabled] .btn-yahoo.focus {
   padding: 0 15px;
   line-height: inherit;
   border: none;
-}
-
-.google-map {
-  height: 100%;
-  min-height: 100%;
-}
-
-.google-map__panel {
-  overflow-y: scroll;
-}
-
-.google-map__infowindow__body,
-.google-map__infowindow__media {
-  float: left;
-}
-
-.google-map__infowindow__media {
-  padding-right: 10px;
 }
 
 .modal-mask {

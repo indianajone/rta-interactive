@@ -1,3 +1,17 @@
+html {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    min-width: 320px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    text-rendering: optimizeLegibility;
+    
+    // Make things black n white.
+    > * {
+        // filter: grayscale(100%);
+    }
+}
+
 html, body, #app {
     height: 100%;
 }

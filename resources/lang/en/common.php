@@ -22,6 +22,10 @@ return [
         'to_content' => 'see more details',
         'favorite' => 'add to my favorite',
         'share' => 'share',
+        'direction' => [
+            'show direction',
+            'hide direction'
+        ],
         'readmore' => [
             'read more',
             'hide'

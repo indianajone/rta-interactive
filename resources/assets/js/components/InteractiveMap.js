@@ -3,6 +3,7 @@ module.exports = {
     components: {
         googleMap: require('./GoogleMap'),
         googlePanel: require('./GooglePanel'),
+        directionButton: require('./GooglePanelButton'),
         origin: require('./Origin'),
         destinations: require('./Destination'),
         mode: require('./Mode'),
@@ -33,6 +34,7 @@ module.exports = {
                 lat: 13.724600, 
                 lng: 100.6331108 
             },
+            hasDirection: false,
             route: { origin: '', destination: '', travelMode: 'DRIVING', waypoints: [] },
             panel: null
         }
@@ -136,6 +138,7 @@ module.exports = {
             }
 
             if (this.route.origin && this.route.destination) {
+                this.hasDirection = true;
                 this.$broadcast('direction', request);
             }
         }

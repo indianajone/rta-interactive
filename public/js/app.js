@@ -32127,7 +32127,7 @@ new Vue({
     }
 });
 
-},{"./components/FavoriteButton":20,"./components/Gallery":21,"./components/InteractiveMap":25,"./components/Login":26,"./components/Logout":27,"./components/Modal":28,"./components/Panorama":31,"./components/Readmore":32,"./components/Search":33,"./components/SocialShare":34,"./core/bootstrap":42,"./directives/CarouselSlick.js":43,"./directives/DropdownCheckbox.js":44,"./directives/JsSocials.js":45,"./pages/PlaceFilter":46,"./vendor/lity":52}],19:[function(require,module,exports){
+},{"./components/FavoriteButton":20,"./components/Gallery":21,"./components/InteractiveMap":26,"./components/Login":27,"./components/Logout":28,"./components/Modal":29,"./components/Panorama":32,"./components/Readmore":33,"./components/Search":34,"./components/SocialShare":35,"./core/bootstrap":43,"./directives/CarouselSlick.js":44,"./directives/DropdownCheckbox.js":45,"./directives/JsSocials.js":46,"./pages/PlaceFilter":47,"./vendor/lity":53}],19:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -32302,7 +32302,7 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{"./templates/gallery.html":36,"photoswipe":4,"photoswipe/dist/photoswipe-ui-default":3}],22:[function(require,module,exports){
+},{"./templates/gallery.html":37,"photoswipe":4,"photoswipe/dist/photoswipe-ui-default":3}],22:[function(require,module,exports){
 'use strict';
 
 require('../vendor/RouteBoxer');
@@ -32580,14 +32580,67 @@ module.exports = {
 
 };
 
-},{"../vendor/RouteBoxer":47,"./InfoWindow":24}],23:[function(require,module,exports){
+},{"../vendor/RouteBoxer":48,"./InfoWindow":25}],23:[function(require,module,exports){
 'use strict';
 
 module.exports = {
-    template: '<div></div>'
+    template: '<div class="direction"></div>'
 };
 
 },{}],24:[function(require,module,exports){
+'use strict';
+
+module.exports = {
+    template: '\n        <button class="btn btn-main" @click="toggle">{{ body }}</button>\n    ',
+
+    props: ['text'],
+
+    data: function data() {
+        return {
+            show: false
+        };
+    },
+
+    computed: {
+        body: function body() {
+            var text = JSON.parse(this.text);
+            return this.show ? text[1] : text[0];
+        }
+    },
+
+    methods: {
+
+        toggle: function toggle() {
+            var panel = document.getElementById('direction');
+
+            if (this.show) {
+                panel.style.display = 'none';
+            } else {
+                panel.style.display = 'block';
+            }
+
+            this.show = !this.show;
+        }
+    }
+
+};
+
+/*
+toggleDirection: function () {
+            let directionPanel = document.getElementById('direction');
+
+            if(directionPanel.style.display == 'block') {
+                this.opened = false;
+                directionPanel.style.display = 'none';
+            } else {
+                this.opened = true;
+                directionPanel.style.display = 'block';
+            }
+            
+        }
+ */
+
+},{}],25:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -32628,7 +32681,7 @@ module.exports = {
     }
 };
 
-},{"./templates/info-window.html":37}],25:[function(require,module,exports){
+},{"./templates/info-window.html":38}],26:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -32636,6 +32689,7 @@ module.exports = {
     components: {
         googleMap: require('./GoogleMap'),
         googlePanel: require('./GooglePanel'),
+        directionButton: require('./GooglePanelButton'),
         origin: require('./Origin'),
         destinations: require('./Destination'),
         mode: require('./Mode'),
@@ -32672,6 +32726,7 @@ module.exports = {
                 lat: 13.724600,
                 lng: 100.6331108
             },
+            hasDirection: false,
             route: { origin: '', destination: '', travelMode: 'DRIVING', waypoints: [] },
             panel: null
         };
@@ -32774,13 +32829,14 @@ module.exports = {
             };
 
             if (this.route.origin && this.route.destination) {
+                this.hasDirection = true;
                 this.$broadcast('direction', request);
             }
         }
     }
 };
 
-},{"./Destination":19,"./GoogleMap":22,"./GooglePanel":23,"./Mode":29,"./Origin":30,"./Waypoint":35}],26:[function(require,module,exports){
+},{"./Destination":19,"./GoogleMap":22,"./GooglePanel":23,"./GooglePanelButton":24,"./Mode":30,"./Origin":31,"./Waypoint":36}],27:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -32868,7 +32924,7 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -32891,7 +32947,7 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -32919,7 +32975,7 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{"./templates/modal.html":38}],29:[function(require,module,exports){
+},{"./templates/modal.html":39}],30:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -32951,7 +33007,7 @@ module.exports = {
     }
 };
 
-},{"./templates/mode.html":39}],30:[function(require,module,exports){
+},{"./templates/mode.html":40}],31:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -33010,7 +33066,7 @@ module.exports = {
 
 };
 
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 'use strict';
 
 var panorama = require('../vendor/jquery.panorama-viewer.js');
@@ -33030,7 +33086,7 @@ module.exports = {
     }
 };
 
-},{"../vendor/jquery.panorama-viewer.js":50}],32:[function(require,module,exports){
+},{"../vendor/jquery.panorama-viewer.js":51}],33:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -33076,7 +33132,7 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{"./templates/readmore.html":40}],33:[function(require,module,exports){
+},{"./templates/readmore.html":41}],34:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -33134,7 +33190,7 @@ module.exports = {
 
 };
 
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -33149,7 +33205,7 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 'use strict';
 
 var Sortable = require('../vendor/Sortable.min.js');
@@ -33194,19 +33250,19 @@ module.exports = {
 
 };
 
-},{"../vendor/Sortable.min.js":48,"./templates/waypoint.html":41}],36:[function(require,module,exports){
+},{"../vendor/Sortable.min.js":49,"./templates/waypoint.html":42}],37:[function(require,module,exports){
 module.exports = '<div class="gallery" data-pswp-uid="{{ _uid }}">\n    <div \n        v-for="set in parse(photos) | chunk 3"\n        class="row"\n    >\n        <div\n            v-for="(index, item) in set" \n            class="place__image">\n            <a \n                @click.prevent="openPhotoSwipe(index)"\n                href="{{ \'/\' + item.path }}"\n                data-size="{{item.width + \'x\' + item.height }}"\n            >\n                <img :src="\'/\' + item.thumbnail_path" alt="{{ item.title }}">\n            </a>\n        </div>\n    </div>\n</div>';
-},{}],37:[function(require,module,exports){
-module.exports = '<div class="google-map__infowindow">\n    <div v-show="hasPhoto" class="google-map__infowindow__media">\n        <img v-bind:src="photo" alt="{{ title }}">\n    </div>\n    <div class="google-map__infowindow__body">\n        <strong>{{ place.name }}</strong>\n        <p>{{ place.description }}</p>\n        <button\n            v-show="place.canAdd"\n            @click="addToWaypoint(place)"\n            type="button"\n            class="btn btn-success"\n        > \n        Add +\n        </button>\n    </div>\n</div>';
 },{}],38:[function(require,module,exports){
-module.exports = '<div @click="close" class="modal-mask" v-show="show" transition="modal">\n    <div class="modal-wrapper">\n        <div class="modal-container">\n            <slot></slot>\n        </div>\n        <button class="modal-close" @click="show = false">×</button>\n    </div> \n</div>';
+module.exports = '<div class="google-map__infowindow">\n    <div v-show="hasPhoto" class="google-map__infowindow__media">\n        <img v-bind:src="photo" alt="{{ title }}">\n    </div>\n    <div class="google-map__infowindow__body">\n        <strong>{{ place.name }}</strong>\n        <p>{{ place.description }}</p>\n        <button\n            v-show="place.canAdd"\n            @click="addToWaypoint(place)"\n            type="button"\n            class="btn btn-success"\n        > \n        Add +\n        </button>\n    </div>\n</div>';
 },{}],39:[function(require,module,exports){
-module.exports = '<div class="mode">\n    <label \n            v-for="type in types"\n            class="mode__checkbox"\n    >\n        <input \n            v-model="mode"\n            @change="onChange(type)"\n            type="radio"\n            value="{{ type.value }}" \n        >\n        <i :class="[\'fa\', \'fa-lg\', \'fa-\' + type.icon]"></i>\n    </label>\n</div>';
+module.exports = '<div @click="close" class="modal-mask" v-show="show" transition="modal">\n    <div class="modal-wrapper">\n        <div class="modal-container">\n            <slot></slot>\n        </div>\n        <button class="modal-close" @click="show = false">×</button>\n    </div> \n</div>';
 },{}],40:[function(require,module,exports){
-module.exports = '<div>\n    <div :style="style">\n        <slot></slot>\n    </div>\n    <div class="readmore">\n        <button v-show="show" class="btn btn-main" @click="toggle">{{ body }}</button>\n    </div>\n</div>';
+module.exports = '<div class="mode">\n    <label \n            v-for="type in types"\n            class="mode__checkbox"\n    >\n        <input \n            v-model="mode"\n            @change="onChange(type)"\n            type="radio"\n            value="{{ type.value }}" \n        >\n        <i :class="[\'fa\', \'fa-lg\', \'fa-\' + type.icon]"></i>\n    </label>\n</div>';
 },{}],41:[function(require,module,exports){
-module.exports = '<div class="form-group">\n    <div class="input-group waypoint" v-for="waypoint in waypoints">\n        <input type="text" class="form-control" value="{{ waypoint.name }}" readonly >\n        <div class="input-group-btn">\n            <button class="btn btn-danger" @click="remove(waypoint)"><i class="fa fa-close"></i></button>\n        </div>\n    </div>\n</div>\n';
+module.exports = '<div>\n    <div :style="style">\n        <slot></slot>\n    </div>\n    <div class="readmore">\n        <button v-show="show" class="btn btn-main" @click="toggle">{{ body }}</button>\n    </div>\n</div>';
 },{}],42:[function(require,module,exports){
+module.exports = '<div class="form-group">\n    <div class="input-group waypoint" v-for="waypoint in waypoints">\n        <input type="text" class="form-control" value="{{ waypoint.name }}" readonly >\n        <div class="input-group-btn">\n            <button class="btn btn-danger" @click="remove(waypoint)"><i class="fa fa-close"></i></button>\n        </div>\n    </div>\n</div>\n';
+},{}],43:[function(require,module,exports){
 /*
  * Check browser support.
  */
@@ -33260,7 +33316,7 @@ if (window.Rta === undefined) {
 
 require('bootstrap-sass/assets/javascripts/bootstrap');
 
-},{"bootstrap-sass/assets/javascripts/bootstrap":1,"jquery":2,"underscore":7,"vue":17,"vue-chunk":8,"vue-resource":10}],43:[function(require,module,exports){
+},{"bootstrap-sass/assets/javascripts/bootstrap":1,"jquery":2,"underscore":7,"vue":17,"vue-chunk":8,"vue-resource":10}],44:[function(require,module,exports){
 'use strict';
 
 require('slick-carousel');
@@ -33284,7 +33340,7 @@ module.exports = {
     }
 };
 
-},{"slick-carousel":6}],44:[function(require,module,exports){
+},{"slick-carousel":6}],45:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -33306,7 +33362,7 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{"../vendor/dropdown-checkbox":49}],45:[function(require,module,exports){
+},{"../vendor/dropdown-checkbox":50}],46:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -33342,7 +33398,7 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{"../vendor/js-social":51}],46:[function(require,module,exports){
+},{"../vendor/js-social":52}],47:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -33382,7 +33438,7 @@ module.exports = {
     }
 };
 
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 /**
  * @name RouteBoxer
  * @version 1.0
@@ -33949,7 +34005,7 @@ Number.prototype.toBrng = function () {
 
 window.RouteBoxer = RouteBoxer;
 
-},{}],48:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 /*! Sortable 1.4.2 - MIT | git://github.com/rubaxa/Sortable.git */
 "use strict";
 
@@ -34199,7 +34255,7 @@ window.RouteBoxer = RouteBoxer;
   }, a.version = "1.4.2", a;
 });
 
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 /*!
  * Bootstrap-select v1.9.4 (http://silviomoreto.github.io/bootstrap-select)
  *
@@ -35826,7 +35882,7 @@ window.RouteBoxer = RouteBoxer;
   })(jQuery);
 });
 
-},{"jquery":2}],50:[function(require,module,exports){
+},{"jquery":2}],51:[function(require,module,exports){
 /* ===========================================================
  * jquery-panorama_viewer.js v1
  * ===========================================================
@@ -36043,7 +36099,7 @@ window.RouteBoxer = RouteBoxer;
     };
 })(window.jQuery);
 
-},{}],51:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 /*! jssocials - v1.1.0 - 2015-12-19
 * http://js-socials.com
 * Copyright (c) 2015 Artem Tabalin; Licensed MIT */
@@ -36499,7 +36555,7 @@ window.RouteBoxer = RouteBoxer;
     });
 })(window, jQuery, window.jsSocials);
 
-},{}],52:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 /*! Lity - v1.5.1 - 2015-12-02
 * http://sorgalla.com/lity/
 * Copyright (c) 2015 Jan Sorgalla; Licensed MIT */
