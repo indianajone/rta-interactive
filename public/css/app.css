@@ -12660,6 +12660,11 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+html > * {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
 html,
 body,
 #app {
