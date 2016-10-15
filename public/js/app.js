@@ -32399,6 +32399,8 @@ module.exports = {
             this.map = new google.maps.Map(this.$el, options);
             this.infoWindow = new google.maps.InfoWindow();
             this.services.direction = new google.maps.DirectionsService();
+            this.services.distance = new google.maps.DistanceMatrixService();
+            this.services.geocoder = new google.maps.Geocoder();
             this.services.place = new google.maps.places.PlacesService(this.map);
             this.services.boxer = new RouteBoxer();
             this.services.renderer = new google.maps.DirectionsRenderer({
@@ -32468,6 +32470,7 @@ module.exports = {
             var _this6 = this;
 
             var location = new google.maps.LatLng(place.latitude, place.longitude);
+
             var marker = new google.maps.Marker({
                 title: place.title,
                 map: this.map,
@@ -32479,11 +32482,13 @@ module.exports = {
             });
 
             marker.addListener('click', function (e) {
+
                 _this6.setInfoWindow({
                     canAdd: _this6.canAdd(place.title),
                     name: place.title,
                     description: place.description,
-                    location: location
+                    location: location,
+                    photos: place.thumbnail
                 }, marker);
             });
 
@@ -32544,6 +32549,7 @@ module.exports = {
         },
 
         addWaypoint: function addWaypoint(place) {
+
             this.route.waypoints.push({
                 name: place.name,
                 stopover: true,
@@ -32664,7 +32670,14 @@ module.exports = {
             return this.place.photos && this.place.photos.length;
         },
         photo: function photo() {
-            if (!this.hasPhoto) return;
+            console.log(typeof this.place.photos);
+            if (!this.hasPhoto) {
+                return;
+            }
+
+            if (typeof this.place.photos === 'string') {
+                return this.place.photos;
+            }
 
             return this.place.photos[0].getUrl({
                 maxWidth: 50,

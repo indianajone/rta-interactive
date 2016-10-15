@@ -14898,6 +14898,10 @@ fieldset[disabled] .btn-yahoo.focus {
   padding-right: 10px;
 }
 
+.google-map__infowindow__media img {
+  max-width: 50px;
+}
+
 .waypoint {
   margin-bottom: 1em;
 }

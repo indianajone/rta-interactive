@@ -33,6 +33,7 @@ class PagesController extends Controller
                             'description' => $place->excerpt,
                             'latitude' => $place->latitude,
                             'longitude' => $place->longitude,
+                            'thumbnail' => asset($place->thumbnail),
                             'categories' => $place->categories->map(function ($cat) {
                                 return [
                                     'id' => $cat->id,

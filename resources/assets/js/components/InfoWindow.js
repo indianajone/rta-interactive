@@ -19,7 +19,14 @@ module.exports = {
             return this.place.photos && this.place.photos.length;
         },
         photo: function () {
-            if (!this.hasPhoto) return;
+            console.log(typeof this.place.photos);
+            if (!this.hasPhoto) {
+                return;
+            }
+
+            if (typeof this.place.photos === 'string') {
+                return this.place.photos;
+            }
 
             return this.place.photos[0].getUrl({
                 maxWidth: 50,

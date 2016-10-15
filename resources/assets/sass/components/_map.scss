@@ -48,6 +48,10 @@
 
     &__media {
         padding-right: 10px;
+
+        img {
+            max-width: 50px;
+        }
     }
 }
 

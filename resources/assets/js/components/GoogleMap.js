@@ -85,6 +85,8 @@ module.exports = {
             this.map = new google.maps.Map(this.$el, options);
             this.infoWindow = new google.maps.InfoWindow();
             this.services.direction = new google.maps.DirectionsService();
+            this.services.distance = new google.maps.DistanceMatrixService();
+            this.services.geocoder = new google.maps.Geocoder();
             this.services.place = new google.maps.places.PlacesService(this.map);
             this.services.boxer = new RouteBoxer();
             this.services.renderer = new google.maps.DirectionsRenderer({ 
@@ -151,6 +153,7 @@ module.exports = {
         createArmyMarker: function (place) {
 
             let location = new google.maps.LatLng(place.latitude, place.longitude);
+        
             let marker = new google.maps.Marker({
                 title: place.title,
                 map: this.map,
@@ -162,11 +165,13 @@ module.exports = {
             });
 
             marker.addListener('click', e => {
+
                 this.setInfoWindow({
                     canAdd: this.canAdd(place.title),
                     name: place.title,
                     description: place.description,
                     location: location,
+                    photos: place.thumbnail
                 }, marker);
             });
 
@@ -227,6 +232,7 @@ module.exports = {
         },
 
         addWaypoint: function (place) {
+
             this.route.waypoints.push({ 
                 name: place.name,
                 stopover: true,
